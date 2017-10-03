@@ -6,6 +6,12 @@ This section of the documentation explains how to administer a Hyperledger Fabri
 
 [Conceptual overview](./ConceptOverview/Overview.md)
 
+- [Overview](./ConceptualOverview/Overview.md)
+- [The Network Definition](./ConceptualOverview/TheNetworkDefinition.md)
+  + [The Network Definition](./ConceptualOverview/TheNetworkDefinition.md)
+    + [The Network Definition](./ConceptualOverview/TheNetworkDefinition.md)
+
+
 [The DRIVENET sample network](./DriveNetSample/DriveNetSample.md)
 
 [Administrative Tasks](./AdminTasks/AdminTasks.md)
