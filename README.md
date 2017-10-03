@@ -6,4 +6,6 @@ It's purpose is to facilitate collaborative development of the  Administration G
 
 It uses markdown to help documentation developers easily edit and view their changes on their local machine, while maintaining source control through GitHub.
 
-We recommend using ATOM (https://atom.io/), or editors with similar previewing facilities, to help develop this content. 
+We recommend using ATOM (https://atom.io/), or editors with similar previewing facilities, to help develop this content.
+
+The Administration Guide is [here](./AdminGuide/AdminGuide.md)
