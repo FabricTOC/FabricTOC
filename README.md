@@ -8,4 +8,4 @@ It uses markdown to help documentation developers easily edit and view their cha
 
 We recommend using ATOM (https://atom.io/), or editors with similar previewing facilities, to help develop this content.
 
-The Administration Guide is [here](./AdminGuide/AdminGuide.md)
+The Administration Guide is [here](./docs/AdminGuide/AdminGuide.md)
