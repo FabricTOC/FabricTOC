@@ -2,4 +2,4 @@
 
 Joe's stuff goes here
 
-[-->Next](./TheNetworkDefinition)
+[-->Next](./TheNetworkDefinition.md)
