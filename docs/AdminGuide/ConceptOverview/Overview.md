@@ -23,7 +23,7 @@ Mitchell and Regal will later grow DRIVENET to include ZBS Insurance, who will o
 
 Configuring and administrating a Fabric network covers a lot of ground, but there's still a lot of information that won't be talked about in this guide.
 
-Links here with short descriptors. 
+Links here with short descriptions of what's in the docs at the links. 
 
 
 
