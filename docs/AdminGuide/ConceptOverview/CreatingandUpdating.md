@@ -1,6 +1,6 @@
-#Creating and Updating a network
+# Creating and Updating a network
 
-##Bootstrapping the network
+## Bootstrapping the network
 
               + The genesis block
               + Starting the network orderers

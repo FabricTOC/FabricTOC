@@ -1,6 +1,6 @@
-#Policies for Access control
+# Policies for Access control
 
-##Policies for Access Control
+## Policies for Access Control
       + What are policies?
       + Why are policies important?
       + Principals and resource access control

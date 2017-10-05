@@ -8,8 +8,12 @@ This section of the documentation explains how to administer a Hyperledger Fabri
 
 - [Overview](./ConceptOverview/Overview.md)
 - [The Network Definition](./ConceptOverview/TheNetworkDefinition.md)
-  + [The Network Definition](./ConceptOverview/TheNetworkDefinition.md)
-    + [The Network Definition](./ConceptOverview/TheNetworkDefinition.md)
+  + [Organizations in a Network](./ConceptOverview/OrganizationsinaNetwork.md)
+  + [Principals in a Network](./ConceptOverview/PrincipalsinaNetwork.md)
+  + [Identity and Chains of Trust](./ConceptOverview/IdentityandChainsofTrust.md)
+  + [Policies for Access Control](./ConceptOverview/PoliciesforAccessControl.md)
+  + [Creating and Updating the Network](./ConceptOverview/CreatingandUpdating.md)
+
 
 
 [The DRIVENET sample network](./DriveNetSample/DriveNetSample.md)
