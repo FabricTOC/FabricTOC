@@ -1,6 +1,6 @@
 # The DRIVENET Sample Network
 
-+ The DRIVENET Sample Network
+## The DRIVENET Sample Network
       + Starting DRIVENET
           + Defining the initial network configuration
               + Organizations and Certificate Authorities
