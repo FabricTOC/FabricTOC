@@ -1,5 +1,9 @@
-#How to define a blockchain network
+# How to define a blockchain network
 
-## The Resources
+## The resources in a network definition
 
-Groups within groups 
+      + How a network is defined
+      + Managing the network definition
+      + The DRIVENET example
+
+[-->Next](./OrganizationsinaNetwork.md)
