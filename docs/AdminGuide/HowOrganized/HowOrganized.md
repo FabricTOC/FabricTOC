@@ -1,4 +1,4 @@
-# How the Administration Guide information is organized
+# Concepts, Tasks and References
 
 We classify all information into concepts, tasks or reference material.
 
