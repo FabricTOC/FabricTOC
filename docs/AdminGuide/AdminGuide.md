@@ -13,8 +13,11 @@ This section of the documentation explains how to administer a Hyperledger Fabri
   + [Identity and Chains of Trust](./ConceptOverview/IdentityandChainsofTrust.md)
   + [Policies for Access Control](./ConceptOverview/PoliciesforAccessControl.md)
 - [Creating and Updating the Network](./ConceptOverview/CreatingandUpdating.md)
-
-
+  + [Updating the Network](./ConceptOverview/UpdatingtheNetwork.md)]
+- [Consortia](./ConceptOverview/Consortia.md)
+- [Channels](./ConceptOverview/Channels.md)
+- [Peers](./ConceptOverview/Peers.md)
+- [Chaincode](./ConceptOverview/Chaincode.md)
 
 [The DRIVENET sample network](./DriveNetSample/DriveNetSample.md)
 
