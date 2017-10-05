@@ -12,7 +12,7 @@ This section of the documentation explains how to administer a Hyperledger Fabri
   + [Principals in a Network](./ConceptOverview/PrincipalsinaNetwork.md)
   + [Identity and Chains of Trust](./ConceptOverview/IdentityandChainsofTrust.md)
   + [Policies for Access Control](./ConceptOverview/PoliciesforAccessControl.md)
-  + [Creating and Updating the Network](./ConceptOverview/CreatingandUpdating.md)
+- [Creating and Updating the Network](./ConceptOverview/CreatingandUpdating.md)
 
 
 
