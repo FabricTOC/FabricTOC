@@ -1,6 +1,6 @@
-#How to define a blockchain network
+# How to define a blockchain network
 
-##  The resources in a network definition
+## The resources in a network definition
 
       + How a network is defined
       + Managing the network definition
