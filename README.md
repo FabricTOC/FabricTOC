@@ -9,3 +9,7 @@ It uses markdown to help documentation developers easily edit and view their cha
 We recommend using ATOM (https://atom.io/), or editors with similar previewing facilities, to help develop this content.
 
 The Administration Guide is [here](./docs/AdminGuide/AdminGuide.md)
+
+# Using GitHub to contribute to this documentation
+
+`git commands to do this`
