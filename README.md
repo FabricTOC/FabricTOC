@@ -8,8 +8,12 @@ It uses markdown to help documentation developers easily edit and view their cha
 
 We recommend using ATOM (https://atom.io/), or editors with similar previewing facilities, to help develop this content.
 
-The Administration Guide is [here](./docs/AdminGuide/AdminGuide.md)
+The working copy of the Administration Guide is [here](./docs/AdminGuide/AdminGuide.md)
 
-# Using GitHub to contribute to this documentation
+We welcome comments on the documentation.  Just raise an [issue](https://github.com/FabricTOC/FabricTOC/issues)!
+
+Or if you'd like to propose changes then use the [following process](#GitHubProcess).
+
+# <a name="GitHubProcess"></a> Contribute to this documentation
 
 `git commands to do this`
