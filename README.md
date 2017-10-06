@@ -67,9 +67,9 @@ upstream	git@github.com:FabricTOC/FabricTOC.git (push)
 
   `git push origin master`
 
-8. View this on your local repository fork, https://github.com/<YourUserName/FabricTOC.
+8. View this on your local repository fork, `https://github.com/<YourUserName>/FabricTOC.`
 
-9. Make a Pull request at https://github.com/<YourUserName>/FabricTOC/pulls
+9. Make a Pull request at `https://github.com/<YourUserName>/FabricTOC/pulls`
 
 10. Fetch the updates from the latest copy of the main repository
 
