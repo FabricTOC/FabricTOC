@@ -11,8 +11,11 @@ For each task, we'll show the generic form of the command, for example
 where
 
 `<certfile>` is the full path to public certificate of the CA
+
 `<keyfile>` is the full path to the private key file of the CA
+
 `<adminUser>` is the user name of the CA administrator
+
 `<adminPassword` is the password of the CA administrator
 
 Where possible, we'll also show an example command from the DRIVENET sample.
