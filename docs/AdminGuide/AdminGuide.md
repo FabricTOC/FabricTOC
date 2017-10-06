@@ -147,7 +147,3 @@ This section of the documentation explains how to administer a Hyperledger Fabri
 
   + [Alphabetically ordered list of terms](./)
     + [A-Z](./)
-
-# Using GitHub to contribute to this documentation
-
-`commands`
