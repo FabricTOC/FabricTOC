@@ -96,7 +96,14 @@ This section of the documentation explains how to administer a Hyperledger Fabri
 
 #### [Administrative Tasks](./AdminTasks/AdminTasks.md)
 
-  + [How this section is organized](./)
+  + [How this section is organized](./AdminTasks/AdminTasks.md#HowOrganized)
+  + [Certificate Authority Tasks](/.)
+    + [General CA Tasks](/.)
+    + [Fabric CA Tasks](/.)
+      + [Configuring a Fabric CA](/.)
+      + [Starting a Fabric CA](/.)
+      + [Stopping a Fabric CA](/.)
+    + [External CA Tasks](/.)
   + [Network Tasks](./)
     + [Defining a network genesis block](./)
       + [Defining the network values](./)
