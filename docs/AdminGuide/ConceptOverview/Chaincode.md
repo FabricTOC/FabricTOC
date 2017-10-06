@@ -9,4 +9,4 @@
           + Upgrading chaincode
           + DRIVENET chaincode
 
-[-->Next](../DriveNetSample/DriveNetSample.md)
+[-->Next](../DriveNetSample/StartingDRIVENET.md)
