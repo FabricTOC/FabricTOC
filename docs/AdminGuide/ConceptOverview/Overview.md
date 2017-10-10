@@ -1,9 +1,9 @@
 # Introduction
 
 
-Fabric networks are complex, interdependent systems whose administration encompasses not just the initial configuration and bootstrapping of the network but also adaptation and expansion as new organizations and participants are added to it.
+Fabric networks are complex, interdependent systems whose administration encompasses not just the initial configuration and bootstrapping of the network but also its adaptation and expansion as new organizations and participants are added to it.
 
-In this operations guide we’ll take you through this entire process. You’ll learn about the scope of what we call “network definitions” and how a Fabric network is established and managed, including:
+In this operations guide you’ll learn about the scope of what we call “network definitions” and how a Fabric network is established, managed, and can be modified, including:
 
 1.	What “organizations” actually are and how to add them to a running network.
 2.	How digital certificates are used to identify what we call “principals” and how permissions define not just what the principals in a Fabric network can do, but what they actually are.
