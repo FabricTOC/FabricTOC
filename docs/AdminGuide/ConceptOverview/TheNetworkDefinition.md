@@ -48,7 +48,7 @@ A set of MSPs which provide a trust store for identities.
 
 ## The resources in DRIVENET
 
-We'll talk more about all of the policies in the DRIVENET network when we actually bootstrap it. 
+We'll talk more about all of the policies in the DRIVENET network when we actually bootstrap it.
 
 
 
