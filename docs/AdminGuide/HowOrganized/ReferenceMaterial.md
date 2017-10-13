@@ -1,6 +1,6 @@
 # Reference Material
 
-Once you're an experienced blockchain administrator, there will be times when you need to understand very detailed aspects about how Hyperledger Fabric works. For example, the configuration options for SSL on a peer node, or the details of the hashing algorithm being used by the orderer.  When you do, you'll find it in this section. 
+When you're an experienced blockchain administrator, there will be times when you need to understand very detailed aspects about how Hyperledger Fabric works. For example, the configuration options for SSL on a peer node, or the details of the hashing algorithm being used by the orderer.  When you do, you'll find it in this section. 
 
 ## Grouping of topics
 
