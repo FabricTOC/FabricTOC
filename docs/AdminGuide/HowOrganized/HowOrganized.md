@@ -12,13 +12,13 @@ Documentation topics are designed to match your needs and experience. Topics wil
 
 ## New Administrators
 
-If you're new to Hyperledger Fabric, then you'll want to spend time understanding the [Concepts](./_), and then reinforce this with a working example by walking through the [DRIVENET sample](./).
+If you're new to Hyperledger Fabric, then you'll want to spend time understanding the [Concepts](./_), and then reinforce this knowledge with a working example by trying out the [DRIVENET sample](./).
 
 ## Experienced Administrators
 
-Alternatively, if you're an experienced user, or you've become familiar via the introductory material, you'll mostly want to use the [Administrative Tasks](./) section to perform common tasks, or [Reference Material](./) to select detailed options for commands or component configuration.
+Alternatively, if you're an experienced user, or you've become familiar via the introductory material, you'll mostly want to use the [Administrative Tasks](./) section to perform common tasks, or the [Reference Material](./) to select detailed options for commands or component configuration.
 
-## Reference Material
+## Glossary and Links
 
 Finally, if you want to look up a concept or term you've heard about relating to Hyperledger Fabric, there's a [Glossary of Terms](./) that helps you to do this. It gives you a definition and links to the relevant sections of the documentation to understand more, or an external link, as appropriate.
 
