@@ -1,6 +1,6 @@
 # The DRIVENET sample network
 
-## The benefits of a sample network
+## The sample network
 
 The administration guide makes use of a sample network called DRIVENET.  When concepts are introduced, you'll see how they relate to a real-world, easy-to-understand example - DRIVENET.  
 
