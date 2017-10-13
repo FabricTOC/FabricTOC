@@ -6,10 +6,10 @@ This section of the documentation explains how to administer a Hyperledger Fabri
 
  + [Concepts, Tasks, References](./HowOrganized/ConceptsTasksReferences.md)
  + [Conceptual Overview](./HowOrganized/ConceptualOverview.md)
- + [The DRIVENET sample](./HowOrganized/ConceptsTasksReference.md)
- + [Administrative Tasks](./HowOrganized/ConceptsTasksReference.md)
- + [Reference Material](./HowOrganized/ConceptsTasksReference.md)
- + [Glossary of Terms](./HowOrganized/ConceptsTasksReference.md)
+ + [The DRIVENET sample](./HowOrganized/DriveNetSampleNetwork.md)
+ + [Administrative Tasks](./HowOrganized/AdministrativeTasks.md)
+ + [Reference Material](./HowOrganized/ReferenceMaterial.md)
+ + [Glossary of Terms](./HowOrganized/GlossaryOfTerms.md)
 
 #### [Conceptual overview](./ConceptOverview/Overview.md)
 
