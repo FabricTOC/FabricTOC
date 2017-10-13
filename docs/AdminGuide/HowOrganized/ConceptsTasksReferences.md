@@ -8,4 +8,4 @@ We classify all information into concepts, tasks or reference material.
 
 **References** are everything else - the detail.  It's the information that the experts use to configure their network "just so".  For example, if there's an option that allows you to specify a specific consensus mechanism for the network (there is) then it will be listed here. You'll need a solid understanding of blockchain concepts and tasks before lots of this material makes sense to you, but it's perfect when you do.
 
-[Next:Conceptual Overview](../DriveNetSampleNetwork.md)
+[Next:Conceptual Overview](../ConceptualOverview.md)
