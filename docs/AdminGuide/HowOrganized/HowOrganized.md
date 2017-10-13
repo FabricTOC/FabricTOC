@@ -1,11 +1,25 @@
-# Concepts, Tasks and References
+# How the Administration Guide is organized
 
-We classify all information into concepts, tasks or reference material.
+## Audience
 
-**Concepts** are the key ideas you need to understand if you want to be able to administer a blockchain network.  For example, you need to understand what a blockchain network is, a channel, peers, orderers and other things. The concepts are the things that will help you really understand what you're trying to do and why you're doing it when you administer a blockchain network.  If you're learning about Hyperledger fabric or blockchains for the first time, and you're an Administrator, then it's vital that you start here.  
+This section of the documentation guide is for **blockchain administrators** who need to **understand**, **configure**, and **manage** a Hyperledger Fabric blockchain network.
 
-**Tasks** are the things you can do when you administer a blockchain network.  After you've understood the key concepts of Hyperledger fabric, you'll want to see how to do the things you've learned.  For example, you might want to define a network and then bootstrap it, or modify a network's definition, or join a peer to a channel. On a day-to-day basis, these tasks are the meat and drink of a blockchain administrator.
+Because a blockchain network runs across many organizations' infrastructure, it is called **de-centralized**. The administration of the network necessarily involves administrators from multiple organizations, and the different rights and privileges they have over the network. This is probably quite different to what you've seen before as an administrator, and makes this guide an essential reference for you.
 
-**References** are everything else - the detail.  It's the information that the experts use to configure their network "just so".  For example, if there's an option that allows you to specify a specific consensus mechanism for the network (there is) then it will be listed here. You'll need a solid understanding of blockchain concepts and tasks before lots of this material makes sense to you, but it's perfect when you do.
+## Concepts, Tasks and References
 
-[-->Next](../ConceptOverview/Overview.md)
+Documentation topics are designed to match your needs and experience. Topics will either be a **Concept**, a **Task** or a **Reference** topic depending on whether it's introducing a new idea, showing you how perform a specific task, or giving you more detailed information about a subject.
+
+## New Administrators
+
+If you're new to Hyperledger Fabric, then you'll want to spend time understanding the [Concepts](./_), and then reinforce this with a working example by walking through the [DRIVENET sample](./).
+
+## Experienced Administrators
+
+Alternatively, if you're an experienced user, or you've become familiar via the introductory material, you'll mostly want to use the [Administrative Tasks](./) section to perform common tasks, or [Reference Material](./) to select detailed options for commands or component configuration.
+
+## Reference Material
+
+Finally, if you want to look up a concept or term you've heard about relating to Hyperledger Fabric, there's a [Glossary of Terms](./) that helps you to do this. It gives you a definition and links to the relevant sections of the documentation to understand more, or an external link, as appropriate.
+
+[Next: Concepts, Tasks and References](./ConceptsTasksReferences.md)
