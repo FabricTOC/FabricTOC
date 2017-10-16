@@ -4,7 +4,7 @@
 
 This section of the documentation guide is for **blockchain administrators** who need to **understand**, **configure**, and **manage** a Hyperledger Fabric blockchain network.
 
-Because a blockchain network runs across many organizations' infrastructure, it is called **de-centralized**. The administration of the network necessarily involves administrators from multiple organizations, and the different rights and privileges they have over the network. This is probably quite different to what you've seen before as an administrator, and makes this guide an essential reference for you.
+Because a blockchain network runs across many organizations' infrastructure, it is called **decentralized**. The administration of the network necessarily involves administrators from multiple organizations and the different rights and privileges they have over the network. This is probably quite different to what you've seen before as an administrator, and makes this guide an essential reference for you.
 
 ## Concepts, Tasks and References
 
