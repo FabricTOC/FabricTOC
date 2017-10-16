@@ -11,4 +11,4 @@ In this operations guide you’ll learn about the scope of what we call “netwo
 5.	How Fabric networks are organized as “groups within groups”.
 6.	The creation and maintenance of channels, peers, and chaincode.
 
-[Next:The DRIVENET sample network](./DriveNetSampleNetwork.md)
+[Next: The DRIVENET sample network](./DriveNetSampleNetwork.md)
