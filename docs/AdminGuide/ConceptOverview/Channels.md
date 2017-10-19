@@ -2,21 +2,21 @@
 
 ## What is a channel?
 
-In many networks, it may be preferable -- or even legally necessary -- for transactions not to be seen by every participant in the network nor written to every ledger. For that reason Hyperledger Fabric was designed with the ability to create *channels*, a system by which two or more participants can transact privately. These transactions are written to a ledger that exists just for that channel.
+In many networks, it may be preferable -- or even legally necessary -- for transactions to not be seen by every participant in the network nor written to every ledger. For that reason Hyperledger Fabric was designed with the ability to create *channels*, a method that allows two or more participants to transact privately.
 
-As a practical matter, channels exist as private messaging paths through the ordering service (these transactions are also encrypted).
+As a practical matter, channels exist as private messaging paths through the ordering service (these transactions are also encrypted). Crucially, these transactions are written to a separate ledger that exists just for that channel, which means that the consortia members will have a separate ledger for every channel they belong to.
 
 ## Channel Creation Policy
+
+The ordering system channel needs to define ordering parameters and consortiums for creating channels. There must be exactly one ordering system channel for an ordering service, and it is the first channel to be created (or more accurately bootstrapped). Note that any member with read access to the ordering system channel may see all channel creations, so this channel’s access should be restricted.
 
 Channel configuration has the following important properties:
 
     1. Versioned: All elements of the configuration have an associated version which is advanced with every modification. Further, every committed configuration receives a sequence number.
 
-    2. Permissioned: Each element of the configuration has an associated policy which governs whether or not modification to that element is permitted. Anyone with a copy of the previous configtx (and no additional info) may verify the validity of a new config based on these policies.
+    2. Permissioned: Each element of the configuration has an associated policy which governs whether or not modifications to that element are permitted (and by who, if anyone). Anyone with a copy of the previous configtx can therefore verify the validity of a new config based on those policies.
 
     3. Hierarchical: A root configuration group contains sub-groups, and each group of the hierarchy has associated values and policies. These policies can take advantage of the hierarchy to derive policies at one level from policies of lower levels.
-
-The ordering system channel needs to define ordering parameters, and consortiums for creating channels. There must be exactly one ordering system channel for an ordering service, and it is the first channel to be created (or more accurately bootstrapped). Note that any member with read access to the ordering system channel may see all channel creations, so this channel’s access should be restricted.
 
 ## Defining a Channel
 
@@ -35,7 +35,6 @@ When the orderer receives a CONFIG_UPDATE for a channel which does not exist, th
     6. The new CONFIG transaction with the new channel config is wrapped and sent for ordering on the ordering system channel. After ordering, the channel is created.
 
 It is recommended never to define an Application section inside of the ordering system channel genesis configuration, but may be done for testing.
-
 
 ## Updating a Channel
 
@@ -61,17 +60,8 @@ When the peer (or any other receiver for Deliver) receives this configuration bl
 
 ## DRIVENET Channels
 
-The first real channel creation in our DRIVENET sample -- outside the default creation of the system channel -- will occur after Faster Autos joins the network. Because they are getting a special price to sell Regal cars, they'll join a channel with Regal (to ensure that Cecil's doesn't find out about Faster Auto's special price).
+When DRIVENET is first bootstrapped, the only channel will be the system channel containing the two organizations: Michell and Regal. This system channel will be updated when Cecil's joins the network (since these three members will all transact with each other on the system channel).
 
+The first private channel creation will occur after Faster Autos joins the network. Because they are getting a special price to sell Regal cars, they'll join a channel with Regal and Regal alone (to ensure that Cecil's doesn't find out about Faster Auto's special price, and because there is no reason for Mitchell to be involved).
 
-
-Original TOC (reference only):
-
-          + What is a Channel?
-          + Why are channels important?
-          + Channel Creation Policy
-          + Defining a Channel
-          + Updating a Channel
-          + DRIVENET channels
-
-[-->Next](./Peers.md)
+[Next: Peers](./Peers.md)
