@@ -10,7 +10,7 @@ At a fundamental level, then, there is really no such thing as a "peer" or an "a
 
 The interaction of these permissions and identities -- which we collectively call "policies" -- is the true nature of the network definition, to the extent that it is possible to define a network only by defining the variables in that network (block size, what constitutes a "version", etc) and the policies *without any running processes at all*!
 
-Note: We still use terms like "users" and "peers" -- and will use them across this guide -- because it makes the concepts easier to understand. But it's important to remember that policies and permissions are what is king and that at a low level these terms are only colloquialisms. The "components" themselves are only addresses with identities that confer permissions.
+Note: We still use terms like "users" and "peers" -- and will use them across this guide -- because it makes the concepts easier to understand. But it's important to remember that policies are king and that at a low level these terms are only colloquialisms. As far as the network is concerned, the "components" themselves are only addresses with identities that confer permissions.
 
 
-[-->Next](./OrganizationsinaNetwork.md)
+[Next: Organizations in a Network](./OrganizationsinaNetwork.md)
