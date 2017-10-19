@@ -11,9 +11,9 @@ This section of the documentation explains how to administer a Hyperledger Fabri
  + [Reference Material](./HowOrganized/ReferenceMaterial.md)
  + [Glossary of Terms](./HowOrganized/GlossaryOfTerms.md)
 
-#### [Conceptual overview](./ConceptOverview/Overview.md)
+#### [Conceptual overview](./ConceptOverview/ConceptualOverview.md)
 
-  + [A Blockchain network](./ConceptOverview/TheNetworkDefinition.md)
+  + [A Blockchain network](./ConceptOverview/ABlockchainNetwork.md)
     + [Consortia](./ConceptOverview/Consortia.md)
       + [What is a consortium?](./ConceptOverview/Consortia.md)
       + [Adding consortia to the network definition](./ConceptOverview/Consortia.md)
