@@ -8,7 +8,7 @@ Because a blockchain network runs across many organizations' infrastructure, it 
 
 ## Concepts, Tasks and References
 
-Documentation topics are designed to match your needs and experience. Topics will either be a **Concept**, a **Task** or a **Reference** topic depending on whether it's introducing a new idea, showing you how perform a specific task, or giving you more detailed information about a subject.
+Documentation topics are designed to match your needs and experience. Topics will either be a **Concept**, a **Task**, or a **Reference** topic depending on whether it's introducing a new idea, showing you how perform a specific task, or giving you more detailed information about a subject.
 
 ## New Administrators
 
