@@ -8,4 +8,4 @@ You can also use the glossary to check your comprehensive understanding of block
 
 The glossary is listed alphabetically, so that you can go straight to the definition you need. Each term will have a simple description and wherever possible, you'll see links to relevant commands or concepts to help your understanding, including external links.
 
-[Next: Conceptual Overview](../ConceptOverview/ConceptualOverview.md)
+[Next: Key Concepts](../KeyConcepts/KeyConcepts.md)
