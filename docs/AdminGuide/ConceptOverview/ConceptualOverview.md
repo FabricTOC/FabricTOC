@@ -11,4 +11,4 @@ In this administration guide you’ll learn about the scope of what we call “n
 5. How the network is actually bootstrapped, including the establishment of the initial configuration block (also known as the "genesis block").
 6. The creation and maintenance of channels, peers, and chaincode.
 
-[Next: The DRIVENET sample network](./DriveNetSampleNetwork.md)
+[Next: A Blockchain Network](./ABlockchainNetwork.md)
