@@ -2,11 +2,13 @@
 
 ## The sample network
 
-The administration guide makes use of a a real-world, easy-to-understand example we've created called **DRIVENET** that's been designed to take you through most administration tasks and configurations. For example you'll understand organizations, channels, smart contracts or peers by understanding how they appear in DRIVENET, and why they are important. It means that your learning will be grounded in a real example.
+The administration guide makes use of a a real-world, easy-to-understand example called **DRIVENET** that's been designed to take you through most administration tasks and configurations. For example you'll understand organizations, channels, smart contracts or peers by understanding how they appear in DRIVENET, and why they are important. It means that your learning will be grounded in a real example.
 
-There's also a full step-by-step guide which sets up DRIVENET so that you can try out the Concepts and Tasks that you've learned. You'll be able to see the components you've learned about running in a live network. This will give you the confidence to set up a similar network yourself.
+There's also a full step-by-step guide which sets up DRIVENET so that you can try out the Concepts and Tasks that you've learned. You'll be able to see the ideas you've learned about in a live network, which will will give you the confidence to set up a similar network for you and your partner organizations.
 
 Finally, even in the more general information sections such as [Administrative Tasks](./AdministrativeTasks.md), [Reference Material](./ReferenceMaterial.md) or [Glossary of Terms](./GlossaryofTerms.md), there will be pointers back to DRIVENET to remind you of a concrete example.
+
+Let's look at the DRIVENET sample in a little more detail.
 
 ## The DRIVENET scenario
 
