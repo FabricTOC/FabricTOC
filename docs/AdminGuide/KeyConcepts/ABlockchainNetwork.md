@@ -12,13 +12,19 @@ Let's help you to first understand these categories, and introduce some of the t
 
 Think of **network resources** as the fundamental **building blocks** that you use to construct the network. For example, you'll see that a blockchain **network** is built from **ledgers** and **smart contracts** that are hosted on **peers**. Similarly, you'll discover that  a **network** can be partitioned into **channels** that enable private communications between different members of a **consortium**.
 
-You'll learn more about each of these individual ideas as you work through the Concepts section and the real-world DRIVENET example. But for now, think of these concepts as the most fundamental elements you need to know.
+![NetworkResources](./ABlockchainNetwork.diagram.2.png)
+
+The **cooperating organizations** in a network use these resources to **provide services** for the **consumers of the network**. You'll learn more about each of these individual resources as you read the Concepts section and try out the real-world DRIVENET example. But for now, think of network as the most fundamental elements that form the network.
 
 ## Identity
 
-**Every thing** and everyone that interacts with a Hyperledger Fabric network **requires an identity**. For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity -- a principal. **Principals are the main consumers of the network**.
+**Every thing** and everyone that consume services of a Hyperledger Fabric network **requires an identity**.  For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity -- a principal. **Principals are the main consumers of the network**.
 
-It's not just the consumers of the network who have an identity; sometimes the fundamental building blocks -- the network resources - have an identity too. For example, you'll see that peers and orderers also have an identity even though they are inside the network.
+![NetworkPrincipals1](./ABlockchainNetwork.diagram.3.png)
+
+You'll see that sometimes **network resources** -- the fundamental building blocks -- **have an identity too**. That's because one part of the network can sometimes consume services from a different part of the network. For example, you'll see that peers and orderers use channel services to communicate with between themselves and applications. Because of this relationship between the components of the network, network resources can also be principals in the network.
+
+![NetworkPrincipals2](./ABlockchainNetwork.diagram.4.png)
 
 You'll discover why identities are important in a moment, and later on, you'll start to understand the importance of a **public key infrastructure** (PKI) to **establish trusted identities**. But for now, just remember that there are lots of identities associated with a network.
 
