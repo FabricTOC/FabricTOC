@@ -12,6 +12,8 @@ Let's help you to first understand these categories, and introduce some of the t
 
 Think of **network resources** as the fundamental **building blocks** that you use to construct the network. For example, you'll see that a blockchain **network** is built from **ledgers** and **smart contracts** that are hosted on **peers**.  Similarly, you'll discover that  a **network** can be partitioned into **channels** that enable private communications between different members of a **consortium**.
 
+![NetworkResources](./ABlockchainNetwork.diagram.2.png)
+
 You'll learn more about each of these individual ideas as you work through the Concepts section and the real-world DRIVENET example. But for now, think of these concepts as the most fundamental elements you need to know.
 
 ## Identity
