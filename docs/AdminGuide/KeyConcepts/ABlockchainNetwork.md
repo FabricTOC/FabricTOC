@@ -24,6 +24,8 @@ The **cooperating organizations** in a network use these resources to **provide 
 
 You'll see that sometimes **network resources** - the fundamental building blocks - **have an identity too**. That's because one part of the network can sometimes consume services from a different part of the network. For example, you'll see that peers and orderers use channel services to communicate with between themselves and applications. Because of this relationship between the components of the network, network resources can also be principals in the network.
 
+![NetworkPrincipals2](./ABlockchainNetwork.diagram.4.png)
+
 You'll discover why identities are important in a moment, and later on, you'll start to understand the importance of a **public key infrastructure** (PKI) to **establish trusted identities** - but for now, just remember that there are lots of identities associated with a network.
 
 ## Permissions
