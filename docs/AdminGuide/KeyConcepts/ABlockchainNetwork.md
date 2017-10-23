@@ -6,8 +6,6 @@ Hyperledger Fabric is a technology designed to address the diverse needs of the 
 
 ![NetworkElements](./ABlockchainNetwork.diagram.1.png)
 
-<img src="./ABlockchainNetwork.diagram.1.png" alt="NetworkElements" style="width: 100px;"/>
-
 Let's help you to first understand these categories, and introduce some of the terms in each category. You don't need to understand all the terms on first reading, just try to understand the categories and why they are important.
 
 ## Network Resources
