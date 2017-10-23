@@ -2,7 +2,7 @@
 
 ## Network Resources, Identities and Permissions
 
-Hyperledger Fabric is a technology designed to address the diverse needs of the multiple organizations who collaborate in a blockchain network. Because of the many requirements that arise in these networks, **Hyperledger Fabic has a rich set of concepts** that you may initially find slightly overwhelming! Don't worry though - the principles that underly these concepts are quite straightforward to understand if you group them into three categories: **Resources**, **Identities** and **Permissions**.
+Hyperledger Fabric is a technology designed to address the diverse needs of the multiple organizations who collaborate in a blockchain network. Because of the many requirements that arise in these networks, **Hyperledger Fabric has a rich set of concepts** that you may initially find slightly overwhelming! Don't worry though -- the principles that underly these concepts are quite straightforward to understand if you group them into three categories: **Resources**, **Identities** and **Permissions**.
 
 ![NetworkElements](./ABlockchainNetwork.diagram.1.png)
 
@@ -10,27 +10,31 @@ Let's help you to first understand these categories, and introduce some of the t
 
 ## Network Resources
 
-Think of **network resources** as the fundamental **building blocks** that you use to construct the network. For example, you'll see that a blockchain **network** is built from **ledgers** and **smart contracts** that are hosted on **peers**.  Similarly, you'll discover that  a **network** can be partitioned into **channels** that enable private communications between different members of a **consortium**.
+Think of **network resources** as the fundamental **building blocks** that you use to construct the network. For example, you'll see that a blockchain **network** is built from **ledgers** and **smart contracts** that are hosted on **peers**. Similarly, you'll discover that  a **network** can be partitioned into **channels** that enable private communications between different members of a **consortium**.
 
 You'll learn more about each of these individual ideas as you work through the Concepts section and the real-world DRIVENET example. But for now, think of these concepts as the most fundamental elements you need to know.
 
 ## Identity
 
-**Every thing** and everyone that interacts with a Hyperledger Fabric network **requires an identity**.  For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity - a principal. **Principals are the main consumers of the network**.
+**Every thing** and everyone that interacts with a Hyperledger Fabric network **requires an identity**. For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity -- a principal. **Principals are the main consumers of the network**.
 
-It's not just the consumers of the network who have an identity; sometimes the fundamental building blocks - the network resources - have an identity too. For example, you'll see that peers and orderers also have an identity, even though they are inside the network.
+It's not just the consumers of the network who have an identity; sometimes the fundamental building blocks -- the network resources - have an identity too. For example, you'll see that peers and orderers also have an identity even though they are inside the network.
 
-You'll discover why identities are important in a moment, and later on, you'll start to understand the importance of a **public key infrastructure** (PKI) to **establish trusted identities** - but for now, just remember that there are lots of identities associated with a network.
+You'll discover why identities are important in a moment, and later on, you'll start to understand the importance of a **public key infrastructure** (PKI) to **establish trusted identities**. But for now, just remember that there are lots of identities associated with a network.
 
 ## Permissions
 
-**Permissions are the final piece of the Hyperledger Fabric puzzle**, and are the concept that make Hyperledger Fabric different to most other blockchains.   
+**Permissions are the final piece of the Hyperledger Fabric puzzle**, and are the concept that make Hyperledger Fabric different from most other blockchains.   
 
-**Permissions describe the rights that different principals have over different network resources**. For example, applications may have permission to read from a ledger, but not to write to it. Similarly, administrators may have permission to change the organizations in a channel, but not the organizations in a network consortium. As you can see from the diagram, permissions are associative - they require both resources and identities to exist before they can be defined. That's because they define the relationship between principals and resources, and only make sense once both these elements exist.
+**Permissions describe the rights that different principals have over different network resources**. For example, applications may have permission to read from a ledger, but not to write to it. Similarly, administrators may have permission to change the organizations in a channel, but not the organizations in a network consortium. As you can see from the diagram, permissions are associative -- they require both resources and identities to exist before they can be defined. That's because they define the relationship between principals and resources, and only make sense once both these elements exist.
 
-Hyperledger Fabric makes **extensive use of permissions** to support **networks with different constitutions**.  For example, a network can be defined where every organization has equal permissions over resources. At the other extreme, a network can be set up where a single organization has overall control.
+Hyperledger Fabric makes **extensive use of permissions** to support **networks with different constitutions**. For example, a network can be defined where every organization has equal permissions over resources. At the other extreme, a network can be set up where a single organization has overall control.
 
-Most interestingly, the permissions may also define the rights to **modify the current permissions** - to support the fact that organizations may adapt and evolve their relationships with each other over time.  For example, a network which was initially configured with three organizations, two of which can control it, could be modified by either of the these two organizations to grant the third organization equal rights.
+Most interestingly, the permissions may also define the rights to **modify the current permissions** -- to support the fact that organizations may adapt and evolve their relationships with each other over time. For example, a network which was initially configured with three organizations, two of which can control it, could be modified by either of the these two organizations to grant the third organization equal rights.
+
+On a conceptual level, it's important to remember that permissions are what's important, not the *instance* of a component that's trying to do something. It doesn't actually matter whether a peer or an application or a Certificate Authority is trying to do something. What matters is its identity, which is stored in the network, and the permissions associated with that identity. Although in the real world certain permissions are likely to be associated with certain components, it is possible to give a Certificate Authority the permission to query the ledger, for example, which is not something it would normally do.
+
+While this provides the greatest degree of flexibility to the founders and administrators of a Fabric network, it means that the permissions structure of components in the network must be thought through very carefully.
 
 ## That's it!
 
