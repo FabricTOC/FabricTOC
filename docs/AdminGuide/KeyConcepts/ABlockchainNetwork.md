@@ -40,7 +40,7 @@ You'll discover why identities and principals are important in a moment, and lat
 
 ## Permission
 
-**Permissions are the final piece of the Hyperledger Fabric puzzle**, and are the concept that make Hyperledger Fabric different from most other blockchains.   
+**Permissions are the final piece of the Hyperledger Fabric puzzle**, and are the concept that **make Hyperledger Fabric unique** among blockchains.   
 
 **Permissions are described in configuration policies which define the rights of different principals over different resources**. For example, applications may have permission to read from a ledger, but not to write to it. Similarly, administrators may have permission to change the organizations participating in a channel, but not the organizations who are defined in a consortium. As you can see from the diagram, permissions are associative -- they require both resources and identities to exist before they can be defined. That's because they define the relationship between principals and resources, and only make sense once both these elements exist.
 
