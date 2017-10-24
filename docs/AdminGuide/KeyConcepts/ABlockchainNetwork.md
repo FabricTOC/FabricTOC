@@ -44,7 +44,7 @@ You'll discover why identities and principals are important in a moment, and lat
 
 **Permissions** are defined in configuration policies which **control the rights of different principals** over different resources. For example, applications may have permission to read from a ledger, but not to write to it. Similarly, administrators may have permission to change the organizations participating in a channel, but not the organizations who are defined in a consortium.
 
-As you can see, permissions are associative -- they require both resources and identities to exist before they can be defined. That's because they define the relationship between principals and resources, and only make sense once both these elements exist.
+As you can see, permissions are associative -- they require both network resources and identities to exist before they can be defined. That's because they define the relationship between principals and resources, and only make sense once both these elements exist.
 
 ![NetworkChannelPermissions](./ABlockchainNetwork.diagram.5.png)
 | :---: |
@@ -54,7 +54,7 @@ There are two types of permissions policy that can be defined in Hyperledger Fab
 * **Network permissions** relate to those resources that operate across the whole network. For example, a network permission might control which organization can the define the members of a network consortium. Additionally, a network permissions can control which organizations can define channels between consortium members.  
 * **Channel Permissions** relate to those resources that relate to an individual channel rather than the whole network. For example, a channel permission might determine which applications can read and write to the channel's ledger.  Alternatively, a channel permission might determine which administrators can remove an existing organization from the channel altogether.
 
-Hyperledger Fabric makes **extensive use of permissions** to support **networks with different constitutions**. For example, a network can be defined where every organization has equal permissions over resources. At the other extreme, a network can be set up where a single organization has overall control.
+Hyperledger Fabric makes **extensive use of permissions** to support **networks with different constitutions**. For example, a network can be defined where every organization has equal permissions over network resources. At the other extreme, a network can be set up where a single organization has overall control.
 
 Most powerfully, policies may also define the rights to **modify the current policy** -- to support the fact that organizations may adapt and evolve their relationships with each other over time. For example, a network which was initially configured with three organizations, two of which can control it, could be modified by either of the these two organizations to grant the third organization equal rights.
 
