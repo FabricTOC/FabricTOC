@@ -8,19 +8,19 @@ Hyperledger Fabric is a technology designed to address the diverse needs of the 
 | :---: |
 | Three major concept groups in Hyperledger Fabric: Network, Identity and Permission |
 
-Let's help you to first understand these categories, and introduce some of the terms in each category. You don't need to understand all the terms on first reading, just try to understand the categories and why they are important.
+Let's help you to first understand these categories, and introduce some of the ideas in each category. You don't need to understand all the concepts on first reading, just try to understand the categories and why they are important.
 
-## Networks
+## Network
 
-Think of **network resources** as the fundamental **building blocks** that you use to construct the network. You'll see that  a **network** is partitioned into **channels** that enable private communications between the different members of a **consortium**. Moreover, within a channel, you'll see that **ledgers** and **smart contracts** that are hosted on **peers** which endorse and validate transactions that are sequenced and distributed by **orderers**.
+Think of the concepts in this category as the fundamental **building blocks** that you use to construct the network. You'll see that a **network** is partitioned into **channels** that enable private communications between the different members of a **consortium**. Moreover, within a channel, you'll see that **ledgers** and **smart contracts** are hosted on **peers** which endorse and validate transactions that are sequenced and distributed by **orderers**.
 
 |![NetworkResources](./ABlockchainNetwork.diagram.2.png)|
 | :---: |
 | Some of the building blocks of a Hyperledger Fabric blockchain network. |
 
-The **cooperating organizations** in a network use these resources to **provide services** for the **consumers of the network**. You'll learn more about each of these individual resources as you read the [Concepts](./KeyConcepts.md) section and try out the real-world [DRIVENET example](../HowOrganized/DriveNetSample.md). But for now, think of these resources as the most fundamental elements of form the network.
+The **cooperating organizations** build a blockchain network with these fundamental building blocks so that they can **provide services** for **service consumers**. You'll learn more about these resources as you read the [Concepts](./KeyConcepts.md) section and try out the real-world [DRIVENET example](../HowOrganized/DriveNetSample.md). For now, just think of these resources as the most fundamental elements that form the network.
 
-## Identities
+## Identity
 
 **Every thing** and everyone that consume services of a Hyperledger Fabric network **requires an identity**.  For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity -- a principal. **Principals are the main consumers of the network**.
 
@@ -36,7 +36,7 @@ You'll see that sometimes **network resources** -- the fundamental building bloc
 
 You'll discover why identities and principals are important in a moment, and later on, you'll start to understand the importance of a **public key infrastructure** (PKI) to **establish trusted identities** for the principals in the network. But for now, just remember that there are lots of identities associated with a network.
 
-## Permissions
+## Permission
 
 **Permissions are the final piece of the Hyperledger Fabric puzzle**, and are the concept that make Hyperledger Fabric different from most other blockchains.   
 
