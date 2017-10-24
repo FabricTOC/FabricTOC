@@ -2,7 +2,7 @@
 
 ## Think: Network, Identity and Permission
 
-Hyperledger Fabric is a technology designed to address the diverse needs of the multiple organizations who collaborate in a blockchain network. Because of the many requirements that arise in these networks, **Hyperledger Fabric has a rich set of concepts** that you may initially find slightly overwhelming! Don't worry though -- the principles that underly these concepts are quite straightforward to understand if you group them into three categories: **Network**, **Identity** and **Permission**.
+Hyperledger Fabric is a technology designed to address the diverse needs of the multiple organizations who collaborate in a blockchain network. Because of the many requirements that arise in these networks, **Hyperledger Fabric has a rich set of concepts** that you may initially find overwhelming! Don't worry though -- the principles that underly these concepts are easy to understand if you group them into three categories: **Network**, **Identity** and **Permission**.
 
 | ![NetworkElements](./ABlockchainNetwork.diagram.1.png) |
 | :---: |
