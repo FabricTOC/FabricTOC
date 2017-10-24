@@ -20,7 +20,7 @@ Think of the concepts in this category as the fundamental **building blocks** of
 
 You'll learn how a **network** can be partitioned into **channels** that enable private communications between the different members of a **consortium**. Moreover, within a channel, you'll see that **ledgers** and **smart contracts** are hosted on **peers** which endorse and validate transactions that are sequenced and distributed by **orderers**.
 
-You'll discover more about these resources as you read the [Concepts](./KeyConcepts.md) section and try out the real-world [DRIVENET example](../HowOrganized/DriveNetSample.md). For now, just think of these resources as the most fundamental elements which form the network.
+You'll discover more about these ideas as you read the [Concepts](./KeyConcepts.md) section and you'll solidify that learning with the real-world [DRIVENET example](../HowOrganized/DriveNetSample.md). For now, just think of these resources as the most fundamental elements which form the network.
 
 ## Identity
 
