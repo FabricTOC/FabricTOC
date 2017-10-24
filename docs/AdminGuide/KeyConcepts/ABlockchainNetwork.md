@@ -43,6 +43,8 @@ You'll discover why identities and principals are important in a moment, and lat
 **Permissions are described in configuration policies which define the rights of different principals over different resources**. For example, applications may have permission to read from a ledger, but not to write to it. Similarly, administrators may have permission to change the organizations participating in a channel, but not the organizations who are defined in a consortium. As you can see from the diagram, permissions are associative -- they require both resources and identities to exist before they can be defined. That's because they define the relationship between principals and resources, and only make sense once both these elements exist.
 
 ![NetworkChannelPermissions](./ABlockchainNetwork.diagram.5.png)
+| :---: |
+| Some permissions are defined by a policy operating at the network level, whereas other permissions apply at the channel level. |
 
 There are two types of permissions policy that can be defined in Hyperledger Fabric - **network permissions** and **channel permissions**.  
 * **Network permissions** relate to those resources that operate across the whole network. For example, a network permission might control which organization can the define the members of a network consortium. Additionally, a network permissions can control which organizations can define channels between consortium members.  
