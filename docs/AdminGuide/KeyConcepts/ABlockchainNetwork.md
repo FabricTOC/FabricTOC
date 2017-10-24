@@ -6,7 +6,7 @@ Hyperledger Fabric is a technology designed to address the diverse needs of the 
 
 | ![NetworkElements](./ABlockchainNetwork.diagram.1.png) |
 | :---: |
-| *Three major concept groups in Hyperledger Fabric: Network, Identity and Permission. * |
+| Three major concept groups in Hyperledger Fabric: Network, Identity and Permission |
 
 Let's help you to first understand these categories, and introduce some of the terms in each category. You don't need to understand all the terms on first reading, just try to understand the categories and why they are important.
 
@@ -16,7 +16,7 @@ Think of **network resources** as the fundamental **building blocks** that you u
 
 |![NetworkResources](./ABlockchainNetwork.diagram.2.png "Network Resources")|
 | :---: |
-| *Some of the main building blocks of a Hyperledger Fabric blockchain network. * |
+| Some of the building blocks of a Hyperledger Fabric blockchain network. |
 
 The **cooperating organizations** in a network use these resources to **provide services** for the **consumers of the network**. You'll learn more about each of these individual resources as you read the [Concepts](./KeyConcepts.md) section and try out the real-world [DRIVENET example](../HowOrganized/DriveNetSample.md). But for now, think of these resources as the most fundamental elements of form the network.
 
