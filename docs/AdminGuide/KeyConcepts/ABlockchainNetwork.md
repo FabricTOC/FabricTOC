@@ -8,7 +8,7 @@ Hyperledger Fabric is a technology designed to address the diverse needs of the 
 | :---: |
 | Three major concept groups in Hyperledger Fabric: Network, Identity and Permission |
 
-Let's help you to first understand these categories, and introduce some of the ideas in each category. You don't need to understand all the concepts on first reading, just try to understand the categories and why they are important.
+Let's help you to first understand these categories, and introduce some of the key concepts in each category. You don't need to understand all these ideas on first reading; just try to understand the categories and why they are important.
 
 ## Network
 
