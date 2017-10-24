@@ -10,11 +10,11 @@ Let's help you to first understand these categories, and introduce some of the t
 
 ## Network Resources
 
-Think of **network resources** as the fundamental **building blocks** that you use to construct the network. For example, you'll see that a blockchain **network** is built from **ledgers** and **smart contracts** that are hosted on **peers**. Similarly, you'll discover that  a **network** can be partitioned into **channels** that enable private communications between different members of a **consortium**.
+Think of **network resources** as the fundamental **building blocks** that you use to construct the network. For example, you'll see that  a **network** is partitioned into **channels** that enable private communications between the different members of a **consortium**. Moreover, within a channel, you'll see that **ledgers** and **smart contracts** that are hosted on **peers** which endorse and validate transactions that are sequenced and distributed by **orderers**.
 
 ![NetworkResources](./ABlockchainNetwork.diagram.2.png "Network Resources")
 
-The **cooperating organizations** in a network use these resources to **provide services** for the **consumers of the network**. You'll learn more about each of these individual resources as you read the Concepts section and try out the real-world DRIVENET example. But for now, think of network as the most fundamental elements that form the network.
+The **cooperating organizations** in a network use these resources to **provide services** for the **consumers of the network**. You'll learn more about each of these individual resources as you read the [Concepts](./KeyConcepts.md) section and try out the real-world DRIVENET example. But for now, think of these resources as the most fundamental elements of form the network.
 
 ## Identity
 
