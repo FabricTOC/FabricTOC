@@ -44,7 +44,7 @@ You'll discover why identities and principals are important in a moment, and lat
 
 ![NetworkChannelPermissions](./ABlockchainNetwork.diagram.5.png)
 | :---: |
-| Some permissions are defined by a policy operating at the network level, whereas other permissions apply at the channel level. |
+| A network policy which determines how three different principals with identity (green, grey and yellow) can administer the organizations in a consortium. A channel policy which determines how three different principals with identity (blue, red, yellow ) can access the channel, and resources connected to it -- for example ledgers hosted on peers connected to the channel|
 
 There are two types of permissions policy that can be defined in Hyperledger Fabric - **network permissions** and **channel permissions**.  
 * **Network permissions** relate to those resources that operate across the whole network. For example, a network permission might control which organization can the define the members of a network consortium. Additionally, a network permissions can control which organizations can define channels between consortium members.  
