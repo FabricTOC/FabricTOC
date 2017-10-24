@@ -5,7 +5,7 @@
 Hyperledger Fabric is a technology designed to address the diverse needs of the multiple organizations who collaborate in a blockchain network. Because of the many requirements that arise in these networks, **Hyperledger Fabric has a rich set of concepts** that you may initially find slightly overwhelming! Don't worry though -- the principles that underly these concepts are quite straightforward to understand if you group them into three categories: **Network and Channel Resources**, **Identities and Principals** and **Permissions and Policy**.
 
 | ![NetworkElements](./ABlockchainNetwork.diagram.1.png) |
-| --- |
+| :---: |
 | *Caption* |
 
 xLet's help you to first understand these categories, and introduce some of the terms in each category. You don't need to understand all the terms on first reading, just try to understand the categories and why they are important.
