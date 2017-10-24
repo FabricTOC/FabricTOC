@@ -18,7 +18,7 @@ Think of the concepts in this category as the fundamental **building blocks** th
 | :---: |
 | Some of the building blocks of a Hyperledger Fabric blockchain network. |
 
-The **cooperating organizations** build a blockchain network with these fundamental building blocks so that they can **provide services** for **service consumers**. You'll learn more about these resources as you read the [Concepts](./KeyConcepts.md) section and try out the real-world [DRIVENET example](../HowOrganized/DriveNetSample.md). For now, just think of these resources as the most fundamental elements that form the network.
+The **cooperating organizations** build a blockchain network with these fundamental building blocks so that they can **provide services** for **service consumers**. You'll learn more about these resources as you read the [Concepts](./KeyConcepts.md) section and try out the real-world [DRIVENET example](../HowOrganized/DriveNetSample.md). For now, just think of these resources as the most fundamental elements which form the network.
 
 ## Identity
 
