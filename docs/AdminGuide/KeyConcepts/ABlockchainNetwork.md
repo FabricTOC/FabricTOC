@@ -12,7 +12,7 @@ Let's help you understand these categories by introducing some of the key concep
 
 ## Network
 
-Think of the concepts in this category as the fundamental **building blocks** of a blockchain network. **Cooperating organizations** form the blockchain network from these fundamental building blocks in order to **provide services** for **service consumers**.
+Think of the concepts in this category as the fundamental **building blocks** of a blockchain network. **Cooperating organizations** form the blockchain network from these fundamental building blocks in order to **provide services** for **service consumers**.  As well as the organizations who formed the network, there will be a much larger set of participants who consume network services.
 
 |![NetworkResources](./ABlockchainNetwork.diagram.2.png)|
 | :---: |
