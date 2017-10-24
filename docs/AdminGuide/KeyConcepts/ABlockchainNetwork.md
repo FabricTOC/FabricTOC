@@ -30,7 +30,7 @@ You'll discover more about these ideas as you read the [Concepts](./KeyConcepts.
 | :---: |
 | Principals with identity are the consumers of the network in Hyperledger Fabric  |
 
-You'll see that sometimes **network resources** -- the fundamental building blocks -- **have an identity too**. That's because one part of the network can sometimes consume services from a different part of the network. For example, you'll see that peers and orderers use channel services to communicate with between themselves and applications. Because of this relationship between the components of the network, network resources can also be principals in the network.
+You'll see that sometimes **network resources** -- the fundamental building blocks -- **have an identity too**. That's because one part of the network can sometimes consume services from a different part of the network. For example, you'll see that peers and orderers use channel services to communicate with applications. It's this kind of relationship which makes it helpful for network resources to be principals with identity.
 
 | ![NetworkPrincipals2](./ABlockchainNetwork.diagram.4.png) |
 | :---: |
