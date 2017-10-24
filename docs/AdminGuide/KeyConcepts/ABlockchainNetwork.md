@@ -12,13 +12,15 @@ Let's help you understand these categories by introducing some of the key concep
 
 ## Network
 
-Think of the concepts in this category as the fundamental **building blocks** that you use to construct the network. You'll see that a **network** is partitioned into **channels** that enable private communications between the different members of a **consortium**. Moreover, within a channel, you'll see that **ledgers** and **smart contracts** are hosted on **peers** which endorse and validate transactions that are sequenced and distributed by **orderers**.
+Think of the concepts in this category as the fundamental **building blocks** of a blockchain network. **Cooperating organizations** form the blockchain network from these fundamental building blocks in order to **provide services** for **service consumers**.
 
 |![NetworkResources](./ABlockchainNetwork.diagram.2.png)|
 | :---: |
 | Some of the building blocks of a Hyperledger Fabric blockchain network. |
 
-The **cooperating organizations** build a blockchain network with these fundamental building blocks so that they can **provide services** for **service consumers**. You'll learn more about these resources as you read the [Concepts](./KeyConcepts.md) section and try out the real-world [DRIVENET example](../HowOrganized/DriveNetSample.md). For now, just think of these resources as the most fundamental elements which form the network.
+You'll see that a **network** is partitioned into **channels** that enable private communications between the different members of a **consortium**. Moreover, within a channel, you'll see that **ledgers** and **smart contracts** are hosted on **peers** which endorse and validate transactions that are sequenced and distributed by **orderers**.
+
+You'll learn more about these resources as you read the [Concepts](./KeyConcepts.md) section and try out the real-world [DRIVENET example](../HowOrganized/DriveNetSample.md). For now, just think of these resources as the most fundamental elements which form the network.
 
 ## Identity
 
