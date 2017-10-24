@@ -22,9 +22,5 @@ Questions that must be answered:
 
 (Repeat what's in the consortia doc?)
 
-## The Organizations in a network
-      + The initial organizations
-      + Adding new organizations to a network
-      + Organizations in DRIVENET
 
 [Next: Principals in a Network](./PrincipalsinaNetwork.md)

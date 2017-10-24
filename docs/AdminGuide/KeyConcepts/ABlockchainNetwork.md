@@ -12,11 +12,11 @@ Let's help you understand these categories by introducing some of the key concep
 
 ## Network
 
-Think of the concepts in this category as the fundamental **building blocks** of a blockchain network. **Cooperating organizations** form the blockchain network from these fundamental building blocks in order to **provide services** for **service consumers**.  As well as the organizations who formed the network, there will be a much larger set of participants who consume network services.
+Think of the concepts in this category as the fundamental **building blocks** of a blockchain network. **Cooperating organizations** form the blockchain network from these fundamental building blocks in order to **provide services** for **service consumers**. In addition to the organizations who formed the network, there will be a much larger set of participants who consume network services.
 
 |![NetworkResources](./ABlockchainNetwork.diagram.2.png)|
 | :---: |
-| Some of the building blocks of a Hyperledger Fabric blockchain network. |
+| Some of the building blocks of a Hyperledger Fabric blockchain network. We'll explain the nature of these relationships as we go deeper into the guide.|
 
 You'll learn how a **network** can be partitioned into **channels** that enable private communications between the different members of a **consortium**. Moreover, within a channel, you'll see that **ledgers** and **smart contracts** are hosted on **peers** which endorse and validate transactions that are sequenced and distributed by **orderers**.
 
@@ -24,17 +24,17 @@ You'll discover more about these ideas as you read the [Concepts](./KeyConcepts.
 
 ## Identity
 
-**Every thing** and everyone that consume services of a Hyperledger Fabric network **requires an identity**.  For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity -- a principal. **Principals are the main consumers of the network**.
+**Every thing** and everyone that consume services of a Hyperledger Fabric network **requires an identity**. For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity -- a principal. **Principals are the main consumers of the network**.
 
 | ![NetworkPrincipals1](./ABlockchainNetwork.diagram.3.png) |
 | :---: |
-| Principals with identity are the consumers of the network in Hyperledger Fabric  |
+| Principals with identity are the consumers of the network in Hyperledger Fabric.  |
 
-You'll see that sometimes **network resources** -- the fundamental building blocks -- **have an identity too**. That's because one part of the network can sometimes consume services from a different part of the network. For example, you'll see that peers and orderers use channel services to communicate with applications. It's this kind of relationship which makes it helpful for network resources to be principals with identity.
+You'll see that sometimes **network resources** -- those fundamental building blocks we were talking about -- **also have an identity**. That's because one part of the network can sometimes consume services from a different part of the network. For example, peers and orderers use channel services to communicate with applications. It's this kind of relationship which makes it helpful for network resources to be principals with identity.
 
 | ![NetworkPrincipals2](./ABlockchainNetwork.diagram.4.png) |
 | :---: |
-| Some of the building blocks of a Hyperledger Fabric can also be principals -- they have identity |
+| Some of the building blocks of a Hyperledger Fabric can also be principals -- if they have an identity. |
 
 You'll discover why identities and principals are important in a moment, and later on, you'll start to understand the importance of a **public key infrastructure** (PKI) to **establish trusted identities** for the principals in the network. But for now, just remember that there are lots of identities associated with a network.
 
@@ -42,30 +42,32 @@ You'll discover why identities and principals are important in a moment, and lat
 
 **Permission is the final piece of the Hyperledger Fabric puzzle**, and it's the concept that **makes Hyperledger Fabric unique** among blockchains.   
 
-**Permissions** are defined in configuration policies which **control the rights of different principals** over different resources. For example, applications may have permission to read from a ledger, but not to write to it. Similarly, administrators may have permission to change the organizations participating in a channel, but not the organizations who are defined in a consortium.
+**Permissions** are defined in configuration policies which **control the rights of different principals** over different resources. For example, applications may have permission to read from a ledger, but not to write to it. Similarly, administrators may have permission to change the organizations participating in a channel but not the organizations that are defined in a consortium.
 
-As you can see, permissions are associative -- they require both network resources and identities to exist before they can be defined. That's because they define the relationship between principals and resources, and only make sense once both these elements exist.
+As you can see, permissions are associative -- they require both network resources and identities to exist before they can be defined. That's because they define the **relationship** between principals and resources and only make sense once both these elements exist (not unlike how the rules for driving only make sense if roads and cars already exist).
 
-![NetworkChannelPermissions](./ABlockchainNetwork.diagram.5.png)
+|![NetworkChannelPermissions](./ABlockchainNetwork.diagram.5.png)
 | :---: |
-| Examples of network and channel permissions. A network policy which defines how three different principals can control the organizations in a consortium. A channel policy which determines how three different principals can access the channel, and resources connected to it|
+| Examples of network and channel permissions. A network policy which defines how three different principals can control the organizations in a consortium. A channel policy which determines how three different principals can access the channel, and resources connected to it.|
 
 There are two types of permissions policy that can be defined in Hyperledger Fabric - **network permissions** and **channel permissions**.  
-* **Network permissions** relate to those resources that operate across the whole network. For example, a network permission might control which organization can the define the members of a network consortium. Additionally, a network permissions can control which organizations can define channels between consortium members.  
-* **Channel Permissions** relate to those resources that relate to an individual channel rather than the whole network. For example, a channel permission might determine which applications can read and write to the channel's ledger.  Alternatively, a channel permission might determine which administrators can remove an existing organization from the channel altogether.
+
+* **Network permissions** relate to those resources that operate across the whole network. For example, a network permission might control which organization can the define the members of a network consortium. Additionally, a network permission can control which organizations can define channels between consortium members.
+
+* **Channel Permissions** relate to those resources that relate to an individual channel rather than the whole network. For example, a channel permission might determine which applications can read and write to the channel's ledger. A channel permission might also determine which administrators can remove an existing organization from the channel altogether.
 
 Hyperledger Fabric makes **extensive use of permissions** to support **networks with different constitutions**. For example, a network can be defined where every organization has equal permissions over network resources. At the other extreme, a network can be set up where a single organization has overall control.
 
-Most powerfully, policies may also define the rights to **modify the current policy** -- to support the fact that organizations may adapt and evolve their relationships with each other over time. For example, a network which was initially configured with three organizations, two of which can control it, could be modified by either of the these two organizations to grant the third organization equal rights.
+Most powerfully, policies may also define the rights to **modify the current policy** -- to support the fact that organizations may adapt and evolve their relationships with each other over time. For example, a network which was initially configured with three organizations -- of which two have operational control -- could be modified by either of the these two organizations to grant the third organization equal rights.
 
-On a conceptual level, it's important to remember that permissions are what's important, because they enable any **instance** of a principal in the network to do something. For example, when Hyperledger Fabric is trying to determine whether a peer or an application or a Certificate Authority is allowed to do something, what matters is the identity that principal brings to the network, and the permissions associated with it. Although in the real world certain permissions are likely to be associated with certain **types** of components, the flexibility and extensibility of Hyperledger's approach makes it possible to give a Certificate Authority the permission to query the ledger, for example, which is not something it would normally do.
+On a conceptual level, it's important to remember that permissions are what enable any **instance** of a principal in the network to perform tasks. In other words, it *doesn't matter* whether a Certificate Authority is trying to do something or whether a peer is trying to do that thing. What matters are the permissions tied to the identity of the peer or the Certificate Authority. Although in the real world certain permissions are likely to be associated with certain **types** of components, the flexibility and extensibility of Hyperledger's approach makes it possible to give a Certificate Authority the permission to query the ledger, for example, which is not something it would normally do.
 
 While this provides the greatest degree of flexibility to the founders and administrators of a Hyperledger Fabric network, it means that the permissions policy in the network must be defined very carefully.
 
 ## That's it!
 
-That was easy, wasn't it? We can summarize Hyperledger Fabric as a technology which helps users build blockchain network, which is consumed by principals with identities, with agreed and evolving rights over the different types of resources that make up the network.
+That was easy, wasn't it? We can summarize Hyperledger Fabric as a technology which helps users build a blockchain network, which is consumed by principals with identities, with agreed and evolving rights over the different types of resources that make up the network.
 
-And if you think about it for a little while, any computer system can be described in this way - a set of resources, principals, and permissions.  The thing we now need to do is understand the concepts in more details, and how they interact with each other!
+And if you think about it for a little while, any computer system can be described in this way -- a set of resources, principals, and permissions. The thing we now need to do is understand the concepts in more details, and how they interact with each other!
 
 [Next:Consortia](./Consortia.md)
