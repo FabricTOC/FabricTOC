@@ -3,17 +3,21 @@
 
 ## What is a Certificate Authority?
 
-Nothing about a Fabric network can function unless components trust each other's identities and the permissions those identities entitle them to. Establishing that trust means creating *digital certificates* which can be verified against a shared trust store of identities.
+Nothing in a Fabric network can function unless components trust each other's identities and the permissions those identities entitle them to. Establishing that trust means creating *digital certificates* which can be verified against a shared trust store of identities.
 
-Those certificates are created by a component we call a Certificate Authority (CA) using public keys (which are self-generated from a component -- or user's -- public/private keys).
+Those certificates are created by a component we call a Certificate Authority (CA) using public keys (which are self-generated from a component -- or user's -- private keys).
 
-This is not dissimilar from how identity works in the real world. Think of your private key as being roughly analogous to a Social Security Number. It's too dangerous to expose directly as a regular form of identity, but it can be used to generate other identities -- a driver's license, for example -- which is issued by a trusted source (the DMV). This driver's license is like your public key -- still private, but used to grant permissions (like the right to drive) and to generate other identities (like a library card).
+This is not dissimilar from how identity works in the real world. Think of your private key as being roughly analogous to a Social Security Number. It's too dangerous to expose directly as a regular form of identity, but it can be used to generate other identities -- a driver's license, for example -- which is issued by an entity (the DMV in this case) trusted by everyone who needs to verify your identity.
 
-In a Fabric network, the CA -- which is trusted by the network -- takes the place of the DMV and issues you a digital cert. And just as the driver's license is used as a proxy for identity (while also conferring explicit privileges like the right to drive), the digital certs issued by a CA confer not just identity but rights to perform network functions or over network components.
+This is not a perfect analogy, obviously. A CA does not actually interact with a user or component's private keys. But the important concepts here is the idea that certificates establishing identity are issued by a Certificate Authority trusted by the components and consortia members in a network. And also that this identity, like a driver's license, is linked to certain rights and permissions (like the right to drive car).  
 
 ## Root CAs and Intermediate CAs
 
-CAs come in two flavors: Root CAs and Intermediate CAs. Never want to use (ie expose) the Root CA. It's is like the private key of the CAs. But it is -- crucially -- trusted by all (just as a SSN is "trusted" by all). Organizations will almost always use Intermediate CAs, which have been signed off on by the trusted Root CA (or by a chain of Intermediate CAs leading back to the Root CA). Many combinations possible. One Intermediate CA could exist for all orgs or every org can have its own Intermediate CA. Depends on the needs of the network.
+CAs come in two flavors: Root CAs and Intermediate CAs.
+
+The Root CA is trusted by all -- just as a Social Security Number is "trusted" -- but it is similarly advisable not to expose the Root CA if at all possible. Organizations will almost always use Intermediate CAs -- which have been signed off on by the trusted Root CA (or by a chain of Intermediate CAs leading back to the Root CA) -- to generate certificates.
+
+Many combinations possible. One Intermediate CA could exist for all orgs or every org can have its own Intermediate CA. Depends on the needs of the network.
 
 Notes:
 
@@ -21,12 +25,7 @@ All Hyperledger Fabric CA servers in a cluster share the same database for keepi
 
 Unless the Fabric CA server is configured to use LDAP, it must be configured with at least one pre-registered bootstrap identity to enable you to register and enroll other identities.
 
-
-
-*(Other things I'm not sure about: How are you brought into the network originally (how are those certs generated, from where, where are they stored, what happens to them). And then how are they used by you in two different ways: 1) to execute certain functions. How are they tested? Who tests them? Where do they test them? What exact identity are you using (is it a global ID or does it just go back to the root CA to check it). And 2) how is this identity used to get new privileges and how and where is that update stored (such that it can be checked out when you want to perform that action)).*
-
-
-
+These identities are not stored in the CAs themselves. They're stored in a Membership Service Provider.
 
 
 

@@ -24,7 +24,7 @@ You'll discover more about these ideas as you read the [Concepts](./KeyConcepts.
 
 ## Identity
 
-**Every thing** and everyone that consume services of a Hyperledger Fabric network **requires an identity**. For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity -- a principal. **Principals are the main consumers of the network**.
+**Every thing** and everyone that consumes services of a Hyperledger Fabric network **requires an identity**. For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity -- a principal. **Principals are the main consumers of the network**.
 
 | ![NetworkPrincipals1](./ABlockchainNetwork.diagram.3.png) |
 | :---: |
@@ -34,7 +34,7 @@ You'll see that sometimes **network resources** -- those fundamental building bl
 
 | ![NetworkPrincipals2](./ABlockchainNetwork.diagram.4.png) |
 | :---: |
-| Some of the building blocks of a Hyperledger Fabric can also be principals -- if they have an identity. |
+| Some of the building blocks of a Hyperledger Fabric can also be principals -- these will have an identity. |
 
 You'll discover why identities and principals are important in a moment, and later on, you'll start to understand the importance of a **public key infrastructure** (PKI) to **establish trusted identities** for the principals in the network. But for now, just remember that there are lots of identities associated with a network.
 
