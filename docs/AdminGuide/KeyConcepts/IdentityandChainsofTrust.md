@@ -14,9 +14,9 @@ If you're interested, you can read a lot more about CAs [here](./), but for now 
 
 As an aside, CAs come in two flavours: Root CAs and Intermediate CAs, and you've already seen some of the most popular **Root CAs** - Symantec, GeoTrust, etc. It's beucase RootCAs have to **securely distribute** hundreds of millions of identities to internet users that is makes sense to distribute that process to **Intermediate CAs**, who actually often provide the certificates under the authority of the RootCA from which they establish their authority.  This is called a **Chain of Trust**, because organizations will almost always use Intermediate CAs, which have been signed off on by the trusted Root CA (or by a chain of Intermediate CAs leading back to the Root CA).
 
-|![ChainOfTrust](./IdentityandChainsofTrust.diagram.1.png)|
+| ![ChainOfTrust](./IdentityandChainsofTrust.diagram.1.png) |
 | :---: |
-| A Chain of Trust is established between a Root CA and a set of Intermediate CAs using a simple chain. Many other configurations are possible according to the needs of multiple consuming organizations.|
+| A chain of trust is established between a Root CA and a set of Intermediate CAs using a simple chain. Many other configurations are possible to meet the needs of collaborating organizations. |
 
 Intermediate CAs provide a huge amount of flexibility when it comes to the issuance of certificates across multiple organizations, and that's very helpful for a permissioned blockchain.  For example, you'll see that different organizations may use different RootCAs, or the same RootCA with different Intemediate CAs Many combinations possible. One Intermediate CA could exist for all orgs or every org can have its own Intermediate CA -- it really does depend on the needs of the network.
 
