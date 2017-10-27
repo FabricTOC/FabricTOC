@@ -2,13 +2,17 @@
 
 ## What is a channel?
 
-In many networks, it may be preferable -- or even legally necessary -- for transactions to not be seen by every participant in the network nor written to every ledger. For that reason Hyperledger Fabric was designed with the ability to create *channels*, a method that allows two or more participants to transact privately.
+In many networks, it may be preferable -- or even legally necessary -- for transactions to not be seen by every participant in the network nor written to every ledger. For that reason Hyperledger Fabric was designed with the ability to create *channels*, a private "subnet" of communication that allows two or more network members to transact privately. A channel is defined by members (typically in different organizations, though two or more peers within an org can form a channel), anchor peers per member, the shared ledger, chaincode application(s) and the ordering service node(s).
 
-As a practical matter, channels exist as private messaging paths through the ordering service (these transactions are also encrypted). Crucially, these transactions are written to a separate ledger that exists just for that channel, which means that the consortia members will have a separate ledger for every channel they belong to.
+Every transaction on the network is executed on a channel and written to a ledger just for that channel (consortia members will therefore have a separate ledger for every channel they belong to). Every party to a transaction on a channel must be authenticated and authorized to transact on that channel. This authorization comes from the permissions associated with the identity of that party -- registered with a membership services provider (MSP) -- which authenticates each peer to its channel peers and services.
+
+Although any one anchor peer can belong to multiple channels, and therefore maintain multiple ledgers, no ledger data can pass from one channel to another. This separation of ledgers, by channel, is defined and implemented by configuration chaincode, the identity membership service and the gossip data dissemination protocol (more on these concepts later).
 
 ## Channel Creation Policy
 
-The ordering system channel needs to define ordering parameters and consortiums for creating channels. There must be exactly one ordering system channel for an ordering service, and it is the first channel to be created (or more accurately bootstrapped). Note that any member with read access to the ordering system channel may see all channel creations, so this channel’s access should be restricted.
+The first channel created (or "bootstrapped") is known as the **ordering system channel**. There must be exactly one of these for an ordering service, and it is in this channel where ordering parameters and consortiums for creating channels is defined. Any member with read access to the ordering system channel may see all channel creations, so this channel’s access should be restricted.
+
+To create further channels, the client SDK calls configuration system chaincode and references properties such as anchor peers, and members (organizations). This request creates a genesis block for the channel ledger, which stores configuration information about the channel policies, members, and anchor peers. When adding a new member to an existing channel, either this genesis block, or if applicable, a more recent reconfiguration block, is shared with the new member.
 
 Channel configuration has the following important properties:
 
