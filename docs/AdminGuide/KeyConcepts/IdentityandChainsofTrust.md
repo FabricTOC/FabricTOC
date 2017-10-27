@@ -12,7 +12,7 @@ If you're interested, you can read a lot more about CAs [here](./), but for now 
 
 ### Root CAs and Intermediate CAs
 
-As an aside, CAs come in two flavours: Root CAs and Intermediate CAs, and you've already seen some of the most popular **Root CAs** - Symantec, GeoTrust, etc. It's beucase RootCAs have to **securely distribute** hundreds of millions of identities to internet users that is makes sense to distribute that process to **Intermediate CAs**, who actually often provide the certificates under the authority of the RootCA from which they establish their authority.  This is called a **Chain of Trust**, because organizations will almost always use Intermediate CAs, which have been signed off on by the trusted Root CA (or by a chain of Intermediate CAs leading back to the Root CA).
+CAs come in two flavours: Root CAs and Intermediate CAs, and you've already seen some of the most popular **Root CAs** - Symantec, GeoTrust, etc. It's because Root CAs have to **securely distribute** hundreds of millions of certificates to internet users that it makes sense to distribute this process across many **Intermediate CAs**. These intermediate CAs provide their certificates under the authority of the Root CA, and this linkage between a Root CA and Intermediate CAs establishes a **Chain of Trust** for any certificate that is issued by any CA in the chain. This chain structure creates scale and security, and allows certificate consuming organizations to confidently use Intermediate CAs, because their identity has been signed by the trusted Root CA (or by a chain of Intermediate CAs which ultimately lead back to the Root CA). Ideally, you can see why it makes sense to limit the exposure of the Root CA -- compromising it would lead to destruction of the entire chain of trust - because a root CA is trusted by all. On the other hand, if an Intermediate CA is compromised, there is a much smaller exposure.
 
 | ![ChainOfTrust](./IdentityandChainsofTrust.diagram.1.png) |
 | :---: |
@@ -20,19 +20,13 @@ As an aside, CAs come in two flavours: Root CAs and Intermediate CAs, and you've
 
 Intermediate CAs provide a huge amount of flexibility when it comes to the issuance of certificates across multiple organizations, and that's very helpful for a permissioned blockchain.  For example, you'll see that different organizations may use different RootCAs, or the same RootCA with different Intemediate CAs Many combinations possible. One Intermediate CA could exist for all orgs or every org can have its own Intermediate CA -- it really does depend on the needs of the network.
 
+### Fabric CA
 
-Intermediate CAs behave exactly like Root CAs, but an Intermediate CAs identity certificate is signed by another CA. certifcates are   
+It's because CAs are so important that Hyperledger Fabric provides a built-in CA component to allow you to create CAs in the blockchain networks you form. You don't have to use the Fabric CA, but you will find it very helpful when you're starting to build a blockchain network for the first time, or using the [DRIVENET sample network](./).  
 
-For example, a large organization may establish an intermediate CA   
+A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficient for many purposes. As you'll see, there are a few limitations to a Fabric CA. You can read more about these restrictions in the [Fabric CA reference section](./ReferenceMaterial/FabricCA.md)
 
-Never want to use (ie expose) the Root CA. It's is like the private key of the CAs. But it is -- crucially -- trusted by all (just as a SSN is "trusted" by all). Organizations will almost always use Intermediate CAs, which have been signed off on by the trusted Root CA (or by a chain of Intermediate CAs leading back to the Root CA). Many combinations possible. One Intermediate CA could exist for all orgs or every org can have its own Intermediate CA. Depends on the needs of the network.
-
-Notes:
-
-All Hyperledger Fabric CA servers in a cluster share the same database for keeping track of identities and certificates. If LDAP is configured, the identity information is kept in LDAP rather than the database.
-
-Unless the Fabric CA server is configured to use LDAP, it must be configured with at least one pre-registered bootstrap identity to enable you to register and enroll other identities.
-
+## TBD
 
 So far, so good  -
 

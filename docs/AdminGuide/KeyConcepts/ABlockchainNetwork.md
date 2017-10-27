@@ -52,9 +52,9 @@ As you can see, permissions are associative -- they require both network resourc
 
 There are two types of permissions policy that can be defined in Hyperledger Fabric - **network permissions** and **channel permissions**.  
 
-* **Network permissions** relate to those resources that operate across the whole network. For example, a network permission might control which organization can the define the members of a network consortium. Additionally, a network permission can control which organizations can define channels between consortium members.
+* **Network permissions** relate to those resources that operate across the whole network. For example, a network permission might control which organization can the define the members of a network consortium.
 
-* **Channel Permissions** relate to those resources that relate to an individual channel rather than the whole network. For example, a channel permission might determine which applications can read and write to the channel's ledger. A channel permission might also determine which administrators can remove an existing organization from the channel altogether.
+* **Channel Permissions** relate to those resources that relate to an individual channel rather than the whole network. For example, a channel permission might determine which applications can read and write to the channel's ledger.
 
 Hyperledger Fabric makes **extensive use of permissions** to support **networks with different constitutions**. For example, a network can be defined where every organization has equal permissions over network resources. At the other extreme, a network can be set up where a single organization has overall control.
 
