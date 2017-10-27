@@ -24,7 +24,7 @@ Intermediate CAs provide a huge amount of flexibility when it comes to the issua
 
 It's because CAs are so important that Hyperledger Fabric provides a built-in CA component to allow you to create CAs in the blockchain networks you form. You don't have to use the Fabric CA, but you will find it very helpful when you're starting to build a blockchain network for the first time, or using the [DRIVENET sample network](./).  
 
-A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficient for many purposes. As you'll see, there are a few limitations to a Fabric CA. You can read more about these restrictions in the [Fabric CA reference section](./ReferenceMaterial/FabricCA.md)
+A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficient for many purposes. As you'll see, there are a few limitations to a Fabric CA. You can read more about these restrictions in the [Fabric CA reference section](../ReferenceMaterial/FabricCA.md)
 
 ## TBD
 
