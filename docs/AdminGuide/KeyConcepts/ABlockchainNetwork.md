@@ -16,7 +16,7 @@ Think of the concepts in this category as the fundamental **building blocks** of
 
 |![NetworkResources](./ABlockchainNetwork.diagram.2.png)|
 | :---: |
-| Some of the building blocks of a Hyperledger Fabric blockchain network. We'll explain the nature of these relationships as we go deeper into the guide.|
+| Some of the building blocks of a Hyperledger Fabric blockchain network. You'll understand the the nature of these relationships as you read more detailed information.|
 
 You'll learn how a **network** can be partitioned into **channels** that enable private communications between the different members of a **consortium**. Moreover, within a channel, you'll see that **ledgers** and **smart contracts** are hosted on **peers** which endorse and validate transactions that are sequenced and distributed by **orderers**.
 
@@ -30,7 +30,7 @@ You'll discover more about these ideas as you read the [Concepts](./KeyConcepts.
 | :---: |
 | Principals with identity are the consumers of the network in Hyperledger Fabric.  |
 
-You'll see that sometimes **network resources** -- those fundamental building blocks we were talking about -- **also have an identity**. That's because one part of the network can sometimes consume services from a different part of the network. For example, peers and orderers use channel services to communicate with applications. It's this kind of relationship which makes it helpful for network resources to be principals with identity.
+You'll see that sometimes **network resources** -- those fundamental building blocks you saw previously -- **also have an identity**. That's because one part of the network can sometimes consume services from a different part of the network. For example, peers and orderers use channel services to communicate with applications. It's this kind of relationship which makes it helpful for network resources to be principals with identity.
 
 | ![NetworkPrincipals2](./ABlockchainNetwork.diagram.4.png) |
 | :---: |
@@ -52,9 +52,9 @@ As you can see, permissions are associative -- they require both network resourc
 
 There are two types of permissions policy that can be defined in Hyperledger Fabric - **network permissions** and **channel permissions**.  
 
-* **Network permissions** relate to those resources that operate across the whole network. For example, a network permission might control which organization can the define the members of a network consortium.
+* **Network permissions** relate to those resources that operate across the whole network. For example, a network permission might control which organization can define the members of a network consortium.
 
-* **Channel Permissions** relate to those resources that relate to an individual channel rather than the whole network. For example, a channel permission might determine which applications can read and write to the channel's ledger.
+* **Channel Permissions** relate to those resources that relate to an individual channel rather than the whole network. For example, a channel permission might define which applications can read and write to the channel's ledger.
 
 Hyperledger Fabric makes **extensive use of permissions** to support **networks with different constitutions**. For example, a network can be defined where every organization has equal permissions over network resources. At the other extreme, a network can be set up where a single organization has overall control.
 
@@ -66,8 +66,8 @@ While this provides the greatest degree of flexibility to the founders and admin
 
 ## That's it!
 
-That was easy, wasn't it? We can summarize Hyperledger Fabric as a technology which helps users build a blockchain network, which is consumed by principals with identities, with agreed and evolving rights over the different types of resources that make up the network.
+That was easy, wasn't it? You can summarize Hyperledger Fabric as a technology which helps users build a blockchain network, which is consumed by principals with identities, with agreed and evolving rights over the different types of resources that make up the network.
 
-And if you think about it for a little while, any computer system can be described in this way -- a set of resources, principals, and permissions. The thing we now need to do is understand the concepts in more details, and how they interact with each other!
+And if you think about it for a little while, any computer system can be described in this way -- a set of resources, principals, and permissions. The thing you now need to do is understand the concepts in more details, and how they interact with each other!
 
 [Next:Consortia](./Consortia.md)
