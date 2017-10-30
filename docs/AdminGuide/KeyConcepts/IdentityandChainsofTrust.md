@@ -28,9 +28,13 @@ A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficie
 
 ## Membership Services Providers
 
+You've now seen how CAs can provide verifiable identities through a chain of trust. However, there is more to forming a trusted identity than just being able to verify it -- the identity has to be **recognized**.  That's where Membership Services Providers (MSPs) come into play.
+
+**You'll find the idea of an MSP easiest to understand if you start with an analogy.** Imagine that you're in a supermarket and you're going to buy some groceries. At the checkout, you see a sign that says that Visa, Mastercard and AMEX cards are accepted. You can only pay with a card that is recognized by the store.  If you try to pay with a different card -- ImagineCard for example -- it doesn't matter that the card is authentic, and you have sufficient funds -- the store doesn't accept ImagineCards.  Think of an MSP as being like this list, except it's for CAs.  An MSP identifies which root CAs and intermediate CAs are recognized.  It can also recognize other things related to identity -- for example identities that have been revoked -- but those things will be covered later.  For now, **think of an MSP as providing a recognition list for CAs**.
+
 | ![MSPs](./IdentityandChainsofTrust.diagram.2.png) |
 | :---: |
-| MSPs are configured for the network, channel, orderers and peers. Network and Channel MSPs are global - as they control the behaviour of all nodes who interact with them.  Peer and Orderer MSPs are local - they only control behaviour for the nodes where they are defined. A simplified configuration is shown here where the Network, Channel, Orderer and Peer only recognize identities issued by RCA1, RCA2, ICA1 and ICA2 respectively. |
+| A simplified configuration is shown here where the Network, Channel, Orderer and Peer only recognize identities issued by RCA1, RCA2, ICA1 and ICA2 respectively.  Network and channel MSPs are global, wheras peer and orderer MSPs are local. |
 
 ### Remainder material to be incorporated
 
@@ -38,6 +42,7 @@ So far, so good  -
 
 well-known authorities who are the key parts of the internet, they provide  
 
+ Network and Channel MSPs are global -- they control the behaviour of all nodes who interact with them.  Peer and Orderer MSPs are local -- they only control behaviour for the nodes where they are defined.  
 
 Nothing about a Fabric network can function unless components trust each other's identities and the permissions those identities entitle them to. Establishing that trust means creating *digital certificates* which can be verified against a shared trust store of identities.
 
