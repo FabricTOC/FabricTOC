@@ -26,12 +26,54 @@ It's because CAs are so important that Hyperledger Fabric provides a built-in CA
 
 A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficient for many purposes. As you'll see, there are a few limitations to a Fabric CA. You can read more about these restrictions in the [Fabric CA reference section](../ReferenceMaterial/FabricCA.md)
 
-## TBD
+## Membership Services Providers
+
+You've now seen how CAs can provide verifiable identities through a chain of trust. However, there is more to forming a **trusted identity** than just being able to verify it -- the identity **has to be recognized**.  That's where Membership Services Providers (MSPs) come into play.
+
+**You'll find the idea of an MSP easiest to understand if you start with an analogy.** Imagine that you're in a supermarket to buy some groceries. At the checkout you see a sign that says that Visa, Mastercard and AMEX cards are accepted. This means that you can only pay with a card that is recognized by the store.  If you try to pay with a different card -- ImagineCard for example -- it doesn't matter that the card is authentic, and you have sufficient funds -- it will not be accepted.  An MSP is like this list, except it's for CAs.  An MSP identifies which root CAs and intermediate CAs are recognized by the component using the MSP.  An MSP can also recognize other things related to identity -- for example identities that have been revoked -- but those things will be covered later.  For now, **think of an MSP as providing a recognition list for CAs**.
+
+| ![MSPs](./IdentityandChainsofTrust.diagram.2.png) |
+| :---: |
+| A simplified configuration is shown here where the Network, Channel, Orderer and Peer only recognize identities issued by RCA1, RCA2, ICA1 and ICA2 respectively.  Network and channel MSPs are global, wheras peer and orderer MSPs are local. |
+
+
+### Up to here
+
+### MSPs in more detail
+
+There are many different identity
+
+ * **Root CAs**
+
+ * **Intermediate CAs**
+
+ * **Certificate Revocation List (CRL)**
+
+
+
+### Users of MSPs
+
+As you've seen, MSPs provide a list of recognized CAs for a given component.  As you can see from the diagram above, MSPs can be used by four different components.
+
+ * **Network:** An MSP defined for a Network identit
+
+ * **Channel MSP**
+
+ * **Orderer MSP**
+
+ * **Peer MSP**
+
+
+
+
+
+### Remainder material to be incorporated
 
 So far, so good  -
 
 well-known authorities who are the key parts of the internet, they provide  
 
+ Network and Channel MSPs are global -- they control the behaviour of all nodes who interact with them.  Peer and Orderer MSPs are local -- they only control behaviour for the nodes where they are defined.  
 
 Nothing about a Fabric network can function unless components trust each other's identities and the permissions those identities entitle them to. Establishing that trust means creating *digital certificates* which can be verified against a shared trust store of identities.
 
