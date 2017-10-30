@@ -26,7 +26,13 @@ It's because CAs are so important that Hyperledger Fabric provides a built-in CA
 
 A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficient for many purposes. As you'll see, there are a few limitations to a Fabric CA. You can read more about these restrictions in the [Fabric CA reference section](../ReferenceMaterial/FabricCA.md)
 
-## TBD
+## Membership Services Providers
+
+| ![MSPs](./IdentityandChainsofTrust.diagram.2.png) |
+| :---: |
+| MSPs are configured for the network, channel, orderers and peers. Network and Channel MSPs are global - as they control the behaviour of all nodes who interact with them.  Peer and Orderer MSPs are local - they only control behaviour for the nodes where they are defined. A simplified configuration is shown here where the Network, Channel, Orderer and Peer only recognize identities issued by RCA1, RCA2, ICA1 and ICA2 respectively. |
+
+### Remainder material to be incorporated
 
 So far, so good  -
 
