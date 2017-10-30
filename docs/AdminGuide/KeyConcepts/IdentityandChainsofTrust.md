@@ -36,32 +36,36 @@ You've now seen how CAs can provide verifiable identities through a chain of tru
 | :---: |
 | A simplified configuration is shown here where the Network, Channel, Orderer and Peer only recognize identities issued by RCA1, RCA2, ICA1 and ICA2 respectively.  Network and channel MSPs are global, wheras peer and orderer MSPs are local. |
 
+### Local and Global MSPs
+
+There are two different types of MSPs: local and global.  Local MSPs are only defined for nodes (peer or orderer) and they only apply to the node where they are defined. Moreover, every node has a local MSP. In contrast, global MSPs are only defined once for each channels or the entire network, and they apply to all of the nodes that are part of a channel or network. This means that peers and orderers in the same channel or network all share the same global MSP. In summary, you can see that the difference between local and global MSPs is the scope to which the MSP applies.  
+
+You'll also see that local MSPs are defined on the file system of the peer or orderer to which they apply. Therefore, physically and logically there is only one local MSP per node. However, as global MSPs apply to all nodes in a channel or network, they are defined once inside the network or channel configuration. Physically there are multiple copies of a global MSP, because it is replicated across every node and kept synchronized via consensus, but logically there is only one global MSP per channel or network.
 
 ### Up to here
 
-### MSPs in more detail
 
-There are many different identity
+### MSP Levels
 
- * **Root CAs**
+As you've seen, MSPs provide a list of recognized CAs for a given component, and they can be local -- for peers and orderers -- or global -- for channels and networks.  There
 
- * **Intermediate CAs**
-
- * **Certificate Revocation List (CRL)**
-
-
-
-### Users of MSPs
-
-As you've seen, MSPs provide a list of recognized CAs for a given component.  As you can see from the diagram above, MSPs can be used by four different components.
-
- * **Network:** An MSP defined for a Network identit
+ * **Network:** An MSP defined for a Network
 
  * **Channel MSP**
 
  * **Orderer MSP**
 
  * **Peer MSP**
+
+### The components of an MSP
+
+An MSP lists identity information in a folder structure with the following
+
+ * **Root CAs**
+
+ * **Intermediate CAs**
+
+ * **Certificate Revocation List (CRL)**
 
 
 
