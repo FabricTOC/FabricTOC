@@ -36,6 +36,37 @@ You've now seen how CAs can provide verifiable identities through a chain of tru
 | :---: |
 | A simplified configuration is shown here where the Network, Channel, Orderer and Peer only recognize identities issued by RCA1, RCA2, ICA1 and ICA2 respectively.  Network and channel MSPs are global, wheras peer and orderer MSPs are local. |
 
+
+### Up to here
+
+### MSPs in more detail
+
+There are many different identity
+
+ * **Root CAs**
+
+ * **Intermediate CAs**
+
+ * **Certificate Revocation List (CRL)**
+
+
+
+### Users of MSPs
+
+As you've seen, MSPs provide a list of recognized CAs for a given component.  As you can see from the diagram above, MSPs can be used by four different components.
+
+ * **Network:** An MSP defined for a Network identit
+
+ * **Channel MSP**
+
+ * **Orderer MSP**
+
+ * **Peer MSP**
+
+
+
+
+
 ### Remainder material to be incorporated
 
 So far, so good  -
