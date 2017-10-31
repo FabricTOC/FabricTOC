@@ -2,13 +2,23 @@
 
 ## What is Chaincode?
 
-Chaincode is a program, written in Go, node.js, that implements a prescribed interface. Eventually, other programming languages such as Java, will be supported. Chaincode runs in a secured Docker container isolated from the endorsing peer process. Chaincode initializes and manages the ledger state through transactions submitted by applications.
+Similar to the concept of a "smart contract", chaincodes are programs that handle business logic agreed to by members of a channel. Once agreed to, this business logic runs automatically based on its parameters. So for example, if a shipment of flowers needs to be kept below a certain temperature, chaincode can be written that monitors the output of a temperature sensor in the shipping container. If the temperature rises above a certain level, the chaincode executes a cancellation or a fine or whatever business logic has been written to it.
 
-A chaincode typically handles business logic agreed to by members of the network, so it similar to a “smart contract”. Ledger state created by a chaincode is scoped exclusively to that chaincode and can’t be accessed directly by another chaincode. Given the appropriate permission, a chaincode may invoke another chaincode to access its state within the same network.
+Fabric APIs allow for the packaging, installation, instantiation, and upgrading of chaincode on a channel's endorsing peers (more on how and why this is done later). These chaincodes -- channels can have more than one -- run in secure Docker containers and once active bypass the normal endorsing peer process to invoke transactions (since the chaincodes have already been endorsed by the peers, going through the endorsement process a second time is unnecessary).
 
-A chaincode typically handles business logic agreed to by members of the network, so it may be considered as a “smart contract”. State created by a chaincode is scoped exclusively to that chaincode and can’t be accessed directly by another chaincode. However, within the same network, given the appropriate permission a chaincode may invoke another chaincode to access its state.
 
-The Hyperledger Fabric API enables interaction with the various nodes in a blockchain network - the peers, orderers and MSPs - and it also allows one to package, install, instantiate and upgrade chaincode on the endorsing peer nodes. The Hyperledger Fabric language-specific SDKs abstract the specifics of the Hyperledger Fabric API to facilitate application development, though it can be used to manage a chaincode’s lifecycle. Additionally, the Hyperledger Fabric API can be accessed directly via the CLI, which we will use in this document.
+
+
+
+
+
+
+
+
+Ledger state created by a chaincode is scoped exclusively to that chaincode and can’t be accessed directly by another chaincode. Given the appropriate permission, a chaincode may invoke another chaincode to access its state within the same network.
+
+
+The Hyperledger Fabric API enables interaction with the various nodes in a blockchain network -- the peers, orderers and MSPs -- and it also allows one to package, install, instantiate and upgrade chaincode on the endorsing peer nodes. The Hyperledger Fabric language-specific SDKs abstract the specifics of the Hyperledger Fabric API to facilitate application development, though it can be used to manage a chaincode’s lifecycle. Additionally, the Hyperledger Fabric API can be accessed directly via the CLI, which we will use in this document.
 
 We provide four commands to manage a chaincode’s lifecycle: package, install, instantiate, and upgrade. In a future release, we are considering adding stop and start transactions to disable and re-enable a chaincode without having to actually uninstall it. After a chaincode has been successfully installed and instantiated, the chaincode is active (running) and can process transactions via the invoke transaction. A chaincode may be upgraded any time after it has been installed.
 
@@ -38,26 +48,6 @@ If the instantiation policy is not specified, the default policy is any MSP admi
 
 A way of establishing rules over transactions ("business logic") and automating them (not just more efficient but provides utility -- use case here temperature of flowers in shipping container). Similar to the concept of smart contracts (which are written in chaincode).
 
-What is a contract? Why are they important? What are their weaknesses? How does chaincode and smart contracts address these weaknesses? *This part briefly*
-
-## System Chaincode
-
-System chaincode has the same programming model except that it runs within the peer process rather than in an isolated container like normal chaincode. Therefore, system chaincode is built into the peer executable and doesn’t follow the same lifecycle described above. In particular, install, instantiate and upgrade do not apply to system chaincodes.
-
-The purpose of system chaincode is to shortcut gRPC communication cost between peer and chaincode, and tradeoff the flexibility in management. For example, a system chaincode can only be upgraded with the peer binary. It must also register with a fixed set of parameters compiled in and doesn’t have endorsement policies or endorsement policy functionality.
-
-System chaincode is used in Hyperledger Fabric to implement a number of system behaviors so that they can be replaced or modified as appropriate by a system integrator.
-
-The current list of system chaincodes:
-
-    LSCC Lifecycle system chaincode handles lifecycle requests described above.
-    CSCC Configuration system chaincode handles channel configuration on the peer side.
-    QSCC Query system chaincode provides ledger query APIs such as getting blocks and transactions.
-    ESCC Endorsement system chaincode handles endorsement by signing the transaction proposal response.
-    VSCC Validation system chaincode handles the transaction validation, including checking endorsement policy and multiversioning concurrency control.
-
-Care must be taken when modifying or replacing these system chaincodes, especially LSCC, ESCC and VSCC since they are in the main transaction execution path. It is worth noting that as VSCC validates a block before committing it to the ledger, it is important that all peers in the channel compute the same validation to avoid ledger divergence (non-determinism). So special care is needed if VSCC is modified or replaced.
-
 
 ## Chaincode and the Ledgers
 
@@ -68,10 +58,17 @@ Chaincode is written to the ledger(s) for a **specific channel** and exists/func
 
 Chaincode funtions at the channel level -- and is written to the ledger for that channel -- but it is installed at the peer level. Channels can have multiple chaincodes/smart contracts functioning on it simultaneously and every endorsing peer node of a channel that will run your chaincode must have it installed. If a peer is not endorsing it will still write transactions to its copy of the channel ledger. Chaincode should only be installed on endorsing peer nodes of the owning members of the chaincode to protect the confidentiality of the chaincode logic from other members on the network. Those members without the chaincode can’t be the endorsers of the chaincode’s transactions; that is, they can’t execute the chaincode. However, they can still validate and commit the transactions to the ledger.
 
-Chaincode can be created by anyone. 
+Chaincode can be created by anyone.
 
 
 ## Instantiating Chaincode
+
+The creator of the instantiation transaction of the chaincode on a channel is validated against the instantiation policy of the chaincode.
+
+A chaincode package that was signed at creation can be handed over to other owners for inspection and signing. The workflow supports out-of-band signing of chaincode package.
+
+If the instantiation policy is not specified, the default policy is any MSP administrator of the channel.
+
 
 Happens at the channel level (though the same chaincode can be installed on multiple channels, it's actions are kept isolated -- not unlike any program that's been installed on different computers). This instantiation is when the chaincode is written to the ledger. Must have admin rights over that channel to instantiate. Only happens once.
 
@@ -88,26 +85,42 @@ The instantiate transaction also sets up the endorsement policy for that chainco
 
 Has a version.
 
-A chaincode may be upgraded any time by changing its version, which is part of the SignedCDS. Other parts, such as owners and instantiation policy are optional. However, the chaincode name must be the same; otherwise it would be considered as a totally different chaincode.
+A chaincode may be upgraded any time by changing its version, which is part of the SignedCDS. Other parts, such as owners and instantiation policy are optional. However, the chaincode **name** must be the same; otherwise it would be considered as a totally different chaincode.
 
 Prior to upgrade, the new version of the chaincode must be installed on the required endorsers. Upgrade is a transaction similar to the instantiate transaction, which binds the new version of the chaincode to the channel. Other channels bound to the old version of the chaincode still run with the old version. In other words, the upgrade transaction only affects one channel at a time, the channel to which the transaction is submitted.
 
-Note
-
-Note that since multiple versions of a chaincode may be active simultaneously, the upgrade process doesn’t automatically remove the old versions, so user must manage this for the time being.
-
 There’s one subtle difference with the instantiate transaction: the upgrade transaction is checked against the current chaincode instantiation policy, not the new policy (if specified). This is to ensure that only existing members specified in the current instantiation policy may upgrade the chaincode.
 
-Note
+Since multiple versions of a chaincode may be active simultaneously, the upgrade process doesn’t automatically remove the old versions, so users must manage this for the time being.
 
-Note that during upgrade, the chaincode Init function is called to perform any data related updates or re-initialize it, so care must be taken to avoid resetting states when upgrading chaincode.
+During an upgrade, the chaincode Init function is called to perform any data related updates or re-initialize it, so care must be taken to avoid resetting states when upgrading chaincode.
+
+## System Chaincode
+
+Peers come loaded with certain chaincode functions. These cover a spectrum of behaviors typical of a peer in a Fabric network and allow the peer to
+
+System chaincode functions similarly to other chaincodes except that it runs within the peer process rather than in an isolated container. Therefore, system chaincode is built into the peer executable and doesn’t follow the same lifecycle. In particular, install, instantiate and upgrade do not apply to system chaincodes.
+
+The purpose of system chaincode is to shortcut gRPC communication cost between peer and chaincode, and tradeoff the flexibility in management. For example, a system chaincode can only be upgraded with the peer binary. It must also register with a fixed set of parameters compiled in and doesn’t have endorsement policies or endorsement policy functionality.
+
+System chaincode is used in Hyperledger Fabric to implement a number of system behaviors so that they can be replaced or modified as appropriate by a system integrator.
+
+The current list of system chaincodes:
+
+    1. LSCC Lifecycle system chaincode handles lifecycle requests described above.
+    2. CSCC Configuration system chaincode handles channel configuration on the peer side.
+    3. QSCC Query system chaincode provides ledger query APIs such as getting blocks and transactions.
+    4. ESCC Endorsement system chaincode handles endorsement by signing the transaction proposal response.
+    5. VSCC Validation system chaincode handles the transaction validation, including checking endorsement policy and multiversioning concurrency control.
+
+Care must be taken when modifying or replacing these system chaincodes, especially LSCC, ESCC and VSCC since they are in the main transaction execution path. It is worth noting that as VSCC validates a block before committing it to the ledger, it is important that all peers in the channel compute the same validation to avoid ledger divergence (non-determinism). So special care is needed if VSCC is modified or replaced.
 
 
 
 
 ## DRIVENET Chaincode
 
-Similar to chaincode that would be exist for any supply chain network. Customized to take specific regulations in the car industry (and American laws) into account.
+Similar to chaincode that would exist for any supply chain network. Customized to take specific regulations in the car industry (and American laws) into account.
 
 
 
