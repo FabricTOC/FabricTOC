@@ -57,7 +57,7 @@ As you've seen, MSPs provide a list of recognized CAs for a given component, and
 
  * **Peer MSP**
 
-### The components of an MSP
+### MSP Detailed Structure
 
 An MSP lists identity information in a folder structure with the following
 
