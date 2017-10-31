@@ -96,24 +96,6 @@ This is not dissimilar from how identity works in the real world. Think of your 
 In a Fabric network, the CA -- which is trusted by the network -- takes the place of the DMV and issues you a digital cert. And just as the driver's license is used as a proxy for identity (while also conferring explicit privileges like the right to drive), the digital certs issued by a CA confer not just identity but rights to perform network functions or over network components.
 
 
-
-
-*(Other things I'm not sure about: How are you brought into the network originally (how are those certs generated, from where, where are they stored, what happens to them). And then how are they used by you in two different ways: 1) to execute certain functions. How are they tested? Who tests them? Where do they test them? What exact identity are you using (is it a global ID or does it just go back to the root CA to check it). And 2) how is this identity used to get new privileges and how and where is that update stored (such that it can be checked out when you want to perform that action)).*
-
-
-
-
-
-
-
-
-
-
-
-## MSPs in DRIVENET
-
-## Material
-
 You're now going to focus on four components the blockchain, and how they establish a **chain of trust** in order to help them determine which principals have permission over different network resources. As you saw in [](./),
 In this topic, Four of the components in the network are
 
@@ -129,9 +111,9 @@ is a digital certificate which holds
 
 As you've also seen, an identity is brought to the network by a principal in the form of a cryptographically validated digital certificate issued by a Certificate Authority.  Ad as we've seen, a Hyperledger Fabric blockhain network can only function when components trust principal's identities. There are two parts to establishing trust, specifically **digital certificates** and the identification of which can be verified against a shared trust store of identities.
 
+*(Other things I'm not sure about: How are you brought into the network originally (how are those certs generated, from where, where are they stored, what happens to them). And then how are they used by you in two different ways: 1) to execute certain functions. How are they tested? Who tests them? Where do they test them? What exact identity are you using (is it a global ID or does it just go back to the root CA to check it). And 2) how is this identity used to get new privileges and how and where is that update stored (such that it can be checked out when you want to perform that action)).*
 
-
-
+## MSPs in DRIVENET
 
 
 [Next: Policies for Access Control](./PoliciesforAccessControl.md)
