@@ -18,7 +18,7 @@ If you're interested, you can read a lot more about CAs [here](./), but for now 
 
 ### Root CAs and Intermediate CAs
 
-CAs come in two flavors: **Root CAs** and **Intermediate CAs**. Because Root CAs (Symantec, Geotrust, etc) have to **securely distribute** hundreds of millions of certificates to internet users, it makes sense to spread this process out across what are called **Intermediate CAs**. These Intermediate CAs provide their certificates under the authority of the Root CA, and this linkage between a Root CA and Intermediate CAs establishes a **Chain of Trust** for any certificate that is issued by any CA in the chain. This ability to track back to the Root CA not only allows the function of CAs to scale while  still providing security -- allowing organizations that consume certificates to use Intermediate CAs with confidence -- it limits the exposure of the Root CA, which, if compromised, would destroy the entire chain of trust. If an Intermediate CA is compromised, on the other hand, there is a much smaller exposure.
+CAs come in two flavors: **Root CAs** and **Intermediate CAs**. Because Root CAs (Symantec, Geotrust, etc) have to **securely distribute** hundreds of millions of certificates to internet users, it makes sense to spread this process out across what are called **Intermediate CAs**. These Intermediate CAs provide their certificates under the authority of the Root CA, and this linkage between a Root CA and Intermediate CAs establishes a **Chain of Trust** for any certificate that is issued by any CA in the chain. This ability to track back to the Root CA not only allows the function of CAs to scale while still providing security -- allowing organizations that consume certificates to use Intermediate CAs with confidence -- it limits the exposure of the Root CA, which, if compromised, would destroy the entire chain of trust. If an Intermediate CA is compromised, on the other hand, there is a much smaller exposure.
 
 | ![ChainOfTrust](./IdentityandChainsofTrust.diagram.1.png) |
 | :---: |
@@ -36,11 +36,13 @@ A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficie
 
 You've now seen how CAs can provide verifiable identities through a chain of trust, so let's now see **how the identity is recognized**. That's where Membership Services Providers (MSPs) come into play.
 
-Whereas a CA provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are recognized. An MSP can also recognize other things related to identity -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a recognition list for CAs**.
+Whereas a CA provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are recognized. An MSP can also recognize other things related to identity -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a recognition list for CAs for a given organization**.
 
 | ![MSPs](./IdentityandChainsofTrust.diagram.2.png) |
 | :---: |
 | A simplified configuration is shown here where the Network, Channel, Orderer and Peer only recognize identities issued by RCA1, RCA2, ICA1 and ICA2 respectively.  Network and channel MSPs are global, whereas peer and orderer MSPs are local. |
+
+Typically the will be a single list of CAs that an organization recognizes, so it has a single MSP. Because of this relationship, it makes sense to name the MSP after the organization, and you'll typically see that in policy configurations. For example, organization `MYCORP` would have an MSP called `MYCORP.MSP` to list the CAs that it recognizes. In some cases an organization may require multiple CA lists for example channels which perform very different functions with different organizations, in which case it makes sense to have multiple MSPs, and name them accordingly, for example `MYCORP.MSP.SALES` and `MYCORP.MSP.AUDIT`.
 
 ### Local and Global MSPs
 
