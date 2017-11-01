@@ -42,7 +42,7 @@ Whereas a CA provides a verifiable identity, an MSP complements this by identify
 | :---: |
 | An MSP configuration where the network is administered by one organization, ORG2, which also manages the orderer. The peer is managed by a different organization, ORG1. The channel can be managed by both ORG1 and ORG2. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2.|
 
-Typically there will be a single list of CAs that an organization recognizes, so it has a single MSP. Because of this unary relationship, it makes sense to name the MSP after the organization, and you'll typically this convention adopted in policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP` to list the CAs that it recognizes. In some cases an organization may require multiple CA lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs, and name them accordingly, for example `ORG2.MSP.SALES` and `ORG2.MSP.GOVERNMENT`, as the roots of trust will be very different.  
+Because there will typically be a single list of CAs -- leading back to a common Root CA -- that an organization recognizes, it will also usually have only a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple CA lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, for example `ORG2.MSP.SALES` and `ORG2.MSP.GOVERNMENT`, reflecting the different root of trust in the SALES channel compared to the GOVERNMENT channel.
 
 ### Local and Global MSPs
 
@@ -123,6 +123,12 @@ As you've also seen, an identity is brought to the network by a principal in the
 *(Other things I'm not sure about: How are you brought into the network originally (how are those certs generated, from where, where are they stored, what happens to them). And then how are they used by you in two different ways: 1) to execute certain functions. How are they tested? Who tests them? Where do they test them? What exact identity are you using (is it a global ID or does it just go back to the root CA to check it). And 2) how is this identity used to get new privileges and how and where is that update stored (such that it can be checked out when you want to perform that action)).*
 
 ## MSPs in DRIVENET
+
+Root of Trust established -- or used, more likely -- by Mitchell and Regal (and the two dealerships, possibly). Could be that the entire car industry uses -- for convenience sake -- the same root of trust.
+
+Will ZBS use the same root of trust as Mitchell and Regal? Possibly.
+
+The DMV wouldn't, which means that either the initial configuration would have to recognize its CA or there'd have to be a config transaction to update the network definition to include it. *That's my read of it anyway.*  
 
 
 [Next: Policies for Access Control](./PoliciesforAccessControl.md)
