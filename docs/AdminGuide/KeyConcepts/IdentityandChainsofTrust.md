@@ -67,7 +67,9 @@ As you've seen, an MSP defines allows different components in a blockchain netwo
 
  * **Certificate Revocation List (CRL)**
 
- * **Sign**
+ * **Sign Cert** (public cert/pem file)
+
+ * **KeyStore** Private key
 
  * **TLS Root CA**
 
@@ -75,9 +77,9 @@ As you've seen, an MSP defines allows different components in a blockchain netwo
 
  * **TLS Certificate Revocation List (CRL)**
 
- * **TLS Sign**
+ * **TLS SignCert**
 
- * **Administraors (Local MSP only)**
+ * **Administrators (Local MSP only)**
 
 ### Remainder material to be incorporated
 
