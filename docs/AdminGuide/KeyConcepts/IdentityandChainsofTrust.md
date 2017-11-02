@@ -38,15 +38,22 @@ You've now seen how CAs can provide verifiable identities through a chain of tru
 
 Whereas a CA provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are recognized. An MSP can also recognize other things related to identity -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a recognition list for CAs for a given organization**.
 
-| ![MSPs](./IdentityandChainsofTrust.diagram.2.png) |
-| :---: |
-| An MSP configuration where the network is administered by one organization, ORG2, which also manages the orderer. The peer is managed by a different organization, ORG1. The channel can be managed by both ORG1 and ORG2. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2.|
+### Mapping MSPs to Organizations
 
 Because there will typically be a single list of CAs -- leading back to a common Root CA -- that an organization recognizes, it will also usually have only a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple CA lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, for example `ORG2.MSP.SALES` and `ORG2.MSP.GOVERNMENT`, reflecting the different root of trust in the SALES channel compared to the GOVERNMENT channel.
+
+| ![MSP1](./IdentityandChainsofTrust.diagram.3.png) |
+| :---: |
+| Two different MSP configurations for an organization.  The first configuration shows the typical MSP relationship -- a single MSP defines the list of recognized sources of verifiable identity to an organization. In the second configuration, different MSPs are used to support different identity providers for national, international and governmental interactions.|
+
 
 ### Local and Global MSPs
 
 There are two different types of MSPs: local and global. **Local MSPs are only defined for nodes** (peer or orderer) and they apply to the node where they are defined. Moreover, every node must have a local MSP defined. In contrast, **global MSPs are only defined for channels or the entire network**, and they apply to all of the nodes that are part of a channel or network. Every channel or network must have an MSP defined for it. This means that peers and orderers in the same channel or network all share the same global MSP. In summary, you can see that the difference between local and global MSPs is the scope to which the MSP applies.  
+
+| ![MSP2](./IdentityandChainsofTrust.diagram.2.png) |
+| :---: |
+| Local and Global MSPs. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, which also manages the orderer node. The peer is managed by a different organization, ORG2. The channel can be managed by both ORG1 and ORG2. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2. |
 
 You'll also see that local MSPs are defined on the file system of the peer or orderer to which they apply. Therefore, physically and logically there is only one local MSP per node. However, as global MSPs apply to all nodes in a channel or network, they are defined once inside the network or channel configuration. Physically there are multiple copies of a global MSP, because it is replicated across every node and kept synchronized via consensus, but logically there is only one global MSP per channel or network.
 
