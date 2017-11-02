@@ -55,7 +55,7 @@ There are two different types of MSPs: local and global. **Local MSPs are only d
 | :---: |
 | Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for the channel are global. Each peer is managed by its own organization, ORG1 or ORG2. The channel can be managed by both ORG1 and ORG2. Similar principles apply for the network and orderers, but these are not shown here for clarity.|
 
-You'll can see that **local MSPs are only defined on the file system of the node** to which they apply. Therefore, physically and logically there is only one local MSP per node. However, as global MSPs apply to all nodes in a channel or network, they are logically defined once inside the network or channel configuration, and physically replicated across every node, being kept synchronized via consensus. So while there is a copy of the global MSP on the nodes local filesystem, logically there is only one global MSP per channel or network.
+You'll can see that **local MSPs are only defined on the file system of the node** to which they apply. Therefore, physically and logically there is only one local MSP per node. However, as **global MSPs apply to all nodes in a channel or network**, they are logically defined once for the network or channel. However, **a global MSP is physically replicated across every node and kept synchronized via consensus**. So while there is a copy of a global MSP on the nodes local filesystem, logically there is are only global MSPs for a channel or network.
 
 ### MSP Levels
 
