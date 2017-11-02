@@ -51,11 +51,15 @@ Because there will typically be a single list of CAs -- leading back to a common
 
 There are two different types of MSPs: local and global. **Local MSPs are only defined for nodes** (peer or orderer) and they apply to the node where they are defined. Moreover, every node must have a local MSP defined. In contrast, **global MSPs are only defined for channels or the entire network**, and they apply to all of the nodes that are part of a channel or network. Every channel or network must have an MSP defined for it. This means that peers and orderers in the same channel or network all share the same global MSP. In summary, you can see that the difference between local and global MSPs is the scope to which the MSP applies.  
 
-| ![MSP2](./IdentityandChainsofTrust.diagram.2.png) |
+| ![MSP2](./IdentityandChainsofTrust.diagram.4.png) |
 | :---: |
-| Local and Global MSPs. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, which also manages the orderer node. The peer is managed by a different organization, ORG2. The channel can be managed by both ORG1 and ORG2. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2. |
+| Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for the channel are global. Each peer is managed by its own organization, ORG1 or ORG2. The channel can be managed by both ORG1 and ORG2. Similar principles apply for the network and orderers, but these are not shown here for clarity.|
 
 You'll also see that local MSPs are defined on the file system of the peer or orderer to which they apply. Therefore, physically and logically there is only one local MSP per node. However, as global MSPs apply to all nodes in a channel or network, they are defined once inside the network or channel configuration. Physically there are multiple copies of a global MSP, because it is replicated across every node and kept synchronized via consensus, but logically there is only one global MSP per channel or network.
+
+| ![MSP3](./IdentityandChainsofTrust.diagram.2.png) |
+| :---: |
+| Local and Global MSPs. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, which also manages the orderer node. The peer is managed by a different organization, ORG2. The channel can be managed by both ORG1 and ORG2. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2. |
 
 ### MSP Levels
 
