@@ -38,7 +38,7 @@ You've now seen how CAs can provide verifiable identities through a chain of tru
 
 Whereas a CA provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are recognized. An MSP can also recognize other things related to identity -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a recognition list for CAs for a given organization**.
 
-| ![MSPs](./IdentityandChainsofTrust.diagram.2.png) |
+| ![MSP1](./IdentityandChainsofTrust.diagram.2.png) |
 | :---: |
 | An MSP configuration where the network is administered by one organization, ORG1, which also manages the orderer. The peer is managed by a different organization, ORG2. The channel can be managed by both ORG1 and ORG2. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2.|
 
@@ -46,7 +46,7 @@ Whereas a CA provides a verifiable identity, an MSP complements this by identify
 
 Because there will typically be a single list of CAs -- leading back to a common Root CA -- that an organization recognizes, it will also usually have only a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple CA lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, for example `ORG2.MSP.SALES` and `ORG2.MSP.GOVERNMENT`, reflecting the different root of trust in the SALES channel compared to the GOVERNMENT channel.
 
-| ![MSPs2](./IdentityandChainsofTrust.diagram.3.png) |
+| ![MSP2](./IdentityandChainsofTrust.diagram.3.png) |
 | :---: |
 | Two different MSP configurations for an organization.  The first configuration shows the typical MSP relationship -- a single MSP defines the list of recognized sources of verifiable identity to an organization. In the second configuration, different MSPs are used to support different identity providers for national, international and governmental interactions.|
 
