@@ -26,15 +26,11 @@ You'll discover more about these ideas as you read the [Concepts](./KeyConcepts.
 
 **Every thing** and everyone that consumes services of a Hyperledger Fabric network **requires an identity**. For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for anything that has an identity -- a principal. **Principals are the main consumers of the network**.
 
-| ![NetworkPrincipals1](./ABlockchainNetwork.diagram.3.png) |
-| :---: |
-| Principals with identity are the consumers of the network in Hyperledger Fabric.  |
-
-You'll see that sometimes **network resources** -- those fundamental building blocks you saw previously -- **also have an identity**. That's because one part of the network can sometimes consume services from a different part of the network. For example, peers and orderers use channel services to communicate with applications. It's this kind of relationship which makes it helpful for network resources to be principals with identity.
-
 | ![NetworkPrincipals2](./ABlockchainNetwork.diagram.4.png) |
 | :---: |
-| Some of the building blocks of a Hyperledger Fabric can also be principals -- these will have an identity. |
+| Principals with identity are the consumers of the network in Hyperledger Fabric. Notice that the external consumers of the network - organizations, users, administrators, applications have an identity. Notice also that some of the building blocks of a Hyperledger Fabric can also be principals -- they also have an identity. |
+
+You'll see that sometimes **network resources** -- those fundamental building blocks you saw previously -- **also have an identity**. That's because one part of the network can sometimes consume services from a different part of the network. For example, peers and orderers use channel services to communicate with applications. It's this kind of relationship which makes it helpful for network resources to be principals with identity.
 
 You'll discover why identities and principals are important in a moment, and later on, you'll start to understand the importance of a **public key infrastructure** (PKI) to **establish trusted identities** for the principals in the network. But for now, just remember that there are lots of identities associated with a network.
 

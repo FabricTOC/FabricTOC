@@ -46,32 +46,35 @@ Because there will typically be a single list of CAs -- leading back to a common
 | :---: |
 | Two different MSP configurations for an organization.  The first configuration shows the typical MSP relationship -- a single MSP defines the list of recognized sources of verifiable identity to an organization. In the second configuration, different MSPs are used to support different identity providers for national, international and governmental interactions.|
 
-
 ### Local and Global MSPs
 
-There are two different types of MSPs: local and global. **Local MSPs are only defined for nodes** (peer or orderer) and they apply to the node where they are defined. Moreover, every node must have a local MSP defined. In contrast, **global MSPs are only defined for channels or the entire network**, and they apply to all of the nodes that are part of a channel or network. Every channel or network must have an MSP defined for it. This means that peers and orderers in the same channel or network all share the same global MSP. In summary, you can see that the difference between local and global MSPs is the scope to which the MSP applies.  
+There are two different types of MSPs: local and global. **Local MSPs are only defined for nodes** (peer or orderer) and they apply to the node where they are defined. Moreover, every node must have a local MSP defined. In contrast, **global MSPs are only defined for channels or the entire network**, and they apply to all of the nodes that are part of a channel or network. Every channel or network must have at least one MSP defined for it, and peers and orderers in the same channel or network all share the same global MSP. In summary, you can see that the difference between local and global MSPs is the scope to which the MSP applies.  
 
-| ![MSP2](./IdentityandChainsofTrust.diagram.2.png) |
+| ![MSP2](./IdentityandChainsofTrust.diagram.4.png) |
 | :---: |
-| Local and Global MSPs. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, which also manages the orderer node. The peer is managed by a different organization, ORG2. The channel can be managed by both ORG1 and ORG2. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2. |
+| Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for the channel are global. Each peer is managed by its own organization, ORG1 or ORG2. The channel can be managed by both ORG1 and ORG2. Similar principles apply for the network and orderers, but these are not shown here for clarity.|
 
-You'll also see that local MSPs are defined on the file system of the peer or orderer to which they apply. Therefore, physically and logically there is only one local MSP per node. However, as global MSPs apply to all nodes in a channel or network, they are defined once inside the network or channel configuration. Physically there are multiple copies of a global MSP, because it is replicated across every node and kept synchronized via consensus, but logically there is only one global MSP per channel or network.
+You'll can see that **local MSPs are only defined on the file system of the node** to which they apply. Therefore, physically and logically there is only one local MSP per node. However, as **global MSPs apply to all nodes in a channel or network**, they are logically defined once for the network or channel. However, **a global MSP is physically replicated across every node and kept synchronized via consensus**. So while there is a copy of a global MSP on the nodes local filesystem, logically there is are only global MSPs for a channel or network.
 
 ### MSP Levels
 
 As you've seen, MSPs provide a list of recognized CAs -- for peers and orderers these are called local MSPs, and for channels and networks they are called global MSPs.  It's helpful to think of these MSPs at being at different **levels** -- **MSPs at a higher level relate to network-wide administration concerns, whereas MSPs at a lower level are limited to administration of private resources**. This tiering is helpful because it supports the mix of both broad and narrow administrative control depending on how the network is constituted. MSPs are mandatory -- they must be defined for each of the four levels: Network, Channel, Peer and Orderer.
 
- * **Network MSP:** These MSPs are defined in the configuration policy of the whole network, so by definition, **there is only one network MSP**. Every principal who uses a network configuration must have their identity recognized by this MSP before they can perform an administrative task at the network level. This means that the CAs that are defined by the network MSP should **recognize the organizations who have overall administrative control over the whole network**. An example of a network-wide administrative permission might be to define or change the organizations who can create channels.
+| ![MSP3](./IdentityandChainsofTrust.diagram.2.png) |
+| :---: |
+| MSP Levels. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, but the channel can be managed by ORG1 and ORG2. The peer is managed by ORG2, whereas it is ORG1 that manages the orderer. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2. which also manages the orderer node. |
 
- * **Channel MSP:** These MSPs are defined inside the configuration policy of each channel, and therefore there is one MSP for each channel that is defined. It is helpful for a channel to have its own MSP because a channel provides private communications between a particular set of organizations and its MSP identifies the organizations that have administrative control over it. You can see that the need for **a separate channel MSP stems from the need for local autonomy** -- the organizations in a channel can be largely independent from the rest of the network. It also means that administrative control over the network doesn't necessarily imply control over any particular channel; again reflecting the real administrative needs of collaborating organizations who may sometimes require separation of control. We see this kind of separation at the levels of control in the real world, too. The authority of the President of the United States, for example, exists at the federal level. He or she has no authority to veto state laws.
+ * **Network MSP:** These MSPs are defined in the configuration policy of the whole network, so by definition, **there is only one set of network MSPs**. Every principal who uses a network configuration must have their identity recognized by the network before they can perform an administrative task at the network level. This means that the MSPs that are defined for the network should **recognize the organizations who have overall administrative control over the whole network**. An example of a network-wide administrative permission might be to define or change the organizations who can create channels.
 
- * **Peer MSP:** These MSPs are defined on the local file system of each peer. Conceptually, they perform exactly the same function as global MSPs with the restriction that they only apply to the peer where they are defined. As peers are owned by a particular organization and connect applications from that organization to the ledger, the MSP for a peer usually refers to identity information from that organization only. It's possible to specify multiple different CAs in a peer MSP, it's just that in practice a local MSP refers to fewer CAs than a global MSP. An example of a peer permission might be the ability to install or upgrade smart contract chaincode on that peer.
+ * **Channel MSP:** These MSPs are defined inside the configuration policy of each channel, and therefore there is one set of MSPs for each channel that is defined. It is helpful for a channel to have its own set of MSPs because a channel provides private communications between a particular set of organizations, which in turn have administrative control over it. You can see that the need for **a separate set of channel MSPs stems from the need for local autonomy** -- the organizations in a channel can be largely independent from the rest of the network. It also means that administrative control over the network doesn't necessarily imply control over any particular channel; again reflecting the real administrative needs of collaborating organizations who may sometimes require separation of control. We see this kind of separation at the levels of control in the real world, too. The authority of the President of the United States, for example, exists at the federal level. He or she has no authority to veto state laws.
 
- * **Orderer MSP:** Like peer MSPs, orderer MSPs are also defined on the local file system of the orderer and only apply to it. Like peer nodes, orderer nodes are also owned by a single organization and therefore their MSPs typically recognize a single organization's identity information, though again it's possible to specify others organizations. There are a currently very few, if any,   administrative actions that are local to an orderer node, so in reality and orderer may not need to populate its local MSP.
+ * **Peer MSP:** This local MSP is defined on the file system of each peer. Conceptually, it performs exactly the same function as global MSPs with the restriction that it only applies to the peer where it is defined. As peers are owned by a particular organization and connect applications from that organization to the ledger, there is only a single MSP for a peer. It's possible to specify multiple different CAs in this MSP, it's just that in practice a local MSP refers to many fewer CAs than a set of global MSPs. An example of a peer permission might be the ability to install or upgrade smart contract chaincode on that peer.
+
+ * **Orderer MSP:** Like a peer MSP, an orderer local MSP is also defined on the file system of the node, and only applies to it. Like peer nodes, orderers are also owned by a single organization and therefore only has a single MSP to recognize the organization's chain of trust, though again it's possible to specify multiple CAs. There are a currently very few, if any, administrative actions that are local to an orderer node, so in reality an orderer may not need to populate its local MSP.
 
 ### Up to here
 
-### MSP Detailed Structure
+### MSP Structure
 
 As you've seen, an MSP defines allows different components in a blockchain network to recognized different identity providers.  
 
@@ -97,12 +100,6 @@ As you've seen, an MSP defines allows different components in a blockchain netwo
 
 ### Remainder material to be incorporated
 
-So far, so good  -
-
-well-known authorities who are the key parts of the internet, they provide  
-
- Network and Channel MSPs are global -- they control the behaviour of all nodes who interact with them.  Peer and Orderer MSPs are local -- they only control behaviour for the nodes where they are defined.  
-
 Nothing about a Fabric network can function unless components trust each other's identities and the permissions those identities entitle them to. Establishing that trust means creating *digital certificates* which can be verified against a shared trust store of identities.
 
 Those certificates are created by a component we call a Certificate Authority (CA) using public keys (which are self-generated from a component -- or user's -- public/private keys).
@@ -110,22 +107,6 @@ Those certificates are created by a component we call a Certificate Authority (C
 This is not dissimilar from how identity works in the real world. Think of your private key as being roughly analogous to a Social Security Number. It's too dangerous to expose directly as a regular form of identity, but it can be used to generate other identities -- a driver's license, for example -- which is issued by a trusted source (the DMV). This driver's license is like your public key -- still private, but used to grant permissions (like the right to drive) and to generate other identities (like a library card).
 
 In a Fabric network, the CA -- which is trusted by the network -- takes the place of the DMV and issues you a digital cert. And just as the driver's license is used as a proxy for identity (while also conferring explicit privileges like the right to drive), the digital certs issued by a CA confer not just identity but rights to perform network functions or over network components.
-
-
-You're now going to focus on four components the blockchain, and how they establish a **chain of trust** in order to help them determine which principals have permission over different network resources. As you saw in [](./),
-In this topic, Four of the components in the network are
-
-In this topic you'll see how **a chain of trust** must be established by four of the major components in a blockchain network -- the peers, orderers, channels and the network itself.
-
- -- they need to establish a chain of trust for the principals who wish to interact with these components.  
-
-We  
-
-For example, if a peer wants to determine whether a connected application can update a ledger, it uses the channel policy to look up the permission associated with the application's organization.
-
-is a digital certificate which holds
-
-As you've also seen, an identity is brought to the network by a principal in the form of a cryptographically validated digital certificate issued by a Certificate Authority.  Ad as we've seen, a Hyperledger Fabric blockhain network can only function when components trust principal's identities. There are two parts to establishing trust, specifically **digital certificates** and the identification of which can be verified against a shared trust store of identities.
 
 *(Other things I'm not sure about: How are you brought into the network originally (how are those certs generated, from where, where are they stored, what happens to them). And then how are they used by you in two different ways: 1) to execute certain functions. How are they tested? Who tests them? Where do they test them? What exact identity are you using (is it a global ID or does it just go back to the root CA to check it). And 2) how is this identity used to get new privileges and how and where is that update stored (such that it can be checked out when you want to perform that action)).*
 
