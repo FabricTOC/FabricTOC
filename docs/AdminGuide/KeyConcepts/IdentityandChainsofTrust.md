@@ -42,6 +42,8 @@ Whereas a CA provides a verifiable identity, an MSP complements this by identify
 | :---: |
 | An MSP configuration where the network is administered by one organization, ORG1, which also manages the orderer. The peer is managed by a different organization, ORG2. The channel can be managed by both ORG1 and ORG2. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2.|
 
+### Mapping MSPs to Organizations
+
 Because there will typically be a single list of CAs -- leading back to a common Root CA -- that an organization recognizes, it will also usually have only a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple CA lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, for example `ORG2.MSP.SALES` and `ORG2.MSP.GOVERNMENT`, reflecting the different root of trust in the SALES channel compared to the GOVERNMENT channel.
 
 ### Local and Global MSPs
