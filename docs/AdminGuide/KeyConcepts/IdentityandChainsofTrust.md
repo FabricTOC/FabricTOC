@@ -38,7 +38,7 @@ You've now seen how CAs can provide verifiable identities through a chain of tru
 
 Whereas a CA provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are recognized, and thus who an organization considers to be its trusted members. An MSP can also recognize other things related to membership of a network -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a list of members of a given organization**.
 
-MSPs are defined either on the local file system, in which case they are a **Local MSP** or in the policy configuration of the network or a channel, in which case they are a **Global MSP**.  You'll hear more about local and global MSPs later.
+MSPs are defined either on the local file system of a peer or orderer node, in which case they are a **Local MSP** or in the policy configuration of the network or each channel, in which case they are a **Global MSP**.  You'll hear more about local and global MSPs later.
 
 ### Mapping MSPs to Organizations
 
