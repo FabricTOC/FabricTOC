@@ -4,7 +4,7 @@ Identities really matter in a Hyperledger Fabric blockchain network! That's beca
 
 **You'll find the idea of a trusted membership easiest to understand if you start with an analogy.** Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
-CAs and MSPs provide this combination of verification and recognition. The CA is like the card provider -- it dispenses verifiable identities. The MSP on the other hand is like the list of valid card providers accepted by the store -- determining which identities are valid to do the things the holders of those identities want to do. MSPs are what turn verifiable identities into the members of a blockchain network.
+CAs and MSPs provide this combination of verification and recognition. The CA is like the card provider -- it dispenses verifiable identities. The MSP on the other hand is like the list of valid card providers accepted by the store -- determining which identities are the valid members of the store payment network. MSPs are what turn verifiable identities into the members of a blockchain network.
 
 Let's drill into these concepts in a little more detail.
 
