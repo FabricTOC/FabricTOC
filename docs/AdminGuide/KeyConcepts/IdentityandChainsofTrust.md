@@ -54,7 +54,7 @@ There are two different types of MSPs: local and global. **Local MSPs are only d
 
 | ![MSP2](./IdentityandChainsofTrust.diagram.4.png) |
 | :---: |
-| Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for the channel are global. Each peer is managed by its own organization, ORG1 or ORG2. The channel can be managed by both ORG1 and ORG2. Similar principles apply for the network and orderers, but these are not shown here for clarity. |
+| Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for the channel are global. Each peer is managed by its own organization, ORG1 or ORG2. The channel can be managed by both ORG1 and ORG2. Similar principles apply for the network and orderers, but these are not shown here for simplicity. |
 
 You can see that **local MSPs are only defined on the file system of the node** to which they apply. Therefore, physically and logically there is only one local MSP per node. However, as **global MSPs apply to all nodes in a channel or network**, they are logically defined once for the network or the channel. However, **a global MSP is physically replicated across every node and kept synchronized via consensus**. So while there is a copy of a global MSP on the local file system of every node, logically the global MSP exists on the channel or the network.
 
