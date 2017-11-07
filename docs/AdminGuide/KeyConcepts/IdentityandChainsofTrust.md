@@ -147,7 +147,7 @@ In a Fabric network, the CA -- which is trusted by the network -- takes the plac
 
 Root of Trust established -- or used, more likely -- by Mitchell and Regal (and the two dealerships, possibly). Could be that the entire car industry uses -- for convenience sake -- the same root of trust.
 
-Will ZBS use the same root of trust as Mitchell and Regal? Possibly.
+Will ZBS use the same root of trust as Mitchell and Regal? Possibly
 
 The DMV wouldn't, which means that either the initial configuration would have to recognize its CA or there'd have to be a config transaction to update the network definition to include it. *That's my read of it anyway.*  
 
