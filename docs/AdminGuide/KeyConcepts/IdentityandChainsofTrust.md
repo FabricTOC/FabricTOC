@@ -1,6 +1,6 @@
 # Identity and Trusted Membership
 
-Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources in a blockchain network**. As well as **verifying** the information in a digital certificate, network resources who use a principal's identity also have to **recognize** the source of that trusted information. These two concepts -- verification and recognition -- are provided by **Certificate Authorities** (CAs) and **Membership Service Providers** (MSPs) respectively. When combined they create the **trusted members** of a blockchain network.
+Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources in a blockchain network**. Most importantly, a principal's identity must be **verified**, and must also come from a **recognized** source. These two concepts -- verification and recognition -- are provided by **Certificate Authorities** (CAs) and **Membership Service Providers** (MSPs) respectively. When combined they create the **trusted members** of a blockchain network.
 
 **You'll find the idea of a trusted membership easiest to understand if you start with an analogy.** Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
@@ -48,6 +48,14 @@ Because there will typically be a single list of members that an organization re
 | :---: |
 | Two different MSP configurations for an organization. The first configuration shows the typical MSP relationship -- a single MSP defines the list of verifiable members of an organization. In the second configuration, different MSPs are used to support different identity providers for national, international, and governmental memberships.|
 
+#### <a name="OUMSP"> Organizational Units and MSPs
+
+An organization is often divided up into multiple **organizational units** (OUs), each of which has a certain set of responsibilities. For example, the `MITCHELL` organization might have both `MITCHELL.MANUFACTURING` and `MITCHELL.DISTRIBUTION` OUs to reflect these separate these lines of business. When X.509 certificates are issued by a CA, the `OU` field in the certificate specifies the OU to which the identity belongs.
+
+We'll see later how OUs can be helpful to control the parts of an organization who are considered to be the members of a blockchain network.  For example, in DRIVENET, only identities from the `MITCHELL.MANUFACTURING` OU might be able to access a channel, whereas `MITCHELL.DISTRIBUTION` cannot do so.
+
+Fianlly, though this is a slight mis-use of OUs, they can are sometimes be used by *different* organizations in a consortium to identify each other. In such cases,  the different organizations use the same Root CAs and Intermediate CAs for their chain of trust, but assign the `OU` field appropriately to identify membership of each organization. We'll also see how to configure MSPs to achieve this later.
+
 ### Local and Global MSPs
 
 There are two different types of MSPs: local and global. **Local MSPs are only defined for nodes** (peer or orderer) and they apply to the node where they are defined. Moreover, every node must have a local MSP defined. In contrast, **global MSPs are defined either for channels or the entire network**, and they apply to all of the nodes that are part of a channel or network. Every channel or network must have at least one MSP defined for it, and peers and orderers all share the same global MSP. The key difference here is not the function of an MSP, but the **scope**.  
@@ -82,31 +90,44 @@ As you've seen, MSPs provide a list of recognized CAs -- for peers and orderers 
 
 ### MSP Structure
 
-As you've seen, an MSP defines allows different components in a blockchain network to recognized different identity providers.  
+So far, you've seen that the two most important elements of an MSP are the identification of the root and intermediate CAs that are used to used to establish a principal's trusted membership of an organization. There are however, more than these two elements, that are used in conjunction with it to assist with membership functions.
 
 | ![MSP4](./IdentityandChainsofTrust.diagram.5.png) |
 | :---: |
-| MSP Structure. An MSP has 9 elements to its structure. You've seen how Root CAs and Intermediate CAs are the most important, but there are others.  These are discussed in this section. |
+| MSP Structure. An MSP has 9 elements to its structure, and it's easiest to think of these as subfolders of it. Up to now, you've seen how Root CAs and Intermediate CAs are the most important subfolders, but in this figure you can see the other elements of the MSP. |
+
+There are nine different elements to an MSP. You'll find it easy to understand if you think of these elements in a directory structure, where the MSP name is the root folder name, and the subfolders are each of the MSP elements. Indeed, a local MSP is stored exactly this way on the local filesystem. Even though the global MSP structure is not exactly the same, it's really helpful to think of it this way, and not worry about the format details.
+
+Let's describe these folders in a little more detail, and see why they are important.
 
  * **Root CAs**
 
+ This folder contains a list of self-signed X.509 certificates of the Root CAs recognized by this organization. There must be at least one Root CA certificate in this MSP folder.
+
  * **Intermediate CAs**
 
- * **Certificate Revocation List (CRL)**
+ This folder contains a list of X.509 certificates of the Intermediate CAs recognized by this organization. Each certificate must be signed by one of the Root CAs in the MSP. There do not need any Intermediate CA certificates in this MSP folder -- they are optional.
 
- * **Sign Cert** (public cert/pem file)
+ * **Organizational Units**
 
- * **KeyStore** Private key
+ This folder contains a list of organizational units that are considered to be part of the MSP. This is helpful to restrict an MSP
+
+ * **Administrators (Local MSP only)**
+
+ * **Revoked Certificates**
+
+ * **Signing Cert**
+
+      Public cert/pem file
+
+ * **KeyStore**
+
+ Private key
 
  * **TLS Root CA**
 
  * **TLS Intermediate CA**
 
- * **TLS Certificate Revocation List (CRL)**
-
- * **TLS SignCert**
-
- * **Administrators (Local MSP only)**
 
 ### Up to here
 
