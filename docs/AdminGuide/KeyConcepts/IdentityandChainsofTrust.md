@@ -80,11 +80,13 @@ As you've seen, MSPs provide a list of recognized CAs -- for peers and orderers 
 
  * **Orderer MSP:** Like a peer MSP, an orderer local MSP is also defined on the file system of the node and only applies to that node. Like peer nodes, orderers are also owned by a single organization and therefore have a single MSP to recognize the organization's chain of trust, though again it's possible to specify multiple Root CAs. There are a currently very few, if any, administrative actions that are local to an orderer node, so in reality an orderer may not need to populate its local MSP.
 
-### Up to here
-
 ### MSP Structure
 
 As you've seen, an MSP defines allows different components in a blockchain network to recognized different identity providers.  
+
+| ![MSP4](./IdentityandChainsofTrust.diagram.5.png) |
+| :---: |
+| MSP Structure. An MSP has 9 elements to its structure. You've seen how Root CAs and Intermediate CAs are the most important, but there are others.  These are discussed in this section. |
 
  * **Root CAs**
 
@@ -105,6 +107,8 @@ As you've seen, an MSP defines allows different components in a blockchain netwo
  * **TLS SignCert**
 
  * **Administrators (Local MSP only)**
+
+### Up to here
 
 ### Remainder material to be incorporated
 
