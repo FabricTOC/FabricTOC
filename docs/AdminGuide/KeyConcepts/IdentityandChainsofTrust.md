@@ -1,6 +1,6 @@
 # Identity and Trusted Membership
 
-Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources in a blockchain network**. Most importantly, a principal's identity must be **verified**, and must also come from a **recognized** source. These two concepts -- verification and recognition -- are provided by **Certificate Authorities** (CAs) and **Membership Service Providers** (MSPs) respectively. When combined they create the **trusted members** of a blockchain network.
+Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verified**, and also come from a **recognized** source. These two concepts -- verification and recognition -- are provided by **Certificate Authorities** (CAs) and **Membership Service Providers** (MSPs) respectively. When combined they create the **trusted members** of a blockchain network.
 
 **You'll find the idea of a trusted membership easiest to understand if you start with an analogy.** Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
@@ -112,13 +112,13 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **Organizational Units**
 
- This folder contains a list of organizational units that are considered to be part of the MSP. This is helpful to restrict an MSP
+ This folder contains a list of organizational units that are considered to be part of the MSP. This folder is really helpful when you want to restrict membership of principals to a blockchain from a particular organization, especially when that organization has a rich structure, [as discussed earlier](OUMSP).
 
  * **Administrators (Local MSP only)**
 
  * **Revoked Certificates**
 
- This folder contains the list of X.509 certificates that have been revoked. This might be necessary because the certificate was compromised by a malicious actor, or was given out inadvertently. 
+ This folder contains the list of X.509 certificates that have been revoked. This might be necessary because the certificate was compromised by a malicious actor, or was given out inadvertently.
 
  * **Signing Cert**
 
