@@ -114,23 +114,33 @@ Let's describe these folders in a little more detail and see why they are import
 
  This folder contains a list of organizational units that are considered to be part of the MSP. There do not need to be any OUs specified in this MSP folder -- they are optional -- in which case all principals part of an MSP will be considered members of the organization.
 
- This folder is really helpful when you want to restrict membership of principals to a blockchain from a particular organization, especially when that organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of recognized OUs](./) in the reference material.
+ This folder is really helpful when you want to restrict membership of principals to a blockchain from a particular organization, especially when that organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of recognized OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
 
- * **Administrators (Local MSP only)**
+ * **Administrators**
 
- This folder contains a list of X.509
+ This folder contains a list of X.509 certificates that define the principals who have the role of administrators of this organization. Typically there should be one or more certificates in this list.  
+
+ It's worth noting that just because a principal has the role of an administrator it doesn't mean that they can administer particular resources! This seems strange, but it makes sense when you realize that it's the policy permissions that define what any given organization's administrators can actually do. For example, a channel policy might specify that `MITCHELL.MANUFACTURING` administrators have the rights to add new organizations to the channel, whereas the `MITCHELL.DISTRIBUTION` administrators have no such rights.
+
+ It's worth noting that even though an X.509 certificate has a `ROLE` attribute, similar to an `OU` attribute, it is not used to identity a principal as an administrator of the blockchain network for an organization. This makes sense when you consider that the x.509 `ROLE` relates to the principal's more general role within the organization, rather than the blockchain network. It means that existing certificates can be used to identify administrators, which has some significant operational advantages.
 
  * **Revoked Certificates**
 
- This folder contains the list of X.509 certificates that have been revoked. This might be necessary because the certificate was compromised by a malicious actor, or was given out inadvertently.
+ This folder contains the list of revoked X.509 certificates for each CA listed in the MSP. It is used to identify the principals that have been revoked for an MSP. It is conceptually the same as a CA's CRL, but it relates to revocation of membership from the organization rather than revocation from the CA. Hence the administrator of an MSP, local or global, can quickly revoke a principal from an organization without having to resort to revoking their certificate from a CA -- which, of course, might not be appropriate.
+
+ This "list of lists" is optional -- there may be zero or more certificates listed for each of the CAs in the MSP.
 
  * **Signing Cert**
 
-      Public cert/pem file
+ This folder is typically defined for the local MSP of a peer or orderer node, and contains the public X.509 certificate to be used a node. It is used by a node when it needs to identify itself to another principal in the network -- an example might when a peer places its certificate in a transaction proposal to indicate that a peer's organization has endorsed it -- which can subsequently be checked against an endorsement policy by a validating node.
+
+ This folder is mandatory, and there must be exactly one X.509 certificate for the node.
 
  * **KeyStore**
 
- Private key
+ This folder is typically defined for the local MSP of a peer or orderer node, and contains the private key to be used to by that node. It is used by a node when it needs to sign or encrypt data --  an example might be the signing of a transaction proposal to indicate that a peer's organization has endorsed it.
+
+ This folder is mandatory, and there must be exactly one private key for the node. Obviously, access to this folder must be limited only to those operators administrators who have responsibility for the local MSP's peer or orderer node.
 
  * **TLS Root CA**
 
