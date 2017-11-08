@@ -50,7 +50,7 @@ Because an organization will typically recognize a single list of members, it wi
 
 #### <a name="OUMSP"> Organizational Units and MSPs
 
-An organization is often divided up into multiple **organizational units** (OUs), each of which has a certain set of responsibilities. For example, the `MITCHELL` organization might have both `MITCHELL.MANUFACTURING` and `MITCHELL.DISTRIBUTION` OUs to reflect these separate these lines of business. When a CA issues X.509 certificates, the `OU` field in the certificate specifies the OU to which the identity belongs.
+An organization is often divided up into multiple **organizational units** (OUs), each of which has a certain set of responsibilities. For example, the `MITCHELL` organization might have both `MITCHELL.MANUFACTURING` and `MITCHELL.DISTRIBUTION` OUs to reflect these separate lines of business. When a CA issues X.509 certificates, the `OU` field in the certificate specifies the line of business to which the identity belongs.
 
 We'll see later how OUs can be helpful to control the parts of an organization who are considered to be the members of a blockchain network. For example, in DRIVENET, only identities from the `MITCHELL.MANUFACTURING` OU might be able to access a channel, whereas `MITCHELL.DISTRIBUTION` cannot.
 
@@ -112,9 +112,13 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **Organizational Units**
 
- This folder contains a list of organizational units that are considered to be part of the MSP. This folder is really helpful when you want to restrict membership of principals to a blockchain from a particular organization, especially when that organization has a rich structure, [as discussed earlier](#OUMSP).
+ This folder contains a list of organizational units that are considered to be part of the MSP. There do not need to be any OUs specified in this MSP folder -- they are optional -- in which case all principals part of an MSP will be considered members of the organization.
+
+ This folder is really helpful when you want to restrict membership of principals to a blockchain from a particular organization, especially when that organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of recognized OUs](./) in the reference material.
 
  * **Administrators (Local MSP only)**
+
+ This folder contains a list of X.509
 
  * **Revoked Certificates**
 
