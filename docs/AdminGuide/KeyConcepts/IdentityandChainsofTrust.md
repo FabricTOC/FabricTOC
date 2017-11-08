@@ -104,11 +104,11 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **Root CAs**
 
- This folder contains a list of self-signed X.509 certificates of the Root CAs recognized by this organization. There must be at least one Root CA certificate in this MSP folder.
+ This folder contains a list of self-signed X.509 certificates of the Root CAs recognized by this organization. There must be at least one Root CA X.509 certificate in this MSP folder.
 
  * **Intermediate CAs**
 
- This folder contains a list of X.509 certificates of the Intermediate CAs recognized by this organization. Each certificate must be signed by one of the Root CAs in the MSP. There do not need any Intermediate CA certificates in this MSP folder -- they are optional.
+ This folder contains a list of X.509 certificates of the Intermediate CAs recognized by this organization. Each certificate must be signed by one of the Root CAs in the MSP. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
 
  * **Organizational Units**
 
@@ -130,13 +130,13 @@ Let's describe these folders in a little more detail and see why they are import
 
  This "list of lists" is optional -- there may be zero or more certificates listed for each of the CAs in the MSP.
 
- * **Signing Cert**
+ * **Signing Certificate**
 
  This folder is typically defined for the local MSP of a peer or orderer node, and contains the public X.509 certificate to be used a node. It is used by a node when it needs to identify itself to another principal in the network -- an example might when a peer places its certificate in a transaction proposal to indicate that a peer's organization has endorsed it -- which can subsequently be checked against an endorsement policy by a validating node.
 
  This folder is mandatory, and there must be exactly one X.509 certificate for the node.
 
- * **KeyStore**
+ * **KeyStore for Private Key**
 
  This folder is typically defined for the local MSP of a peer or orderer node, and contains the private key to be used to by that node. It is used by a node when it needs to sign or encrypt data --  an example might be the signing of a transaction proposal to indicate that a peer's organization has endorsed it.
 
@@ -144,10 +144,23 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **TLS Root CA**
 
+ This folder contains a list of self-signed X.509 certificates of the Root CAs recognized by this organization, **for TLS communications**. An example of TLS communications would be when a peer node needs to connect to an orderer node so that it can receive ledger updates.
+
+ This folder is completely independent to the MSP Root CA folder. This separation allows peer and order nodes to have different membership to the other principals in the network -- applications or administrators. This makes sense when you think about it -- users and applications are very likely to have different roots of trust than the peer and orderer nodes which form the network.
+
+ There must be at least one TLS Root CA X.509 certificate in this MSP folder.
+
  * **TLS Intermediate CA**
 
+ This folder contains a list of X.509 certificates of the Intermediate CAs recognized by this organization, **for TLS communications**.
 
-### Up to here
+ By analogy to the TLS Root CA folder, this folder is kept separate to the MSP Intermediate CA folder for the same reason. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
+
+## That's it!
+
+OK, we've now finished our extensive tour of identities and trusted membership of a blockchain network!
+
+In summary, Hyperledger Fabric uses a PKI and MSPs to identify the principals who are the trusted members of each organization collaborating in a blockchain network.
 
 ### Remainder material to be incorporated
 
