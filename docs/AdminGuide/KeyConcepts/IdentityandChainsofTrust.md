@@ -112,7 +112,7 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **Organizational Units**
 
- This folder contains a list of organizational units that are considered to be part of the MSP. This folder is really helpful when you want to restrict membership of principals to a blockchain from a particular organization, especially when that organization has a rich structure, [as discussed earlier](OUMSP).
+ This folder contains a list of organizational units that are considered to be part of the MSP. This folder is really helpful when you want to restrict membership of principals to a blockchain from a particular organization, especially when that organization has a rich structure, [as discussed earlier](#OUMSP).
 
  * **Administrators (Local MSP only)**
 
