@@ -64,6 +64,6 @@ While this provides the greatest degree of flexibility to the founders and admin
 
 That was easy, wasn't it? You can summarize Hyperledger Fabric as a technology which helps users build a blockchain network, which is consumed by principals with identities, with agreed and evolving rights over the different types of resources that make up the network.
 
-And if you think about it for a little while, any computer system can be described in this way -- a set of resources, principals, and permissions. The thing you now need to do is understand the concepts in more details, and how they interact with each other!
+And if you think about it for a little while, any computer system can be described in this way -- a set of resources, principals, and permissions. The thing you now need to do is understand the concepts in more detail, and how they interact with each other!
 
 [Next:Consortia](./Consortia.md)

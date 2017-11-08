@@ -1,6 +1,6 @@
 # Identity and Trusted Membership
 
-Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources in a blockchain network**. Most importantly, a principal's identity must be **verified**, and must also come from a **recognized** source. These two concepts -- verification and recognition -- are provided by **Certificate Authorities** (CAs) and **Membership Service Providers** (MSPs) respectively. When combined they create the **trusted members** of a blockchain network.
+Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verified**, and also come from a **recognized** source. These two concepts -- verification and recognition -- are provided by **Certificate Authorities** (CAs) and **Membership Service Providers** (MSPs) respectively. When combined they create the **trusted members** of a blockchain network.
 
 **You'll find the idea of a trusted membership easiest to understand if you start with an analogy.** Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
@@ -50,7 +50,7 @@ Because an organization will typically recognize a single list of members, it wi
 
 #### <a name="OUMSP"> Organizational Units and MSPs
 
-An organization is often divided up into multiple **organizational units** (OUs), each of which has a certain set of responsibilities. For example, the `MITCHELL` organization might have both `MITCHELL.MANUFACTURING` and `MITCHELL.DISTRIBUTION` OUs to reflect these separate these lines of business. When a CA issues X.509 certificates, the `OU` field in the certificate specifies the OU to which the identity belongs.
+An organization is often divided up into multiple **organizational units** (OUs), each of which has a certain set of responsibilities. For example, the `MITCHELL` organization might have both `MITCHELL.MANUFACTURING` and `MITCHELL.DISTRIBUTION` OUs to reflect these separate lines of business. When a CA issues X.509 certificates, the `OU` field in the certificate specifies the line of business to which the identity belongs.
 
 We'll see later how OUs can be helpful to control the parts of an organization who are considered to be the members of a blockchain network. For example, in DRIVENET, only identities from the `MITCHELL.MANUFACTURING` OU might be able to access a channel, whereas `MITCHELL.DISTRIBUTION` cannot.
 
@@ -104,36 +104,63 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **Root CAs**
 
- This folder contains a list of self-signed X.509 certificates of the Root CAs recognized by this organization. There must be at least one Root CA certificate in this MSP folder.
+ This folder contains a list of self-signed X.509 certificates of the Root CAs recognized by this organization. There must be at least one Root CA X.509 certificate in this MSP folder.
 
  * **Intermediate CAs**
 
- This folder contains a list of X.509 certificates of the Intermediate CAs recognized by this organization. Each certificate must be signed by one of the Root CAs in the MSP. There do not need any Intermediate CA certificates in this MSP folder -- they are optional.
+ This folder contains a list of X.509 certificates of the Intermediate CAs recognized by this organization. Each certificate must be signed by one of the Root CAs in the MSP. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
 
  * **Organizational Units**
 
- This folder contains a list of organizational units that are considered to be part of the MSP. This is helpful to restrict an MSP
+ This folder contains a list of organizational units that are considered to be part of the MSP. There do not need to be any OUs specified in this MSP folder -- they are optional -- in which case all principals part of an MSP will be considered members of the organization.
 
- * **Administrators (Local MSP only)**
+ This folder is really helpful when you want to restrict membership of principals to a blockchain from a particular organization, especially when that organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of recognized OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
+
+ * **Administrators**
+
+ This folder contains a list of X.509 certificates that define the principals who have the role of administrators of this organization. Typically there should be one or more certificates in this list.  
+
+ It's worth noting that just because a principal has the role of an administrator it doesn't mean that they can administer particular resources! This seems strange, but it makes sense when you realize that it's the policy permissions that define what any given organization's administrators can actually do. For example, a channel policy might specify that `MITCHELL.MANUFACTURING` administrators have the rights to add new organizations to the channel, whereas the `MITCHELL.DISTRIBUTION` administrators have no such rights.
+
+ It's worth noting that even though an X.509 certificate has a `ROLE` attribute, similar to an `OU` attribute, it is not used to identity a principal as an administrator of the blockchain network for an organization. This makes sense when you consider that the x.509 `ROLE` relates to the principal's more general role within the organization, rather than the blockchain network. It means that existing certificates can be used to identify administrators, which has some significant operational advantages.
 
  * **Revoked Certificates**
 
- This folder contains the list of X.509 certificates that have been revoked. This might be necessary because the certificate was compromised by a malicious actor, or was given out inadvertently. 
+ This folder contains the list of revoked X.509 certificates for each CA listed in the MSP. It is used to identify the principals that have been revoked for an MSP. It is conceptually the same as a CA's CRL, but it relates to revocation of membership from the organization rather than revocation from the CA. Hence the administrator of an MSP, local or global, can quickly revoke a principal from an organization without having to resort to revoking their certificate from a CA -- which, of course, might not be appropriate.
 
- * **Signing Cert**
+ This "list of lists" is optional -- there may be zero or more certificates listed for each of the CAs in the MSP.
 
-      Public cert/pem file
+ * **Signing Certificate**
 
- * **KeyStore**
+ This folder is typically defined for the local MSP of a peer or orderer node, and contains the public X.509 certificate to be used a node. It is used by a node when it needs to identify itself to another principal in the network -- an example might when a peer places its certificate in a transaction proposal to indicate that a peer's organization has endorsed it -- which can subsequently be checked against an endorsement policy by a validating node.
 
- Private key
+ This folder is mandatory, and there must be exactly one X.509 certificate for the node.
+
+ * **KeyStore for Private Key**
+
+ This folder is typically defined for the local MSP of a peer or orderer node, and contains the private key to be used to by that node. It is used by a node when it needs to sign or encrypt data --  an example might be the signing of a transaction proposal to indicate that a peer's organization has endorsed it.
+
+ This folder is mandatory, and there must be exactly one private key for the node. Obviously, access to this folder must be limited only to those operators administrators who have responsibility for the local MSP's peer or orderer node.
 
  * **TLS Root CA**
 
+ This folder contains a list of self-signed X.509 certificates of the Root CAs recognized by this organization, **for TLS communications**. An example of TLS communications would be when a peer node needs to connect to an orderer node so that it can receive ledger updates.
+
+ This folder is completely independent to the MSP Root CA folder. This separation allows peer and order nodes to have different membership to the other principals in the network -- applications or administrators. This makes sense when you think about it -- users and applications are very likely to have different roots of trust than the peer and orderer nodes which form the network.
+
+ There must be at least one TLS Root CA X.509 certificate in this MSP folder.
+
  * **TLS Intermediate CA**
 
+ This folder contains a list of X.509 certificates of the Intermediate CAs recognized by this organization, **for TLS communications**.
 
-### Up to here
+ By analogy to the TLS Root CA folder, this folder is kept separate to the MSP Intermediate CA folder for the same reason. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
+
+## That's it!
+
+OK, we've now finished our extensive tour of identities and trusted membership of a blockchain network!
+
+In summary, Hyperledger Fabric uses a PKI and MSPs to identify the principals who are the trusted members of each organization collaborating in a blockchain network.
 
 ### Remainder material to be incorporated
 
