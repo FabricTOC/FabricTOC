@@ -1,14 +1,28 @@
 # Identity and Trusted Membership
 
-Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verified**, and also come from a **recognized** source. These two concepts -- verification and recognition -- are provided by **Certificate Authorities** (CAs) and **Membership Service Providers** (MSPs) respectively. When combined they create the **trusted members** of a blockchain network.
+Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verified**, and it must also come from a **trusted** source. These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP) respectively. PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric blockchain network concept that. In combination, a PKI ad an MSP form the definition of the **trusted members** of a blockchain network.
 
-**You'll find the idea of a trusted membership easiest to understand if you start with an analogy.** Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
+**You'll find the idea of trusted membership easiest to understand if you start with an analogy.** Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
-CAs and MSPs provide this combination of verification and recognition. The CA is like the card provider -- it dispenses verifiable identities. The MSP on the other hand is like the list of valid card providers accepted by the store -- determining which identities are the valid members of the store payment network. **MSPs are what turn verifiable identities into the members of a blockchain network**.
+PKI and MSPs provide this combination of verification and trust. The PKI is like the card provider -- it dispenses verifiable identities. The MSP on the other hand is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs are what turn verifiable identities into the trusted members of a blockchain network**.
 
 Let's drill into these concepts in a little more detail.
 
-## What is a Certificate Authority?
+## What is PKI?
+
+Public Key Infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network. If you want to be simple but accurate, PKI puts the **S** in **httpS** -- and if you're reading this documentation on a web browser, you're probably using PKI to make sure it comes from a trusted source.
+
+Although a blockchain network is more than a simple communications network, it makes sense for it to use the PKI standard as much as possible. You'll see that even though PKI won't be sufficient to secure everything in a blockchain network, it's still the fundamental basis of blockchain security. It's therefore really helpful if you understand the basics of PKI to enable you to understand how to properly manage identity and membership, and why MSPs are so important.
+
+Let's quickly show you the basics of PKI, and if you want to know more details, then you can extend your knowledge [here](./https://en.wikipedia.org/wiki/Public_key_infrastructure).
+
+### The Elements of PKI
+
+## Digital Certificates
+
+## Public Keys and Private Keys
+
+## Certificate Authorities
 
 As you've seen, an identity is brought to the blockchain network by a principal in the form of a cryptographically validated digital certificate issued by a Certificate Authority (CA). CAs are a common part of internet security protocols, and you've probably heard of some of the more popular ones: Symantec (originally Verisign), GeoTrust, DigiCert, GoDaddy, and Comodo, among others.  
 
@@ -32,17 +46,19 @@ It's because CAs are so important that Hyperledger Fabric provides a built-in CA
 
 A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficient for many purposes. As you'll see, there are a few limitations to a Fabric CA. You can read more about these restrictions in the [Fabric CA reference section](../ReferenceMaterial/FabricCA.md)
 
-## Membership Services Providers
+## Certificate Revocation Lists
 
-You've now seen how CAs can provide verifiable identities through a chain of trust, so let's now see how these identities are recognized. That's where Membership Services Providers (MSPs) come into play -- they **list the identities of the principals who are the trusted members of a given organization**.
+## Membership Service Provider
 
-Whereas a CA provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are recognized, and thus who an organization considers to be its trusted members. An MSP can also recognize other things related to membership of a network -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a list of members of a given organization**, either by holding certificates themselves or by listing which CAs can issue valid certificates, or -- as will usually be the case -- through some combination of both.
+You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the trusted members of a blockchain network. That's where a Membership Service Provider (MSP) come into play -- **it lists the identities of the principals who are the trusted members of a given organization in the blockchain network**.
+
+Whereas a PKI provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are trusted to define which principals are considered the members of an organization.  An MSP can also recognize other things related to membership of a network -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a list of members of a given organization**, either by holding certificates themselves or by listing which CAs can issue valid certificates, or -- as will usually be the case -- through some combination of both.
 
 If an MSP is defined either on the local file system of a peer or orderer node, it is a **Local MSP**. If it's found in the policy configuration of the network or each channel, it is a **Global MSP**. You'll hear more about local and global MSPs and why the distinction between them is important later.
 
 ### Mapping MSPs to Organizations
 
-Because an organization will typically recognize a single list of members, it will usually have a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple membership lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, e.g., `ORG2.MSP.NATIONAL` and `ORG2.MSP.GOVERNMENT`, reflecting the different membership roots of trust in the NATIONAL sales channel compared to the GOVERNMENT channel for `ORG2`.
+Because an organization will typically have a single list of members, it will usually have a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple membership lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, e.g., `ORG2.MSP.NATIONAL` and `ORG2.MSP.GOVERNMENT`, reflecting the different membership roots of trust in the NATIONAL sales channel compared to the GOVERNMENT channel for `ORG2`.
 
 | ![MSP1](./IdentityandChainsofTrust.diagram.3.png) |
 | :---: |
@@ -80,15 +96,15 @@ The split between global and local MSPs reflects the needs of organizations to a
 
 | ![MSP3](./IdentityandChainsofTrust.diagram.2.png) |
 | :---: |
-| MSP Levels. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, but the channel can be managed by ORG1 and ORG2. The peer is managed by ORG2, whereas ORG1 manages the orderer. ORG1 recognizes identities from RCA1, whereas ORG2 recognizes identities from RCA2. Note that these are **administration** identities, reflecting who can admininster these components. So while ORG1 administers the network, ORG2.MSP does exist in the network definition. |
+| MSP Levels. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, but the channel can be managed by ORG1 and ORG2. The peer is managed by ORG2, whereas ORG1 manages the orderer. ORG1 trusts identities from RCA1, whereas ORG2 trusts identities from RCA2. Note that these are **administration** identities, reflecting who can admininster these components. So while ORG1 administers the network, ORG2.MSP does exist in the network definition. |
 
- * **Network MSP:** These MSPs are defined in the configuration policy of the whole network, so by definition, **there is only one set of network MSPs**. Every principal who uses a network must have their identity recognized as a member in the network policy before they can perform an administrative task. This means that the MSPs that are defined for the network should **recognize the organizations who have overall administrative control over the network**. An example of a network-wide administrative permission might be to define or change the organizations who can create channels.
+ * **Network MSP:** These MSPs are defined in the configuration policy of the whole network, so by definition, **there is only one set of network MSPs**. Every principal who uses a network must be a trusted member as defined by the MSPs in the network policy before they can perform an administrative task. This means that the MSPs that are defined for the network should define **the organizations who are trusted to have administrative control over the network**. An example of a network-wide administrative permission might be to define or change the organizations who can create channels.
 
  * **Channel MSP:** These MSPs are defined inside the configuration policy of each channel, and therefore there is one set of MSPs for each channel that is defined. It is helpful for a channel to have its own set of MSPs because a channel provides private communications between a particular set of organizations which in turn have administrative control over it. You can see that the need for **a separate set of channel MSPs stems from the need for local autonomy** -- the organizations in a channel can, and will often need to be, largely independent from the rest of the network. It also means that administrative control over the network doesn't necessarily imply control over any particular channel; again reflecting the real administrative needs of collaborating organizations who may sometimes require separation of control. We see this kind of separation at the levels of control in the real world, too. The authority of the President of the United States, for example, exists at the federal level. He or she has no authority to veto state laws.
 
  * **Peer MSP:** This local MSP is defined on the file system of each peer. Conceptually, it performs exactly the same function as global MSPs with the restriction that it only applies to the peer where it is defined. As peers are owned by a particular organization and connect applications from that organization to the ledger, there is only a single MSP for a peer. It's possible to specify multiple different CAs in this MSP, but in practice a local MSP will usually refer to many fewer CAs than a set of global MSPs. An example of a peer permission might be the ability to install or upgrade smart contract chaincode on that peer.
 
- * **Orderer MSP:** Like a peer MSP, an orderer local MSP is also defined on the file system of the node and only applies to that node. Like peer nodes, orderers are also owned by a single organization and therefore have a single MSP to recognize the organization's chain of trust, though again it's possible to specify multiple Root CAs. There are a currently very few, if any, administrative actions that are local to an orderer node, so in reality an orderer may not need to populate its local MSP.
+ * **Orderer MSP:** Like a peer MSP, an orderer local MSP is also defined on the file system of the node and only applies to that node. Like peer nodes, orderers are also owned by a single organization and therefore have a single MSP to list its trusted principals, though again it's possible to specify multiple Root CAs. There are a currently very few, if any, administrative actions that are local to an orderer node, so in reality an orderer may not need to populate its local MSP.
 
 ### MSP Structure
 
@@ -104,15 +120,15 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **Root CAs**
 
- This folder contains a list of self-signed X.509 certificates of the Root CAs recognized by this organization. There must be at least one Root CA X.509 certificate in this MSP folder.
+ This folder contains a list of self-signed X.509 certificates of the Root CAs trusted by this organization. There must be at least one Root CA X.509 certificate in this MSP folder.
 
  * **Intermediate CAs**
 
- This folder contains a list of X.509 certificates of the Intermediate CAs recognized by this organization. Each certificate must be signed by one of the Root CAs in the MSP or by an Intermediate CA -- or a chain of ICAs -- that ultimately lead back to a trusted Root CA. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
+ This folder contains a list of X.509 certificates of the Intermediate CAs trusted by this organization. Each certificate must be signed by one of the Root CAs in the MSP or by an Intermediate CA -- or a chain of ICAs -- that ultimately lead back to a trusted Root CA. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
 
  * **Organizational Units**
 
- This folder contains a list of organizational units that are considered to be part of the MSP. This is useful when you want to restrict membership of principals from a particular organization, as will sometimes be the case when that organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of recognized OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
+ This folder contains a list of organizational units that are considered to be part of the MSP. This is useful when you want to restrict membership of principals from a particular organization, as will sometimes be the case when that organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of trusted OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
 
  Specifying OUs is optional. If no OUs are listed all of the principals that are part of an MSP will be considered members of the organization.
 
@@ -146,7 +162,7 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **TLS Root CA**
 
- This folder contains a list of self-signed X.509 certificates of the Root CAs recognized by this organization **for TLS communications**. An example of a TLS communication would be when a peer needs to connect to an orderer so that it can receive ledger updates.
+ This folder contains a list of self-signed X.509 certificates of the Root CAs trusted by this organization **for TLS communications**. An example of a TLS communication would be when a peer needs to connect to an orderer so that it can receive ledger updates.
 
  This folder is completely independent to the MSP Root CA folder. This separation allows peer and order nodes to have different membership to the other principals in the network -- applications or administrators. This makes sense when you think about it -- users and applications are very likely to have different roots of trust than the peer and orderer nodes which form the network.
 
@@ -154,7 +170,7 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **TLS Intermediate CA**
 
- This folder contains a list of X.509 certificates of the Intermediate CAs recognized by this organization **for TLS communications**.
+ This folder contains a list of X.509 certificates of the Intermediate CAs trusted by this organization **for TLS communications**.
 
  By analogy to the TLS Root CA folder, this folder is kept separate to the MSP Intermediate CA folder for the same reason. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
 
