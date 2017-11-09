@@ -2,63 +2,36 @@
 
 ## What is Chaincode?
 
-Similar to the concept of a "smart contract", **chaincodes are programs that handle business logic agreed to by the members of a channel**. Once chaincode has been installed on all of the endorsing peers on a channel (we'll talk more about why only the endorsing peers might have chaincode installed later) and instantiated (meaning it's running or "active") on the channel, this business logic runs automatically based on its parameters.
+Similar to the concept of a "smart contract", **chaincodes are programs -- comprised of business logic -- that have been agreed to by the members of a channel**. This business logic **defines and enforces the rules for reading or altering the ledger**. Chaincodes are not just important, they're necessary -- **reading or writing to the ledger cannot happen without them**.
+
+The rules defined in chaincodes cover a huge number of possible functions, from comparatively simple tasks like storing and managing endorsement policies (more on these later) to -- in the case of more complex chaincodes -- automatically invoking transactions when certain conditions have been met.
+
+Let's say the channel you're on involves the buying and selling of cars. There are 20 peers on this channel. Some of these peers belong to an insurance company, others are government regulators, and the rest of the peers represent the various car businesses. In addition to the system chaincode (which we'll talk about later), the chaincodes (a channel can have one or perhaps several) would define, in part:
+
+  1. **The initial state of the car market** (represented by a set of key/value pairs). This would be instantiated on the channel and installed on all of the peers when they join the channel and on any new peer joining the channel.
+
+  2. **Defining certain parameters**. The price of shipping a car, for example, or perhaps the price of cars themselves. These parameters can -- and in many business use cases will be -- updated over time. We'll talk more about the process for updating chaincode later.
+
+  3. **The endorsement policy**. This defines who needs to sign off on a transaction for it to be valid. These endorsement policies can be specific or general, meaning that they can be written to say that an expressly defined peer or peers have to sign off on a transaction or that only a certain **number** of peers (15 of the 20 total peers, to use our car example) have to sign off. It can also be written as a combination of these (specifying for example that the DMV has to sign any transaction **and** that any 10 of the 15 car dealership peers have to sign it).
+
+  4. **Queries and invocations possible using the chaincode**. Chaincodes can be written as broadly or as narrowly as a developer wants or needs them to be. It's possible, for example, to write a chaincode that only permits a simple query of the entire ledger and allows no arguments to be passed along with it. More often, a chaincode will allow multiple different kinds of queries and updates to be written to the ledger. For example, a chaincode can be written with a function called `CreateCAR`, allowing a car to be put on the ledger. The chaincode would also allow for a number of arguments to be passed along with the created car, specifying it's make, model, color, VIN number, or other information. The ability for a chaincode to pass arguments along with a query will depend somewhat on the data storage format of the ledger itself. For more information on ledgers and storage formats, see the documentation on [ledgers](./TheLedger.md). Once a functionality has been written into a chaincode, developers can leverage those chaincodes -- to perform a variety of tasks.
+
+Crucially, because chaincodes must go through the endorsement process before they're instantiated on a channel (more on this process later), their actions are both automatic and binding. In other words, a transaction invoked by a chaincode bypasses the normal signing and verifying a transaction has to go through.
 
 
 
-Roles of chaincode: the rules of a transaction (endorsement policy). Also chaincodes that can initiate transactions automatically (if certain conditions are met). 
 
 
 
-Because chaincodes provide the parameters of most transactions they are vital part of a Fabric network -- little can be done without them -- and can be written to satisfy almost any conceivable business logic. So for example, if a shipment of flowers needs to be kept below a certain temperature, chaincode can be written that monitors the output of a temperature sensor in the shipping container. If the temperature rises above a certain level, the chaincode executes a cancellation or a fine or whatever business logic has been written to it.
 
 Fabric APIs allow for the packaging, installation, instantiation, and upgrading of chaincode on a channel's endorsing peers. These chaincodes -- channels can have more than one -- run in secure Docker containers.
 
 
 
-If a chaincode automatically initiates a transaction (as in the example of the shipping container) this transaction will bypass the normal endorsing peer process (since the chaincodes have already been endorsed by the peers, going through the endorsement process a second time is unnecessary).
 
 
 
 
-
-
-
-
-
-
-Ledger state created by a chaincode is scoped exclusively to that chaincode and can’t be accessed directly by another chaincode. Given the appropriate permission, a chaincode may invoke another chaincode to access its state within the same network.
-
-
-The Hyperledger Fabric API enables interaction with the various nodes in a blockchain network -- the peers, orderers and MSPs -- and it also allows one to package, install, instantiate and upgrade chaincode on the endorsing peer nodes. The Hyperledger Fabric language-specific SDKs abstract the specifics of the Hyperledger Fabric API to facilitate application development, though it can be used to manage a chaincode’s lifecycle. Additionally, the Hyperledger Fabric API can be accessed directly via the CLI.
-
-We provide four commands to manage a chaincode’s lifecycle: package, install, instantiate, and upgrade. In a future release, we are considering adding stop and start transactions to disable and re-enable a chaincode without having to actually uninstall it. After a chaincode has been successfully installed and instantiated, the chaincode is active (running) and can process transactions via the invoke transaction. A chaincode may be upgraded any time after it has been installed.
-
-Packaging
-
-The chaincode package consists of 3 parts:
-
-        the chaincode, as defined by ChaincodeDeploymentSpec or CDS. The CDS defines the chaincode package in terms of the code and other properties such as name and version,
-        an optional instantiation policy which can be syntactically described by the same policy used for endorsement and described in Endorsement policies, and
-        a set of signatures by the entities that “own” the chaincode.
-
-The signatures serve the following purposes:
-
-        to establish an ownership of the chaincode,
-        to allow verification of the contents of the package, and
-        to allow detection of package tampering.
-
-The creator of the instantiation transaction of the chaincode on a channel is validated against the instantiation policy of the chaincode.
-
-A chaincode package that was signed at creation can be handed over to other owners for inspection and signing. The workflow supports out-of-band signing of chaincode package.
-
-If the instantiation policy is not specified, the default policy is any MSP administrator of the channel.
-
-
-
-
-
-A way of establishing rules over transactions ("business logic") and automating them (not just more efficient but provides utility -- use case here temperature of flowers in shipping container). Similar to the concept of smart contracts (which are written in chaincode).
 
 
 ## Chaincode and the Ledgers
@@ -67,9 +40,24 @@ A way of establishing rules over transactions ("business logic") and automating 
 
 ## Installing Chaincode
 
-Chaincode functions at the channel level but must be installed at the peer level (on the peers that endorse transactions relevant to that chaincode). Channels can have multiple chaincodes/smart contracts functioning on it simultaneously and every endorsing peer node of a channel that will run your chaincode must have it installed. If a peer is not endorsing it will still write transactions to its copy of the channel ledger. Chaincode should only be installed on endorsing peer nodes of the owning members of the chaincode to protect the confidentiality of the chaincode logic from other members on the network. Those members without the chaincode can’t be the endorsers of the chaincode’s transactions; that is, they can’t execute the chaincode. However, they can still validate and commit the transactions to the ledger.
+Before a chaincode can be installed, it must be packaged correctly. To see how this is done, refer to the [chaincode reference section](./ReferenceMaterial/ChaincodeReference.md).
 
-Chaincode can be created by anyone.
+
+
+The Hyperledger Fabric API enables interaction with the various nodes in a blockchain network -- the peers, orderers and MSPs -- and it also allows one to package, install, instantiate and upgrade chaincode on the endorsing peer nodes. The Hyperledger Fabric language-specific SDKs abstract the specifics of the Hyperledger Fabric API to facilitate application development, though it can be used to manage a chaincode’s lifecycle. Additionally, the Hyperledger Fabric API can be accessed directly via the CLI.
+
+We provide four commands to manage a chaincode’s lifecycle: package, install, instantiate, and upgrade. In a future release, we are considering adding stop and start transactions to disable and re-enable a chaincode without having to actually uninstall it. After a chaincode has been successfully installed and instantiated, the chaincode is active (running) and can process transactions via the invoke transaction. A chaincode may be upgraded any time after it has been installed.
+
+Chaincodes physically run in Docker containers and function at the channel level. Chaincode must also be installed on the endorsing peers in a channel.
+
+Channels can have multiple chaincodes/smart contracts functioning on it simultaneously and every endorsing peer node of a channel that will run your chaincode must have it installed.
+
+If a peer is not endorsing it will still write transactions to its copy of the channel ledger. It will not be executing the chaincode. However, they can still validate and commit the transactions to the ledger.
+
+Chaincode should only be installed on endorsing peer nodes of the owning members of the chaincode to protect the confidentiality of the chaincode logic from other members on the network.
+
+
+
 
 
 ## Instantiating Chaincode
@@ -127,11 +115,6 @@ The current list of system chaincodes:
 Care must be taken when modifying or replacing these system chaincodes, especially LSCC, ESCC and VSCC since they are in the main transaction execution path. It is worth noting that as VSCC validates a block before committing it to the ledger, it is important that all peers in the channel compute the same validation to avoid ledger divergence (non-determinism). So special care is needed if VSCC is modified or replaced.
 
 
-
-
-## DRIVENET Chaincode
-
-Similar to chaincode that would exist for any supply chain network. Customized to take specific regulations in the car industry (and American laws) into account.
 
 
 
