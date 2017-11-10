@@ -220,31 +220,21 @@ Let's describe these folders in a little more detail and see why they are import
 
  By analogy to the TLS Root CA folder, this folder is kept separate to the MSP Intermediate CA folder for the same reason. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
 
-## That's it!
-
-OK, we've now finished our extensive tour of identities and trusted membership of a blockchain network!
-
-In summary, Hyperledger Fabric uses a PKI and MSPs to identify the principals who are the trusted members of each organization collaborating in a blockchain network.
-
-### Remainder material to be incorporated
-
-Nothing about a Fabric network can function unless components trust each other's identities and the permissions those identities entitle them to. Establishing that trust means creating *digital certificates* which can be verified against a shared trust store of identities.
-
-Those certificates are created by a component we call a Certificate Authority (CA) using public keys (which are self-generated from a component -- or user's -- public/private keys).
-
-This is not dissimilar from how identity works in the real world. Think of your private key as being roughly analogous to a Social Security Number. It's too dangerous to expose directly as a regular form of identity, but it can be used to generate other identities -- a driver's license, for example -- which is issued by a trusted source (the DMV). This driver's license is like your public key -- still private, but used to grant permissions (like the right to drive) and to generate other identities (like a library card).
-
-In a Fabric network, the CA -- which is trusted by the network -- takes the place of the DMV and issues you a digital cert. And just as the driver's license is used as a proxy for identity (while also conferring explicit privileges like the right to drive), the digital certs issued by a CA confer not just identity but rights to perform network functions or over network components.
-
-*(Other things I'm not sure about: How are you brought into the network originally (how are those certs generated, from where, where are they stored, what happens to them). And then how are they used by you in two different ways: 1) to execute certain functions. How are they tested? Who tests them? Where do they test them? What exact identity are you using (is it a global ID or does it just go back to the root CA to check it). And 2) how is this identity used to get new privileges and how and where is that update stored (such that it can be checked out when you want to perform that action)).*
-
 ## MSPs in DRIVENET
+
+**This section needs work**
 
 Root of Trust established -- or used, more likely -- by Mitchell and Regal (and the two dealerships, possibly). Could be that the entire car industry uses -- for convenience sake -- the same root of trust.
 
 Will ZBS use the same root of trust as Mitchell and Regal? Possibly.
 
 The DMV wouldn't, which means that either the initial configuration would have to recognize its CA or there'd have to be a config transaction to update the network definition to include it. *That's my read of it anyway.*  
+
+## That's it!
+
+OK, we've now finished our extensive tour of identities and trusted membership of a blockchain network!
+
+In summary, Hyperledger Fabric uses a PKI and MSPs to identify the principals who are the trusted members of each organization collaborating in a blockchain network.
 
 
 [Next: Policies for Access Control](./PoliciesforAccessControl.md)
