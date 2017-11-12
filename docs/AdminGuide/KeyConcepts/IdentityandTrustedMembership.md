@@ -1,12 +1,14 @@
 # Identity and Trusted Membership
 
-Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verified**, and it must also come from a **trusted** source. These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP) respectively. PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric blockchain network concept that. In combination, a PKI and an MSP form the definition of the **trusted members** of a blockchain network.
+Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources that they have in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verified** (a real identity, in other words), and it must also come from a **trusted** source.
+
+These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, a PKI and an MSP form the definition of the **trusted members** of a blockchain network.
 
 | ![Scenario](./IdentityandChainsofTrust.diagram.7.png) |
 | :---: |
 | Diagram required. |
 
-**You'll find the idea of trusted membership easiest to understand if you start with an analogy.** Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
+Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
 PKI and MSPs provide this combination of verification and trust. The PKI is like the card provider -- it dispenses verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the trusted members of a blockchain network**.
 
@@ -14,15 +16,15 @@ Let's drill into these concepts in a little more detail.
 
 ## What is PKI?
 
-**Public Key Infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network.** If you want to be simple but accurate, PKI puts the **S** in **HTTPS** -- and if you're reading this documentation on a web browser, you're probably using PKI to make sure it comes from a trusted source.
+**A public key infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network.** It's PKI that puts the **S** in **HTTPS** -- and if you're reading this documentation on a web browser, you're probably using a PKI to make sure it comes from a trusted source.
 
 | ![PKI](./IdentityandChainsofTrust.diagram.8.png) |
 | :---: |
 | Diagram required. |
 
-Although a blockchain network is more than a simple communications network, it makes sense for it to use the PKI standard as much as possible. You'll see that even though PKI won't be sufficient to secure everything in a blockchain network, it's still the fundamental basis of blockchain security. It's therefore really helpful if you understand the basics of PKI, and then why MSPs are so important.
+Although a blockchain network is more than a simple communications network, it makes sense for it to use the PKI standard as much as possible. You'll see that even though PKIs aren't sufficient for all the needs of a blockchain network, it's still the fundamental basis of blockchain security. It's therefore really helpful if you understand the basics of PKI, and then why MSPs are so important.
 
-There are four key elements to PKI:
+There are four key elements to PKIs:
 
  * **Digital Certificates**
  * **Public and Private Keys**
@@ -33,21 +35,21 @@ Let's quickly describe these PKI basics, and if you want to know more details, t
 
 ## Digital Certificates
 
-A digital certificate is a document which holds a set of attributes relating to a principal's identity. and the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509).  For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456` which shows that Mary works in the manufacturing division. There are many other attributes in an X.509 certificate, but that's not important right now.
+A digital certificate is a document which holds a set of attributes relating to a principal's identity. and the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`, not dissimilarly to how a car's VIN number is a code that contains details about the make, model, color and other details about the car. There are many other attributes in an X.509 certificate, but that's not important right now.
 
 | ![DigitalCertificate](./IdentityandChainsofTrust.diagram.9.png) |
 | :---: |
 | Diagram required. |
 
-What is important is that all of Mary's attributes are verifiably correct using mathematically cryptographic techniques -- they cannot be tampered with without invalidating the certificate.  This allows Mary to present her certificate to others to prove her identity, as long as the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (its **private key**), then anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card which is impossible to change.
+What is important is that all of Mary's attributes can be verified using mathematically cryptographic techniques -- they cannot be tampered with without invalidating the certificate. This allows Mary to present her certificate to others to prove her identity, as long as the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (its **private key**), then anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card which is impossible to change.
 
 ## Public Keys and Private Keys
 
 There are two key elements to secure communication -- authentication and encryption.
 
-**Authentication** ensures that information has not been tampered with since it was generated; information that might relate to the a principal's identity or information they generate. For example, you might want to be sure you're communicating with the real Mary Mitchell rather than an impersonator.  Or if Mary has generated some information, then you want to be sure that it's not been changed by anyone else. In both cases, authenticity of information is of primary importance.
+**Authentication** ensures that anything that might relate to a principal's identity or information that has been generated has not been tampered with. For example, you might want to be sure you're communicating with the real Mary Mitchell rather than an impersonator.  Or if Mary has generated some information, you might want to be sure that it hasn't been changed by anyone else. In both cases, authenticity of information is of primary importance.
 
-**Encryption**, on other hand, is quite different to authentication -- it enables the private transmission of information between Mary and other principals; anyone can encrypt information for Mary safe in the knowledge that no-one but Mary can read it. That is to say that encrypted information can only be decrypted by its intended recipients, and no-one else.  
+**Encryption**, on other hand, is quite different to authentication -- it enables the private transmission of information between Mary and other principals by ensuring that encrypted information can only be decrypted by its intended recipients and no one else.  
 
 | ![PublicPrivateKeys](./IdentityandChainsofTrust.diagram.10.png) |
 | :---: |
@@ -55,7 +57,7 @@ There are two key elements to secure communication -- authentication and encrypt
 
 **To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private, and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
 
-**This unique relationship between a public-private key pair is the bit of cryptographic magic that makes secure communications possible**. For the purposes of authentication, Mary can use her private key to create a small, unique data signature from an arbitrarily large amount of data, which can only be verified Mary's public key. And for the purposes encryption, Mary's public key can be used by anyone in a PKI to create a secret encoding of data for Mary that can only be transformed back to its original form by Mary's private key.
+**This unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**. To do this, Mary uses her private key to create a small, unique data signature from an arbitrarily large amount of data which can only be verified by Mary's public key. To allow messages to be encoded such that only Mark can decrypt then, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key.
 
 
 ## Certificate Authorities
@@ -96,7 +98,7 @@ TBC
 
 ## Membership Service Provider
 
-You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the trusted members of a blockchain network. That's where a Membership Service Provider (MSP) come into play -- **it lists the identities of the principals who are the trusted members of a given organization in the blockchain network**.
+You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the trusted members of a blockchain network. That's where a Membership Service Provider (MSP) comes into play -- **it lists the identities of the principals who are the trusted members of a given organization in the blockchain network**.
 
 Whereas a PKI provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are trusted to define which principals are considered the members of an organization.  An MSP can also recognize other things related to membership of a network -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a list of members of a given organization**, either by holding certificates themselves or by listing which CAs can issue valid certificates, or -- as will usually be the case -- through some combination of both.
 
@@ -104,7 +106,7 @@ If an MSP is defined either on the local file system of a peer or orderer node, 
 
 ### Mapping MSPs to Organizations
 
-Because an organization will typically have a single list of members, it will usually have a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple membership lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, e.g., `ORG2.MSP.NATIONAL` and `ORG2.MSP.GOVERNMENT`, reflecting the different membership roots of trust in the NATIONAL sales channel compared to the GOVERNMENT channel for `ORG2`.
+Because an organization will typically have a single list of members, it will usually have a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple membership lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, e.g., `ORG2.MSP.NATIONAL` and `ORG2.MSP.GOVERNMENT`, reflecting the different membership roots of trust within `ORG2` in the NATIONAL sales channel compared to the GOVERNMENT channel.
 
 | ![MSP1](./IdentityandChainsofTrust.diagram.3.png) |
 | :---: |

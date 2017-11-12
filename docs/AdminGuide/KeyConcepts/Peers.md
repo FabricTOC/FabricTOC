@@ -16,12 +16,14 @@ Peers are owned and controlled by consortia members. Each member organization ca
 
 ## Peers and the Ledger
 
-Ledgers are stored on a peer's file system (either locally or externally depending on the type of database the peer is using). Peers will have a separate ledger for every channel they're a member of. 
+Ledgers are stored on a peer's file system (either locally or externally depending on the type of database the peer is using). Peers will have a separate ledger for every channel they're a member of.
+
+Link here to TheLedger.md.
 
 
 ## Peers and Identity
 
-Local MSP (at the peer level). Who is allow to do what on that peer? Will have the same MSP as it's organization (since peers belong to organizations). Will go back to the RCA of the ORG. This org msp structure is what allows intraorganizational gossip and the function of the leading/anchor peers.
+Local MSP (at the peer level). Who is allowed to do what on that peer? The peer will have the same MSP as its organization (since peers belong to organizations). Will go back to the RCA of the ORG. This org msp structure is what allows intraorganizational gossip and the function of the leading/anchor peers.
 
 Peers will also maintain Global MSP for every channel they're a part of. Regulates permissions on those channels. Peers may be a part of many channels and will maintain a Global MSP for each channel.
 
@@ -43,10 +45,14 @@ Get the ledger from the Leading Peer. Or, if there's no Leading Peer, from the o
 
 Difference between being added to a channel that's already running and being part of the founding of a channel. If peer is part of the creation of a channel, it's ORG MSP will be part of the initial config block of the channel. If peer is being added to a channel that doesn't recognize its ORG MSP, the MSP of that ORG must be added by the admins of the channel.
 
-Specify that even if ORG1 and ORG2 use the same RCA -- Verisign, for example -- the specific ORG MSP must be added to the channel first (peers must be tied to an organization). *I think that's right anyway*.
+Specify that even if ORG1 and ORG2 use the same RCA -- Verisign, for example -- the specific ORG MSP must be added to the channel first (since peers must be tied to an organization). *I think that's right, anyway*.
 
 
 ## Changing a Peer
+
+All of the components in a Fabric network have a version.
+
+What are the configurations of a peer that are optional (ie **can** be updated)? Admin policy. 
 
 
 
