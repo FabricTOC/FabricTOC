@@ -2,43 +2,34 @@
 
 ## What is Chaincode?
 
-Similar to the concept of a "smart contract", **chaincodes are programs -- comprised of business logic -- that have been agreed to by the members of a channel**. This business logic **defines and enforces the rules for reading or altering the ledger**. Chaincodes are not just important, they're necessary -- **reading or writing to the ledger cannot happen without them**.
+Similar to the concept of a "smart contract", **chaincodes are programs -- comprised of business logic -- that have been agreed to by the members of a channel**. This business logic **defines and enforces the rules for reading or altering the ledger for that channel**.
 
-The rules defined in chaincodes cover a huge number of possible functions, from comparatively simple tasks like storing and managing endorsement policies (more on these later) to -- in the case of more complex chaincodes -- automatically invoking transactions when certain conditions have been met.
+Chaincodes are not just important, they're necessary -- **reading or writing to the ledger cannot happen without them**.
 
-Let's say the channel you're on involves the buying and selling of cars. There are 20 peers on this channel. Some of these peers belong to an insurance company, others are government regulators, and the rest of the peers represent the various car businesses. In addition to the system chaincode (which we'll talk about later), the chaincodes (a channel can have one or perhaps several) would define, in part:
+The rules defined in chaincodes cover a huge number of possible functions, from comparatively simple tasks like storing and managing endorsement policies (more on these later) to -- in the case of more complex chaincodes -- automatically invoking transactions when certain conditions have been met. As a result, a channel will sometimes have more than one chaincode instatiated (i.e. "running") on it.
+
+Let's say the channel you're on involves the buying and selling of cars. There are 20 peers on this channel. A few peers belong to an insurance company, others belong to government regulators, with the rest of the peers representing the car businesses. In addition to the system chaincode (which we'll talk about later), the chaincode(s) would define, in part:
 
   1. **The initial state of the car market** (represented by a set of key/value pairs). This would be instantiated on the channel and installed on all of the peers when they join the channel and on any new peer joining the channel.
 
   2. **Defining certain parameters**. The price of shipping a car, for example, or perhaps the price of cars themselves. These parameters can -- and in many business use cases will be -- updated over time. We'll talk more about the process for updating chaincode later.
 
-  3. **The endorsement policy**. This defines who needs to sign off on a transaction for it to be valid. These endorsement policies can be specific or general, meaning that they can be written to say that an expressly defined peer or peers have to sign off on a transaction or that only a certain **number** of peers (15 of the 20 total peers, to use our car example) have to sign off. It can also be written as a combination of these (specifying for example that the DMV has to sign any transaction **and** that any 10 of the 15 car dealership peers have to sign it).
+  3. **The endorsement policy**. This defines who needs to sign off on a transaction for it to be validated and written to the ledger (for the channel the chaincode has been instantiated on). These endorsement policies can be specific or general, meaning that they can be written to say that an explicitly defined peer or peers have to sign off on a transaction or that only a certain **number** of peers (15 of the 20 total peers, to use our car example) have to sign off. It can also be written as a combination of these (specifying for example that the DMV has to sign any transaction **and** that any 10 of the 15 car dealership peers have to sign it). In general, chaincodes specifying an endorsement policy will only be installed on peers involved in endorsements on that channel (more on this later).
 
-  4. **Queries and invocations possible using the chaincode**. Chaincodes can be written as broadly or as narrowly as a developer wants or needs them to be. It's possible, for example, to write a chaincode that only permits a simple query of the entire ledger and allows no arguments to be passed along with it. More often, a chaincode will allow multiple different kinds of queries and updates to be written to the ledger. For example, a chaincode can be written with a function called `CreateCAR`, allowing a car to be put on the ledger. The chaincode would also allow for a number of arguments to be passed along with the created car, specifying it's make, model, color, VIN number, or other information. The ability for a chaincode to pass arguments along with a query will depend somewhat on the data storage format of the ledger itself. For more information on ledgers and storage formats, see the documentation on [ledgers](./TheLedger.md). Once a functionality has been written into a chaincode, developers can leverage those chaincodes -- to perform a variety of tasks.
+  4. **Queries and updates possible using the chaincode**. Chaincodes can be written as broadly or as narrowly as a developer wants or needs them to be. It's possible, for example, to write a chaincode that only permits a simple query of the entire ledger and allows no arguments (variables) to be passed along with it. More often, a chaincode will allow multiple different kinds of queries and updates to be written to the ledger by changing these arguments. For example, a chaincode can be written with a function called `CreateCAR`, allowing a car to be put on the ledger. The arguments -- specifying its make, model, color, VIN number, or other information -- would be passed along with `CreateCAR` (in an order defined in the chaincode, preventing "black" to be passed as the "year" of the car, for example). The ability for a chaincode to pass arguments along with a **query** (searching for every "black" car in the database, for example) will depend somewhat on the data storage format being used. Arguments can always be passed along with ledger updates, but if the storage format is binary or some other non-rich format, it will be impossible to make rich queries like searching for all "black" cars to it. For more information on ledgers and storage formats, see the documentation on [ledgers](./TheLedger.md). **Whatever the storage format, once a functionality has been written into a chaincode, application developers can leverage it to perform a variety of tasks**.
 
-Crucially, because chaincodes must go through the endorsement process before they're instantiated on a channel (more on this process later), their actions are both automatic and binding. In other words, a transaction invoked by a chaincode bypasses the normal signing and verifying a transaction has to go through.
+Crucially, because chaincodes must go through the endorsement process before they're instantiated on a channel, their actions are both automatic and binding. In other words, a transaction invoked by a chaincode bypasses the normal signing and verifying a regular transaction has to go through.
 
-
-
-
-
-
-
-Fabric APIs allow for the packaging, installation, instantiation, and upgrading of chaincode on a channel's endorsing peers. These chaincodes -- channels can have more than one -- run in secure Docker containers.
-
-
-
-
-
-
-
-
+Now that you can see the basics of what chaincodes are and the role they play, let's see how they interact with different parts of a Fabric network network.
 
 ## Chaincode and the Ledgers
 
+Chaincodes manage access to the ledger.
 
 
 ## Installing Chaincode
+
+Fabric APIs allow for the packaging, installation, instantiation, and upgrading of chaincode on a channel's endorsing peers. Chaincodes run in secure Docker containers.
 
 Before a chaincode can be installed, it must be packaged correctly. To see how this is done, refer to the [chaincode reference section](./ReferenceMaterial/ChaincodeReference.md).
 
@@ -84,6 +75,8 @@ The instantiate transaction also sets up the endorsement policy for that chainco
 
 Has a version.
 
+Attribute based access control (ABAC) for chaincode, using attributes included in Fabric CA generated certificates. This provides another means of enforcing access control in chaincode. FAB-5346
+
 A chaincode may be upgraded any time by changing its version, which is part of the SignedCDS. Other parts, such as owners and instantiation policy are optional. However, the chaincode **name** must be the same; otherwise it would be considered as a totally different chaincode.
 
 Prior to upgrade, the new version of the chaincode must be installed on the required endorsers. Upgrade is a transaction similar to the instantiate transaction, which binds the new version of the chaincode to the channel. Other channels bound to the old version of the chaincode still run with the old version. In other words, the upgrade transaction only affects one channel at a time, the channel to which the transaction is submitted.
@@ -95,6 +88,17 @@ Since multiple versions of a chaincode may be active simultaneously, the upgrade
 During an upgrade, the chaincode Init function is called to perform any data related updates or re-initialize it, so care must be taken to avoid resetting states when upgrading chaincode.
 
 ## System Chaincode
+
+System chaincodes are specialized chaincodes that run as part of the peer process as opposed to user chaincodes that run in separate docker containers. As such they have more access to resources in the peer and can be used for implementing features that are difficult or impossible to be implemented through user chaincodes. Examples of System Chaincodes are ESCC (Endorser System Chaincode) for endorsing proposals, QSCC (Query System Chaincode) for ledger and other fabric related queries and VSCC (Validation System Chaincode) for validating a transaction at commit time respectively.
+
+Unlike a user chaincode, a system chaincode is not installed and instantiated using proposals from SDKs or CLI. It is registered and deployed by the peer at start-up.
+
+System chaincodes can be linked to a peer in two ways: statically and dynamically using Go plugins.
+
+A system chaincode is a program written in Go and loaded using the Go plugin package.
+
+Existing chaincodes such as the QSCC can also serve as templates for certain features - such as access control - that are typically implemented through system chaincodes. The existing system chaincodes also serve as a reference for best-practices on things like logging and testing.
+
 
 Peers come loaded with certain chaincode functions. These cover a spectrum of behaviors typical of a peer in a Fabric network and allow the peer to
 
