@@ -6,7 +6,7 @@ These two identity concepts -- verification and trust -- are provided by a **Pub
 
 | ![Scenario](./IdentityandChainsofTrust.diagram.6.png) |
 | :---: |
-| Diagram required. |
+| A store where having a valid credit card is not enough -- it must also be accepted by the store! |
 
 Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
