@@ -4,10 +4,6 @@ Identities really matter in a Hyperledger Fabric blockchain network! That's beca
 
 These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, a PKI and an MSP form the definition of the **trusted members** of a blockchain network.
 
-| ![ChainOfTrust](./IdentityandChainsofTrust.diagram.1.png) |
-| :---: |
-| A chain of trust is established between a Root CA and a set of Intermediate CAs using a simple chain. Many other configurations are possible to meet the needs of collaborating organizations. |
-
 | ![Scenario](./IdentityandChainsofTrust.diagram.6.png) |
 | :---: |
 | A store where having a valid credit card is not enough -- it must also be accepted by the store! |
