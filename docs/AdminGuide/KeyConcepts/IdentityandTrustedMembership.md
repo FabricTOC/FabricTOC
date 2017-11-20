@@ -4,13 +4,13 @@ Identities really matter in a Hyperledger Fabric blockchain network! That's beca
 
 These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, a PKI and an MSP form the definition of the **trusted members** of a blockchain network.
 
-| ![Scenario](./IdentityandChainsofTrust.diagram.7.png) |
+| ![Scenario](./IdentityandChainsofTrust.diagram.6.png) |
 | :---: |
-| Diagram required. |
+| A store where having a valid credit card is not enough -- it must also be accepted by the store! |
 
 Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
-PKI and MSPs provide this combination of verification and trust. The PKI is like the card provider -- it dispenses verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the trusted members of a blockchain network**.
+PKI and MSPs provide this combination of verification and trust. A PKI is like a set of card providers -- it dispenses many different types of verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the trusted members of a blockchain network**.
 
 Let's drill into these concepts in a little more detail.
 
@@ -24,7 +24,7 @@ Let's drill into these concepts in a little more detail.
 
 Although a blockchain network is more than a simple communications network, it makes sense for it to use the PKI standard as much as possible. You'll see that even though PKIs aren't sufficient for all the needs of a blockchain network, it's still the fundamental basis of blockchain security. It's therefore really helpful if you understand the basics of PKI, and then why MSPs are so important.
 
-There are four key elements to PKIs:
+There are four key elements to PKI:
 
  * **Digital Certificates**
  * **Public and Private Keys**
@@ -35,13 +35,13 @@ Let's quickly describe these PKI basics, and if you want to know more details, t
 
 ## Digital Certificates
 
-A digital certificate is a document which holds a set of attributes relating to a principal's identity. and the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`, not dissimilarly to how a car's VIN number is a code that contains details about the make, model, color and other details about the car. There are many other attributes in an X.509 certificate, but that's not important right now.
+A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. This certificate is similar to a government identity card -- it provides  information about a particular individual when can be used by that individual to prove who they are. There are many other attributes in an X.509 certificate, but that's not important right now.
 
 | ![DigitalCertificate](./IdentityandChainsofTrust.diagram.9.png) |
 | :---: |
 | Diagram required. |
 
-What is important is that all of Mary's attributes can be verified using mathematically cryptographic techniques -- they cannot be tampered with without invalidating the certificate. This allows Mary to present her certificate to others to prove her identity, as long as the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (its **private key**), then anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card which is impossible to change.
+What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally *secret writing*) -- such that they cannot be tampered with without invalidating the certificate. Cryptography allows Mary to present her certificate to others to prove her identity, so long the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (its **private key**), then anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
 
 ## Public Keys and Private Keys
 
@@ -57,7 +57,7 @@ There are two key elements to secure communication -- authentication and encrypt
 
 **To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private, and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
 
-**This unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**. To do this, Mary uses her private key to create a small, unique data signature from an arbitrarily large amount of data which can only be verified by Mary's public key. To allow messages to be encoded such that only Mark can decrypt then, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key.
+**This unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**. For authentication, Mary uses her private key to create a small, unique data signature from an arbitrarily large amount of data which can only be verified by Mary's public key. For encryption, to allow messages to be encoded such that only Mary can decrypt then, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key.
 
 
 ## Certificate Authorities
@@ -70,11 +70,11 @@ As you've seen, an identity is brought to the blockchain network by a principal 
 
 The digital certificate provided by a CA for a principal incorporates the principal's public key as well as a comprehensive set of their attributes. Crucially, CAs themselves also have a certificate, which they make widely available. This allows the consumers of identities issued by a given CA to verify them by checking that the certificate could only have been generated by the holder of the corresponding private key (the CA). Because every principal who wants to interact with a blockchain needs an identity, you might say that **a CA defines an organization's principals from a digital perspective**. It's the CA that provides the basis for an organization's principals to have a verifiable identity, expressed as a digital certificate.
 
-If you're interested, you can read a lot more about CAs [here](./), but for now you should think of them as the components who issue digital certificates that convey a principal's identity.
+If you're interested, you can read a lot more about CAs [here](./), but for now you should think of them as the system actors who issue digital certificates that convey a principal's identity.
 
 ### Root CAs, Intermediate CAs and Chains of Trust
 
-CAs come in two flavors: **Root CAs** and **Intermediate CAs**. Because Root CAs (Symantec, Geotrust, etc) have to **securely distribute** hundreds of millions of certificates to internet users, it makes sense to spread this process out across what are called Intermediate CAs. These Intermediate CAs provide their certificates under the authority of the Root CA, and this linkage between a Root CA and Intermediate CAs establishes a **Chain of Trust** for any certificate that is issued by any CA in the chain. This ability to track back to the Root CA not only allows the function of CAs to scale while still providing security -- allowing organizations that consume certificates to use Intermediate CAs with confidence -- it limits the exposure of the Root CA, which, if compromised, would destroy the entire chain of trust. If an Intermediate CA is compromised, on the other hand, there is a much smaller exposure.
+CAs come in two flavors: **Root CAs** and **Intermediate CAs**. Because Root CAs (Symantec, Geotrust, etc) have to **securely distribute** hundreds of millions of certificates to internet users, it makes sense to spread this process out across what are called *Intermediate CAs*. These Intermediate CAs provide their certificates under the authority of the Root CA, and this linkage between a Root CA and Intermediate CAs establishes a **Chain of Trust** for any certificate that is issued by any CA in the chain. This ability to track back to the Root CA not only allows the function of CAs to scale while still providing security -- allowing organizations that consume certificates to use Intermediate CAs with confidence -- it limits the exposure of the Root CA, which, if compromised, would destroy the entire chain of trust. If an Intermediate CA is compromised, on the other hand, there is a much smaller exposure.
 
 | ![ChainOfTrust](./IdentityandChainsofTrust.diagram.1.png) |
 | :---: |
@@ -140,7 +140,7 @@ You can see that the channel and the ledger are really **logical constructs** wh
 
 ### MSP Levels
 
-The split between global and local MSPs reflects the needs of organizations to administer their **local resources (such as a peer)** as well as the **the entire -- i.e., global -- network**. It's helpful to think of these MSPs as being at different **levels**, with **MSPs at a higher level relating to network-wide administration concerns** while **MSPs at a lower level handle identity for the administration of private resources**. This tiering is helpful because it supports the mix of both broad and narrow administrative control depending on how the network needs to be constituted. MSPs are mandatory at every level of administration -- they must be defined for the network, channel, peer and orderer.
+The split between **global and local MSPs reflects the needs of organizations to administer their local resources**, such as a peer or orderer nodes, **and their global resources**, such as ledgers, smart contracts and consortia, which operate at the channel or network level. It's helpful to think of these MSPs as being at different **levels**, with **MSPs at a higher level relating to network-wide administration concerns** while **MSPs at a lower level handle identity for the administration of private resources**. This tiering is helpful because it supports the mix of both broad and narrow administrative control depending on how the network needs to be constituted. MSPs are mandatory at every level of administration -- they must be defined for the network, channel, peer and orderer.
 
 | ![MSP3](./IdentityandChainsofTrust.diagram.2.png) |
 | :---: |
@@ -156,11 +156,11 @@ The split between global and local MSPs reflects the needs of organizations to a
 
 ### MSP Structure
 
-So far, you've seen that the two most important elements of an MSP are the identification of the root and intermediate CAs that are used to used to establish a principal's trusted membership of an organization. There are however, more than these two elements, that are used in conjunction with it to assist with membership functions.
+So far, you've seen that the two most important elements of an MSP are the identification of the root and intermediate CAs that are used to used to establish a principal's trusted membership of an organization. There are,  however, more elements that are used in conjunction with these two to assist with membership functions.
 
 | ![MSP4](./IdentityandChainsofTrust.diagram.5.png) |
 | :---: |
-| The figure above shows how a **local MSP** is stored on a local filesystem. Even though global MSPs are not physically structured in exactly the same way, it's still helpful to think about global MSPs this way conceptually. |
+| The figure above shows how a **local MSP** is stored on a local filesystem. Even though global MSPs are not physically structured in exactly the same way, it's still helpful to think about global MSPs this way. |
 
 As you can see, there are nine elements to an MSP. You'll find it easy to understand if you think of these elements in a directory structure, where the MSP name is the root folder name with each subfolders representing different elements of an MSP.
 
@@ -170,15 +170,19 @@ Let's describe these folders in a little more detail and see why they are import
 
  This folder contains a list of self-signed X.509 certificates of the Root CAs trusted by this organization. There must be at least one Root CA X.509 certificate in this MSP folder.
 
+ This is the most important folder because it identifies the CAs from which all other certificates must be derived to be considered members of this organization.
+
  * **Intermediate CAs**
 
  This folder contains a list of X.509 certificates of the Intermediate CAs trusted by this organization. Each certificate must be signed by one of the Root CAs in the MSP or by an Intermediate CA -- or a chain of ICAs -- that ultimately lead back to a trusted Root CA. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
 
+ Like the Root CA folder, this folder defines the CAs from which certificates must be issued to be considered members of the organization.  It's slightly less important than the Root CA folder, because it's not the root of trusted membership.
+
  * **Organizational Units**
 
- This folder contains a list of organizational units that are considered to be part of the MSP. This is useful when you want to restrict membership of principals from a particular organization, as will sometimes be the case when that organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of trusted OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
+ This folder contains a list of organizational units that are considered to be part of the MSP. It is is useful to use this folder when you want to restrict membership of principals to be from a part of a particular organization, which will be the case when an organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of trusted OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
 
- Specifying OUs is optional. If no OUs are listed all of the principals that are part of an MSP will be considered members of the organization.
+ Specifying OUs is optional. If no OUs are listed all of the principals that are part of an MSP, as identified by the Root CA and Intermediate CA folders, will be considered members of the organization.
 
  * **Administrators**
 
@@ -186,13 +190,16 @@ Let's describe these folders in a little more detail and see why they are import
 
  It's worth noting that just because a principal has the role of an administrator it doesn't mean that they can administer particular resources! This seems strange, but will make more sense after you learn about the nature of policy permissions and how those permissions -- and not a principal's "role" -- are what define what any given organization's administrators can actually do. For example, a channel policy might specify that `MITCHELL.MANUFACTURING` administrators have the rights to add new organizations to the channel, whereas the `MITCHELL.DISTRIBUTION` administrators have no such rights. You can read more about policies [here](../PoliciesforAccessControl.md).
 
- It's worth noting that even though an X.509 certificate has a `ROLE` attribute (specifying, for example, that a principal is an "admin"), this refers to a principal's role within its organization rather than on the blockchain network. This is distinctly different from the purpose of the `OU` attribute, which -- if it has been defined -- refers to a principal's place in the network.
+ It's worth noting that even though an X.509 certificate has a `ROLE` attribute (specifying, for example, that a principal is an "admin"), this refers to a principal's role within its organization rather than on the blockchain network. This is distinctly different from the purpose of the `OU` attribute, which -- if it has been defined -- refers to a principal's place in the network. Indeed, this is why we need the Administrators folder - because the blockchain role is quite different to the X.509 `ROLE`.
 
- The `ROLE` attribute **can** be used to confer administrative rights at the channel level if the policy for that channel has been written to allow any administrator from an organization (or certain organizations) permission to perform certain channel functions (such as instantiating chaincode). In this way **an organizational role can confer a network role**. We'll learn more about how policies can be written that way and how this functionality imparts significant operational advantages later.
+ The `ROLE` attribute **can** be used to confer administrative rights ls
+ at the channel level if the policy for that channel has been written to allow any administrator from an organization (or certain organizations) permission to perform certain channel functions (such as instantiating chaincode). In this way **an organizational role can confer a network role**. We'll learn more about how policies can be written that way and how this functionality imparts significant operational advantages later.
 
  * **Revoked Certificates**
 
- If the X.509 certificate of a principal has been revoked, a copy of that certificate is stored in this folder (organized by the CA that issued the cert). It is conceptually the same as a CA's Certificate Revocation List (CRL), but relates to revocation of membership from the organization rather than revocation from the CA. As a result, the administrator of an MSP, local or global, can quickly revoke a principal from an organization without having to resort to revoking their certificate from a CA -- which, of course, might not be appropriate.
+ If the X.509 certificate of a principal has been revoked, a copy of that certificate is stored in this folder -- a subfolder for each CA contains the revoked certificates for that CA.
+
+ This list is conceptually the same as a CA's Certificate Revocation List (CRL), but relates to revocation of membership from the organization rather than revocation from the CA. As a result, the administrator of an MSP, local or global, can quickly revoke a principal from an organization without having to resort to revoking their certificate from a CA -- which, of course, might not be appropriate.
 
  This "list of lists" is optional. It will only become populated as certificates are revoked.
 
