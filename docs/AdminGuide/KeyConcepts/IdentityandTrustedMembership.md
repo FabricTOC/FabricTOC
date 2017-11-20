@@ -4,13 +4,17 @@ Identities really matter in a Hyperledger Fabric blockchain network! That's beca
 
 These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, a PKI and an MSP form the definition of the **trusted members** of a blockchain network.
 
+| ![ChainOfTrust](./IdentityandChainsofTrust.diagram.1.png) |
+| :---: |
+| A chain of trust is established between a Root CA and a set of Intermediate CAs using a simple chain. Many other configurations are possible to meet the needs of collaborating organizations. |
+
 | ![Scenario](./IdentityandChainsofTrust.diagram.6.png) |
 | :---: |
 | A store where having a valid credit card is not enough -- it must also be accepted by the store! |
 
 Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
-PKI and MSPs provide this combination of verification and trust. The PKI is like the card provider -- it dispenses verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the trusted members of a blockchain network**.
+PKI and MSPs provide this combination of verification and trust. A PKI is like a set of card providers -- it dispenses many different types of verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the trusted members of a blockchain network**.
 
 Let's drill into these concepts in a little more detail.
 
