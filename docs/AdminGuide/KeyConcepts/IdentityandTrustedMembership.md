@@ -53,7 +53,7 @@ There are two key elements to secure communication -- authentication and encrypt
 
 | ![AuthenticationKeys](./IdentityandChainsofTrust.diagram.9.png) |
 | :---: |
-| Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`). Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the document is modified, the signature no monger match, as only Mary can generate a correct signature. Finally, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical magic of cryptography. |
+| Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`). Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. Finally, without Mary's private key, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical beauty of cryptography. |
 
 **To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private, and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
 
