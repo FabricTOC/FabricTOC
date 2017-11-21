@@ -20,7 +20,7 @@ Let's drill into these concepts in a little more detail.
 
 | ![PKI](./IdentityandChainsofTrust.diagram.7.png) |
 | :---: |
-| The Components of Public Key Infrastructure (PKI). A PKI comprises  Certificate Authorities who issue digital certificates to principals who use these in conjunction with public and private keys to authenticate and encrypt information. A CA's Certificate Revocation List (CRL) contains a list of certificates that have become compromised -- they are no longer valid. |
+| The Elements of Public Key Infrastructure (PKI). A PKI comprises  Certificate Authorities who issue digital certificates to principals who use these in conjunction with public and private keys to authenticate and encrypt information. A CA's Certificate Revocation List (CRL) contains a list of certificates that have become compromised -- they are no longer valid. |
 
 Although a blockchain network is more than a simple communications network, it makes sense for it to use the PKI standard as much as possible. You'll see that even though PKIs aren't sufficient for all the needs of a blockchain network, it's still the fundamental basis of blockchain security. It's therefore really helpful if you understand the basics of PKI, and then why MSPs are so important.
 
@@ -37,9 +37,9 @@ Let's quickly describe these PKI basics, and if you want to know more details, t
 
 A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. Mary's certificate is similar to her government identity card -- it provides  information about Mary which she can be use to prove key facts about her.  There are many other attributes in an X.509 certificate, but that's not important right now.
 
-| ![DigitalCertificate](./IdentityandChainsofTrust.diagram.9.png) |
+| ![DigitalCertificate](./IdentityandChainsofTrust.diagram.8.png) |
 | :---: |
-| Diagram required. |
+| A Digital Certificate describing a principal called Mary Morris. Mary is the `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key facts about Mary.  The certificate holds many more pieces of information, as you can see.  Most importantly, Mary's public key is dstributed within her certificate, whereas her private key **is not**. |
 
 What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally *secret writing*) -- such that they cannot be tampered with without invalidating the certificate. Cryptography allows Mary to present her certificate to others to prove her identity, so long the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (its **private key**), then anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
 
