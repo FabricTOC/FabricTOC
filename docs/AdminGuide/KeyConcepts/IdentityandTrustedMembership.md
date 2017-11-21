@@ -35,7 +35,7 @@ Let's quickly describe these PKI basics, and if you want to know more details, t
 
 ## Digital Certificates
 
-A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. This certificate is similar to a government identity card -- it provides  information about a particular individual when can be used by that individual to prove who they are. There are many other attributes in an X.509 certificate, but that's not important right now.
+A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. Mary's certificate is similar to her government identity card -- it provides  information about Mary which she can be use to prove key facts about her.  There are many other attributes in an X.509 certificate, but that's not important right now.
 
 | ![DigitalCertificate](./IdentityandChainsofTrust.diagram.9.png) |
 | :---: |
