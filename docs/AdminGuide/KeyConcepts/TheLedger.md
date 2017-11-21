@@ -36,3 +36,5 @@ CouchDB runs as a separate database process alongside the peer, therefore there 
 
 
 ## Gossip and Leading Peers
+
+Keep ledgers synchronized via gossip (especially useful if a peer goes down). Leading peers get transactions. 
