@@ -6,7 +6,7 @@ These two identity concepts -- verification and trust -- are provided by a **Pub
 
 | ![Scenario](./IdentityandChainsofTrust.diagram.6.png) |
 | :---: |
-| A store where having a valid credit card is not enough -- it must also be accepted by the store! PKI and MSPs work together in the same way -- PKI provides a list of valid identities, and MSPs say which of these are members of an given blockchain network. |
+| Having a valid credit card is not enough -- it must also be accepted by the store! PKI and MSPs work together in the same way -- PKI provides a list of valid identities, and MSPs say which of these are members of an given blockchain network. |
 
 Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
@@ -35,13 +35,13 @@ Let's quickly describe these PKI basics, and if you want to know more details, t
 
 ## Digital Certificates
 
-A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. Mary's certificate is similar to her government identity card -- it provides  information about Mary which she can be use to prove key facts about her.  There are many other attributes in an X.509 certificate, but that's not important right now.
+A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. Mary's certificate is similar to her government identity card -- it provides information about Mary which she can use to prove key facts about her. There are many other attributes in an X.509 certificate, but that's not important right now.
 
 | ![DigitalCertificate](./IdentityandChainsofTrust.diagram.8.png) |
 | :---: |
 | A Digital Certificate describing a principal called Mary Morris. Mary is the `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key facts about Mary.  The certificate holds many more pieces of information, as you can see.  Most importantly, Mary's public key is distributed within her certificate, whereas her private key is not; it must be kept secret to Mary. |
 
-What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally *secret writing*) -- such that they cannot be tampered with without invalidating the certificate. Cryptography allows Mary to present her certificate to others to prove her identity, so long the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (its **private key**), then anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
+What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally, "*secret writing*") -- such that tampering will invalidate the certificate. Cryptography allows Mary to present her certificate to others to prove her identity so long the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (meaning, its own **private key**), anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
 
 ## Public Keys and Private Keys
 
@@ -55,9 +55,9 @@ There are two key elements to secure communication -- authentication and encrypt
 | :---: |
 | Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`). Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. Finally, without Mary's private key, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical beauty of cryptography. |
 
-**To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private, and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
+**To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
 
-**This unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**. For authentication, Mary uses her private key to create a small, unique data signature from an arbitrarily large amount of data which can only be verified by Mary's public key. For encryption, to allow messages to be encoded such that only Mary can decrypt then, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key.
++**This unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**. Mary uses her private key to create a small, unique data signature from an arbitrarily large amount of data which can only be verified by Mary's public key (authentication). To allow messages to be encoded such that only Mary can decrypt them, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key (encryption).
 
 
 ## Certificate Authorities
@@ -140,7 +140,7 @@ You can see that the channel and the ledger are really **logical constructs** wh
 
 ### MSP Levels
 
-The split between **global and local MSPs reflects the needs of organizations to administer their local resources**, such as a peer or orderer nodes, **and their global resources**, such as ledgers, smart contracts and consortia, which operate at the channel or network level. It's helpful to think of these MSPs as being at different **levels**, with **MSPs at a higher level relating to network-wide administration concerns** while **MSPs at a lower level handle identity for the administration of private resources**. This tiering is helpful because it supports the mix of both broad and narrow administrative control depending on how the network needs to be constituted. MSPs are mandatory at every level of administration -- they must be defined for the network, channel, peer and orderer.
+The split between **global and local MSPs reflects the needs of organizations to administer their local resources**, such as a peer or orderer nodes, **and their global resources**, such as ledgers, smart contracts, and consortia, which operate at the channel or network level. It's helpful to think of these MSPs as being at different **levels**, with **MSPs at a higher level relating to network administration concerns** while **MSPs at a lower level handle identity for the administration of private resources**. This tiering is helpful because it supports the mix of both broad and narrow administrative control depending on how the network needs to be constituted. MSPs are mandatory at every level of administration -- they must be defined for the network, channel, peer, and orderer.
 
 | ![MSP3](./IdentityandChainsofTrust.diagram.2.png) |
 | :---: |
@@ -156,7 +156,7 @@ The split between **global and local MSPs reflects the needs of organizations to
 
 ### MSP Structure
 
-So far, you've seen that the two most important elements of an MSP are the identification of the root and intermediate CAs that are used to used to establish a principal's trusted membership of an organization. There are,  however, more elements that are used in conjunction with these two to assist with membership functions.
+So far, you've seen that the two most important elements of an MSP are the identification of the root and intermediate CAs that are used to used to establish a principal's membership of an organization. There are, however, more elements that are used in conjunction with these two to assist with membership functions.
 
 | ![MSP4](./IdentityandChainsofTrust.diagram.5.png) |
 | :---: |
@@ -176,11 +176,11 @@ Let's describe these folders in a little more detail and see why they are import
 
  This folder contains a list of X.509 certificates of the Intermediate CAs trusted by this organization. Each certificate must be signed by one of the Root CAs in the MSP or by an Intermediate CA -- or a chain of ICAs -- that ultimately lead back to a trusted Root CA. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
 
- Like the Root CA folder, this folder defines the CAs from which certificates must be issued to be considered members of the organization.  It's slightly less important than the Root CA folder, because it's not the root of trusted membership.
+ Like the Root CA folder, this folder defines the CAs from which certificates must be issued to be considered members of the organization. It's slightly less important than the Root CA folder, because it's not the root of trusted membership.
 
  * **Organizational Units**
 
- This folder contains a list of organizational units that are considered to be part of the MSP. It is is useful to use this folder when you want to restrict membership of principals to be from a part of a particular organization, which will be the case when an organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of trusted OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
+ This folder contains a list of organizational units that are considered to be part of the MSP and is particularly useful when you want to restrict membership to only those principals who are part of a particular organization. This will be the case when an organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of trusted OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
 
  Specifying OUs is optional. If no OUs are listed all of the principals that are part of an MSP, as identified by the Root CA and Intermediate CA folders, will be considered members of the organization.
 
