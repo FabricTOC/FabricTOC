@@ -39,7 +39,7 @@ A digital certificate is a document which holds a set of attributes relating to 
 
 | ![DigitalCertificate](./IdentityandChainsofTrust.diagram.8.png) |
 | :---: |
-| A Digital Certificate describing a principal called Mary Morris. Mary is the `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key facts about Mary.  The certificate holds many more pieces of information, as you can see.  Most importantly, Mary's public key is dstributed within her certificate, whereas her private key **is not**. |
+| A Digital Certificate describing a principal called Mary Morris. Mary is the `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key facts about Mary.  The certificate holds many more pieces of information, as you can see.  Most importantly, Mary's public key is distributed within her certificate, whereas her private key is not; it must be kept secret to Mary. |
 
 What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally *secret writing*) -- such that they cannot be tampered with without invalidating the certificate. Cryptography allows Mary to present her certificate to others to prove her identity, so long the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (its **private key**), then anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
 
