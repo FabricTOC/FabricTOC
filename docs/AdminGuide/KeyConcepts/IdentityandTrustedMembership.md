@@ -6,7 +6,11 @@ These two identity concepts -- verification and trust -- are provided by a **Pub
 
 | ![Scenario](./IdentityandChainsofTrust.diagram.6.png) |
 | :---: |
+<<<<<<< HEAD
 | Having a **valid** credit card is not enough -- it must also be accepted by the store! |
+=======
+| A store where having a valid credit card is not enough -- it must also be accepted by the store! PKI and MSPs work together in the same way -- PKI provides a list of valid identities, and MSPs say which of these are members of an given blockchain network. |
+>>>>>>> upstream/master
 
 Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
@@ -18,9 +22,9 @@ Let's drill into these concepts in a little more detail.
 
 **A public key infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network.** It's PKI that puts the **S** in **HTTPS** -- and if you're reading this documentation on a web browser, you're probably using a PKI to make sure it comes from a trusted source.
 
-| ![PKI](./IdentityandChainsofTrust.diagram.8.png) |
+| ![PKI](./IdentityandChainsofTrust.diagram.7.png) |
 | :---: |
-| Diagram required. |
+| The Elements of Public Key Infrastructure (PKI). A PKI comprises  Certificate Authorities who issue digital certificates to principals who use these in conjunction with public and private keys to authenticate and encrypt information. A CA's Certificate Revocation List (CRL) contains a list of certificates that have become compromised -- they are no longer valid. |
 
 Although a blockchain network is more than a simple communications network, it makes sense for it to use the PKI standard as much as possible. You'll see that even though PKIs aren't sufficient for all the needs of a blockchain network, it's still the fundamental basis of blockchain security. It's therefore really helpful if you understand the basics of PKI, and then why MSPs are so important.
 
@@ -35,11 +39,15 @@ Let's quickly describe these PKI basics, and if you want to know more details, t
 
 ## Digital Certificates
 
+<<<<<<< HEAD
 A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. This certificate is similar to a government identity card -- it provides  information about a particular individual which can be used by that individual to prove who they are. There are many other attributes in an X.509 certificate, but we'll talk about those later.
+=======
+A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. Mary's certificate is similar to her government identity card -- it provides  information about Mary which she can be use to prove key facts about her.  There are many other attributes in an X.509 certificate, but that's not important right now.
+>>>>>>> upstream/master
 
-| ![DigitalCertificate](./IdentityandChainsofTrust.diagram.9.png) |
+| ![DigitalCertificate](./IdentityandChainsofTrust.diagram.8.png) |
 | :---: |
-| Diagram required. |
+| A Digital Certificate describing a principal called Mary Morris. Mary is the `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key facts about Mary.  The certificate holds many more pieces of information, as you can see.  Most importantly, Mary's public key is distributed within her certificate, whereas her private key is not; it must be kept secret to Mary. |
 
 What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally, "*secret writing*") -- such that tampering invalidates the certificate. Cryptography allows Mary to present her certificate to others to prove her identity so long the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (meaning, its own **private key**), then anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
 
@@ -51,9 +59,9 @@ There are two key elements to secure communication -- authentication and encrypt
 
 **Encryption**, on other hand, is quite different to authentication -- it enables the private transmission of information between Mary and other principals by ensuring that encrypted information can only be decrypted by its intended recipients and no one else.  
 
-| ![PublicPrivateKeys](./IdentityandChainsofTrust.diagram.10.png) |
+| ![AuthenticationKeys](./IdentityandChainsofTrust.diagram.9.png) |
 | :---: |
-| Diagram required. |
+| Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`). Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. Finally, without Mary's private key, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical beauty of cryptography. |
 
 **To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
 
