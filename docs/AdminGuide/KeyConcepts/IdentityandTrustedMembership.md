@@ -53,18 +53,29 @@ There are two key elements to secure communication -- authentication and encrypt
 
 ### Authentication and Encryption
 
+**To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
+
+**The unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**.
+
+#### Authentication
+
+For authentication, Mary uses her private key to create a small, unique data signature from an input document, which can be of arbitrary length. This document can be sent to any other principal in the network who can verify that it has not been tampered with, using Mary's public key. The consumer of the transmitted document
+
+Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. Finally, without Mary's private key, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical beauty of cryptography.
+
 | ![AuthenticationKeys](./IdentityandChainsofTrust.diagram.9.png) |
 | :---: |
-| Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`). Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. Finally, without Mary's private key, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical beauty of cryptography. |
+| Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`).  |
 
-**To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
+#### Encryption
+
+To allow messages to be encoded such that only Mary can decrypt them, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key (encryption).
+
+they wish to send securely. Only Mary is able to decrypt the message, as this can only be done with her private key.  To prevent the encrypted message being tampered with, it is also signed, and this signature is checked by Mary before she decrypts it.
 
 | ![EncryptionKeys](./IdentityandChainsofTrust.diagram.10.png) |
 | :---: |
-| Encrypting data using private keys and public keys. Any principal in the network who wishes to securely communicate with Mary can use Mary's public key to encrypt a document they wish to send securely. Only Mary is able to decrypt the message, as this can only be done with her private key.  To prevent the encrypted message being tampered with, it is also signed, and this signature is checked by Mary before she decrypts it.|
-
-+**This unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**. Mary uses her private key to create a small, unique data signature from an arbitrarily large amount of data which can only be verified by Mary's public key (authentication). To allow messages to be encoded such that only Mary can decrypt them, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key (encryption).
-
+| Encrypting data using private keys and public keys. Any principal in the network who wishes to securely communicate with Mary can use Mary's public key to encrypt a document which only Mary can decrypt. |
 
 ## Certificate Authorities
 
