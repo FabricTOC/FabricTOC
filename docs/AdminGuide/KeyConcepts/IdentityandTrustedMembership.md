@@ -51,6 +51,8 @@ There are two key elements to secure communication -- authentication and encrypt
 
 **Encryption**, on other hand, is quite different to authentication -- it enables the private transmission of information between Mary and other principals by ensuring that encrypted information can only be decrypted by its intended recipients and no one else.  
 
+### Authentication and Encryption
+
 | ![AuthenticationKeys](./IdentityandChainsofTrust.diagram.9.png) |
 | :---: |
 | Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`). Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. Finally, without Mary's private key, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical beauty of cryptography. |
