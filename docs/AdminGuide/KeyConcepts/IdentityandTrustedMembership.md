@@ -43,39 +43,40 @@ A digital certificate is a document which holds a set of attributes relating to 
 
 What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally, "*secret writing*") -- such that tampering will invalidate the certificate. Cryptography allows Mary to present her certificate to others to prove her identity so long the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (meaning, its own **private key**), anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
 
-## Public Keys and Private Keys
+## Public keys and private keys
 
-There are two key elements to secure communication -- authentication and encryption.
+There are two key elements to secure communication -- authentication and encryption, and these are made possible by the idea of public and private keys. Let's first recap these ideas, and then see how they are made possible by public-private key pairs.
 
-**Authentication** ensures that anything that might relate to a principal's identity or information that has been generated has not been tampered with. For example, you might want to be sure you're communicating with the real Mary Mitchell rather than an impersonator.  Or if Mary has generated some information, you might want to be sure that it hasn't been changed by anyone else. In both cases, authenticity of information is of primary importance.
+**Authentication** ensures that anything that might relate to a principal's identity or information it generates is not tampered with. For example, you might want to be sure you're communicating with the real Mary Mitchell rather than an impersonator.  Or if Mary has sent you some information, you might want to be sure that it hasn't been changed by anyone else during transmission. In both cases, authenticity of information is of primary importance.
 
-**Encryption**, on other hand, is quite different to authentication -- it enables the private transmission of information between Mary and other principals by ensuring that encrypted information can only be decrypted by its intended recipients and no one else.  
+**Encryption**, on other hand, is quite different to authentication -- it enables the private transmission of information between Mary and other principals by ensuring that encrypted information can only be decrypted by its intended recipients -- and no one else.  
 
-### Authentication and Encryption
+### Authentication and encryption
 
-**To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
+**To enable authentication and encrypted communications**, a principal can use a pair of mathematically related keys. **One of these keys is public and can be widely shared, while the other key is private and absolutely must not be shared**. The unique mathematical relationship between the keys is such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
 
 **The unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**.
 
-#### Authentication
+#### Using public and private keys for authentication
 
 For authentication, Mary uses her private key to create a small, unique data signature from an input document, which can be of arbitrary length. This document can be sent to any other principal in the network who can verify that it has not been tampered with, using Mary's public key. The consumer of the transmitted document
-
-Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. Finally, without Mary's private key, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical beauty of cryptography.
 
 | ![AuthenticationKeys](./IdentityandChainsofTrust.diagram.9.png) |
 | :---: |
 | Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`).  |
 
-#### Encryption
+Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. Finally, without Mary's private key, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical beauty of cryptography.
+
+#### Using public keys and private keys for encryption
 
 To allow messages to be encoded such that only Mary can decrypt them, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key (encryption).
-
-they wish to send securely. Only Mary is able to decrypt the message, as this can only be done with her private key.  To prevent the encrypted message being tampered with, it is also signed, and this signature is checked by Mary before she decrypts it.
 
 | ![EncryptionKeys](./IdentityandChainsofTrust.diagram.10.png) |
 | :---: |
 | Encrypting data using private keys and public keys. Any principal in the network who wishes to securely communicate with Mary can use Mary's public key to encrypt a document which only Mary can decrypt. |
+
+they wish to send securely. Only Mary is able to decrypt the message, as this can only be done with her private key.  To prevent the encrypted message being tampered with, it is also signed, and this signature is checked by Mary before she decrypts it.
+
 
 ## Certificate Authorities
 
