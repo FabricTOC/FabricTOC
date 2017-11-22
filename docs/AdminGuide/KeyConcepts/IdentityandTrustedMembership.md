@@ -4,11 +4,13 @@ Identities really matter in a Hyperledger Fabric blockchain network! That's beca
 
 These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, a PKI and an MSP form the definition of the **trusted members** of a blockchain network.
 
+## <a name="Scenario"></a>A simple scenario to explain verification and trust
+
+Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
+
 | ![Scenario](./IdentityandChainsofTrust.diagram.6.png) |
 | :---: |
 | Having a valid credit card is not enough -- it must also be accepted by the store! PKI and MSPs work together in the same way -- PKI provides a list of valid identities, and MSPs say which of these are members of an given blockchain network. |
-
-Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
 PKI and MSPs provide this combination of verification and trust. A PKI is like a set of card providers -- it dispenses many different types of verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the trusted members of a blockchain network**.
 
@@ -109,11 +111,15 @@ A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficie
 
 ## Certificate Revocation Lists
 
-| ![CRL](./IdentityandChainsofTrust.diagram.11.png) |
+A Certificate Revocation List (CRL) is easy to understand -- it's just a list of certificates that a CA knows to be compromised for one reason or another, and have therefore been declared no longer valid.  If you recall the [store scenario](#Scenario), a CRL would be like a list of stolen credit cards.  
+
+When a third party wants to verify a principal's identity, it should first checks the issuing CA's CRL to make sure that the certificate has not been declared invalid.  A verifier doesn't have to check the CRL, but they then run the risk of accepting a compromised identity.  For example, if Mary Morris thought someone had a copy of her private key, she would ask the CA to list her certificate in the CRL so that her identity could no longer be impersonated.
+
+| ![CRL](./IdentityandChainsofTrust.diagram.12.png) |
 | :---: |
 | Diagram required. |
 
-TBC
+Note that a certificate being revoked is very different to a certificate expiring; indeed, revoked certificates have not expired -- they are, by every other measure a fully valid certificate. 
 
 ## Membership Service Provider
 
