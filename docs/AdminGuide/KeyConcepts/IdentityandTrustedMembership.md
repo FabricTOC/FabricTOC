@@ -57,6 +57,10 @@ There are two key elements to secure communication -- authentication and encrypt
 
 **To enable authentication and encrypted communications**, a principal can use a pair of cryptographically related keys. **One of these keys is public and can be widely shared, while the other key is private and absolutely must not be shared**. Finally, the keys have a unique mathematical relationship to each other such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
 
+| ![EncryptionKeys](./IdentityandChainsofTrust.diagram.10.png) |
+| :---: |
+| Encrypting data using private keys and public keys. Any principal in the network who wishes to securely communicate with Mary can use Mary's public key to encrypt a document they wish to send securely. Only Mary is able to decrypt the message, as this can only be done with her private key.  To prevent the encrypted message being tampered with, it is also signed, and this signature is checked by Mary before she decrypts it.|
+
 +**This unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**. Mary uses her private key to create a small, unique data signature from an arbitrarily large amount of data which can only be verified by Mary's public key (authentication). To allow messages to be encoded such that only Mary can decrypt them, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key (encryption).
 
 
