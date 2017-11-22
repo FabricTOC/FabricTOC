@@ -117,9 +117,9 @@ When a third party wants to verify a principal's identity, it should first check
 
 | ![CRL](./IdentityandChainsofTrust.diagram.12.png) |
 | :---: |
-| Diagram required. |
+| Using a CRL to check that a certificate is still valid.  If an impersonator tries to pass a compromised digital certificate to a validating principal, it can be first checked against the issuing CA's CRL to make sure it's not listed as no longer valid. |
 
-Note that a certificate being revoked is very different to a certificate expiring; indeed, revoked certificates have not expired -- they are, by every other measure a fully valid certificate. 
+Note that a certificate being revoked is very different to a certificate expiring; indeed, revoked certificates have not expired -- they are, by every other measure a fully valid certificate.
 
 ## Membership Service Provider
 
