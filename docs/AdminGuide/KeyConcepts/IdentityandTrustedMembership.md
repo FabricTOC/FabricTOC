@@ -47,17 +47,17 @@ What is important is that all of Mary's attributes can be written using a mathem
 
 There are two key elements to secure communication -- authentication and encryption, and these are made possible by the idea of public and private keys. Let's first recap these ideas, and then see how they are made possible by public-private key pairs.
 
+### Authentication and encryption
+
 **Authentication** ensures that anything that might relate to a principal's identity or information it generates is not tampered with. For example, you might want to be sure you're communicating with the real Mary Mitchell rather than an impersonator.  Or if Mary has sent you some information, you might want to be sure that it hasn't been changed by anyone else during transmission. In both cases, authenticity of information is of primary importance.
 
 **Encryption**, on other hand, is quite different to authentication -- it enables the private transmission of information between Mary and other principals by ensuring that encrypted information can only be decrypted by its intended recipients -- and no one else.  
-
-### Authentication and encryption
 
 **To enable authentication and encrypted communications**, a principal can use a pair of mathematically related keys. **One of these keys is public and can be widely shared, while the other key is private and absolutely must not be shared**. The unique mathematical relationship between the keys is such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
 
 **The unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**.
 
-#### Using public and private keys for authentication
+### Using public and private keys for authentication
 
 For authentication, Mary uses her private key to create a small, unique data signature from an input document, which can be of arbitrary length. This document can be sent to any other principal in the network who can verify that it has not been tampered with, using Mary's public key. The consumer of the transmitted document
 
@@ -67,7 +67,7 @@ For authentication, Mary uses her private key to create a small, unique data sig
 
 Anyone can verify that a document hasn't been tampered with using Mary's public key.  Moreover, if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. Finally, without Mary's private key, generating the correct key for the tampered text is incredibly unlikely -- that's the mathematical beauty of cryptography.
 
-#### Using public keys and private keys for encryption
+### Using public keys and private keys for encryption
 
 To allow messages to be encoded such that only Mary can decrypt them, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key (encryption).
 
