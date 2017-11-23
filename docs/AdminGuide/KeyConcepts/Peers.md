@@ -1,6 +1,6 @@
 # Peers
 
-As you've seen, **the two most important concepts in a blockchain network are ledgers and smart contracts**.  That's because smart contracts are used to encapsulate the shared business logic which queries or updates a ledger which is distributed across a blockchain network.  When a developer writes a blockchain application, it interacts with the smart contracts and ledgers in the network to allow users to consumer these shared business processes.
+As you've seen, **the two most important concepts in a blockchain network are ledgers and smart contracts**.  That's because smart contracts and ledgers are used to encapsulate the shared processes and information in the business network. When a developer writes a blockchain application, it allows a network participant to consume the services of other participants in the network, or provide services to them.
 
 For example, in DRIVENET, smart contracts correspond to the manufacture, distribution, sale, insurance, and other transactions in a car's lifecycle. The result of these transactions are captured as updates to ledgers which are shared between Mitchell, Regal, Cecil, ZBS insurance and the other organizations that use the blockchain network. The different participants in the business network write applications that allow them to provide their specific value to the DRIVENET network.
 
@@ -20,10 +20,7 @@ That's not the whole story, however, because you know that these copies of the l
 
 ### Material to be incorporated
 
-
-
-
-
+## Applications and peers
 
 The peers in a Fabric network function both as **providers** of services to the network and as **consumers** of those services. A rough analogy might be to a co-op -- a grocery store where the people who shop there are also the stockers and cashiers.
 
