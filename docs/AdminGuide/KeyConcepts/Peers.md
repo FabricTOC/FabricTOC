@@ -1,12 +1,20 @@
 # Peers
 
-The two most important concepts in a blockchain network are ledgers and smart contracts.  When a developer writes a blockchain application, the smart contracts that encapsulates shared business logicwhich in turn queries and updates the shared ledger.  For example, in DRIVENET, smart contracts correspond to the manufacture, distribution, sale, insurance, and other stages in a car's life, captured as updates to ledger shared between  Mitchell, Regal, ZBS insurance and the other organizations in the network.
+As you've seen, the two most important concepts in a blockchain network are ledgers and smart contracts.  When a developer writes a blockchain application, smart contracts are used to encapsulate shared business logic which queries or updates a shared ledger.  
+
+For example, in DRIVENET, smart contracts correspond to the manufacture, distribution, sale, insurance, and other transactions in a car's lifecycle. The result of these transactions are captured as updates to ledgers which are shared between Mitchell, Regal, Cecil, ZBS insurance and the other organizations that use the blockchain network.
 
 So let's now turn our attention to the place where the ledger and smart contract physically reside in the network -- the peer.
 
 ## What is a Peer?
 
 A blockchain network is comprised of many nodes. There are two types of nodes, called peers and orderers. It's natural to think of the peer as the most important type of node, because it hosts a copy of a ledger, and a copy of a smart contract.
+
+| ![NetworkPeers](./Peers.diagram.1.png) |
+| :---: |
+| Peers in a Hyperledger Fabric blockchain network. An application interacts with the smart contracts and ledgers in a blockchain network by communicating with a one or more peers on a particular channel. Smart contracts can be used to query or update the ledger. |
+
+### Material to be incorporated
 
 
 
