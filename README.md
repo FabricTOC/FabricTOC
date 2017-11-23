@@ -80,3 +80,5 @@ upstream	git@github.com:FabricTOC/FabricTOC.git (push)
   `git merge upstream/master`
 
 That's everything you need to know! You're able to propose changes the the FabricTOC.  Good luck!
+
+Hi
