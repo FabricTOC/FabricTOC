@@ -81,4 +81,4 @@ upstream	git@github.com:FabricTOC/FabricTOC.git (push)
 
 That's everything you need to know! You're able to propose changes the the FabricTOC.  Good luck!
 
-Hi
+Hi.
