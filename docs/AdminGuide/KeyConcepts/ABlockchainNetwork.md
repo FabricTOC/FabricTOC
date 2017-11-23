@@ -56,8 +56,6 @@ Hyperledger Fabric makes **extensive use of permissions** to support **networks 
 
 Most powerfully, policies may also define the rights to **modify the current policy** -- to support the fact that organizations may adapt and evolve their relationships with each other over time. For example, a network which was initially configured with three organizations -- of which two have operational control -- could be modified by either of the these two organizations to grant the third organization equal rights.
 
-On a conceptual level, it's important to remember that permissions are what enable any **instance** of a principal in the network to perform tasks. In other words, it *doesn't matter* whether a Certificate Authority is trying to do something or whether a peer is trying to do that thing. What matters are the permissions tied to the identity of the peer or the Certificate Authority. Although in the real world certain permissions are likely to be associated with certain **types** of components, the flexibility and extensibility of Hyperledger's approach makes it possible to give a Certificate Authority the permission to query the ledger, for example, which is not something it would normally do.
-
 While this provides the greatest degree of flexibility to the founders and administrators of a Hyperledger Fabric network, it means that the permissions policy in the network must be defined very carefully.
 
 ## That's it!

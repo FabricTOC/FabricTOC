@@ -1,6 +1,17 @@
 # Peers
 
+The two most important concepts in a blockchain network are ledgers and smart contracts.  When a developer writes a blockchain application, the smart contracts that encapsulates shared business logicwhich in turn queries and updates the shared ledger.  For example, in DRIVENET, smart contracts correspond to the manufacture, distribution, sale, insurance, and other stages in a car's life, captured as updates to ledger shared between  Mitchell, Regal, ZBS insurance and the other organizations in the network.
+
+So let's now turn our attention to the place where the ledger and smart contract physically reside in the network -- the peer.
+
 ## What is a Peer?
+
+A blockchain network is comprised of many nodes. There are two types of nodes, called peers and orderers. It's natural to think of the peer as the most important type of node, because it hosts a copy of a ledger, and a copy of a smart contract.
+
+
+
+
+
 
 The peers in a Fabric network function both as **providers** of services to the network and as **consumers** of those services. A rough analogy might be to a co-op -- a grocery store where the people who shop there are also the stockers and cashiers.
 
@@ -52,7 +63,7 @@ Specify that even if ORG1 and ORG2 use the same RCA -- Verisign, for example -- 
 
 All of the components in a Fabric network have a version.
 
-What are the configurations of a peer that are optional (ie **can** be updated)? Admin policy. 
+What are the configurations of a peer that are optional (ie **can** be updated)? Admin policy.
 
 
 
