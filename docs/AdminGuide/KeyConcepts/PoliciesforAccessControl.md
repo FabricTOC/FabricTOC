@@ -4,7 +4,7 @@ Network definitions are managed by multiple organizations in a consortium.
 
 An **image** here to show what this looks like.
 
-Your rights are at the channel level. It's not a top down system in which having admin rights at a high level (the system channel, for example) means you have any rights over any other channels (or, if you're a member of a channel, means you automatically have admin rights over that channel). Also a user might have admin rights for the network but no rights over org1 and org2 but they do have admin rights over org3. Important to stress that rights are not just at the channel level but also at the organization level. You could potentially have admin rights over a channel even though you don't have admin rights over an organization. 
+Your rights are at the channel level. It's not a top down system in which having admin rights at a high level (the system channel, for example) means you have any rights over any other channels (or, if you're a member of a channel, means you automatically have admin rights over that channel). Also a user might have admin rights for the network but no rights over org1 and org2 but they do have admin rights over org3. Important to stress that rights are not just at the channel level but also at the organization level. You could potentially have admin rights over a channel even though you don't have admin rights over an organization.
 
 
 ## What are Policies?
@@ -28,6 +28,10 @@ These policies are stored in the config block.
 ## Policies for Changing Policies -- Mod policies!
 
 Use with extreme care -- can break the network. This is the policy for changing how you change policies. Befitting the nested structure of Fabric networks, all policies have a mod policy attached to them. Policies for how we relate, and then policies that change how we can change how we relate. Might seem silly or pedantic, but this is kind of thing you end up with when you have this sort of structure.
+
+## Moved from Blockchain network section, as better placed in this section
+
+On a conceptual level, it's important to remember that permissions are what enable any **instance** of a principal in the network to perform tasks. In other words, it *doesn't matter* whether a Certificate Authority is trying to do something or whether a peer is trying to do that thing. What matters are the permissions tied to the identity of the peer or the Certificate Authority. Although in the real world certain permissions are likely to be associated with certain **types** of components, the flexibility and extensibility of Hyperledger's approach makes it possible to give a Certificate Authority the permission to query the ledger, for example, which is not something it would normally do.
 
 
 ## Policies in DRIVENET
