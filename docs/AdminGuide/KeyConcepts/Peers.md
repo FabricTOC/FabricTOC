@@ -12,7 +12,9 @@ A blockchain network is comprised of many nodes. There are two types of nodes, c
 
 | ![NetworkPeers](./Peers.diagram.1.png) |
 | :---: |
-| Peers in a Hyperledger Fabric blockchain network. An application can interact with the smart contracts and ledgers in a blockchain network. To do this, an application connects to the peer via a channel.  and invokes smart contracts to query and update the ledger.  There are many peers in a blockchain network. |
+| Peers in a Hyperledger Fabric blockchain network. An application interacts with the smart contracts and ledgers in a blockchain network by communicating with a one or more peers on a particular channel. Smart contracts can be used to query or update the ledger. |
+
+### Material to be incorporated
 
 
 
