@@ -1,6 +1,10 @@
 # Peers
 
-The two most important concepts in a blockchain network are ledgers and smart contracts.  When a developer writes a blockchain application, the smart contracts that encapsulates shared business logicwhich in turn queries and updates the shared ledger.  For example, in DRIVENET, smart contracts correspond to the manufacture, distribution, sale, insurance, and other stages in a car's life, captured as updates to ledger shared between  Mitchell, Regal, ZBS insurance and the other organizations in the network.
+As you've seen, the two most important concepts in a blockchain network are ledgers and smart contracts.  When a developer writes a blockchain application, smart contracts are used to encapsulate shared business logic which queries or updates a shared ledger.  For example, in DRIVENET, smart contracts correspond to the manufacture, distribution, sale, insurance, and other stages in a car's lifecycle; and capture the results of these transactions as updates to the ledger that is shared between Mitchell, Regal, ZBS insurance and the other organizations operating the blockchain network.
+
+| ![NetworkPeers](./Peers.diagram.1.png) |
+| :---: |
+| Peers text. |
 
 So let's now turn our attention to the place where the ledger and smart contract physically reside in the network -- the peer.
 
