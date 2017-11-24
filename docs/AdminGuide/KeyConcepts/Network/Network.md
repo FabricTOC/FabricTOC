@@ -1,4 +1,4 @@
-Network# A Blockchain network
+# A Blockchain network
 
 ## Think: Network, Identity and Permission
 
