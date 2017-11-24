@@ -13,7 +13,7 @@ This section of the documentation explains how to administer a Hyperledger Fabri
 
 #### [Key Concepts](./KeyConcepts/KeyConcepts.md)
 
-  + [A Blockchain network](./KeyConcepts/Network/Network.md)
+  + [Network](./KeyConcepts/Network/Network.md)
   + [Consortia](./KeyConcepts/Consortia/Consortia.md)
     + [What is a consortium?](./KeyConcepts/Consortia/Consortia.md)
     + [Adding consortia to the network definition](./KeyConcepts/Consortia/Consortia.md)
@@ -34,7 +34,7 @@ This section of the documentation explains how to administer a Hyperledger Fabri
     + [Membership Services Providers](./KeyConcepts/IdentityandMembership/IdentityandMembership.md)
     + [MSPs in DRIVENET](./KeyConcepts/IdentityandMembership/IdentityandMembership.md)
   + [Policies for Access Control](./KeyConcepts/Policy/Policy.md)
-    + [What are policies?](./KeyConcepts/Policies/Policy.md)
+    + [What are policies?](./KeyConcepts/Policy/Policy.md)
     + [Why are policies important?](./KeyConcepts/Policy/Policy.md)
     + [Principals and resource access control](./KeyConcepts/Policy/Policy.md)
     + [Implicit and Explicit policies](./KeyConcepts/Policies/Policy.md)
