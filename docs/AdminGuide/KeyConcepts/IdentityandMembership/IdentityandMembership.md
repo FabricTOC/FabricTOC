@@ -1,8 +1,8 @@
-# Identity and Trusted Membership
+# Identity and Membership
 
 Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources that they have in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verified** (a real identity, in other words), and it must also come from a **trusted** source.
 
-These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, a PKI and an MSP form the definition of the **trusted members** of a blockchain network.
+These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, a PKI and an MSP form the definition of the **members** of a blockchain network.
 
 ## <a name="Scenario"></a>A simple scenario to explain verification and trust
 
@@ -12,13 +12,13 @@ Imagine that you visit a supermarket to buy some groceries. At the checkout you 
 | :---: |
 | Having a valid credit card is not enough -- it must also be accepted by the store! PKI and MSPs work together in the same way -- PKI provides a list of valid identities, and MSPs say which of these are members of an given blockchain network. |
 
-PKI and MSPs provide this combination of verification and trust. A PKI is like a set of card providers -- it dispenses many different types of verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the trusted members of a blockchain network**.
+PKI and MSPs provide this combination of verification and trust. A PKI is like a set of card providers -- it dispenses many different types of verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the members of the store payment network. **MSPs turn verifiable identities into the members of a blockchain network**.
 
 Let's drill into these concepts in a little more detail.
 
 ## What is PKI?
 
-**A public key infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network.** It's PKI that puts the **S** in **HTTPS** -- and if you're reading this documentation on a web browser, you're probably using a PKI to make sure it comes from a trusted source.
+**A public key infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network.** It's PKI that puts the **S** in **HTTPS** -- and if you're reading this documentation on a web browser, you're probably using a PKI to make sure it comes from a verified  source.
 
 | ![PKI](./IdentityandChainsofTrust.diagram.7.png) |
 | :---: |
@@ -123,7 +123,7 @@ Note that a certificate being revoked is very different to a certificate expirin
 
 ## Membership Service Provider
 
-You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the trusted members of a blockchain network. That's where a Membership Service Provider (MSP) comes into play -- **it lists the identities of the principals who are the trusted members of a given organization in the blockchain network**.
+You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the  members of a blockchain network. That's where a Membership Service Provider (MSP) comes into play -- **it lists the identities of the principals who are the members of a given organization in the blockchain network**.
 
 Whereas a PKI provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are trusted to define which principals are considered the members of an organization.  An MSP can also recognize other things related to membership of a network -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a list of members of a given organization**, either by holding certificates themselves or by listing which CAs can issue valid certificates, or -- as will usually be the case -- through some combination of both.
 
@@ -244,7 +244,9 @@ Let's describe these folders in a little more detail and see why they are import
 
  This folder contains a list of self-signed X.509 certificates of the Root CAs trusted by this organization **for TLS communications**. An example of a TLS communication would be when a peer needs to connect to an orderer so that it can receive ledger updates.
 
- This folder is completely independent to the MSP Root CA folder. This separation allows peer and order nodes to have different membership to the other principals in the network -- applications or administrators. This makes sense when you think about it -- users and applications are very likely to have different roots of trust than the peer and orderer nodes which form the network.
+ If you look at [this diagram](./ABlockchainNetwork.md#NetworkPrincipals2), you can see how the MSP TLS information relates to the principals inside the network -- the peers and the orderers -- rather than those that consume the network -- applications and administrators.
+
+ That's why this folder is completely independent to the MSP Root CA folder. This separation allows peer and order nodes to have different membership to the other principals in the network -- applications or administrators. This makes sense when you think about it -- users and applications are very likely to have different roots of trust than the peer and orderer nodes which form the network.
 
  There must be at least one TLS Root CA X.509 certificate in this MSP folder.
 
