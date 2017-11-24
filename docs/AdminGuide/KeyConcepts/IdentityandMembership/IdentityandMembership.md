@@ -270,9 +270,9 @@ The DMV wouldn't, which means that either the initial configuration would have t
 
 ## That's it!
 
-OK, we've now finished our extensive tour of identities and trusted membership of a blockchain network!
+OK, we've now finished our extensive tour of identities and membership of a blockchain network!
 
-In summary, Hyperledger Fabric uses a PKI and MSPs to identify the principals who are the trusted members of each organization collaborating in a blockchain network.
+In summary, Hyperledger Fabric uses a PKI and MSPs to identify the principals who are the members of each organization collaborating in a blockchain network.
 
 
 [Next: Policies for Access Control](./PoliciesforAccessControl.md)
