@@ -1,26 +1,26 @@
-# Identity and Trusted Membership
+# Identity and Membership
 
 Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources that they have in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verifiable** (a real identity, in other words), and it must also come from a **trusted** source.
 
-These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, PKIs and MSPs form the definition of the **trusted members** of a blockchain network.
+These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, PKIs and MSPs form the definition of the **members** of a blockchain network.
 
 ## <a name="Scenario"></a>A simple scenario to explain verification and trust
 
 Imagine that you visit a supermarket to buy some groceries. At the checkout you see a sign that says that only Visa, Mastercard and AMEX cards are accepted. If you try to pay with a different card -- let's call it an "ImagineCard" -- it doesn't matter whether the card is authentic and you have sufficient funds in your account. It will be not be accepted.
 
-| ![Scenario](./IdentityandChainsofTrust.diagram.6.png) |
+| ![Scenario](./IdentityandMembership.diagram.6.png) |
 | :---: |
 | Having a valid credit card is not enough -- it must also be accepted by the store! PKIs and MSPs work together in the same way -- PKI provides a list of valid identities, and an MSP says which of these are members of a given blockchain network. |
 
-PKIs and MSPs provide this combination of verification and trust. A PKI is like a card provider -- it dispenses many different types of verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the trusted members of a blockchain network**.
+PKIs and MSPs provide this combination of verification and trust. A PKI is like a card provider -- it dispenses many different types of verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the members of a blockchain network**.
 
 Let's drill into these concepts in a little more detail.
 
 ## What is PKI?
 
-**A public key infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network.** It's PKI that puts the **S** in **HTTPS** -- and if you're reading this documentation on a web browser, you're probably using a PKI to make sure it comes from a trusted source.
+**A public key infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network.** It's PKI that puts the **S** in **HTTPS** -- and if you're reading this documentation on a web browser, you're probably using a PKI to make sure it comes from a verified  source.
 
-| ![PKI](./IdentityandChainsofTrust.diagram.7.png) |
+| ![PKI](./IdentityandMembership.diagram.7.png) |
 | :---: |
 | The Elements of Public Key Infrastructure (PKI). A PKI comprises  Certificate Authorities who issue digital certificates to principals who use these in conjunction with public and private keys to authenticate and encrypt information. A CA's Certificate Revocation List (CRL) contains a list of certificates that have become compromised -- they are no longer valid. |
 
@@ -39,7 +39,7 @@ Let's quickly describe these PKI basics, and if you want to know more details, t
 
 A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. Mary's certificate is similar to her government identity card -- it provides information about Mary which she can use to prove key facts about her. There are many other attributes in an X.509 certificate, but that's not important right now.
 
-| ![DigitalCertificate](./IdentityandChainsofTrust.diagram.8.png) |
+| ![DigitalCertificate](./IdentityandMembership.diagram.8.png) |
 | :---: |
 | A Digital Certificate describing a principal called Mary Morris. Mary is the `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key facts about Mary.  The certificate holds many more pieces of information, as you can see.  Most importantly, Mary's public key is distributed within her certificate, whereas her private key is not; it must be kept secret to Mary. |
 
@@ -63,7 +63,7 @@ Let's first recap the key ideas of authentication and encryption, and then you'l
 
 For authentication, Mary uses her private key to attach a small, fixed size, unique data signature to an original document of any size. The signature is generated by combining the document contents with the private key in a process called **hashing**. This signed document can now be sent to any other principal in the network -- and they can verify that it has not been tampered with, using Mary's public key to generate the same signature from the input text. The consumer of the transmitted document is therefore confident that they have an authentic copy of the original document from Mary.
 
-| ![AuthenticationKeys](./IdentityandChainsofTrust.diagram.9.png) |
+| ![AuthenticationKeys](./IdentityandMembership.diagram.9.png) |
 | :---: |
 | Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`). |
 
@@ -73,7 +73,7 @@ It's also worthing noting how hard it is for an intermediary to tamper with the 
 
 To allow messages to be written in way such that only Mary can read them, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key.
 
-| ![EncryptionKeys](./IdentityandChainsofTrust.diagram.10.png) |
+| ![EncryptionKeys](./IdentityandMembership.diagram.10.png) |
 | :---: |
 | Encrypting data using private keys and public keys. Any principal in the network who wishes to securely communicate with Mary can use Mary's public key to encrypt a document -- a document that only Mary can decrypt with her private key. |
 
@@ -85,7 +85,7 @@ Finally, if Mary wants to securely communicate back to another party she uses ex
 
 As you've seen, an identity is brought to the blockchain network by a principal in the form of a cryptographically validated digital certificate issued by a Certificate Authority (CA). CAs are a common part of internet security protocols, and you've probably heard of some of the more popular ones: Symantec (originally Verisign), GeoTrust, DigiCert, GoDaddy, and Comodo, among others.  
 
-| ![CertificateAuthorities](./IdentityandChainsofTrust.diagram.11.png) |
+| ![CertificateAuthorities](./IdentityandMembership.diagram.11.png) |
 | :---: |
 | A Certificate Authority dispenses certificates to different principals, which they use to authenticate and encrypt information. These certificates are signed by the CA using its private key. A principal's certificate includes their public key, but not their private key, and this applies to the CA's certificate too!   |
 
@@ -97,7 +97,7 @@ If you're interested, you can read a lot more about CAs [here](./), but for now 
 
 CAs come in two flavors: **Root CAs** and **Intermediate CAs**. Because Root CAs (Symantec, Geotrust, etc) have to **securely distribute** hundreds of millions of certificates to internet users, it makes sense to spread this process out across what are called *Intermediate CAs*. These Intermediate CAs provide their certificates under the authority of the Root CA, and this linkage between a Root CA and Intermediate CAs establishes a **Chain of Trust** for any certificate that is issued by any CA in the chain. This ability to track back to the Root CA not only allows the function of CAs to scale while still providing security -- allowing organizations that consume certificates to use Intermediate CAs with confidence -- it limits the exposure of the Root CA, which, if compromised, would destroy the entire chain of trust. If an Intermediate CA is compromised, on the other hand, there is a much smaller exposure.
 
-| ![ChainOfTrust](./IdentityandChainsofTrust.diagram.1.png) |
+| ![ChainOfTrust](./IdentityandMembership.diagram.1.png) |
 | :---: |
 | A chain of trust is established between a Root CA and a set of Intermediate CAs using a simple chain. Many other configurations are possible to meet the needs of collaborating organizations. |
 
@@ -115,7 +115,7 @@ A Certificate Revocation List (CRL) is easy to understand -- it's just a list of
 
 When a third party wants to verify a principal's identity, it should first checks the issuing CA's CRL to make sure that the certificate has not been declared invalid.  A verifier doesn't have to check the CRL, but they then run the risk of accepting a compromised identity.  For example, if Mary Morris thought someone had a copy of her private key, she would ask the CA to list her certificate in the CRL so that her identity could no longer be impersonated.
 
-| ![CRL](./IdentityandChainsofTrust.diagram.12.png) |
+| ![CRL](./IdentityandMembership.diagram.12.png) |
 | :---: |
 | Using a CRL to check that a certificate is still valid.  If an impersonator tries to pass a compromised digital certificate to a validating principal, it can be first checked against the issuing CA's CRL to make sure it's not listed as no longer valid. |
 
@@ -123,7 +123,7 @@ Note that a certificate being revoked is very different to a certificate expirin
 
 ## Membership Service Provider
 
-You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the trusted members of a blockchain network. That's where a Membership Service Provider (MSP) comes into play -- **it identifies the principals who are the trusted members of a given organization in the blockchain network**.
+You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the trusted members of a blockchain network. That's where a Membership Service Provider (MSP) comes into play -- **it identifies the principals who are the members of a given organization in the blockchain network**.
 
 Whereas a PKI provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are trusted to define which principals are considered the members of an organization.  An MSP can also recognize other things related to membership of a network -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a list of members of a given organization**, either by holding certificates themselves or by listing which CAs can issue valid certificates, or -- as will usually be the case -- through some combination of both.
 
@@ -133,7 +133,7 @@ If an MSP is defined on the local file system of a peer / orderer node or user (
 
 Because an organization will typically have a single list of members, it will usually have a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple membership lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, e.g., `ORG2.MSP.NATIONAL` and `ORG2.MSP.GOVERNMENT`, reflecting the different membership roots of trust within `ORG2` in the NATIONAL sales channel compared to the GOVERNMENT channel.
 
-| ![MSP1](./IdentityandChainsofTrust.diagram.3.png) |
+| ![MSP1](./IdentityandMembership.diagram.3.png) |
 | :---: |
 | Two different MSP configurations for an organization. The first configuration shows the typical MSP relationship -- a single MSP defines the list of verifiable members of an organization. In the second configuration, different MSPs are used to support different identity providers for national, international, and governmental memberships.|
 
@@ -151,7 +151,7 @@ There are two different types of MSPs: local and global. **Local MSPs are define
 
 In contrast, **global MSPs are defined either for channels or the entire network**, and they apply to all of the nodes that are part of a channel or network. Every channel or network must have at least one MSP defined for it, and peers and orderers on a channel will all share the same global MSP. The key difference here between local and global MSPs is not how they function, but their **scope**.  
 
-| ![MSP2](./IdentityandChainsofTrust.diagram.4.png) |
+| ![MSP2](./IdentityandMembership.diagram.4.png) |
 | :---: |
 | Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for the channel are global. Each peer is managed by its own organization, ORG1 or ORG2. This channel is managed by both ORG1 and ORG2. Similar principles apply for the network, orderers and users, but these are not shown here for simplicity. |
 
@@ -167,11 +167,11 @@ You can see that the channel and the ledger are really **logical constructs** wh
 
 The split between **global and local MSPs reflects the needs of organizations to administer their local resources**, such as a peer or orderer nodes, **and their global resources**, such as ledgers, smart contracts, and consortia, which operate at the channel or network level. It's helpful to think of these MSPs as being at different **levels**, with **MSPs at a higher level relating to network administration concerns** while **MSPs at a lower level handle identity for the administration of private resources**. This tiering is helpful because it supports the mix of both broad and narrow administrative control depending on how the network needs to be constituted. MSPs are mandatory at every level of administration -- they must be defined for the network, channel, peer, orderer and users.
 
-| ![MSP3](./IdentityandChainsofTrust.diagram.2.png) |
+| ![MSP3](./IdentityandMembership.diagram.2.png) |
 | :---: |
 | MSP Levels. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, but the channel can be managed by ORG1 and ORG2. The peer is managed by ORG2, whereas ORG1 manages the orderer. ORG1 trusts identities from RCA1, whereas ORG2 trusts identities from RCA2. Note that these are **administration** identities, reflecting who can admininster these components. So while ORG1 administers the network, ORG2.MSP does exist in the network definition. |
 
- * **Network MSP:** These MSPs are defined in the configuration policy of the whole network, so by definition, **there is only one set of network MSPs**. Every principal who uses a network must be a trusted member as defined by the MSPs in the network policy before they can perform an administrative task. This means that the MSPs that are defined for the network should define **the organizations who are trusted to have administrative control over the network**. An example of a network-wide administrative permission might be to define or change the organizations who can create channels.
+ * **Network MSP:** These MSPs are defined in the configuration policy of the whole network, so by definition, **there is only one set of network MSPs**. Every principal who uses a network must be a member as defined by the MSPs in the network policy before they can perform an administrative task. This means that the MSPs that are defined for the network should define **the organizations who are trusted to have administrative control over the network**. An example of a network-wide administrative permission might be to define or change the organizations who can create channels.
 
  * **Channel MSP:** These MSPs are defined inside the configuration policy of each channel, and therefore there is a set of MSPs for each channel that is defined. It is helpful for a channel to have its own set of MSPs because a channel provides private communications between a particular set of organizations which in turn have administrative control over it. You can see that the need for **a separate set of channel MSPs stems from the need for local autonomy** -- the organizations in a channel can, and will often need to be, largely independent from the rest of the network. It also means that administrative control over the network doesn't necessarily imply control over any particular channel; again reflecting the real administrative needs of collaborating organizations who may sometimes require separation of control. We see this kind of separation at the levels of control in the real world, too. The authority of the President of the United States, for example, exists at the federal level. He or she has no authority to veto state laws.
 
@@ -183,7 +183,7 @@ The split between **global and local MSPs reflects the needs of organizations to
 
 So far, you've seen that the two most important elements of an MSP are the identification of the root and intermediate CAs that are used to used to establish a principal's membership of an organization. There are, however, more elements that are used in conjunction with these two to assist with membership functions.
 
-| ![MSP4](./IdentityandChainsofTrust.diagram.5.png) |
+| ![MSP4](./IdentityandMembership.diagram.5.png) |
 | :---: |
 | The figure above shows how a **local MSP** is stored on a local filesystem. Even though global MSPs are not physically structured in exactly the same way, it's still helpful to think about global MSPs this way. |
 
@@ -246,7 +246,9 @@ Let's describe these folders in a little more detail and see why they are import
 
  This folder contains a list of self-signed X.509 certificates of the Root CAs trusted by this organization **for TLS communications**. An example of a TLS communication would be when a peer needs to connect to an orderer so that it can receive ledger updates.
 
- This folder is completely independent to the MSP Root CA folder. This separation allows peer and order nodes to have different membership to the other principals in the network -- applications or administrators. This makes sense when you think about it -- users and applications are very likely to have different roots of trust than the peer and orderer nodes which form the network.
+ If you look at [this diagram](./ABlockchainNetwork.md#NetworkPrincipals2), you can see how the MSP TLS information relates to the principals inside the network -- the peers and the orderers -- rather than those that consume the network -- applications and administrators.
+
+ That's why this folder is completely independent to the MSP Root CA folder. This separation allows peer and order nodes to have different membership to the other principals in the network -- applications or administrators. This makes sense when you think about it -- users and applications are very likely to have different roots of trust than the peer and orderer nodes which form the network.
 
  There must be at least one TLS Root CA X.509 certificate in this MSP folder.
 
@@ -268,9 +270,9 @@ The DMV wouldn't, which means that either the initial configuration would have t
 
 ## That's it!
 
-OK, we've now finished our extensive tour of identities and trusted membership of a blockchain network!
+OK, we've now finished our extensive tour of identities and membership of a blockchain network!
 
-In summary, Hyperledger Fabric uses a PKI and MSPs to identify the principals who are the trusted members of each organization collaborating in a blockchain network.
+In summary, Hyperledger Fabric uses a PKI and MSPs to identify the principals who are the members of each organization collaborating in a blockchain network.
 
 
 [Next: Policies for Access Control](./PoliciesforAccessControl.md)

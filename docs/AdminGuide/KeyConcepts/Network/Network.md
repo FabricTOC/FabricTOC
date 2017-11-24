@@ -4,7 +4,7 @@
 
 Hyperledger Fabric is a technology designed to address the diverse needs of the multiple organizations who collaborate in a blockchain network. Because of the many requirements that arise in these networks, **Hyperledger Fabric has a rich set of concepts** that you may initially find overwhelming! Don't worry though -- the principles that underly these concepts are easy to understand if you group them into three categories: **Network**, **Identity** and **Permission**.
 
-| ![NetworkElements](./ABlockchainNetwork.diagram.1.png) |
+| ![NetworkElements](./Network.diagram.1.png) |
 | :---: |
 | Three major concept groups in Hyperledger Fabric: Network, Identity and Permission |
 
@@ -14,7 +14,7 @@ Let's help you understand these categories by introducing some of the key concep
 
 Think of the concepts in this category as the fundamental **building blocks** of a blockchain network. **Cooperating organizations** form the blockchain network from these fundamental building blocks in order to **provide services** for **service consumers**. In addition to the organizations who formed the network, there will be a much larger set of participants who consume network services.
 
-|![NetworkResources](./ABlockchainNetwork.diagram.2.png)|
+|![NetworkResources](./Network.diagram.2.png)|
 | :---: |
 | Some of the building blocks of a Hyperledger Fabric blockchain network. You'll understand the the nature of these relationships as you read more detailed information.|
 
@@ -26,7 +26,7 @@ You'll discover more about these ideas as you read the [Concepts](./KeyConcepts.
 
 **Everything** and everyone that consumes services of a Hyperledger Fabric network **requires an identity**. For example you'll see that **users**, **administrators**, **applications**, **Certificate Authorities** and **organizations** all have to identify themselves whenever they interact with the network. Hyperledger Fabric has a general term for the things that have an identity -- a principal. **Principals are the main consumers of a blockchain network**.
 
-| ![NetworkPrincipals2](./ABlockchainNetwork.diagram.4.png) |
+| ![NetworkPrincipals2](./Network.diagram.4.png) |
 | :---: |
 | The principals in a Hyperledger Fabric blockchain. The consumers of a blockchain network are called principals, and each one has an identity. Notice that the external consumers of the network - organizations, users, administrators, applications have an identity. Notice also that some of the building blocks of a Hyperledger Fabric can also be principals -- they also have an identity. |
 
@@ -42,7 +42,7 @@ You'll discover why identities and principals are important in a moment, and lat
 
 As you can see, permissions are associative -- they require both network resources and identities to exist before they can be defined. That's because they define the **relationship** between principals and resources and only make sense once both these elements exist (in the same was as the rules for driving only make sense if roads and cars already exist).
 
-|![NetworkChannelPermissions](./ABlockchainNetwork.diagram.5.png)
+|![NetworkChannelPermissions](./Network.diagram.5.png)
 | :---: |
 | Examples of network and channel permissions. There's a network policy which defines how three different principals can control the organizations in a consortium. There's also a channel policy which determines how three different principals can access the channel, and resources connected to it.|
 
