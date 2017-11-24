@@ -13,7 +13,7 @@ This section of the documentation explains how to administer a Hyperledger Fabri
 
 #### [Key Concepts](./KeyConcepts/KeyConcepts.md)
 
-  + [A Blockchain network](./KeyConcepts/ABlockchainNetwork.md)
+  + [A Blockchain network](./KeyConcepts/Network/Network.md)
   + [Consortia](./KeyConcepts/Consortia.md)
     + [What is a consortium?](./KeyConcepts/Consortia.md)
     + [Adding consortia to the network definition](./KeyConcepts/Consortia.md)
