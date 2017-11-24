@@ -10,22 +10,27 @@ So let's now turn our attention to the place where the ledger and smart contract
 
 A blockchain network is comprised of many nodes. There are two types of nodes, called peers and orderers. It's natural to think of the peer as the most important type of node, because **a peer holds both a copy of a ledger, and a copy of a smart contract.**
 
-| ![NetworkPeers](./Peers.diagram.1.png) |
+| ![Peer](./Peers.diagram.1.png) |
 | :---: |
-| Peers in a Hyperledger Fabric blockchain network. An application interacts with the smart contracts and ledgers in a blockchain network by communicating with a one or more peers on a particular channel. Smart contracts can be used to query or update the ledger. |
+| A Peer hosts the ledger and smart contracts. In reality, there are many smart contracts hosted on a peer for a ledger.  Moreover, |
 
 At the most fundamental level, a peer is a *host* for smart contracts and ledgers - it's where smart contracts and the ledger *live*, in a physical sense.  **Peers are what makes a blockchain a distributed ledger**, because a network comprises many peers, and it's these peers which hold a copy of the ledger and the smart contracts which interact with it.
 
-That's not the whole story, however, because you know that different copies of the ledger need to be kept synchronized with each other. This is a achieved by a mechanism called consensus -- which ensures that each individual physical ledger on different peers can be considered to be a consistent copy of a single logical ledger.  We'll discuss this important point later, but first let's understand a little more about individual peers.
+Moreover a peer can host multiple smart contracts for the same ledger, because different smart contracts can encapsulate different
 
+That's not the whole story, however, because these different *physical* copies of the ledger need to be kept synchronized with each other, so that they can be considered to be the same *logical* ledger. This is achieved by a process called consensus -- which keeps the individual physical ledgers in step with each other. We'll discuss the logical/physical nature of the ledger and smart contracts later, as well as how peers take part in the consensus mechanism. First let's understand a little more about individual peers.
 
 ## Applications and peers
 
+| ![NetworkPeers1](./Peers.diagram.2.png) |
+| :---: |
+| Peers in a Hyperledger Fabric blockchain network. An application interacts with the smart contracts and ledgers in a blockchain network by communicating with a one or more peers on a particular channel. Smart contracts can be used to query or update the ledger. |
 
-
-| ![NetworkPeers](./Peers.diagram.2.png) |
+| ![NetworkPeers2](./Peers.diagram.3.png) |
 | :---: |
 | Applications connect to peers to invoke smart contracts which query or update the ledger. Queries are returned  |
+
+
 
 ## The services provided by a peer
 
