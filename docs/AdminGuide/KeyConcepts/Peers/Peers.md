@@ -19,8 +19,13 @@ At the most fundamental level, a peer is a *host* for smart contracts and ledger
 That's not the whole story, however, because you know that different copies of the ledger need to be kept synchronized with each other. This is a achieved by a mechanism called consensus -- which ensures that each individual physical ledger on different peers can be considered to be a consistent copy of a single logical ledger.  We'll discuss this important point later, but first let's understand a little more about individual peers.
 
 
-## How applications use peers to access the ledger
+## Applications and peers
 
+
+
+| ![NetworkPeers](./Peers.diagram.2.png) |
+| :---: |
+| Applications connect to peers to invoke smart contracts which query or update the ledger. Queries are returned  |
 
 ## The services provided by a peer
 
