@@ -77,7 +77,7 @@ To allow messages to be written in way such that only Mary can read them, Mary's
 | :---: |
 | Encrypting data using private keys and public keys. Any principal in the network who wishes to securely communicate with Mary can use Mary's public key to encrypt a document -- a document that only Mary can decrypt with her private key. |
 
-We note that only Mary is able to decrypt the message, as only she holds her private key -- that's why it's so important that she holds this securely, and does not share it. We also note that to prevent the encrypted message being tampered with, it is also signed by the sending principal with their private key, and this signature is checked by Mary before she decrypts it.
+We note that only Mary is able to decrypt the message, as only she holds her private key -- that's why it's so important that she holds this securely, and does not share it. We also note that to prevent the encrypted message being tampered with, it is also signed by the originating principal with their private key, and this signature is checked by Mary before she decrypts it.
 
 Finally, if Mary wants to securely communicate back to another party she uses exactly the same process, as others use to communicate with her, only using their public key to encrypt and sign the data.
 
