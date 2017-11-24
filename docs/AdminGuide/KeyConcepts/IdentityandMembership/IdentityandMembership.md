@@ -1,8 +1,8 @@
 # Identity and Membership
 
-Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources that they have in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verified** (a real identity, in other words), and it must also come from a **trusted** source.
+Identities really matter in a Hyperledger Fabric blockchain network! That's because a principal's **identity determines the exact permissions over resources that they have in a blockchain network**. Most importantly, **a principal's identity must have two qualities** -- it must be **verifiable** (a real identity, in other words), and it must also come from a **trusted** source.
 
-These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, a PKI and an MSP form the definition of the **members** of a blockchain network.
+These two identity concepts -- verification and trust -- are provided by a **Public Key Infrastructure** (PKI) and a **Membership Service Provider** (MSP), respectively. A PKI is a set of existing internet standards which provide secure communications for many different types of networks, whereas an MSP is a Hyperledger Fabric concept for managing identities in a blockchain network. In combination, PKIs and MSPs form the definition of the **members** of a blockchain network.
 
 ## <a name="Scenario"></a>A simple scenario to explain verification and trust
 
@@ -10,9 +10,9 @@ Imagine that you visit a supermarket to buy some groceries. At the checkout you 
 
 | ![Scenario](./IdentityandMembership.diagram.6.png) |
 | :---: |
-| Having a valid credit card is not enough -- it must also be accepted by the store! PKI and MSPs work together in the same way -- PKI provides a list of valid identities, and MSPs say which of these are members of an given blockchain network. |
+| Having a valid credit card is not enough -- it must also be accepted by the store! PKIs and MSPs work together in the same way -- PKI provides a list of valid identities, and an MSP says which of these are members of a given blockchain network. |
 
-PKI and MSPs provide this combination of verification and trust. A PKI is like a set of card providers -- it dispenses many different types of verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the members of the store payment network. **MSPs turn verifiable identities into the members of a blockchain network**.
+PKIs and MSPs provide this combination of verification and trust. A PKI is like a card provider -- it dispenses many different types of verifiable identities. An MSP, on the other hand, is like the list of card providers accepted by the store -- determining which identities are the trusted members of the store payment network. **MSPs turn verifiable identities into the members of a blockchain network**.
 
 Let's drill into these concepts in a little more detail.
 
@@ -43,7 +43,7 @@ A digital certificate is a document which holds a set of attributes relating to 
 | :---: |
 | A Digital Certificate describing a principal called Mary Morris. Mary is the `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key facts about Mary.  The certificate holds many more pieces of information, as you can see.  Most importantly, Mary's public key is distributed within her certificate, whereas her private key is not; it must be kept secret to Mary. |
 
-What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally, "*secret writing*") -- such that tampering will invalidate the certificate. Cryptography allows Mary to present her certificate to others to prove her identity so long the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (meaning, its own **private key**), anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
+What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally, "*secret writing*") -- such that tampering will invalidate the certificate. Cryptography allows Mary to present her certificate to others to prove her identity so long as the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (meaning, its own **private key**), anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
 
 ## Public keys and private keys
 
@@ -123,11 +123,11 @@ Note that a certificate being revoked is very different to a certificate expirin
 
 ## Membership Service Provider
 
-You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the  members of a blockchain network. That's where a Membership Service Provider (MSP) comes into play -- **it lists the identities of the principals who are the members of a given organization in the blockchain network**.
+You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the trusted members of a blockchain network. That's where a Membership Service Provider (MSP) comes into play -- **it identifies the principals who are the members of a given organization in the blockchain network**.
 
 Whereas a PKI provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are trusted to define which principals are considered the members of an organization.  An MSP can also recognize other things related to membership of a network -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a list of members of a given organization**, either by holding certificates themselves or by listing which CAs can issue valid certificates, or -- as will usually be the case -- through some combination of both.
 
-If an MSP is defined either on the local file system of a peer or orderer node, it is a **Local MSP**. If it's found in the policy configuration of the network or each channel, it is a **Global MSP**. You'll hear more about local and global MSPs and why the distinction between them is important later.
+If an MSP is defined on the local file system of a peer / orderer node or user (client application or administrator), it is a **Local MSP**. If it's found in the policy configuration of the network or each channel, it is a **Global MSP**. You'll hear more about local and global MSPs and why the distinction between them is important later.
 
 ### Mapping MSPs to Organizations
 
@@ -147,25 +147,25 @@ Finally, though this is a slight mis-use of OUs, they can sometimes be used by *
 
 ### Local and Global MSPs
 
-There are two different types of MSPs: local and global. **Local MSPs are only defined for nodes** (peer or orderer) and they apply to the node where they are defined. **Every node must have a local MSP defined**.
+There are two different types of MSPs: local and global. **Local MSPs are defined for nodes** (peer or orderer) and **users** (administrators that use the CLI or client applications that use the SDK). **Every node and user must have a local MSP defined**.
 
 In contrast, **global MSPs are defined either for channels or the entire network**, and they apply to all of the nodes that are part of a channel or network. Every channel or network must have at least one MSP defined for it, and peers and orderers on a channel will all share the same global MSP. The key difference here between local and global MSPs is not how they function, but their **scope**.  
 
 | ![MSP2](./IdentityandMembership.diagram.4.png) |
 | :---: |
-| Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for the channel are global. Each peer is managed by its own organization, ORG1 or ORG2. This channel is managed by both ORG1 and ORG2. Similar principles apply for the network and orderers, but these are not shown here for simplicity. |
+| Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for the channel are global. Each peer is managed by its own organization, ORG1 or ORG2. This channel is managed by both ORG1 and ORG2. Similar principles apply for the network, orderers and users, but these are not shown here for simplicity. |
 
-You can see that **local MSPs are only defined on the file system of the node** to which they apply. Therefore, physically and logically there is only one local MSP per node. However, as **global MSPs apply to all nodes in a channel or network**, they are logically defined once for the network or the channel. However, **a global MSP is instantiated on the file system of every node and kept synchronized via consensus**. So while there is a copy of a global MSP on the local file system of every node, logically the global MSP exists on the channel or the network.
+You can see that **local MSPs are only defined on the file system of the node or user** to which they apply. Therefore, physically and logically there is only one local MSP per node or user. However, as **global MSPs apply to all nodes in a channel or network**, they are logically defined once for the network or the channel. However, **a global MSP is instantiated on the file system of every node and kept synchronized via consensus**. So while there is a copy of a global MSP on the local file system of every node, logically the global MSP exists on the channel or the network.
 
 You may find it helpful to see how local and global MSPs are used by seeing what happens when a blockchain administrator installs and instantiates a smart contract, as shown in the [diagram above](MSP2).
 
-An administrator `B` connects to the peer with an identity issued by `RCA1`. When `B` tries to install a smart contract on the peer, the peer checks its **local MSP**, `ORG1.MSP`, to verify that the identity is indeed a member of `ORG1`. A successful verification will allow the install command to complete successfully. Subsequently, `B` wishes to instantiate the smart contract on the channel. Because this is a channel operation, all organizations in the channel must agree to it. Therefore, the peer must check the **global MSP** in the channel policy before it can successfully complete this command.  (Other things must happen too, but ignore those for now.)
+An administrator `B` connects to the peer with an identity issued by `RCA1` and stored in their **local MSP**. When `B` tries to install a smart contract on the peer, the peer checks its **local MSP**, `ORG1.MSP`, to verify that the identity of `B` is indeed a member of `ORG1`. A successful verification will allow the install command to complete successfully. Subsequently, `B` wishes to instantiate the smart contract on the channel. Because this is a channel operation, all organizations in the channel must agree to it. Therefore, the peer must check the **global MSP** in the channel policy before it can successfully complete this command.  (Other things must happen too, but ignore those for now.)
 
 You can see that the channel and the ledger are really **logical constructs** when they are defined at the channel level. It is **only when they are instantiated on a peer's local filesystem and managed by it that they become physical**. It's really important to understand how concepts like global MSPs, channel policies and even the ledger itself are **defined at the channel level, but instantiated and managed on the peers** of the different organizations in the channel.
 
 ### MSP Levels
 
-The split between **global and local MSPs reflects the needs of organizations to administer their local resources**, such as a peer or orderer nodes, **and their global resources**, such as ledgers, smart contracts, and consortia, which operate at the channel or network level. It's helpful to think of these MSPs as being at different **levels**, with **MSPs at a higher level relating to network administration concerns** while **MSPs at a lower level handle identity for the administration of private resources**. This tiering is helpful because it supports the mix of both broad and narrow administrative control depending on how the network needs to be constituted. MSPs are mandatory at every level of administration -- they must be defined for the network, channel, peer, and orderer.
+The split between **global and local MSPs reflects the needs of organizations to administer their local resources**, such as a peer or orderer nodes, **and their global resources**, such as ledgers, smart contracts, and consortia, which operate at the channel or network level. It's helpful to think of these MSPs as being at different **levels**, with **MSPs at a higher level relating to network administration concerns** while **MSPs at a lower level handle identity for the administration of private resources**. This tiering is helpful because it supports the mix of both broad and narrow administrative control depending on how the network needs to be constituted. MSPs are mandatory at every level of administration -- they must be defined for the network, channel, peer, orderer and users.
 
 | ![MSP3](./IdentityandMembership.diagram.2.png) |
 | :---: |
@@ -173,11 +173,11 @@ The split between **global and local MSPs reflects the needs of organizations to
 
  * **Network MSP:** These MSPs are defined in the configuration policy of the whole network, so by definition, **there is only one set of network MSPs**. Every principal who uses a network must be a member as defined by the MSPs in the network policy before they can perform an administrative task. This means that the MSPs that are defined for the network should define **the organizations who are trusted to have administrative control over the network**. An example of a network-wide administrative permission might be to define or change the organizations who can create channels.
 
- * **Channel MSP:** These MSPs are defined inside the configuration policy of each channel, and therefore there is one set of MSPs for each channel that is defined. It is helpful for a channel to have its own set of MSPs because a channel provides private communications between a particular set of organizations which in turn have administrative control over it. You can see that the need for **a separate set of channel MSPs stems from the need for local autonomy** -- the organizations in a channel can, and will often need to be, largely independent from the rest of the network. It also means that administrative control over the network doesn't necessarily imply control over any particular channel; again reflecting the real administrative needs of collaborating organizations who may sometimes require separation of control. We see this kind of separation at the levels of control in the real world, too. The authority of the President of the United States, for example, exists at the federal level. He or she has no authority to veto state laws.
+ * **Channel MSP:** These MSPs are defined inside the configuration policy of each channel, and therefore there is a set of MSPs for each channel that is defined. It is helpful for a channel to have its own set of MSPs because a channel provides private communications between a particular set of organizations which in turn have administrative control over it. You can see that the need for **a separate set of channel MSPs stems from the need for local autonomy** -- the organizations in a channel can, and will often need to be, largely independent from the rest of the network. It also means that administrative control over the network doesn't necessarily imply control over any particular channel; again reflecting the real administrative needs of collaborating organizations who may sometimes require separation of control. We see this kind of separation at the levels of control in the real world, too. The authority of the President of the United States, for example, exists at the federal level. He or she has no authority to veto state laws.
 
  * **Peer MSP:** This local MSP is defined on the file system of each peer. Conceptually, it performs exactly the same function as global MSPs with the restriction that it only applies to the peer where it is defined. As peers are owned by a particular organization and connect applications from that organization to the ledger, there is only a single MSP for a peer. It's possible to specify multiple different CAs in this MSP, but in practice a local MSP will usually refer to many fewer CAs than a set of global MSPs. An example of a peer permission might be the ability to install or upgrade smart contract chaincode on that peer.
 
- * **Orderer MSP:** Like a peer MSP, an orderer local MSP is also defined on the file system of the node and only applies to that node. Like peer nodes, orderers are also owned by a single organization and therefore have a single MSP to list its member principals, though again it's possible to specify multiple Root CAs. There are a currently very few, if any, administrative actions that are local to an orderer node, so in reality an orderer may not need to populate its local MSP.
+ * **Orderer MSP:** Like a peer MSP, an orderer local MSP is also defined on the file system of the node and only applies to that node. Like peer nodes, orderers are also owned by a single organization and therefore have a single MSP to list its trusted principals, though again it's possible to specify multiple Root CAs.
 
 ### MSP Structure
 
@@ -217,7 +217,7 @@ Let's describe these folders in a little more detail and see why they are import
 
  It's worth noting that even though an X.509 certificate has a `ROLE` attribute (specifying, for example, that a principal is an "admin"), this refers to a principal's role within its organization rather than on the blockchain network. This is distinctly different from the purpose of the `OU` attribute, which -- if it has been defined -- refers to a principal's place in the network. Indeed, this is why we need the Administrators folder - because the blockchain role is quite different to the X.509 `ROLE`.
 
- The `ROLE` attribute **can** be used to confer administrative rights ls
+ The `ROLE` attribute **can** be used to confer administrative rights
  at the channel level if the policy for that channel has been written to allow any administrator from an organization (or certain organizations) permission to perform certain channel functions (such as instantiating chaincode). In this way **an organizational role can confer a network role**. We'll learn more about how policies can be written that way and how this functionality imparts significant operational advantages later.
 
  * **Revoked Certificates**
@@ -230,15 +230,17 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **Signing Certificate**
 
- This folder is typically defined for the local MSP of a peer or orderer node and contains the **public X.509 certificate** used by a node when it needs to identify itself to another principal in the network. This is the certificate a peer places in a transaction proposal, for example, to indicate that a peer's organization has endorsed it -- which can subsequently be checked against an endorsement policy (which will contain copies of approved public certificates) by a validating node.
+ This folder contains the **public X.509 certificate** used by a node or user when the need to identify themselves to another principal in the network. This is the certificate a peer places in a transaction proposal response, for example, to indicate that a peer's organization has endorsed it -- which can subsequently be checked against an endorsement policy (containing the organisations that must endorse a transaction) by a validating node.
 
  This folder is mandatory, and there must be exactly one X.509 certificate for the node.
 
  * **KeyStore for Private Key**
 
- This folder is typically defined for the local MSP of a peer or orderer node and contains the **private key** to be used by that node. This key is used by a node when it needs to sign or encrypt data -- for example to sign a transaction proposal, indicating that a peer's organization has endorsed it.
+ This folder is defined for the local MSP of a peer / orderer node or user, and contains the **private key**. This key is used to sign or encrypt data -- for example to sign a transaction proposal response, indicating that a peer's organization has endorsed it.
 
- This folder is mandatory, and there must be exactly one private key for the node. Obviously, access to this folder must be limited only to those operators administrators who have responsibility for the local MSP's peer or orderer node.
+ This folder is mandatory, and must contain exactly one private key. Obviously, access to this folder must be limited only to those operators administrators who have responsibility for local MSP's.
+
+ **Global MSPs** do not include this folder or any private keys, as by their nature they are shared across the network or channel.
 
  * **TLS Root CA**
 
