@@ -1,26 +1,26 @@
 # Peers
 
-As you've seen, **the two most important concepts in a blockchain network are ledgers and smart contracts**.  That's because smart contracts and ledgers are used to encapsulate the shared processes and information in the business network as smart contracts and ledgers, respectively. When a developer writes a blockchain application, it allows a network participant to consume the services of other participants in the network, or provide services to them in the form of smart contracts.
+As you've seen, **the two most important concepts in a blockchain network are ledgers and smart contracts**.  That's because smart contracts and ledgers are used to encapsulate the shared processes and shared information in the business network, respectively. When a developer writes a blockchain application, the ledgers and smart contracts allows network participant to provide or consume the services of others in the network.
 
 For example, in DRIVENET, smart contracts correspond to the manufacture, distribution, sale, insurance, and other transactions in a car's lifecycle. The result of these transactions are captured as updates to ledgers which are shared between Mitchell, Regal, Cecil, ZBS insurance and the other organizations that use the blockchain network. The different participants in the business network write applications that allow them to provide their specific value to the DRIVENET network.
 
-Peers are important for two reasons.  **Firstly, peers form the blockchain network**. Yes, there are other components to a network such as orderers and permission policies, but without peers there cannot be any kind of meaningful blockchain network.  That's because of the next reason, which is arguably more important. **Secondly, peers are where the ledger and smart contract physically reside in the blockchain network.**
+An now you can see that peers are important for two reasons.  **Firstly, peers form the blockchain network**. Yes, there are other components to a blockchain network such as orderers and permission policies, but without peers there cannot be any kind of meaningful blockchain network.  That's because of the next reason, which is arguably more important. **Secondly, peers are where the ledger and smart contract physically reside in the blockchain network.**
 
 So let's now turn our attention the peer.
 
 ## Peers form the blockchain network
 
-A blockchain network is comprised of many nodes. Through their connectedness, nodes are what give the network its structure -- though we'll look at that connectedness in more detail later. For now, its enough to know that there are two types of nodes, called peers and orderers. It's natural to think of the peer as the most important type of node, because **a peer holds both a copy of a ledger, and a copy of a smart contract.**
+A blockchain network is comprised of many nodes. Through their connectedness, nodes give the network its structure -- and we'll look at that connected structure in more detail later. For now, its enough to know that there are two types of nodes, called peers and orderers. It's natural to think of the peer as the most important type of node, because **a peer holds both a copy of a ledger, and a copy of a smart contract.**
 
 | ![Peer](./Peers.diagram.0.png) |
 | :---: |
 | An example blockchain network formed by three peers. A blockchain is primarily formed from peer nodes, each of which can hold copies of a ledger and smart contracts. In this example, each peer holds a copy of the same ledger and smart contracts -- though this is not usually the case.|
 
-In a very real sense, we see that the network is formed from the peer nodes that host ledgers and smart contracts. You'll see that peers are the objects that administrators manage on a day-to-day basis. Peers are created, started, stopped, reconfigured, and even deleted. Technically, a blockchain network can exist without any peers being defined, but for all practical purposes, peers are what *make* a blockchain network real.
+In a very real sense, we see that the network is formed from the peer nodes that host ledgers and smart contracts. You'll see that peers are the primary objects that administrators manage on a day-to-day basis using the `peer` command. Peers are created, started, stopped, reconfigured, and even deleted. Technically, a blockchain network can exist without any peers being defined, but for all practical purposes, peers are what *make* a blockchain network real.
 
-Peers can have connections to other peers, and other nodes called orderers, and we'll cover this later in this topic, and more in the [network topic](./).
+Peers can have connections to other peer nodes, as well as orderer nodes, and we'll cover this later in this topic, and more in the [network topic](./).
 
-Finally, you might find it helpful to note that there is not a *network* object object. Rather, the network comes into existence when certain other objects are defined, such as policies, orderers, MSPs, or peers.  And practically speaking, until there are peers, a blockchain network cannot do anything meaningful.
+Finally, you might find it helpful to note that there is not a *blockchain network* object in the same way that there's a peer object. Rather, the network comes into existence when certain other objects are defined, such as policies, orderers, MSPs, or peers.  And practically speaking, until there are peers, a blockchain network cannot do anything meaningful. Mostly, the network is administered by configuring these other objects, rather than any separate object called a 'network'.
 
 ## Peers host smart contracts and ledgers
 
