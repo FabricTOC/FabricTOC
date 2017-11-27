@@ -30,13 +30,23 @@ A peer is a *host* for smart contracts and ledgers - it's where smart contracts 
 | :---: |
 | A Peer hosts ledgers and smart contracts. There can be many smart contracts hosted on a peer for a ledger.  |
 
-There's a great deal of flexibility in terms for cardinality of ledgers and smart contracts on a peer.  That is to say that a peer can host zero or more ledgers, and a peer can host zero or more smart contracts.  Typically, there will be many more smart contracts than there will be ledgers -- this makes sense because a ledger is the base for the provision of services, expressed as smart contracts. 
-
-When considering ledgers, a peer hosts one or more instances of a ledger, one of every channel it joins.  
+There's a great deal of flexibility in terms the number of ledgers and smart contracts on a peer.  For example, can host zero or more ledgers, and a peer can host zero or more smart contracts.  Typically, there will be many more smart contracts than there will be ledgers -- this makes sense because a ledger is the base for the provision of services, expressed as smart contracts.
 
 | ![Peer3](./Peers.diagram.3.png) |
 | :---: |
-| Peers hosts ledgers and smart contracts. In reality, there are many smart contracts hosted on a peer for a ledger.  Moreover, |
+| Peers hosting different numbers of ledgers and smart contracts. Peers have one or more ledgers, and each ledger has zero or more smart contracts that apply to them.  Moreover, some smart contracts may apply to multiple ledgers.  |
+
+When considering ledgers, a peer hosts one or more instances of a ledger.  It is common for peers to only have a copy of the ledger and no smart contracts.  Such peers are monitoring ledger updates, as might be typical of a regulator.  For example, in the DRIVENET network, the DMV only wants to monitor the production of cars by Regal and Mitchell - it does not want to control it.  This is the primary use of ledgers without smart contracts.  
+
+When considering smart contracts, typically there are multiple smart contracts for a ledger. For example, in DRIVENET, Regal and Mitchell provide smart contracts for the manufacture of their cars.  They could chose to use the same smart contract, but regardless their smart contracts will update the same ledger.  
+
+You can also see that the same smart contract can run on different ledgers.  For example in DRIVENET, ZBS insurance wants to provide services to Cecil's who supply both the Mitchell and Regal cars, as well as Faster Autos, who only sell Regal cars.  Even though these ledgers are kept quite separate, ZBS can use the same smart contract to provide insurance services to these private channels.
+
+## Peer Container  
+
+When a peer does host smart contracts.
+
+
 
 Moreover a peer can host multiple smart contracts for the same ledger, because different smart contracts can encapsulate different
 
