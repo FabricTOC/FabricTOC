@@ -12,7 +12,7 @@ So let's now turn our attention the peer.
 
 A blockchain network is comprised of many nodes. Through their connectedness, nodes give the network its structure -- and we'll look at that connected structure in more detail later. For now, its enough to know that there are two types of nodes, called peers and orderers. It's natural to think of the peer as the most important type of node, because **a peer holds both a copy of a ledger, and a copy of a smart contract.**
 
-| ![Peer](./Peers.diagram.0.png) |
+| ![Peer](./Peers.diagram.1.png) |
 | :---: |
 | An example blockchain network formed by three peers. A blockchain is primarily formed from peer nodes, each of which can hold copies of a ledger and smart contracts. In this example, each peer holds a copy of the same ledger and smart contracts -- though this is not usually the case.|
 
@@ -24,15 +24,15 @@ Finally, you might find it helpful to note that there is not a *blockchain netwo
 
 ## Peers host smart contracts and ledgers
 
-A peer is a *host* for smart contracts and ledgers - it's where smart contracts and the ledger *live*, in a physical sense. If we want to provide or consume smart contracts and ledgers then we need to provide and consume the services provided by peers, because that's where smart contracts and ledgers reside.  
+A peer is a *host* for smart contracts and ledgers - it's where smart contracts and the ledger *live*, in a physical sense. If a network participant wants to provide or consume smart contracts and ledgers then they interact with a peer, because that's where smart contracts and ledgers reside.  
 
-| ![Peer](./Peers.diagram.1.png) |
+| ![Peer](./Peers.diagram.2.png) |
 | :---: |
 | A Peer hosts ledgers and smart contracts. There can be many smart contracts hosted on a peer for a ledger.  |
 
-Peers can hold varying numbers of ledgers and smart contracts.
+It might seem to you that
 
-| ![Peer1](./Peers.diagram.2.png) |
+| ![Peer1](./Peers.diagram.3.png) |
 | :---: |
 | Peers hosts ledgers and smart contracts. In reality, there are many smart contracts hosted on a peer for a ledger.  Moreover, |
 
