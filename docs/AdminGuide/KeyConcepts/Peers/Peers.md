@@ -10,13 +10,23 @@ So let's now turn our attention to the place where the ledger and smart contract
 
 A blockchain network is comprised of many nodes. There are two types of nodes, called peers and orderers. It's natural to think of the peer as the most important type of node, because **a peer holds both a copy of a ledger, and a copy of a smart contract.**
 
-| ![Peer](./Peers.diagram.1.png) |
+| ![Peer1](./Peers.diagram.1.png) |
 | :---: |
-| A Peer hosts the ledger and smart contracts. In reality, there are many smart contracts hosted on a peer for a ledger.  Moreover, |
+| Peers hosts ledgers and smart contracts. In reality, there are many smart contracts hosted on a peer for a ledger.  Moreover, |
 
 At the most fundamental level, a peer is a *host* for smart contracts and ledgers - it's where smart contracts and the ledger *live*, in a physical sense.  **Peers are what makes a blockchain a distributed ledger**, because a network comprises many peers, and it's these peers which hold a copy of the ledger and the smart contracts which interact with it.
 
+Peers can hold varying numbers of ledgers and smart contracts.
+
+| ![Peer1](./Peers.diagram.2.png) |
+| :---: |
+| Peers hosts ledgers and smart contracts. In reality, there are many smart contracts hosted on a peer for a ledger.  Moreover, |
+
 Moreover a peer can host multiple smart contracts for the same ledger, because different smart contracts can encapsulate different
+
+
+
+
 
 That's not the whole story, however, because these different *physical* copies of the ledger need to be kept synchronized with each other, so that they can be considered to be the same *logical* ledger. This is achieved by a process called consensus -- which keeps the individual physical ledgers in step with each other. We'll discuss the logical/physical nature of the ledger and smart contracts later, as well as how peers take part in the consensus mechanism. First let's understand a little more about individual peers.
 
