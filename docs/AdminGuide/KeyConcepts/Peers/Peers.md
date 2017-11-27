@@ -1,11 +1,10 @@
 # Peers
 
-As you've seen, **the two most important concepts in a blockchain network are ledgers and smart contracts**.  That's because smart contracts and ledgers are used to encapsulate the shared processes and information in the business network in smart contracts and ledgers, respectively. When a developer writes a blockchain application, it allows a network participant to consume the services of other participants in the network, or provide services to them in the form of smart contracts.
+As you've seen, **the two most important concepts in a blockchain network are ledgers and smart contracts**.  That's because smart contracts and ledgers are used to encapsulate the shared processes and information in the business network as smart contracts and ledgers, respectively. When a developer writes a blockchain application, it allows a network participant to consume the services of other participants in the network, or provide services to them in the form of smart contracts.
 
 For example, in DRIVENET, smart contracts correspond to the manufacture, distribution, sale, insurance, and other transactions in a car's lifecycle. The result of these transactions are captured as updates to ledgers which are shared between Mitchell, Regal, Cecil, ZBS insurance and the other organizations that use the blockchain network. The different participants in the business network write applications that allow them to provide their specific value to the DRIVENET network.
 
-
-Peers are important for two reasons.  **Firstly, peers form the blockchain network**. Yes, there are other components to a network such as orderers and permission policies, but without peers there cannot be any kind of meaningful blockchain network.  That's because of the next sreason, which is arguably more important. **Secondly, peers are where the ledger and smart contract physically reside in the blockchain network.**
+Peers are important for two reasons.  **Firstly, peers form the blockchain network**. Yes, there are other components to a network such as orderers and permission policies, but without peers there cannot be any kind of meaningful blockchain network.  That's because of the next reason, which is arguably more important. **Secondly, peers are where the ledger and smart contract physically reside in the blockchain network.**
 
 So let's now turn our attention the peer.
 
