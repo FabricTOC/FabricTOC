@@ -1,37 +1,58 @@
 # Peers
 
-As you've seen, **the two most important concepts in a blockchain network are ledgers and smart contracts**.  That's because smart contracts and ledgers are used to encapsulate the shared processes and information in the business network in smart contracts and ledgers, respectively. When a developer writes a blockchain application, it allows a network participant to consume the services of other participants in the network, or provide services to them in the form of smart contracts.
+As you've seen, **the two most important concepts in a blockchain network are ledgers and smart contracts**.  That's because smart contracts and ledgers are used to encapsulate the shared processes and shared information in the business network, respectively. When a developer writes a blockchain application, the ledgers and smart contracts allows network participant to provide or consume the services of others in the network.
 
 For example, in DRIVENET, smart contracts correspond to the manufacture, distribution, sale, insurance, and other transactions in a car's lifecycle. The result of these transactions are captured as updates to ledgers which are shared between Mitchell, Regal, Cecil, ZBS insurance and the other organizations that use the blockchain network. The different participants in the business network write applications that allow them to provide their specific value to the DRIVENET network.
 
-
-Peers are important for two reasons.  **Firstly, peers form the blockchain network**. Yes, there are other components to a network such as orderers and permission policies, but without peers there cannot be any kind of meaningful blockchain network.  That's because of the next sreason, which is arguably more important. **Secondly, peers are where the ledger and smart contract physically reside in the blockchain network.**
+An now you can see that peers are important for two reasons.  **Firstly, peers form the blockchain network**. Yes, there are other components to a blockchain network such as orderers and permission policies, but without peers there cannot be any kind of meaningful blockchain network.  That's because of the next reason, which is arguably more important. **Secondly, peers are where the ledger and smart contract physically reside in the blockchain network.**
 
 So let's now turn our attention the peer.
 
 ## Peers form the blockchain network
 
-A blockchain network is comprised of many nodes. Through their connectedness, nodes are what give the network its structure -- though we'll look at that connectedness in more detail later. For now, its enough to know that there are two types of nodes, called peers and orderers. It's natural to think of the peer as the most important type of node, because **a peer holds both a copy of a ledger, and a copy of a smart contract.**
+A blockchain network is comprised of many nodes. Through their connectedness, nodes give the network its structure -- and we'll look at that connected structure in more detail later. For now, its enough to know that there are two types of nodes, called peers and orderers. It's natural to think of the peer as the most important type of node, because **a peer holds both a copy of a ledger, and a copy of a smart contract.**
 
-| ![Peer](./Peers.diagram.0.png) |
+| ![Peer1](./Peers.diagram.1.png) |
 | :---: |
 | An example blockchain network formed by three peers. A blockchain is primarily formed from peer nodes, each of which can hold copies of a ledger and smart contracts. In this example, each peer holds a copy of the same ledger and smart contracts -- though this is not usually the case.|
 
-In a very real sense, we see that the network is formed from the peer nodes that host ledgers and smart contracts. You'll see that peers are the objects that administrators manage on a day-to-day basis. Peers are created, started, stopped, reconfigured, and even deleted. Technically, a blockchain network can exist without any peers being defined, but for all practical purposes, peers are what *make* a blockchain network real.
+In a very real sense, we see that the network is formed from the peer nodes that host ledgers and smart contracts. You'll see that peers are the primary objects that administrators manage on a day-to-day basis using the `peer` command. Peers are created, started, stopped, reconfigured, and even deleted. Technically, a blockchain network can exist without any peers being defined, but for all practical purposes, peers are what *make* a blockchain network real.
 
-Peers can have connections to other peers, and other nodes called orderers, and we'll cover this later in this topic, and more in the [network topic](./).
+Peers can have connections to other peer nodes, as well as orderer nodes, and we'll cover this later in this topic, and more in the [network topic](./).
 
-Finally, you might find it helpful to note that there is not a *network* object object. Rather, the network comes into existence when certain other objects are defined, such as policies, orderers, MSPs, or peers.  And practically speaking, until there are peers, a blockchain network cannot do anything meaningful.
+Finally, you might find it helpful to note that there is not a *blockchain network* object in the same way that there's a peer object. Rather, the network comes into existence when certain other objects are defined, such as policies, orderers, MSPs, or peers.  And practically speaking, until there are peers, a blockchain network cannot do anything meaningful. Mostly, the network is administered by configuring these other objects, rather than any separate object called a 'network'.
 
 ## Peers host smart contracts and ledgers
 
-A peer is a *host* for smart contracts and ledgers - it's where smart contracts and the ledger *live*, in a physical sense. If we want to provide or consume smart contracts and ledgers then we need to provide and consume the services provided by peers, because that's where smart contracts and ledgers reside.  
+A peer is a *host* for smart contracts and ledgers - it's where smart contracts and the ledger *live*, in a physical sense. If a network participant wants to provide or consume smart contracts and ledgers then they interact with a peer, because that's where smart contracts and ledgers reside.  
 
-| ![Peer](./Peers.diagram.1.png) |
+| ![Peer2](./Peers.diagram.2.png) |
 | :---: |
 | A Peer hosts ledgers and smart contracts. There can be many smart contracts hosted on a peer for a ledger.  |
 
+There's a great deal of flexibility in terms the number of ledgers and smart contracts on a peer.  For example, can host zero or more ledgers, and a peer can host zero or more smart contracts.  Typically, there will be many more smart contracts than there will be ledgers -- this makes sense because a ledger is the base for the provision of services, expressed as smart contracts.
+
+| ![Peer3](./Peers.diagram.3.png) |
+| :---: |
+| Peers hosting different numbers of ledgers and smart contracts. Peers have one or more ledgers, and each ledger has zero or more smart contracts that apply to them.  Moreover, some smart contracts may apply to multiple ledgers.  |
+
+When considering ledgers, a peer hosts one or more instances of a ledger.  It is common for peers to only have a copy of the ledger and no smart contracts.  Such peers are monitoring ledger updates, as might be typical of a regulator.  For example, in the DRIVENET network, the DMV only wants to monitor the production of cars by Regal and Mitchell - it does not want to control it.  This is the primary use of ledgers without smart contracts.  
+
+When considering smart contracts, typically there are multiple smart contracts for a ledger. For example, in DRIVENET, Regal and Mitchell provide smart contracts for the manufacture of their cars.  They could chose to use the same smart contract, but regardless their smart contracts will update the same ledger.  
+
+You can also see that the same smart contract can run on different ledgers.  For example in DRIVENET, ZBS insurance wants to provide services to Cecil's who supply both the Mitchell and Regal cars, as well as Faster Autos, who only sell Regal cars.  Even though these ledgers are kept quite separate, ZBS can use the same smart contract to provide insurance services to these private channels.
+
+## Peer Container  
+
+When a peer does host smart contracts.
+
+
+
 Moreover a peer can host multiple smart contracts for the same ledger, because different smart contracts can encapsulate different
+
+
+
+
 
 That's not the whole story, however, because these different *physical* copies of the ledger need to be kept synchronized with each other, so that they can be considered to be the same *logical* ledger. This is achieved by a process called consensus -- which keeps the individual physical ledgers in step with each other. We'll discuss the logical/physical nature of the ledger and smart contracts later, as well as how peers take part in the consensus mechanism. First let's understand a little more about individual peers.
 
