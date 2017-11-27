@@ -30,7 +30,9 @@ A peer is a *host* for smart contracts and ledgers - it's where smart contracts 
 | :---: |
 | A Peer hosts ledgers and smart contracts. There can be many smart contracts hosted on a peer for a ledger.  |
 
-It might seem to you that
+There's a great deal of flexibility in terms for cardinality of ledgers and smart contracts on a peer.  That is to say that a peer can host zero or more ledgers, and a peer can host zero or more smart contracts.  Typically, there will be many more smart contracts than there will be ledgers -- this makes sense because a ledger is the base for the provision of services, expressed as smart contracts. 
+
+When considering ledgers, a peer hosts one or more instances of a ledger, one of every channel it joins.  
 
 | ![Peer3](./Peers.diagram.3.png) |
 | :---: |
