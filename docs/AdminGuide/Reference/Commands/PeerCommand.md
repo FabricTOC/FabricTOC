@@ -128,7 +128,10 @@ These flags provide more information about a peer. Notice that a command option 
 
 ## Related Tasks
 
++ [Determining a Peer's version](../../AdminTasks/Peer/DeterminingPeerVersion.md)
+
 ## <a name=reference></a> Related Reference
+
 + [`peer chaincode` command](./PeerChaincodeCommand.md)
 + [`peer channel` command](./PeerChannelCommand.md)
 + [`peer logging` command](./PeerLoggingCommand.md)
