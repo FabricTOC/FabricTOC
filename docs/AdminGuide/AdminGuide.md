@@ -149,6 +149,7 @@ This section of the documentation explains how to administer a Hyperledger Fabri
     + [Using Policy](./AdminTasks/ManagingIdentity.md)
     + [Orderer](./AdminTasks/ManagingIdentity.md)
   + [Peer Tasks](./AdminTasks/PeerTasks.md)
+    + [Determining a Peer's version](./AdminTasks/PeerVersion.md)
     + [Starting a peer](./AdminTasks/PeerTasks.md)
     + [DefAssociating an identity](./AdminTasks/PeerTasks.md)
     + [Submitting a Config transaction](./AdminTasks/PeerTasks.md)
