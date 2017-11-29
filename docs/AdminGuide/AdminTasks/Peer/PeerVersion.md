@@ -4,7 +4,7 @@ It is often helpful to determine the version of a peer -- you might need to dete
 
 ## Commands
 
-You can determine the version of the peer with the `peer --version` command.
+You can determine the exact version of a peer with the `peer --version` command.
 
 Here's an example of the output
 

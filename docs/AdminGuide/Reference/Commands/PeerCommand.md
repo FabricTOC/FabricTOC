@@ -44,7 +44,7 @@ These flags provide more information about a peer. Notice that a command option 
 
 #### Flag details
 
-* <a name=help><\a> `--help`
+* <a name=help> `--help`
 
   Use `help` to get brief help text for the `peer` command. The `help` flag can often be used at different levels to get individual command help, or even a help on a command option. See individual commands for more detail.
 
