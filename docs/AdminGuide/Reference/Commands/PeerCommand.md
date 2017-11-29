@@ -58,7 +58,7 @@ These flags describe more information about the peer. Notice that a command opti
 
 * `--version`
 
-  Use this flag to determine the build version for the peer.  This flag provides a set of detailed information on how the peer was built. See the reference topic [Peer version information](./Reference/Peer/VersionInfo.md) to understand the version information in detail.
+  Use this flag to determine the build version for the peer.  This flag provides a set of detailed information on how the peer was built.
 
   Here's an example of the output
 
@@ -75,6 +75,8 @@ peer:
   Base Docker Label: org.hyperledger.fabric
   Docker Namespace: hyperledger
 ```
+
+  See the reference topic [Peer version information](./Reference/Peer/VersionInfo.md) to understand the version information in detail.
 
 
 ## Related Concepts
