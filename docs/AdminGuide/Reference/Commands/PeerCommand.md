@@ -79,7 +79,7 @@ These flags provide more information about a peer. Notice that a command option 
 * `--test.coverprofile <string>`
 
   Use this flag to ...
-
+  
 * `--version`
 
   Use this flag to determine the build version for the peer.  This flag provides a set of detailed information on how the peer was built.
