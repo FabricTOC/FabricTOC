@@ -74,11 +74,11 @@ These flags provide more information about a peer. Notice that a command option 
 
 * `--logging-level <string>`
 
-  Use this flag to set the logging level for the peer. TBC
+  Use this flag to set the logging level for the peer...
 
 * `--test.coverprofile <string>`
 
-  Use this flag to ...? TBC
+  Use this flag to ...
 
 * `--version`
 
