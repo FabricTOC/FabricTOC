@@ -4,19 +4,29 @@ The `peer` command allow administrators to interact with a peer.
 
 ## Syntax
 
-`peer `
+The `peer` command has 5 different subcommands within it as follows:
+
+```
+peer chaincode   
+peer channel     
+peer logging     
+peer node        
+peer version     
+```
+
+### `chaincode` subcommand
+
+### `channel` subcommand
+
+### `logging` subcommand
+
+### `node` subcommand
+
+### `version` subcommand
 
 
-options:
+## Related Concepts
+[Peers](./KeyConcepts/Peers/Peers.md)
 
-`--ca.certfile` is the full path to public certificate of the CA
-
-`--ca.keyfile` is the full path to the private key file of the CA
-
-`--b` is the user name and password of the CA administrator, specified as <adminUser>:<adminPassword>
-
-`--d`
-
-Where possible, we'll also show an example command from the DRIVENET sample.
-
-[-->Peer Command](./PeerCommand.md)
+## Related Tasks
+[Joining a Peer to a channel](./)
