@@ -1,6 +1,6 @@
 # <a name="PeerCommand"></a> Peer Command
 
-The `peer` command allow administrators to interact with a peer.
+The `peer` command allow administrators to interact with a peer. Use this command when you want to perform blockchain operations via the peer -- such as deploying a smart contract chaincode, or joining a channel.
 
 ## Syntax
 
@@ -21,9 +21,30 @@ peer [no command]
 
 These commands separate the different functions provided by a peer into their own category. For example, use the `peer chaincode` command to perform smart contract operations on the peer, or the `peer channel` command to perform channel related operations.
 
-Within each command there are many different options available and because of this each command is described in its own topic. Follow the [links below](#reference) to understand these commands in more detail.
+Within each command there are many different options available and because of this each command is described in its own topic. Follow the [links below](#reference) to understand these individual commands in more detail.
 
-If a command option is not specified then the `peer` will return some high level help text about the command.
+If a command option is not specified then the `peer` will return some high level help text about the `peer` command, as follows:
+
+```
+Usage:
+  peer [flags]
+  peer [command]
+
+Available Commands:
+  chaincode   Operate a chaincode: install|instantiate|invoke|package|query|signpackage|upgrade.
+  channel     Operate a channel: create|fetch|join|list|update.
+  logging     Log levels: getlevel|setlevel|revertlevels.
+  node        Operate a peer node: start|status.
+  version     Print fabric peer version.
+
+Flags:
+  -h, --help                       help for peer
+      --logging-level string       Default logging level and overrides, see core.yaml for full syntax
+      --test.coverprofile string   Done (default "coverage.cov")
+  -v, --version                    Display current version of fabric peer server
+
+Use "peer [command] --help" for more information about a command.
+```
 
 ### Peer flags
 
@@ -40,7 +61,7 @@ peer --test.coverprofile <string>
 peer --version   
 ```
 
-These flags describe more information about the peer. Notice that a command option is not necessary when a flag is used.
+These flags provide more information about a peer. Notice that a command option is not necessary when a flag is used.
 
 #### Flag details
 
