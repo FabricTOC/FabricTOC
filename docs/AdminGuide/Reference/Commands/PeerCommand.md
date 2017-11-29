@@ -42,7 +42,7 @@ peer --version
 
 These flags provide more information about a peer. Notice that a command option is not necessary when a flag is used.
 
-#### Flag details
+#### <a name=help> </a> Flag details
 
 + `--help`
 
