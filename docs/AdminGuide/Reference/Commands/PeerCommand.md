@@ -23,28 +23,7 @@ These commands separate the different functions provided by a peer into their ow
 
 Within each command there are many different options available and because of this each command is described in its own topic. Follow the [links below](#reference) to understand these individual commands in more detail.
 
-If a command option is not specified then the `peer` will return some high level help text about the `peer` command, as follows:
-
-```
-Usage:
-  peer [flags]
-  peer [command]
-
-Available Commands:
-  chaincode   Operate a chaincode: install|instantiate|invoke|package|query|signpackage|upgrade.
-  channel     Operate a channel: create|fetch|join|list|update.
-  logging     Log levels: getlevel|setlevel|revertlevels.
-  node        Operate a peer node: start|status.
-  version     Print fabric peer version.
-
-Flags:
-  -h, --help                       help for peer
-      --logging-level string       Default logging level and overrides, see core.yaml for full syntax
-      --test.coverprofile string   Done (default "coverage.cov")
-  -v, --version                    Display current version of fabric peer server
-
-Use "peer [command] --help" for more information about a command.
-```
+If a command option is not specified then `peer` will return some high level help text as described in in the `--help` flag [below](#help).
 
 ### Peer flags
 
@@ -65,7 +44,7 @@ These flags provide more information about a peer. Notice that a command option 
 
 #### Flag details
 
-* `--help`
+* <a name=help><\a> `--help`
 
   Use `help` to get brief help text for the `peer` command. The `help` flag can often be used at different levels to get individual command help, or even a help on a command option. See individual commands for more detail.
 
