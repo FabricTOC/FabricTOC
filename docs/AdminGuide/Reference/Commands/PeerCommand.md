@@ -121,7 +121,7 @@ These flags provide more information about a peer. Notice that a command option 
     Docker Namespace: hyperledger
   ```
 
-  See the reference topic [Peer version information](./Reference/Peer/VersionInfo.md) to understand the version information in detail.
+  See the reference topic [Peer version information](./Reference/Advanced/Peer/VersionInfo.md) to understand the version information in detail.
 
 ## Related Concepts
 + [Peers](./KeyConcepts/Peers/Peers.md)
