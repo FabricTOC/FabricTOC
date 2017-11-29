@@ -170,6 +170,11 @@ This section of the documentation explains how to administer a Hyperledger Fabri
 #### [Reference Material](./Reference/Reference.md)
   + [Command Reference](./Reference/Commands/Commands.md)
      + [Peer Command](./Reference/Commands/PeerCommand.md)
+  + [Advanced Information](./Reference/Advanced/Advanced.md)
+     + [Peers](./Reference/Peer/PeerCommand.md)
+       + [Peer Version](./Reference/Peer/VersionInfo.md)
+
+
   + [Fabric CA](./Reference/FabricCA.md)
 
 #### [Glossary of Administrative Terms](./Glossary/Glossary.md)
