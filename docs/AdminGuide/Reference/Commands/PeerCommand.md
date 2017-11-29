@@ -124,7 +124,7 @@ These flags provide more information about a peer. Notice that a command option 
   See the reference topic [Peer version information](../Advanced/Peer/VersionInfo.md) to understand the version information in detail.
 
 ## Related Concepts
-+ [Peers](./KeyConcepts/Peers/Peers.md)
++ [Peers](../KeyConcepts/Peers/Peers.md)
 
 ## Related Tasks
 
