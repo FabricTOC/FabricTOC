@@ -16,15 +16,15 @@ PKIs and MSPs provide this combination of verification and trust. A PKI is like 
 
 Let's drill into these concepts in a little more detail.
 
-## What is PKI?
+## What are PKIs?
 
-**A public key infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network.** It's PKI that puts the **S** in **HTTPS** -- and if you're reading this documentation on a web browser, you're probably using a PKI to make sure it comes from a verified  source.
+**A public key infrastructure (PKI) is a collection of internet technologies that provides secure communications in a network.** It's PKI that puts the **S** in **HTTPS** -- and if you're reading this documentation on a web browser, you're probably using a PKI to make sure it comes from a verified source.
 
 | ![PKI](./IdentityandMembership.diagram.7.png) |
 | :---: |
-| The Elements of Public Key Infrastructure (PKI). A PKI comprises  Certificate Authorities who issue digital certificates to principals who use these in conjunction with public and private keys to authenticate and encrypt information. A CA's Certificate Revocation List (CRL) contains a list of certificates that have become compromised -- they are no longer valid. |
+| The elements of Public Key Infrastructure (PKI). A PKI is comprised of Certificate Authorities who issue digital certificates to principals, who then use them in conjunction with public and private keys to authenticate and encrypt information. A CA's Certificate Revocation List (CRL) identifies the certificates that are no longer valid (this can happen for a number of reasons. A certificate might be compromised, for example). |
 
-Although a blockchain network is more than a simple communications network, it makes sense for it to use the PKI standard as much as possible. You'll see that even though PKIs aren't sufficient for all the needs of a blockchain network, it's still the fundamental basis of blockchain security. It's therefore really helpful if you understand the basics of PKI, and then why MSPs are so important.
+Although a blockchain network is more than a simple communications network, it makes sense for it to use the PKI standard as much as possible. You'll see that even though PKIs aren't sufficient for all the needs of a blockchain network, it's still the fundamental basis of blockchain security. It's therefore really helpful if you understand the basics of PKI and then why MSPs are so important.
 
 There are four key elements to PKI:
 
@@ -37,39 +37,39 @@ Let's quickly describe these PKI basics, and if you want to know more details, t
 
 ## Digital Certificates
 
-A digital certificate is a document which holds a set of attributes relating to a principal's identity. And the most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. Mary's certificate is similar to her government identity card -- it provides information about Mary which she can use to prove key facts about her. There are many other attributes in an X.509 certificate, but that's not important right now.
+A digital certificate is a document which holds a set of attributes relating to a principal's identity. The most common type of certificate is an [X.509 certificate](https://en.wikipedia.org/wiki/X.509), which allows the encoding of a principal's identifying details in its structure. For example, Mary Morris of Mitchell Cars in Detroit, Michigan might have a digital certificate with a `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars, OU=Manufacturing, CN=Mary Morris/UID=123456`. Mary's certificate is similar to her government identity card -- it provides information about Mary which she can use to prove key facts about her. There are many other attributes in an X.509 certificate, but forget about those for now.
 
 | ![DigitalCertificate](./IdentityandMembership.diagram.8.png) |
 | :---: |
-| A Digital Certificate describing a principal called Mary Morris. Mary is the `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key facts about Mary.  The certificate holds many more pieces of information, as you can see.  Most importantly, Mary's public key is distributed within her certificate, whereas her private key is not; it must be kept secret to Mary. |
+| A digital certificate describing a principal called Mary Morris. Mary is the `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key facts about Mary. The certificate also holds many more pieces of information, as you can see. Most importantly, Mary's public key is distributed within her certificate, whereas her private key is not. This private key must be kept private. |
 
-What is important is that all of Mary's attributes can be written using a mathematical technique called crytography (literally, "*secret writing*") -- such that tampering will invalidate the certificate. Cryptography allows Mary to present her certificate to others to prove her identity so long as the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (meaning, its own **private key**), anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as her digital identity card that is impossible to change.
+What is important is that all of Mary's attributes can be written using a mathematical technique called cryptography (literally, "*secret writing*") so that tampering will invalidate the certificate. Cryptography allows Mary to present her certificate to others to prove her identity so long as the other party trusts the certificate issuer, known as a **Certificate Authority** (CA). As long as the CA keeps certain cryptographic information securely (meaning, its own **private key**), anyone reading the certificate can be sure that the information about Mary has not been tampered with -- it will always have those particular attributes for Mary Morris. Think of Mary's X.509 certificate as a digital identity card that is impossible to change.
 
 ## Public keys and private keys
 
 There are two key elements to secure communication -- authentication and encryption, and these are made possible by the idea of public and private keys. **The unique relationship between a public-private key pair is the cryptographic magic that makes secure communications possible**.
 
-Let's first recap the key ideas of authentication and encryption, and then you'll see how they are made possible by public-private key pairs.
+Let's first recap the key ideas of authentication and encryption and then you'll see how they are made possible by public-private key pairs.
 
 ### Authentication and encryption
 
-**Authentication** ensures that anything that might relate to a principal's identity, or information they generate, is not tampered with. For example, you might want to be sure you're communicating with the real Mary Mitchell rather than an impersonator.  Or if Mary has sent you some information, you might want to be sure that it hasn't been changed by anyone else during transmission. In both cases, authenticity of information is of primary importance.
+**Authentication** ensures that anything that might relate to a principal's identity, or information they generate, is not tampered with. For example, you might want to be sure you're communicating with the real Mary Mitchell rather than an impersonator. Or if Mary has sent you some information, you might want to be sure that it hasn't been changed by anyone else during transmission. In both cases, being able to established authenticity is of primary importance.
 
-**Encryption**, on other hand, is quite different to authentication -- it enables the private transmission of information between Mary and other principals by ensuring that encrypted information can only be decrypted by its intended recipients -- and no one else.  
+**Encryption**, on other hand, is quite different from authentication -- it enables the private transmission of information between Mary and other principals by ensuring that encrypted information can only be decrypted by its intended recipients and no one else.  
 
 **To enable authentication and encrypted communications**, a principal can use a pair of mathematically related keys. **One of these keys is public and can be widely shared, while the other key is private and absolutely must not be shared**. The unique mathematical relationship between the keys is such that the private key can be used to transform information that only the public key can interpret, and vice-versa.    
 
-### Using public and private keys for authentication
+### Using Public and Private Keys for Authentication
 
-For authentication, Mary uses her private key to attach a small, fixed size, unique data signature to an original document of any size. The signature is generated by combining the document contents with the private key in a process called **hashing**. This signed document can now be sent to any other principal in the network -- and they can verify that it has not been tampered with, using Mary's public key to generate the same signature from the input text. The consumer of the transmitted document is therefore confident that they have an authentic copy of the original document from Mary.
+To authenticate a document, Mary uses her private key to attach a unique data signature to it. The signature is generated by a process called **hashing** in which the content of the document being signed is mathematically combined with Mary's private key to generate a small signature of fixed size. This signature can be verified by other principals in the network using Mary's **public key**.  
 
 | ![AuthenticationKeys](./IdentityandMembership.diagram.9.png) |
 | :---: |
-| Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with a unique signature (`X13vRZQql41`). |
+| Authenticating data using private keys and public keys. Mary's private key is used to sign an original document with the unique signature (`X13vRZQql41`). |
 
-It's also worthing noting how hard it is for an intermediary to tamper with the document. That's because if the original document is modified, the signature will no longer match, as only Mary can generate a correct signature. And if an intermediary tries to generate the same signature as Mary would do, it is almost impossible without Mary's private key -- that's the mathematical beauty of cryptography.
+Using the document as part of the signature in this way makes the document itself impossible to tamper with -- generating the same signature Mary would create is statistically impossible without Mary's private key.
 
-### Using public keys and private keys for encryption
+### Using Public Keys and Private Keys for Encryption
 
 To allow messages to be written in way such that only Mary can read them, Mary's public key can be used by anyone in a PKI to create a secret encoding of data that can only be transformed back to its original form by Mary's private key.
 
@@ -77,11 +77,11 @@ To allow messages to be written in way such that only Mary can read them, Mary's
 | :---: |
 | Encrypting data using private keys and public keys. Any principal in the network who wishes to securely communicate with Mary can use Mary's public key to encrypt a document -- a document that only Mary can decrypt with her private key. |
 
-We note that only Mary is able to decrypt the message, as only she holds her private key -- that's why it's so important that she holds this securely, and does not share it. We also note that to prevent the encrypted message being tampered with, it is also signed by the originating principal with their private key, and this signature is checked by Mary before she decrypts it.
+Only Mary is able to decrypt the message as only she holds her private key -- that's why it's so important that private keys are not shared and remains secure. To prevent the encrypted message being tampered with it is also signed by the originating principal with their private key and this signature is checked by Mary (using the principal's public key) before she decrypts it.
 
-Finally, if Mary wants to securely communicate back to another party she uses exactly the same process, as others use to communicate with her, only using their public key to encrypt and sign the data.
+If Mary wants to communicate securely back to another party she uses exactly the same process as others use to communicate with her, only using their public key to encrypt the data and her own private key to sign the data.
 
-Again, if an intermediary tries to generate the same signature as the originating principal or Mary would do, it is almost impossible without the that principal's private key -- again, the mathematics of cryptography at work!
+Again, if an intermediary tries to generate the same signature as the originating principal or Mary would do, it will be statistically impossible without that principal's private key -- again, the mathematics of cryptography at work!
 
 ## Certificate Authorities
 
@@ -113,23 +113,23 @@ A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's sufficie
 
 ## Certificate Revocation Lists
 
-A Certificate Revocation List (CRL) is easy to understand -- it's just a list of certificates that a CA knows to be compromised for one reason or another, and have therefore been declared no longer valid.  If you recall the [store scenario](#Scenario), a CRL would be like a list of stolen credit cards.  
+A Certificate Revocation List (CRL) is easy to understand -- it's just a list of certificates that a CA knows to be revoked for one reason or another. If you recall the [store scenario](#Scenario), a CRL would be like a list of stolen credit cards.  
 
-When a third party wants to verify a principal's identity, it should first checks the issuing CA's CRL to make sure that the certificate has not been declared invalid.  A verifier doesn't have to check the CRL, but they then run the risk of accepting a compromised identity.  For example, if Mary Morris thought someone had a copy of her private key, she would ask the CA to list her certificate in the CRL so that her identity could no longer be impersonated.
+When a third party wants to verify a principal's identity, it first checks the issuing CA's CRL to make sure that the certificate has not been declared invalid. A verifier doesn't have to check the CRL, but if they don't they run the risk of accepting a compromised identity.
 
 | ![CRL](./IdentityandMembership.diagram.12.png) |
 | :---: |
-| Using a CRL to check that a certificate is still valid.  If an impersonator tries to pass a compromised digital certificate to a validating principal, it can be first checked against the issuing CA's CRL to make sure it's not listed as no longer valid. |
+| Using a CRL to check that a certificate is still valid. If an impersonator tries to pass a compromised digital certificate to a validating principal, it can be first checked against the issuing CA's CRL to make sure it's not listed as no longer valid. |
 
-Note that a certificate being revoked is very different to a certificate expiring; indeed, revoked certificates have not expired -- they are, by every other measure, a fully valid certificate.
+Note that a certificate being revoked is very different from a certificate expiring. Revoked certificates have not expired -- they are, by every other measure, a fully valid certificate.
 
 ## Membership Service Provider
 
-You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's now see how these identities can be used to represent the trusted members of a blockchain network. That's where a Membership Service Provider (MSP) comes into play -- **it identifies the principals who are the members of a given organization in the blockchain network**.
+You've now seen how a PKI can provide verifiable identities through a chain of trust, so let's see how these identities can be used to represent the trusted members of a blockchain network. That's where a Membership Service Provider (MSP) comes into play -- **it identifies the principals who are the members of a given organization in the blockchain network**.
 
-Whereas a PKI provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are trusted to define which principals are considered the members of an organization.  An MSP can also recognize other things related to membership of a network -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a list of members of a given organization**, either by holding certificates themselves or by listing which CAs can issue valid certificates, or -- as will usually be the case -- through some combination of both.
+Whereas a PKI provides a verifiable identity, an MSP complements this by identifying which Root CAs and Intermediate CAs are trusted to define which principals are considered the members of an organization. An MSP can also recognize other things related to membership of a network -- a list identities that have been revoked, for example -- but those things will be covered later. For now, **think of an MSP as providing a list of administrators of a given organization**, with the MSP either holding certificates itself or by listing which CAs can issue valid certificates, or -- as will usually be the case -- through some combination of both.
 
-If an MSP is defined on the local file system of a peer / orderer node or user (client application or administrator), it is a **Local MSP**. If it's found in the policy configuration of the network or each channel, it is a **Global MSP**. You'll hear more about local and global MSPs and why the distinction between them is important later.
+If an MSP is defined on the local file system of a peer node, orderer node, or user (client application or administrator), it is a **Local MSP**. If it's found in the policy configuration of the network or each channel, it is a **Global MSP**. You'll hear more about local and global MSPs and why the distinction between them is important later.
 
 ### Mapping MSPs to Organizations
 
@@ -171,7 +171,7 @@ The split between **global and local MSPs reflects the needs of organizations to
 
 | ![MSP3](./IdentityandMembership.diagram.2.png) |
 | :---: |
-| MSP Levels. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, but the channel can be managed by ORG1 and ORG2. The peer is managed by ORG2, whereas ORG1 manages the orderer. ORG1 trusts identities from RCA1, whereas ORG2 trusts identities from RCA2. Note that these are **administration** identities, reflecting who can admininster these components. So while ORG1 administers the network, ORG2.MSP does exist in the network definition. |
+| MSP Levels. The MSPs for the peer and orderer are local, whereas the MSPs for the channel and network are global. Here, the network is administered by ORG1, but the channel can be managed by ORG1 and ORG2. The peer is managed by ORG2, whereas ORG1 manages the orderer. ORG1 trusts identities from RCA1, whereas ORG2 trusts identities from RCA2. Note that these are **administration** identities, reflecting who can administer these components. So while ORG1 administers the network, ORG2.MSP does exist in the network definition. |
 
  * **Network MSP:** These MSPs are defined in the configuration policy of the whole network, so by definition, **there is only one set of network MSPs**. Every principal who uses a network must be a member as defined by the MSPs in the network policy before they can perform an administrative task. This means that the MSPs that are defined for the network should define **the organizations who are trusted to have administrative control over the network**. An example of a network-wide administrative permission might be to define or change the organizations who can create channels.
 
@@ -189,7 +189,7 @@ So far, you've seen that the two most important elements of an MSP are the ident
 | :---: |
 | The figure above shows how a **local MSP** is stored on a local filesystem. Even though global MSPs are not physically structured in exactly the same way, it's still helpful to think about global MSPs this way. |
 
-As you can see, there are nine elements to an MSP. You'll find it easy to understand if you think of these elements in a directory structure, where the MSP name is the root folder name with each subfolders representing different elements of an MSP.
+As you can see, there are nine elements to an MSP. It's easiest to think of these elements in a directory structure, where the MSP name is the root folder name with each subfolder representing different elements of an MSP.
 
 Let's describe these folders in a little more detail and see why they are important.
 
@@ -201,15 +201,15 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **Intermediate CAs**
 
- This folder contains a list of X.509 certificates of the Intermediate CAs trusted by this organization. Each certificate must be signed by one of the Root CAs in the MSP or by an Intermediate CA -- or a chain of ICAs -- that ultimately lead back to a trusted Root CA. There do not need any Intermediate CA X.509 certificates in this MSP folder -- they are optional.
+ This folder contains a list of X.509 certificates of the Intermediate CAs trusted by this organization. Each certificate must be signed by one of the Root CAs in the MSP or by an Intermediate CA -- or a chain of ICAs -- that ultimately lead back to a trusted Root CA. It is possible to have a functioning network that does not have any Intermediate CAs, in which case this folder would be empty. However, this is not a best practice.
 
  Like the Root CA folder, this folder defines the CAs from which certificates must be issued to be considered members of the organization. It's slightly less important than the Root CA folder, because it's not the root of trusted membership.
 
- * **Organizational Units**
+ * **Organizational Units (OUs)**
 
- This folder contains a list of organizational units that are considered to be part of the MSP and is particularly useful when you want to restrict membership to only those principals who are part of a particular organization. This will be the case when an organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of trusted OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
+ These are listed in the msp/config.yaml and contain a list of organizational units that are considered to be part of the MSP. This is particularly useful when you want to restrict membership to only those principals who are part of a particular organization, as will be the case when an organization has a rich structure, [as discussed earlier](#OUMSP). You can see [how to configure the list of trusted OUs](../ReferenceMaterial/MembershipServicesProvider.md) in the reference material.
 
- Specifying OUs is optional. If no OUs are listed all of the principals that are part of an MSP, as identified by the Root CA and Intermediate CA folders, will be considered members of the organization.
+ Specifying OUs is optional. If no OUs are listed all of the principals that are part of an MSP -- as identified by the Root CA and Intermediate CA folders -- will be considered members of the organization.
 
  * **Administrators**
 
@@ -219,12 +219,11 @@ Let's describe these folders in a little more detail and see why they are import
 
  It's worth noting that even though an X.509 certificate has a `ROLE` attribute (specifying, for example, that a principal is an "admin"), this refers to a principal's role within its organization rather than on the blockchain network. This is distinctly different from the purpose of the `OU` attribute, which -- if it has been defined -- refers to a principal's place in the network. Indeed, this is why we need the Administrators folder - because the blockchain role is quite different to the X.509 `ROLE`.
 
- The `ROLE` attribute **can** be used to confer administrative rights
- at the channel level if the policy for that channel has been written to allow any administrator from an organization (or certain organizations) permission to perform certain channel functions (such as instantiating chaincode). In this way **an organizational role can confer a network role**. We'll learn more about how policies can be written that way and how this functionality imparts significant operational advantages later.
+ The `ROLE` attribute **can** be used to confer administrative rights at the channel level if the policy for that channel has been written to allow any administrator from an organization (or certain organizations) permission to perform certain channel functions (such as instantiating chaincode). In this way **an organizational role can confer a network role**. We'll learn more about how policies can be written that way and how this functionality imparts significant operational advantages later.
 
  * **Revoked Certificates**
 
- If the X.509 certificate of a principal has been revoked, a copy of that certificate is stored in this folder -- a subfolder for each CA contains the revoked certificates for that CA.
+ If the X.509 certificate of a principal has been revoked, identifying information about the cert -- not the cert itself -- is held in this folder. These identifiers -- known as a Subject Key Identifier (SKI) and Authority Access Identifier (AKI) -- are checked whenever a certificate is being used to make sure the certificate is still valid.
 
  This list is conceptually the same as a CA's Certificate Revocation List (CRL), but relates to revocation of membership from the organization rather than revocation from the CA. As a result, the administrator of an MSP, local or global, can quickly revoke a principal from an organization without having to resort to revoking their certificate from a CA -- which, of course, might not be appropriate.
 
@@ -232,15 +231,15 @@ Let's describe these folders in a little more detail and see why they are import
 
  * **Signing Certificate**
 
- This folder contains the **public X.509 certificate** used by a node or user when the need to identify themselves to another principal in the network. This is the certificate a peer places in a transaction proposal response, for example, to indicate that a peer's organization has endorsed it -- which can subsequently be checked against an endorsement policy (containing the organisations that must endorse a transaction) by a validating node.
+ This folder contains the **public X.509 certificate** used by a node or user when the need to identify themselves to another principal in the network. This is the certificate a peer places in a transaction proposal response, for example, to indicate that a peer's organization has endorsed it -- which can subsequently be checked against an endorsement policy (containing the organizations that must endorse a transaction) by a validating node.
 
- This folder is mandatory, and there must be exactly one X.509 certificate for the node.
+ This folder is mandatory for local MSPs, and there must be exactly one X.509 certificate for the node. It is not used for global MSPs.
 
  * **KeyStore for Private Key**
 
- This folder is defined for the local MSP of a peer / orderer node or user, and contains the **private key**. This key is used to sign or encrypt data -- for example to sign a transaction proposal response, indicating that a peer's organization has endorsed it.
+ This folder is defined for the local MSP of a peer or orderer node (or in a user's local MSP), and contains the **private key**. This key is used to sign or encrypt data -- for example to sign a transaction proposal response, indicating that a peer's organization has endorsed it.
 
- This folder is mandatory, and must contain exactly one private key. Obviously, access to this folder must be limited only to those operators administrators who have responsibility for local MSP's.
+ This folder is mandatory for local MSPs, and must contain exactly one private key. Obviously, access to this folder must be limited only to those operators administrators who have responsibility for local MSPs.
 
  **Global MSPs** do not include this folder or any private keys, as by their nature they are shared across the network or channel.
 
@@ -249,8 +248,6 @@ Let's describe these folders in a little more detail and see why they are import
  This folder contains a list of self-signed X.509 certificates of the Root CAs trusted by this organization **for TLS communications**. An example of a TLS communication would be when a peer needs to connect to an orderer so that it can receive ledger updates.
 
  If you look at [this diagram](./ABlockchainNetwork.md#NetworkPrincipals2), you can see how the MSP TLS information relates to the principals inside the network -- the peers and the orderers -- rather than those that consume the network -- applications and administrators.
-
- That's why this folder is completely independent to the MSP Root CA folder. This separation allows peer and order nodes to have different membership to the other principals in the network -- applications or administrators. This makes sense when you think about it -- users and applications are very likely to have different roots of trust than the peer and orderer nodes which form the network.
 
  There must be at least one TLS Root CA X.509 certificate in this MSP folder.
 
