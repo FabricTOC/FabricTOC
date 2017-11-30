@@ -80,12 +80,13 @@ Here's some examples using the different available flags on the `peer channel` c
 
 
 ## Related Concepts
-+ [Peers](../../KeyConcepts/Peers/Peers.md)
-+ [Channels](../../KeyConcepts/Channels/Channels.md)
+* [Peers](../../KeyConcepts/Peers/Peers.md)
+* [Channels](../../KeyConcepts/Channels/Channels.md)
 
 ## <a name=reference></a> Related Reference
 
-+ [`peer channel create` command](./PeerChannelCreateCommand.md)
-+ [`peer channel join` command](./PeerChannelJoinCommand.md)
-+ [`peer channel list` command](./PeerChannelListCommand.md)
-+ [`peer channel update` command](./PeerChannelUpdateCommand.md)
+* [`peer channel create` command](./PeerChannelCreateCommand.md)
+* [`peer channel fetch` command](./PeerChannelCreateFetch.md)
+* [`peer channel join` command](./PeerChannelJoinCommand.md)
+* [`peer channel list` command](./PeerChannelListCommand.md)
+* [`peer channel update` command](./PeerChannelUpdateCommand.md)
