@@ -34,8 +34,6 @@ The `peer` command also has a set of associated flags :
 ```
 peer [flags]
 ```
-as follows
-
 These flags provide more information about a peer, and are designated *global* because they can be used at any command level. For example `--help` will provide help on the command or command option to which it is applied:
 
 ```
