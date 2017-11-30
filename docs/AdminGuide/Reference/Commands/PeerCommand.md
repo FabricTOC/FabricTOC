@@ -112,7 +112,7 @@ Here's some examples using the different available flags on the `peer` command.
 * [Determining a peer's version](../../AdminTasks/Peer/PeerVersion.md)
 
 ## <a name=reference></a> Related Reference
-* [Peer Version](../Reference/Advanced/Peer/VersionInfo.md)
+* [Peer Version](../../Reference/Advanced/Peer/VersionInfo.md)
 * [`peer chaincode` command](./PeerChaincodeCommand.md)
 * [`peer channel` command](./PeerChannelCommand.md)
 * [`peer logging` command](./PeerLoggingCommand.md)
