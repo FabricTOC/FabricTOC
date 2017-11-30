@@ -117,4 +117,5 @@ Here's some examples using the different available flags on the `peer` command.
 + [`peer channel` command](./PeerChannelCommand.md)
 + [`peer logging` command](./PeerLoggingCommand.md)
 + [`peer node` command](./PeerNodeCommand.md)
-+ [`peer version` command](./PeerVersionCommand.md)
++ [`peer version` command](./PeerVersionCommand.md)   
++ [Peer environment variables](../Advanced/Peer/PeerEnvironmentVariables.md)    
