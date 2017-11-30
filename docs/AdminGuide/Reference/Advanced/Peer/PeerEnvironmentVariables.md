@@ -2,7 +2,7 @@
 
 A peer executes in the context of an operating system process, and can be controlled by a set of peer specific environment variables.  These variables are typically set in the peer configuration of the docker image, and apply to the peer while it is running.  Sometimes, environment variables can also  but can also be set when the `peer` command is run in which case they apply during the command invocation only.
 
-# List of environment variables
+## List of environment variables
 
 Here's a full list of peer environment variables, their values, and what they do.
 
