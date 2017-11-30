@@ -2,14 +2,14 @@
 
 ## Description
 
-The `peer` command allows administrators to interact with a peer. Use this command when you want to perform blockchain operations via the peer -- such as deploying a smart contract chaincode, or joining a channel.
+The `peer` command allows administrators to interact with a peer. Use this command when you want to perform peer operations such as deploying a smart contract chaincode, or joining a channel.
 
 ## Syntax
 
-The `peer` command has different commands within it:
+The `peer` command has different subcommands within it:
 
 ```
-peer [command]
+peer [subcommand]
 ```
 as follows
 ```
@@ -21,7 +21,7 @@ peer version
 peer
 ```
 
-These commands separate the different functions provided by a peer into their own category. For example, use the `peer chaincode` command to perform smart contract chaincode operations on the peer, or the `peer channel` command to perform channel related operations.
+These subcommands separate the different functions provided by a peer into their own category. For example, use the `peer chaincode` command to perform smart contract chaincode operations on the peer, or the `peer channel` command to perform channel related operations.
 
 Within each command there are many different options available and because of this each command is described in its own topic. Follow the [links below](#reference) to understand these individual commands in more detail.
 
@@ -35,11 +35,6 @@ The `peer` command also has a set of associated flags :
 peer [flags]
 ```
 as follows
-```
-peer --help
-peer --logging-level <string>     
-peer --version   
-```
 
 These flags provide more information about a peer, and are designated *global* because they can be used at any command level. For example `--help` will provide help on the command or command option to which it is applied:
 
