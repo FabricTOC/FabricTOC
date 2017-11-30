@@ -55,7 +55,7 @@ The global `peer` command flags also apply as described in the [`peer command`](
 
 * `--tls`
 
-  Use this flag to enable TLS communications for the `peer channel` command. The certificates specified with `--cafile` will be used for TLS communications to authenticate the connected orderer.
+  Use this flag to enable TLS communications for the `peer channel` command. The certificates specified with `--cafile` will be used for TLS communications to authenticate the orderer identified by `--orderer`.
 
 ## Usage
 
