@@ -41,7 +41,7 @@ peer channel --help
 peer channel list --help
 ```
 
-These flags provide more information about a peer, and are designated *global* because they can be used at any command level. For example `--help` will provide help on the command or command option to which it is applied:
+These flags provide more information about a peer, and are designated *global* because they can be used at any command level. For example `--help` can provide help on the `peer` command, `peer channel` command or the `peer channel fetch` command option.
 
 #### <a name=flags> </a> Flag details
 
