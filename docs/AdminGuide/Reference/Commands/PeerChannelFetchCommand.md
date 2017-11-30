@@ -92,7 +92,7 @@ Here's some examples using the different available flags on the `peer channel fe
 
   ```  
 
-  You can see that the most recent block is number 32.
+  You can see that the retrieved block is number 32.
 
 * Using the `(block number)` option to retrieve a specific block -- in this case, block number 16.
 
@@ -121,7 +121,7 @@ Here's some examples using the different available flags on the `peer channel fe
 
   ```  
 
-    You can see that the most recent block is number 16.
+    You can see that the retrieved block is number 16.
 
 For configuration blocks, the file can be formatted using the [`configtxlator` command](../Config/ConfigtxlatorCommand.md). If you'd like to see an example of a formatted block, then refer to the [Formated configuration block](../Config/FormattedConfigBlock.md) or [Formatted user transaction block ](../Config/FormattedUserTransactionBlock.md), reference topics respectively.
 
