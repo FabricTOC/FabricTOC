@@ -4,10 +4,10 @@ The `peer channel` command allows administrators to perform channel related oper
 
 ## Syntax
 
-The `peer channel list` command has the following syntax:
+The `peer channel` command has the following syntax:
 
 ```
-peer channel list [command]
+peer channel [command]
 ```
 as follows
 ```
