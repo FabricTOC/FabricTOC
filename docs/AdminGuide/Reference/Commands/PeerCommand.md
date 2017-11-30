@@ -51,7 +51,7 @@ These flags provide more information about a peer, and are designated *global* b
 
 * `--logging-level <string>`
 
-  Use this flag to set the logging level for the peer.  This flag only has meaning on the individual commands. It does not apply at the top level.
+  Use this flag to set the logging level for the peer. It does not apply to the `peer` command; it only has meaning on the individual `peer` subcommands. 
 
   This command is overridden by the `CORE_LOGGING_LEVEL` environment variable if it is set.  A full list of peer environment variables is described in the [peer environment variables reference topic](../Advanced/Peer/PeerEnvironmentVariables.md).
 
