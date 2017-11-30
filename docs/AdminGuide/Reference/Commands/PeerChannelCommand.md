@@ -22,9 +22,9 @@ These commands relate to the different channel operations that are relevant to a
 
 ### `peer channel` flags
 
-Within `peer channel` command there are many different flags available and because of this each flag is described in the relevant topic. Follow the [links below](#reference) to understand these individual commands in more detail.
+Each `peer channel` command has different flags available to it, and because of this, each flag is described in the relevant command topic. Follow the [links below](#reference) to understand these individual commands in more detail.
 
-The `peer channel` command also has a set of flags that relate to all of its commands.
+The `peer channel` command also has a set of flags that relate to every `peer channel` command.
 
 ```
 peer channel [flags]
