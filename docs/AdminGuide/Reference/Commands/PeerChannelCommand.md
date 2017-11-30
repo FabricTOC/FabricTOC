@@ -1,13 +1,13 @@
-# <a name="PeeChannelCommand"></a> `peer channel` command
+# <a name="PeeChannelFetchCommand"></a> `peer channel fetch` command
 
-The `peer channel` command allow administrators to perform channel related operations on a peer. Use this command when you want to perform channel related blockchain on a peer -- such as joining a channel.
+The `peer channel` command allows administrators to perform channel related operations on a peer -- such as joining a channel.
 
 ## Syntax
 
-The `peer channel` command has different commands within it:
+The `peer channel list` command has the following syntax:
 
 ```
-peer channel [command]
+peer channel list [command]
 ```
 as follows
 ```
@@ -20,11 +20,11 @@ peer channel update
 
 These commands relate to the different channel operations that are relevant to a peer. For example, use the `peer channel join` command to join a peer to a channel, or the `peer channel list` command to show the channels to which a peer is joined.
 
-Within each command there are many different options available and because of this each command is described in its own topic. Follow the [links below](#reference) to understand these individual commands in more detail.
-
 ### `peer channel` flags
 
-The `peer channel` command also has a set of associated flags.
+Within `peer channel` command there are many different flags available and because of this each flag is described in the relevant topic. Follow the [links below](#reference) to understand these individual commands in more detail.
+
+The `peer channel` command also has a set of flags that relate to all of its commands.
 
 ```
 peer channel [flags]
@@ -36,19 +36,19 @@ peer channel --orderer <string>
 peer channel --tls                
 ```
 
-These flags relate to all `peer channel` commands. Each of these commands also has its own set of flags, and these are described in the relevant [peer command reference below](#reference).
-
 The global `peer` command flags also apply as described in the [`peer command`](./PeerCommand.md#flags).
 
 #### <a name=flags> </a> Flag details
 
 + `--cafile <string>`
 
-  a fully qualified path to orderer certificates.
+  a fully qualified path to a file containing PEM-encoded certificates for the orderer being communicated with.  
+
+  TBC: CAN THERE BE MORE THAN ONCE CERTIFICATE, IF SO, HOW ARE THEY SEPARATED PER ORDERER?
 
 * `--orderer <string>`
 
-  the fully qualified IP address and port of the orderer being communicated with for this channel operation.  
+  the fully qualified IP address and port of the orderer being communicated with for this channel operation.  If the port is not specified, it will default to port 7050. An IP address must be specified if the `--orderer` flag is used.
 
 * `--tls`
 
@@ -56,54 +56,33 @@ The global `peer` command flags also apply as described in the [`peer command`](
 
 ## Usage
 
-Here's some examples using the different available flags on the `peer` command.
+Here's some examples using the different available flags on the `peer channel` command.
 
-* `--help` flag
+* Using the `--orderer` flag to list the channels to which a peer is joined.
 
   ```
-  peer --help
+  peer channel list --orderer orderer.example.com:7050
 
-  Usage:
-    peer [flags]
-    peer [command]
-
-  Available Commands:
-    chaincode   Operate a chaincode: install|instantiate|invoke|package|query|signpackage|upgrade.
-    channel     Operate a channel: create|fetch|join|list|update.
-    logging     Log levels: getlevel|setlevel|revertlevels.
-    node        Operate a peer node: start|status.
-    version     Print fabric peer version.
-
-  Flags:
-        --logging-level string       Default logging level and overrides, see core.yaml for full syntax
-    -v, --version                    Display current version of fabric peer server
-
-  Use "peer [command] --help" for more information about a command.
+  2017-11-30 12:07:51.317 UTC [msp] GetLocalMSP -> DEBU 001 Returning existing local MSP
+  2017-11-30 12:07:51.317 UTC [msp] GetDefaultSigningIdentity -> DEBU 002 Obtaining default signing identity
+  2017-11-30 12:07:51.321 UTC [channelCmd] InitCmdFactory -> INFO 003 Endorser and orderer connections initialized
+  2017-11-30 12:07:51.323 UTC [msp/identity] Sign -> DEBU 004 Sign: plaintext: 0A8A070A5C08031A0C0897E9FFD00510...631A0D0A0B4765744368616E6E656C73
+  2017-11-30 12:07:51.323 UTC [msp/identity] Sign -> DEBU 005 Sign: digest: D170CD2D6FEB04E49033B54B0AC53744991ADAA320C5733074BC5227BD19E863
+  2017-11-30 12:07:51.335 UTC [channelCmd] list -> INFO 006 Channels peers has joined to:
+  2017-11-30 12:07:51.335 UTC [channelCmd] list -> INFO 007 drivenet.channel.001
+  2017-11-30 12:07:51.335 UTC [main] main -> INFO 008 Exiting.....
   ```  
 
-* `--version` flag
+  You can see that the peer joined to a channel called `drivenet.channel.001`.
 
-  ```
-  peer --version
-
-  peer:
-   Version: 1.0.4
-   Go version: go1.7.5
-   OS/Arch: linux/amd64
-   Chaincode:
-    Base Image Version: 0.3.2
-    Base Docker Namespace: hyperledger
-    Base Docker Label: org.hyperledger.fabric
-    Docker Namespace: hyperledger
-  ```
 
 ## Related Concepts
 + [Peers](../../KeyConcepts/Peers/Peers.md)
++ [Channels](../../KeyConcepts/Channels/Channels.md)
 
 ## <a name=reference></a> Related Reference
 
 + [`peer channel create` command](./PeerChannelCreateCommand.md)
-+ [`peer channel fetch` command](./PeerChannelFetchCommand.md)
 + [`peer channel join` command](./PeerChannelJoinCommand.md)
 + [`peer channel list` command](./PeerChannelListCommand.md)
 + [`peer channel update` command](./PeerChannelUpdateCommand.md)

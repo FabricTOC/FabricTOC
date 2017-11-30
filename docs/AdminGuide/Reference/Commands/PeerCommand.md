@@ -2,7 +2,7 @@
 
 ## Description
 
-The `peer` command allow administrators to interact with a peer. Use this command when you want to perform blockchain operations via the peer -- such as deploying a smart contract chaincode, or joining a channel.
+The `peer` command allows administrators to interact with a peer. Use this command when you want to perform blockchain operations via the peer -- such as deploying a smart contract chaincode, or joining a channel.
 
 ## Syntax
 
