@@ -23,7 +23,7 @@ peer
 
 These subcommands separate the different functions provided by a peer into their own category. For example, use the `peer chaincode` command to perform smart contract chaincode operations on the peer, or the `peer channel` command to perform channel related operations.
 
-Within each command there are many different options available and because of this each command is described in its own topic. Follow the [links below](#reference) to understand these individual commands in more detail.
+Within each subcommand there are many different options available and because of this, each is described in its own topic. Follow the [links below](#reference) to understand these individual commands in more detail.
 
 If a command option is not specified then `peer` will return some high level help text as described in in the `--help` flag [below](#flags).
 
