@@ -1,4 +1,6 @@
-# <a name="PeerCommand"></a> `peer` Command
+# <a name="PeerCommand"></a>`peer` command
+
+## Description
 
 The `peer` command allow administrators to interact with a peer. Use this command when you want to perform blockchain operations via the peer -- such as deploying a smart contract chaincode, or joining a channel.
 
@@ -16,10 +18,10 @@ peer channel
 peer logging     
 peer node        
 peer version     
-peer [no command]
+peer
 ```
 
-These commands separate the different functions provided by a peer into their own category. For example, use the `peer chaincode` command to perform smart contract operations on the peer, or the `peer channel` command to perform channel related operations.
+These commands separate the different functions provided by a peer into their own category. For example, use the `peer chaincode` command to perform smart contract chaincode operations on the peer, or the `peer channel` command to perform channel related operations.
 
 Within each command there are many different options available and because of this each command is described in its own topic. Follow the [links below](#reference) to understand these individual commands in more detail.
 
@@ -36,7 +38,6 @@ as follows
 ```
 peer --help
 peer --logging-level <string>     
-peer --test.coverprofile <string>     
 peer --version   
 ```
 
@@ -48,7 +49,23 @@ These flags provide more information about a peer. Notice that a command option 
 
   Use `help` to get brief help text for the `peer` command. The `help` flag can often be used at different levels to get individual command help, or even a help on a command option. See individual commands for more detail.
 
-  Here's an example of output using the `--help` flag
+* `--logging-level <string>`
+
+  Use this flag to set the logging level for the peer.  This flag only has meaning on the individual commands. It does not apply at the
+
+  This command is superseded by the `CORE_LOGGING_LEVEL` environment variable.  The full list of peer environment variables is described in the [peer environment variables reference topic](../Advanced/Peer/PeerEnvironmentVariables).
+
+* `--version`
+
+  Use this flag to determine the build version for the peer.  This flag provides a set of detailed information on how the peer was built.
+
+  See the reference topic [Peer version information](../Advanced/Peer/VersionInfo.md) to understand the version information in detail.
+
+## Usage
+
+Here's some examples using the different available flags on the `peer` command.
+
+* `--help` flag
 
   ```
   peer --help
@@ -66,25 +83,12 @@ These flags provide more information about a peer. Notice that a command option 
 
   Flags:
         --logging-level string       Default logging level and overrides, see core.yaml for full syntax
-        --test.coverprofile string   Done (default "coverage.cov")
     -v, --version                    Display current version of fabric peer server
 
   Use "peer [command] --help" for more information about a command.
   ```  
 
-* `--logging-level <string>`
-
-  Use this flag to set the logging level for the peer... TBC
-
-* `--test.coverprofile <string>`
-
-  Use this flag to ... TBC
-
-* `--version`
-
-  Use this flag to determine the build version for the peer.  This flag provides a set of detailed information on how the peer was built.
-
-  Here's an example of output using the `--version` flag
+* `--version` flag
 
   ```
   peer --version
@@ -99,8 +103,6 @@ These flags provide more information about a peer. Notice that a command option 
     Base Docker Label: org.hyperledger.fabric
     Docker Namespace: hyperledger
   ```
-
-  See the reference topic [Peer version information](../Advanced/Peer/VersionInfo.md) to understand the version information in detail.
 
 ## Related Concepts
 + [Peers](../../KeyConcepts/Peers/Peers.md)
