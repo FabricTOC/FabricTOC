@@ -1,4 +1,4 @@
-# <a name="PeeChannelFetchCommand"></a> `peer channel fetch` command
+# <a name="PeeChannelCommand"></a> `peer channel` command
 
 The `peer channel` command allows administrators to perform channel related operations on a peer -- such as joining a channel.
 
