@@ -134,7 +134,6 @@ TBC: HOW TO FORMAT USER TRANSACTION BLOCKS?
 * [Configuration](../../KeyConcepts/Configuration/Configuration.md)
 
 ## <a name=reference></a> Related Reference
-
 * [`peer channel create` command](./PeerChannelCreateCommand.md)
 * [`peer channel fetch` command](./PeerChannelFetchCommand.md)
 * [`peer channel join` command](./PeerChannelJoinCommand.md)

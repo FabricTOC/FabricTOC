@@ -45,13 +45,13 @@ These flags provide more information about a peer, and are designated *global* b
 
 #### <a name=flags> </a> Flag details
 
-+ `--help`
+* `--help`
 
   Use `help` to get brief help text for the `peer` command. The `help` flag can often be used at different levels to get individual command help, or even a help on a command option. See individual commands for more detail.
 
 * `--logging-level <string>`
 
-  Use this flag to set the logging level for the peer. It does not apply to the `peer` command; it only has meaning on the individual `peer` subcommands. 
+  Use this flag to set the logging level for the peer. It does not apply to the `peer` command; it only has meaning on the individual `peer` subcommands.
 
   This command is overridden by the `CORE_LOGGING_LEVEL` environment variable if it is set.  A full list of peer environment variables is described in the [peer environment variables reference topic](../Advanced/Peer/PeerEnvironmentVariables.md).
 
@@ -105,17 +105,16 @@ Here's some examples using the different available flags on the `peer` command.
   ```
 
 ## Related Concepts
-+ [Peers](../../KeyConcepts/Peers/Peers.md)
+* [Peers](../../KeyConcepts/Peers/Peers.md)
 
 ## Related Tasks
 
-+ [Determining a peer's version](../../AdminTasks/Peer/PeerVersion.md)
+* [Determining a peer's version](../../AdminTasks/Peer/PeerVersion.md)
 
 ## <a name=reference></a> Related Reference
-
-+ [`peer chaincode` command](./PeerChaincodeCommand.md)
-+ [`peer channel` command](./PeerChannelCommand.md)
-+ [`peer logging` command](./PeerLoggingCommand.md)
-+ [`peer node` command](./PeerNodeCommand.md)
-+ [`peer version` command](./PeerVersionCommand.md)   
-+ [Peer environment variables](../Advanced/Peer/PeerEnvironmentVariables.md)    
+* [`peer chaincode` command](./PeerChaincodeCommand.md)
+* [`peer channel` command](./PeerChannelCommand.md)
+* [`peer logging` command](./PeerLoggingCommand.md)
+* [`peer node` command](./PeerNodeCommand.md)
+* [`peer version` command](./PeerVersionCommand.md)   
+* [Peer environment variables](../Advanced/Peer/PeerEnvironmentVariables.md)    
