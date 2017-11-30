@@ -53,7 +53,7 @@ These flags provide more information about a peer. Notice that a command option 
 
   Use this flag to set the logging level for the peer.  This flag only has meaning on the individual commands. It does not apply at the
 
-  This command is superseded by the `CORE_LOGGING_LEVEL` environment variable.  The full list of peer environment variables is described in the [peer environment variables reference topic](../Advanced/Peer/PeerEnvironmentVariables).
+  This command is superseded by the `CORE_LOGGING_LEVEL` environment variable.  The full list of peer environment variables is described in the [peer environment variables reference topic](../Advanced/Peer/PeerEnvironmentVariables.md).
 
 * `--version`
 
