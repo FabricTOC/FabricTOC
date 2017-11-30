@@ -1,5 +1,7 @@
 # The Ledger
 
+Explain the relationship between ledger, BC and world state options. 
+
 ## What is the Ledger?
 
 What do ledgers really do? The thing they've alway done. Be a record of transactions. A source of truth. This source of truth is what all future transactions rely on. Fabric has improved on this longstanding concept by making ledgers immutable.

@@ -1,8 +1,10 @@
-# Chaincode
+# Chaincode and Smart Contracts
 
 ## What is Chaincode?
 
-Similar to the concept of a "smart contract", **chaincodes are programs -- comprised of business logic -- that have been agreed to by the members of a channel**. This business logic **defines and enforces the rules for reading or altering the ledger for that channel**.
+In any group of businesses, rules must be established that govern not just the general roles and responsibilities of the members of the group, but the specific rules that govern individual transactions.
+
+Similar to the concept of a "smart contract", **chaincodes are programs -- comprised of business logic -- that have been agreed to by the members of a channel**. This business logic **defines and enforces the rules for reading or altering the ledger for that channel**. The word "chaincode" emcompasses more than this business logic -- system chaincode, for example, which we'll talk about later --
 
 Chaincodes are not just important, they're necessary -- **reading or writing to the ledger does not happen without them**. This makes chaincode of particular interest to **application developers**, though the lifecycle of a chaincode -- as well as the scope of system chaincode (more on this later) -- is also of importance to network and channel administrators.
 
