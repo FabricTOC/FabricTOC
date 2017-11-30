@@ -94,7 +94,7 @@ Here's some examples using the different available flags on the `peer channel fe
 
   You can see that the most recent block is number 32.
 
-* Using the `(block number)` option to retrieve the most recent channel block,  in this case block number 16.
+* Using the `(block number)` option to retrieve a specific block, in this case, block number 16.
 
   ```
   peer channel fetch 16  -c drivenet.channel.001 --orderer orderer.example.com:7050
