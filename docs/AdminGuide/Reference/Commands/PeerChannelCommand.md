@@ -1,54 +1,64 @@
-# <a name="PeerCommand"></a> Peer Command
+# <a name="PeeChannelCommand"></a> `peer channel` command
 
-The `peer` command allow administrators to interact with a peer. Use this command when you want to perform blockchain operations via the peer -- such as deploying a smart contract chaincode, or joining a channel.
+The `peer channel` command allow administrators to perform channel related operations on a peer. Use this command when you want to perform channel related blockchain on a peer -- such as joining a channel.
 
 ## Syntax
 
-The `peer` command has different commands within it:
+The `peer channel` command has different commands within it:
 
 ```
-peer [command]
+peer channel [command]
 ```
 as follows
 ```
-peer chaincode
-peer channel     
-peer logging     
-peer node        
-peer version     
-peer [no command]
+peer channel create      
+peer channel fetch       
+peer channel join        
+peer channel list        
+peer channel update      
 ```
 
-These commands separate the different functions provided by a peer into their own category. For example, use the `peer chaincode` command to perform smart contract operations on the peer, or the `peer channel` command to perform channel related operations.
+These commands relate to the different channel operations that are relevant to a peer. For example, use the `peer channel join` command to join a peer to a channel, or the `peer channel list` command to show the channels to which a peer is joined.
 
 Within each command there are many different options available and because of this each command is described in its own topic. Follow the [links below](#reference) to understand these individual commands in more detail.
 
-If a command option is not specified then `peer` will return some high level help text as described in in the `--help` flag [below](#help).
+### `peer channel` flags
 
-### Peer flags
-
-The `peer` command also has a set of associated flags :
+The `peer channel` command also has a set of associated flags.
 
 ```
-peer [flags]
+peer channel [flags]
 ```
 as follows
 ```
-peer --help
-peer --logging-level <string>     
-peer --test.coverprofile <string>     
-peer --version   
+peer channel --cafile <string>    
+peer channel --orderer <string>   
+peer channel --tls                
 ```
 
-These flags provide more information about a peer. Notice that a command option is not necessary when a flag is used.
+These flags relate to all `peer channel` commands. Each of these commands also has its own set of flags, and these are described in the relevant [peer command reference below](#reference).
 
-#### <a name=help> </a> Flag details
+The global `peer` command flags also apply as described in the [`peer command`](./PeerCommand.md#flags).
 
-+ `--help`
+#### <a name=flags> </a> Flag details
 
-  Use `help` to get brief help text for the `peer` command. The `help` flag can often be used at different levels to get individual command help, or even a help on a command option. See individual commands for more detail.
++ `--cafile <string>`
 
-  Here's an example of output using the `--help` flag
+  a fully qualified path to orderer certificates.
+
+* `--orderer <string>`
+
+  the fully qualified IP address and port of the orderer being communicated with for this channel operation.  
+
+* `--tls`
+
+  Use this flag to enable TLS communications for the `peer channel` command. The certificates specified with `--cafile` will be used for TLS communications to authenticate the connected orderer.
+
+## Usage
+
+Here's some examples using the different available flags on the `peer` command.
+
+* `--help` flag
 
   ```
   peer --help
@@ -66,25 +76,12 @@ These flags provide more information about a peer. Notice that a command option 
 
   Flags:
         --logging-level string       Default logging level and overrides, see core.yaml for full syntax
-        --test.coverprofile string   Done (default "coverage.cov")
     -v, --version                    Display current version of fabric peer server
 
   Use "peer [command] --help" for more information about a command.
   ```  
 
-* `--logging-level <string>`
-
-  Use this flag to set the logging level for the peer... TBC
-
-* `--test.coverprofile <string>`
-
-  Use this flag to ... TBC
-
-* `--version`
-
-  Use this flag to determine the build version for the peer.  This flag provides a set of detailed information on how the peer was built.
-
-  Here's an example of output using the `--version` flag
+* `--version` flag
 
   ```
   peer --version
@@ -100,19 +97,13 @@ These flags provide more information about a peer. Notice that a command option 
     Docker Namespace: hyperledger
   ```
 
-  See the reference topic [Peer version information](../Advanced/Peer/VersionInfo.md) to understand the version information in detail.
-
 ## Related Concepts
 + [Peers](../../KeyConcepts/Peers/Peers.md)
 
-## Related Tasks
-
-+ [Determining a Peer's version](../../AdminTasks/Peer/PeerVersion.md)
-
 ## <a name=reference></a> Related Reference
 
-+ [`peer chaincode` command](./PeerChaincodeCommand.md)
-+ [`peer channel` command](./PeerChannelCommand.md)
-+ [`peer logging` command](./PeerLoggingCommand.md)
-+ [`peer node` command](./PeerNodeCommand.md)
-+ [`peer version` command](./PeerVersionCommand.md)
++ [`peer channel create` command](./PeerChannelCreateCommand.md)
++ [`peer channel fetch` command](./PeerChannelFetchCommand.md)
++ [`peer channel join` command](./PeerChannelJoinCommand.md)
++ [`peer channel list` command](./PeerChannelListCommand.md)
++ [`peer channel update` command](./PeerChannelUpdateCommand.md)

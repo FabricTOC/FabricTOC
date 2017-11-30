@@ -25,9 +25,9 @@ These commands separate the different functions provided by a peer into their ow
 
 Within each command there are many different options available and because of this each command is described in its own topic. Follow the [links below](#reference) to understand these individual commands in more detail.
 
-If a command option is not specified then `peer` will return some high level help text as described in in the `--help` flag [below](#help).
+If a command option is not specified then `peer` will return some high level help text as described in in the `--help` flag [below](#flags).
 
-### Peer flags
+### `peer` flags
 
 The `peer` command also has a set of associated flags :
 
@@ -41,9 +41,15 @@ peer --logging-level <string>
 peer --version   
 ```
 
-These flags provide more information about a peer. Notice that a command option is not necessary when a flag is used.
+These flags provide more information about a peer, and are designated *global* because they can be used at any command level. For example `--help` will provide help on the command or command option to which it is applied:
 
-#### <a name=help> </a> Flag details
+```
+peer --help
+peer channel --help
+peer channel list --help
+```
+
+#### <a name=flags> </a> Flag details
 
 + `--help`
 
@@ -51,9 +57,9 @@ These flags provide more information about a peer. Notice that a command option 
 
 * `--logging-level <string>`
 
-  Use this flag to set the logging level for the peer.  This flag only has meaning on the individual commands. It does not apply at the
+  Use this flag to set the logging level for the peer.  This flag only has meaning on the individual commands. It does not apply at the top level.
 
-  This command is superseded by the `CORE_LOGGING_LEVEL` environment variable.  The full list of peer environment variables is described in the [peer environment variables reference topic](../Advanced/Peer/PeerEnvironmentVariables.md).
+  This command is overridden by the `CORE_LOGGING_LEVEL` environment variable if it is set.  A full list of peer environment variables is described in the [peer environment variables reference topic](../Advanced/Peer/PeerEnvironmentVariables.md).
 
 * `--version`
 
@@ -109,7 +115,7 @@ Here's some examples using the different available flags on the `peer` command.
 
 ## Related Tasks
 
-+ [Determining a Peer's version](../../AdminTasks/Peer/PeerVersion.md)
++ [Determining a peer's version](../../AdminTasks/Peer/PeerVersion.md)
 
 ## <a name=reference></a> Related Reference
 
