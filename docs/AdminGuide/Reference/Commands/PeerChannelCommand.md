@@ -38,7 +38,7 @@ peer channel --tls
 
 The global `peer` command flags also apply as described in the [`peer command`](./PeerCommand.md#flags).
 * `--help`
-* --logging-level <string>
+* `--logging-level <string>`
 * `--version`
 
 #### <a name=flags> </a> Flag details
