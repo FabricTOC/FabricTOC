@@ -274,4 +274,4 @@ OK, we've now finished our extensive tour of identities and membership of a bloc
 In summary, Hyperledger Fabric uses a PKI and MSPs to identify the principals who are the members of each organization collaborating in a blockchain network.
 
 
-[Next: Policies for Access Control](./PoliciesforAccessControl.md)
+[Next: Policies for Access Control](../Policy/Policy.md)

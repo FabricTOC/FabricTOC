@@ -64,4 +64,4 @@ That was easy, wasn't it? You can summarize Hyperledger Fabric as a technology w
 
 And if you think about it for a little while, any computer system can be described in this way -- a set of resources, principals, and permissions. The thing you now need to do is understand the concepts in more detail, and how they interact with each other!
 
-[Next:Consortia](./Consortia.md)
+[Next:Consortia](../Consortia/Consortia.md)

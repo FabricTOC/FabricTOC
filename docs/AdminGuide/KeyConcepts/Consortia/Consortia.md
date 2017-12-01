@@ -14,4 +14,4 @@ More on these roles in [-->Principals in a Network](./PrincipalsinaNetwork.md).
 
 The consortium in DRIVENET will first be comprised of the founders and first organizational members of the network, Mitchell and Regal. Later, Cecil's Car Dealership, ZBS Insurance, the DMV, and Faster Autos will join the DRIVENET consortium.  
 
-[Next: Channels](./Channels.md)
+[Next: Channels](../Channels/Channels.md)

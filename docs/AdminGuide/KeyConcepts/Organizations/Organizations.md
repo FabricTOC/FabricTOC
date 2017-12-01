@@ -23,4 +23,4 @@ Questions that must be answered:
 (Repeat what's in the consortia doc?)
 
 
-[Next: Principals in a Network](./PrincipalsinaNetwork.md)
+[Next: Principals in a Network](../Principals/Principals.md)

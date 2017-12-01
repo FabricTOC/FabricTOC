@@ -68,4 +68,4 @@ When DRIVENET is first bootstrapped, the only channel will be the system channel
 
 The first private channel creation will occur after Faster Autos joins the network. Because they are getting a special price to sell Regal cars, they'll join a channel with Regal and Regal alone (to ensure that Cecil's doesn't find out about Faster Auto's special price, and because there is no reason for Mitchell to be involved).
 
-[Next: Peers](./Peers.md)
+[Next: Peers](../Peers/Peers.md)
