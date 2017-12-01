@@ -30,4 +30,4 @@ Because the configtxlator service deliberately does not contain any crypto mater
 
 
 
-[-->Next](./Consortia.md)
+[-->Next](../Consortia/Consortia.md)
