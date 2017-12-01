@@ -47,4 +47,4 @@ On a conceptual level, it's important to remember that permissions are what enab
       + Policies for Changing Policies - Mod_Policies!
       + Policies in DRIVENET
 
-[Next: Creating and Updating a Network](./CreatingandUpdating.md)
+[Next: Creating and Updating a Network](../Network/CreatingandUpdating.md)
