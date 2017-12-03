@@ -133,7 +133,9 @@ If an MSP is defined on the local file system of a peer node, orderer node, or u
 
 ### Mapping MSPs to Organizations
 
-Because an organization will typically have a single list of members, it will usually have a single MSP. This exclusive relationship makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple membership lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, e.g., `ORG2.MSP.NATIONAL` and `ORG2.MSP.GOVERNMENT`, reflecting the different membership roots of trust within `ORG2` in the NATIONAL sales channel compared to the GOVERNMENT channel.
+Organizations will usually manage their members under a single MSP. Note that this is organizational concept different from that of an X.509 organization, which we'll talk about later.
+
+The exclusive relationship between an organization and its MSP makes it sensible to name the MSP after the organization, a convention you'll find adopted in most policy configurations. For example, organization `ORG1` would have an MSP called `ORG1.MSP`. In some cases an organization may require multiple membership lists -- for example, where channels are used to perform very different business functions with other organizations. In these cases it makes sense to have multiple MSPs and name them accordingly, e.g., `ORG2.MSP.NATIONAL` and `ORG2.MSP.GOVERNMENT`, reflecting the different membership roots of trust within `ORG2` in the NATIONAL sales channel compared to the GOVERNMENT channel.
 
 | ![MSP1](./IdentityandMembership.diagram.3.png) |
 | :---: |
