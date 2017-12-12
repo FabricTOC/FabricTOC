@@ -1,30 +1,34 @@
-# Administration Guide
+# Hyperledger Fabric Guide
 
-This section of the documentation explains how to administer a Hyperledger Fabric blockchain network.  You'll find this material helpful if you are new to Hyperledger Fabric, or if you want to learn "hands on" how to create and administer a blockchain, or if you want to find a specific administrative command or piece of reference information.  
-
-#### [How the Hyperledger Fabric Documentation is organized](./HowOrganized/HowOrganized.md)
-
- + [Concepts, Tasks and References for this guide](./HowOrganized/ConceptsTasksReferences.md)
- + [Key Concepts](./HowOrganized/KeyConcepts.md)
- + [The DRIVENET sample](./HowOrganized/DriveNetSampleNetwork.md)
- + [Administrative Tasks](./HowOrganized/AdministrativeTasks.md)
+#### [Introduction](./)
+ + [How the guide is organized](./HowOrganized/HowOrganized.md)
+ + [Key blockchain concepts](./HowOrganized/KeyConcepts.md)
+ + [Developing blockchain applications](./)
+ + [Administering a blockchain network](./HowOrganized/AdministrativeTasks.md)
  + [Reference Material](./HowOrganized/ReferenceMaterial.md)
- + [Glossary of Terms](./HowOrganized/GlossaryOfTerms.md)
+ + [Tutorials and Samples](./HowOrganized/DriveNetSampleNetwork.md)
 
-#### [Key Concepts](./KeyConcepts/KeyConcepts.md)
+// + [Concepts, Tasks and References for this guide](./HowOrganized/ConceptsTasksReferences.md)
+// + [Glossary of Terms](./HowOrganized/GlossaryOfTerms.md)
+
+
+#### [Key blockchain concepts](./KeyConcepts/KeyConcepts.md)
 
   + [Network](./KeyConcepts/Network/Network.md)
-  + [Consortia](./KeyConcepts/Consortia/Consortia.md)
   + [Organizations](./KeyConcepts/Organizations/Organizations.md)
-  + [Principals](./KeyConcepts/Principals/Principals.md)
-  + [Identity and Trusted Membership](./KeyConcepts/IdentityandMembership/IdentityandMembership.md)
-  + [Policies](./KeyConcepts/Policy/Policy.md)
-  + [Channels](./KeyConcepts/Channels/Channels.md)
   + [Peers](./KeyConcepts/Peers/Peers.md)
   + [Smart contract chaincode](./KeyConcepts/SmartContracts/SmartContracts.md)
   + [Ledgers](./)
+  + [Channels](./KeyConcepts/Channels/Channels.md)
+  + [Consortia](./KeyConcepts/Consortia/Consortia.md)
+  + [Principals](./KeyConcepts/Principals/Principals.md)
+  + [Identity and Trusted Membership](./KeyConcepts/IdentityandMembership/IdentityandMembership.md)
+  + [Policies](./KeyConcepts/Policy/Policy.md)
 
-#### [Administrative Tasks](./AdminTasks/AdminTasks.md)
+#### [Developing blockchain applications](./)
+
+
+#### [Administering a blockchain network](./AdminTasks/AdminTasks.md)
 
   + [How this section is organized](./AdminTasks/AdminTasks.md#HowOrganized)
   + [Certificate Authority Tasks](/.AdminTasks/CATasks.md)
@@ -35,15 +39,16 @@ This section of the documentation explains how to administer a Hyperledger Fabri
   + [Peer Tasks](./AdminTasks/PeerTasks.md)
     + [Determining a Peer's version](./AdminTasks/Peer/PeerVersion.md)
 
+#### [Tutorials and Samples](./)
+
 #### [Reference Material](./Reference/Reference.md)
   + [Command Reference](./Reference/Commands/Commands.md)
      + [Peer Commands](./)
        + [`Peer` command](./Reference/Commands/PeerCommand.md)
        + [`Peer channel` command](./Reference/Commands/PeerChannelCommand.md)
        + [`Peer channel fetch` command](./Reference/Commands/PeerChannelFetchCommand.md)
+  + [API Reference](./)
   + [Advanced Information](./Reference/Advanced/Advanced.md)
      + [Peers](./Reference/Advanced/PeersReference.md)
        + [Peer Version](./Reference/Advanced/Peer/VersionInfo.md)
-  + [Glossary of Administrative Terms](./Glossary/Glossary.md)
-    + [Alphabetically ordered list of terms](./)
-      + [A-Z](./)
+  + [Glossary](./Glossary/Glossary.md)
