@@ -1,6 +1,6 @@
 # <a name="PeeChannelCommand"></a> `peer channel` command
 
-The `peer channel` command allows administrators to perform channel related operations on a peer -- such as joining a channel, or instantiating s smart contract chaincode.
+The `peer channel` command allows administrators to perform channel related operations on a peer, such as joining a channel or instantiating smart contract chaincode.
 
 ## Syntax
 

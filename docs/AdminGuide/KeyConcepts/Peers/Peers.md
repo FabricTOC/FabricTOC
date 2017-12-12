@@ -12,9 +12,9 @@ The physical structure of the peers and orderers separates them from the logical
 | :---: |
 | An example blockchain network formed by three peers. A blockchain is primarily formed from peer nodes, each of which can hold copies of a ledger and smart contracts. In this example, each peer holds a copy of the same ledger and smart contracts. |
 
-You might have noticed that the example above does not show an orderer, but as you've seen, orderers -- like peers -- are not necessary to form a blockchain network on a logical level (just as the rules of the road can be written before there are highway interchanges). It can be helpful to remember that **blockchain networks are not objects in themselves**. Rather, the network comes into existence when certain objects -- such as policies, orderers, MSPs, or peers -- are defined. This means that the administration of a blockchain network really amounts to the administration of these objects, rather than any separate object called a "network".
+You might have noticed that the example above does not show an orderer, but as you've seen, orderers -- like peers -- are not necessary to form a blockchain network on a logical level (just as the rules of the road can be written before there are highway interchanges).
 
-**Peers are the primary objects that administrators manage on a day-to-day basis using the `peer` command**. Peers can be created, started, stopped, reconfigured, and even deleted.
+It can be helpful to remember that **blockchain networks are not objects in themselves**. Rather, the network comes into existence when certain objects -- such as policies, orderers, MSPs, or peers -- are defined. This means that the administration of a blockchain network really amounts to the administration of these objects, rather than any separate object called a "network". **Peers are the primary objects that administrators manage on a day-to-day basis using the `peer` command**. Peers can be created, started, stopped, reconfigured, and even deleted.
 
 ## Peers host smart contracts and ledgers
 

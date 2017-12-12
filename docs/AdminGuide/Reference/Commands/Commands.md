@@ -1,6 +1,10 @@
 # <a name="HowOrganized"></a> How this section is organized
 
-This topic lists all of the commands that an administrator can perform.  We have grouped these commands together according to topic. For example, you'll find all the commands relating to Certificate Authorities under the same section, all the tasks relating to Peers under another section, and so on.
+This topic lists all of the commands that an administrator can perform. We have
+grouped these commands together according to topic with the same organizational
+model as the Key Concepts section. For example, you'll find all the commands
+relating to Certificate Authorities under the same section, all the tasks
+relating to Peers under another section, and so on.
 
 For each command, we'll show the general form of the command, for example
 
