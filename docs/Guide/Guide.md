@@ -36,14 +36,14 @@
   + [Accessing the transaction log](./)
 
 #### [Administering a blockchain network](./AdminTasks/AdminTasks.md)
-  + [How this section is organized](./AdminTasks/AdminTasks.md#HowOrganized)
-  + [Certificate Authority Tasks](/.AdminTasks/CATasks.md)
   + [Network Tasks](./AdminTasks/NetworkTasks.md)
   + [Consortium Tasks](./AdminTasks/ConsortiumTasks.md)
   + [Organization Tasks](./AdminTasks/OrganizationTasks.md)
   + [Managing Identity](./AdminTasks/ManagingIdentity.md)
   + [Peer Tasks](./AdminTasks/PeerTasks.md)
     + [Determining a Peer's version](./AdminTasks/Peer/PeerVersion.md)
+  + [Channel Tasks](./_)
+  + [Certificate Authority Tasks](/.AdminTasks/CATasks.md)
 
 #### [Tutorials and samples](./)
   + [Writing your first application](./)
@@ -65,3 +65,4 @@
 #### Material to be incorporated
  + [Concepts, tasks and references for this guide](./HowOrganized/ConceptsTasksReferences.md)
  + [Glossary of terms](./HowOrganized/GlossaryOfTerms.md)
+  + [How this section is organized](./AdminTasks/AdminTasks.md#HowOrganized) from Admin Taks
