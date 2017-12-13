@@ -10,6 +10,7 @@
     + [Administering a blockchain network](./HowOrganized/AdministrativeTasks.md)
     + [Tutorials and samples](./HowOrganized/DriveNetSampleNetwork.md)
     + [Reference material](./HowOrganized/ReferenceMaterial.md)
+    + [General Help](./)
   + [What is a Blockchain?*](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html)
     + [Videos*](http://hyperledger-fabric.readthedocs.io/en/latest/videos.html)
   + [Why are Blockchains useful?*](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html)
