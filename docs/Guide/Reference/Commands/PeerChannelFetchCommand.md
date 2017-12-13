@@ -1,6 +1,6 @@
 # <a name="PeeChannelFetchCommand"></a> `peer channel fetch` command
 
-The `peer channel fetch` command allows administrators to fetch channel transaction blocks from the network orderer. The retrieved blocks will typically contain user transactions. The retrieved blocks can also contain configuration transactions such as the initial genesis block for the channel or any subsequent channel configuration update.
+The `peer channel fetch` command allows administrators to fetch channel transaction blocks from the network orderer. The retrieved blocks will typically contain user transactions but they can also contain configuration transactions such as the initial genesis block for the channel or any subsequent channel configuration update.
 
 The peer must have joined the channel, and have read access to it, in order for the command to complete successfully.
 
@@ -36,7 +36,7 @@ where
 
   returns the specified channel block. This may be a user transaction block or a configuration transaction.  
 
-  Specifying 0 will result in the genesis block for this channel being returned, if it is still available to the network orderer.
+  Specifying 0 will result in the genesis block for this channel being returned (if it is still available to the network orderer).
 
   TBC: THE COMMAND DOES NOT COMPLETE IF THE (block number) IS TOO HIGH.
 
