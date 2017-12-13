@@ -27,6 +27,7 @@ This page will track where and how these documents are being incorporated into F
     Writing Your First Application
       *Moved under "Tutorials and samples"*
     Chaincode Tutorials
+      *Moved under "Tutorials and samples"*
     Chaincode for Developers
     Chaincode for Operators
     Videos
