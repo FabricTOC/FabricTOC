@@ -1,5 +1,7 @@
 # Hyperledger Fabric Guide
 
+(A * next to a topic indicates that it is carried over from the existing READTHEDOCS documentation.)
+
 #### [Introduction](./)
  + [The purpose of this guide](./)
  + [How the guide is organized](./HowOrganized/HowOrganized.md)
@@ -11,14 +13,20 @@
  + [What is a Blockchain?](./)
  + [Why are Blockchains useful?](./)
  + [What is Hyperledger Fabric?](./)
+   + [Architecture Explained*](./)
+ + [What's in each release?](./)
+   + [Release Notes for Hyperledger Fabric 1.1*](./)
+   + [Release Notes for Hyperledger Fabric 1.0*](./)
+   + [Release Notes for Hyperledger Fabric 0.6*](./)
+   + [Release Notes for Hyperledger Fabric 0.5*](./)
 
 #### [Key blockchain concepts](./KeyConcepts/KeyConcepts.md)
   + [Network](./KeyConcepts/Network/Network.md)
   + [Smart contract chaincode](./KeyConcepts/SmartContracts/SmartContracts.md)
-  + [Ledgers](./)
+  + [Ledgers*](./)
   + [Peers](./KeyConcepts/Peers/Peers.md)
   + [Orderers](./KeyConcepts/Peers/Peers.md)
-  + [Channels](./KeyConcepts/Channels/Channels.md)
+  + [Channels*](./KeyConcepts/Channels/Channels.md)
   + [Organizations](./KeyConcepts/Organizations/Organizations.md)
   + [Consortia](./KeyConcepts/Consortia/Consortia.md)
   + [Principals](./KeyConcepts/Principals/Principals.md)
@@ -28,8 +36,10 @@
 
 #### [Developing blockchain applications](./)
   + [Applications and the Hyperledger Fabric SDK](./)
+    + [Hyperledger Fabric SDKs*](./)
   + [Accessing the ledger](./)
   + [Programming Smart contracts and Chaincode](./)
+    + [Transaction Flow*](./)
   + [Querying the ledger](./)
   + [Updating the ledger](./)
   + [Ledger notifications](./)
@@ -42,8 +52,11 @@
   + [Managing Identity](./AdminTasks/ManagingIdentity.md)
   + [Peer Tasks](./AdminTasks/PeerTasks.md)
     + [Determining a Peer's version](./AdminTasks/Peer/PeerVersion.md)
+  + [Orderer Tasks](./)  
+    + [Bringing up a Kafka-based Ordering Service*](./)
   + [Channel Tasks](./_)
   + [Certificate Authority Tasks](/.AdminTasks/CATasks.md)
+    + [Hyperledger Fabric CA's User Guide*](./)
 
 #### [Tutorials and samples](./)
   + [Writing your first application](./)
@@ -60,9 +73,26 @@
   + [Advanced information](./Reference/Advanced/Advanced.md)
      + [Peers](./Reference/Advanced/PeersReference.md)
        + [Peer version](./Reference/Advanced/Peer/VersionInfo.md)
-  + [Glossary](./Glossary/Glossary.md)
+     + [Ledger](./)   
+       + [Read-write set semantics*](./)  
+     + [Network](./)   
+       + [Gossip data dissemination protocol*](./)  
+  + [Glossary*](./Glossary/Glossary.md)
+  + [Trouble Shooting*](./)
+  + [FAQ*](./)
+  + [Contributing to Hyperledger Fabric*](./)
+
+#### [General Help](./)
+  + [Trouble Shooting*](./)
+  + [FAQ*](./)
+  + [Community help sources](./)
+    + [RocketChat*](./)
+    + [StackOverflow*](./)
+    + [Hyperledger Fabric mailing list*](./)
+  + [Hyperledger Fabric Wiki*](./)
+  + [Hyperledger Wiki*](./)
 
 #### Material to be incorporated
  + [Concepts, tasks and references for this guide](./HowOrganized/ConceptsTasksReferences.md)
  + [Glossary of terms](./HowOrganized/GlossaryOfTerms.md)
-  + [How this section is organized](./AdminTasks/AdminTasks.md#HowOrganized) from Admin Taks
+  + [How this section is organized](./AdminTasks/AdminTasks.md#HowOrganized) - from previous Admin Tasks topic
