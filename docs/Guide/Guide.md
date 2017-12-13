@@ -1,35 +1,41 @@
 # Hyperledger Fabric Guide
 
 #### [Introduction](./)
+ + [The purpose of this guide](./)
  + [How the guide is organized](./HowOrganized/HowOrganized.md)
- + [Key blockchain concepts](./HowOrganized/KeyConcepts.md)
- + [Developing blockchain applications](./)
- + [Administering a blockchain network](./HowOrganized/AdministrativeTasks.md)
- + [Reference Material](./HowOrganized/ReferenceMaterial.md)
- + [Tutorials and Samples](./HowOrganized/DriveNetSampleNetwork.md)
-
-// + [Concepts, Tasks and References for this guide](./HowOrganized/ConceptsTasksReferences.md)
-// + [Glossary of Terms](./HowOrganized/GlossaryOfTerms.md)
-
+   + [Key blockchain concepts](./HowOrganized/KeyConcepts.md)
+   + [Developing blockchain applications](./)
+   + [Administering a blockchain network](./HowOrganized/AdministrativeTasks.md)
+   + [Reference Material](./HowOrganized/ReferenceMaterial.md)
+   + [Tutorials and Samples](./HowOrganized/DriveNetSampleNetwork.md)
+ + [What is a Blockchain?](./)
+ + [Why are Blockchains useful?](./)
+ + [What is Hyperledger Fabric?](./)
 
 #### [Key blockchain concepts](./KeyConcepts/KeyConcepts.md)
-
   + [Network](./KeyConcepts/Network/Network.md)
-  + [Organizations](./KeyConcepts/Organizations/Organizations.md)
-  + [Peers](./KeyConcepts/Peers/Peers.md)
   + [Smart contract chaincode](./KeyConcepts/SmartContracts/SmartContracts.md)
   + [Ledgers](./)
+  + [Peers](./KeyConcepts/Peers/Peers.md)
+  + [Orderers](./KeyConcepts/Peers/Peers.md)
   + [Channels](./KeyConcepts/Channels/Channels.md)
+  + [Organizations](./KeyConcepts/Organizations/Organizations.md)
   + [Consortia](./KeyConcepts/Consortia/Consortia.md)
   + [Principals](./KeyConcepts/Principals/Principals.md)
-  + [Identity and Trusted Membership](./KeyConcepts/IdentityandMembership/IdentityandMembership.md)
+  + [Identity](./KeyConcepts/IdentityandMembership/IdentityandMembership.md)
+  + [Membership](./KeyConcepts/IdentityandMembership/IdentityandMembership.md)
   + [Policies](./KeyConcepts/Policy/Policy.md)
 
 #### [Developing blockchain applications](./)
-
+  + [Applications and the Hyperledger Fabric SDK](./)
+  + [Accessing the ledger](./)
+  + [Programming Smart contracts and Chaincode](./)
+  + [Querying the ledger](./)
+  + [Updating the ledger](./)
+  + [Ledger notifications](./)
+  + [Accessing the transaction log](./)
 
 #### [Administering a blockchain network](./AdminTasks/AdminTasks.md)
-
   + [How this section is organized](./AdminTasks/AdminTasks.md#HowOrganized)
   + [Certificate Authority Tasks](/.AdminTasks/CATasks.md)
   + [Network Tasks](./AdminTasks/NetworkTasks.md)
@@ -40,6 +46,9 @@
     + [Determining a Peer's version](./AdminTasks/Peer/PeerVersion.md)
 
 #### [Tutorials and Samples](./)
+  + [Writing your first application](./)
+  + [Building your first network](./)
+  + [The DRIVENET tutorial](./)
 
 #### [Reference Material](./Reference/Reference.md)
   + [Command Reference](./Reference/Commands/Commands.md)
@@ -52,3 +61,7 @@
      + [Peers](./Reference/Advanced/PeersReference.md)
        + [Peer Version](./Reference/Advanced/Peer/VersionInfo.md)
   + [Glossary](./Glossary/Glossary.md)
+
+#### Material to be incorporated
+ + [Concepts, Tasks and References for this guide](./HowOrganized/ConceptsTasksReferences.md)
+ + [Glossary of Terms](./HowOrganized/GlossaryOfTerms.md)
