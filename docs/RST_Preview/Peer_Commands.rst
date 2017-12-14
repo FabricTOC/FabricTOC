@@ -256,7 +256,7 @@ The ``peer channel fetch`` command has the following syntax:
 
 where:
 
-  * ``newest``
+  + ``newest``
 
     returns the most recent channel block available to the network orderer. This
     may be a user transaction block or a configuration transaction.
