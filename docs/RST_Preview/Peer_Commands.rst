@@ -256,14 +256,14 @@ The ``peer channel fetch`` command has the following syntax:
 
 where:
 
-  + ``newest``
+* ``newest``
 
     returns the most recent channel block available to the network orderer. This
     may be a user transaction block or a configuration transaction.
 
     This option will also return the block number of the most recent transaction.
 
-  * ``oldest``
+* ``oldest``
 
     returns the oldest channel block available to the network orderer. This may
     be a user transaction block or a configuration transaction.
@@ -271,7 +271,7 @@ where:
     This option will also return the block number of the oldest available
     transaction.
 
-  * ``config``
+* ``config``
 
     returns the most recent channel configuration block available to the network
     orderer. This can only be a configuration transaction.
@@ -279,7 +279,7 @@ where:
     This option will also return the block number of the most recent
     configuration transaction.
 
-  * ``(block number)``
+* ``(block number)``
 
     returns the specified channel block. This may be a user transaction block or
     a configuration transaction.
