@@ -131,7 +131,7 @@ Here's some examples using the different available flags on the `peer` command.
     Base Docker Label: org.hyperledger.fabric
     Docker Namespace: hyperledger
 
-The Peer Channel Command
+The ``peer channel`` Command
 ------------------------
 
 The ``peer channel`` command allows administrators to perform channel related
@@ -320,7 +320,7 @@ according to the fetch options. It will be one of the following:
 
 Here's some examples using the different available flags on the ``peer channel fetch`` command.
 
-  * Using the ``newest`` option to retrieve the most recent channel block.
+* Using the ``newest`` option to retrieve the most recent channel block.
 
 .. code:: bash
 
@@ -376,12 +376,8 @@ You can see that the retrieved block is number 32.
 
 You can see that the retrieved block is number 16.
 
-For configuration blocks, the file can be formatted using the
-[`configtxlator` command](../Config/ConfigtxlatorCommand.md). If you'd like to
-see an example of a formatted block, then refer to the
-[Formated configuration block](../Config/FormattedConfigBlock.md) or
-[Formatted user transaction block ](../Config/FormattedUserTransactionBlock.md)
-reference topics, respectively.
+For configuration blocks, the file can be formatted using the ``configtxlator``
+command. 
 
 .. Licensed under Creative Commons Attribution 4.0 International License
    https://creativecommons.org/licenses/by/4.0/
