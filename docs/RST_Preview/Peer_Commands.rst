@@ -258,34 +258,34 @@ where:
 
 * ``newest``
 
-returns the most recent channel block available to the network orderer. This
-may be a user transaction block or a configuration transaction.
+  returns the most recent channel block available to the network orderer. This
+  may be a user transaction block or a configuration transaction.
 
-This option will also return the block number of the most recent transaction.
+  This option will also return the block number of the most recent transaction.
 
 * ``oldest``
 
-returns the oldest channel block available to the network orderer. This may be
-a user transaction block or a configuration transaction.
+  returns the oldest channel block available to the network orderer. This may be
+  a user transaction block or a configuration transaction.
 
-This option will also return the block number of the oldest available
-transaction.
+  This option will also return the block number of the oldest available
+  transaction.
 
 * ``config``
 
-returns the most recent channel configuration block available to the network
-orderer. This can only be a configuration transaction.
+  returns the most recent channel configuration block available to the network
+  orderer. This can only be a configuration transaction.
 
-This option will also return the block number of the most recent configuration
-transaction.
+  This option will also return the block number of the most recent configuration
+  transaction.
 
 * ``(block number)``
 
-returns the specified channel block. This may be a user transaction block or a
-configuration transaction.
+  returns the specified channel block. This may be a user transaction block or a
+  configuration transaction.
 
-Specifying 0 will result in the genesis block for this channel being returned
-(if it is still available to the network orderer).
+  Specifying 0 will result in the genesis block for this channel being returned
+  (if it is still available to the network orderer).
 
 ``peer channel fetch`` flags
 --------------------------
