@@ -254,7 +254,7 @@ The ``peer channel fetch`` command has the following syntax:
 
   peer channel fetch <newest|oldest|config|(block number)> [flags]
 
-where::
+where:
 
   * ``newest``
 
