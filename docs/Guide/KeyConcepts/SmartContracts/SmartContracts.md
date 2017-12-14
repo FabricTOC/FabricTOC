@@ -4,7 +4,9 @@
 
 In any group of businesses, rules must be established that govern not just the general roles and responsibilities of the members of the group, but the specific rules that govern individual transactions.
 
-Similar to the concept of a "smart contract", **chaincodes are programs -- comprised of business logic -- that have been agreed to by the members of a channel**. This business logic **defines and enforces the rules for reading or altering the ledger for that channel**. The word "chaincode" emcompasses more than this business logic -- system chaincode, for example, which we'll talk about later --
+In the past, these rules were established by paper contracts and disputes were resolved by fleets of lawyers. Blockchains allow these rules to be digitized into what are called "smart contracts", which are **programs -- comprised of business logic -- that have been agreed to by the members of a channel**. This business logic **defines and enforces the rules for reading or altering the ledger for that channel**. We'll talk more about why smart contracts exist within the scope of a channel -- rather than the network -- in a minute. 
+
+In Hyperledger Fabric, smart contracts are written in **chaincode**, to the point where the terms are often use interchangably. But "chaincode" actually encompasses more than this business logic -- system chaincode, for example, which we'll talk about later.
 
 Chaincodes are not just important, they're necessary -- **reading or writing to the ledger does not happen without them**. This makes chaincode of particular interest to **application developers**, though the lifecycle of a chaincode -- as well as the scope of system chaincode (more on this later) -- is also of importance to network and channel administrators.
 
