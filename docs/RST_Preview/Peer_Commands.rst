@@ -1,32 +1,7 @@
-Peer commands
+Peer Commands
 =============
 
-This topic lists all of the commands that an administrator can perform. We have
-grouped these commands together according to topic with the same organizational
-model as the Key Concepts section. For example, you'll find all the commands
-relating to Certificate Authorities under the same section, all the tasks
-relating to Peers under another section, and so on.
-
-For each command, we'll show the general form of the command, for example:
-
-.. code:: bash
-
-  fabric-ca-server start --ca.certfile <certfile> --ca.keyfile <keyfile> --b <adminUser>:<adminPassword> --d
-
-where::
-
-  `--ca.certfile is the full path to public certificate of the CA
-
-  `--ca.keyfile is the full path to the private key file of the CA
-
-  `b` is the user name and password of the CA administrator, specified as <adminUser>:<adminPassword>
-
-  `d`
-
-The ``peer` command
-------------------
-
-The `peer` command allows administrators to interact with a peer. Use this
+The ``peer`` command allows administrators to interact with a peer. Use this
 command when you want to perform peer operations such as deploying a smart
 contract chaincode or joining a channel.
 
@@ -52,7 +27,7 @@ as follows
 
 These subcommands separate the different functions provided by a peer into their
 own category. For example, use the ``peer chaincode`` command to perform smart
-contract chaincode operations on the peer, or the `peer channel` command to
+contract chaincode operations on the peer, or the ``peer channel`` command to
 perform channel related operations.
 
 Within each subcommand there are many different options available and because of
@@ -79,8 +54,8 @@ as follows
   peer channel list --help
 
 These flags provide more information about a peer, and are designated *global*
-because they can be used at any command level. For example the `--help` flag can
-provide help on the `peer` command, the `peer channel` command, as well as their
+because they can be used at any command level. For example the ``--help`` flag can
+provide help on the ``peer`` command, the ``peer channel`` command, as well as their
 respective options.
 
 Flag details
