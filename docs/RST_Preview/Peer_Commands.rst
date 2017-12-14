@@ -37,7 +37,7 @@ If a command option is not specified then ``peer`` will return some high level
 help text as described in in the ``--help`` flag below.
 
 ``peer`` flags
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 The ``peer`` command also has a set of associated flags:
 
@@ -132,7 +132,7 @@ Here's some examples using the different available flags on the `peer` command.
     Docker Namespace: hyperledger
 
 The ``peer channel`` Command
-------------------------
+----------------------------
 
 The ``peer channel`` command allows administrators to perform channel related
 operations on a peer, such as joining a channel or instantiating smart contract
@@ -163,7 +163,7 @@ channel, or the ``peer channel list`` command to show the channels to which a pe
 is joined.
 
 ``peer channel`` flags
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 Each ``peer channel`` command has different flags available to it, and because of
 this, each flag is described in the relevant command topic.
@@ -234,7 +234,7 @@ command.
 You can see that the peer joined to a channel called ``drivenet.channel.001``.
 
 The ``peer channel fetch`` command
---------------------------------
+----------------------------------
 
 The ``peer channel fetch`` command allows administrators to fetch channel
 transaction blocks from the network orderer. The retrieved blocks will typically
@@ -288,7 +288,7 @@ where:
   (if it is still available to the network orderer).
 
 ``peer channel fetch`` flags
---------------------------
+----------------------------
 
 The ``peer channel fetch`` command has the following command specific flags:
 
