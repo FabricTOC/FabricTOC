@@ -63,7 +63,7 @@ Flag details
 
 * ``--help``
 
-  Use `help` to get brief help text for the `peer` command. The `help` flag can
+  Use `help` to get brief help text for the ``peer`` command. The ``help`` flag can
   often be used at different levels to get individual command help, or even a
   help on a command option. See individual commands for more detail.
 
@@ -71,19 +71,19 @@ Flag details
 
   This flag sets the log level for the single peer command it is supplied with.
   Once the command has been executed, the log level will not persist. There are
-  six possible log levels: `debug`, `info`, `notice`, `warning`, `error`, and
-  `critical`. Note that there is no single logging level for the peer. You can
-  find the current logging level for a specific component on the peer by running
-  ``peer logging getlevel <component-name``. The defaults are defined in
+  six possible log levels: ``debug``, ``info``, ``notice`, ``warning``, ``error``,
+  and ``critical``. Note that there is no single logging level for the peer. You
+  can find the current logging level for a specific component on the peer by
+  running ``peer logging getlevel <component-name``. The defaults are defined in
   ``sampleconfig/core.yaml`` if you'd like to take a look at what logging levels are
   set if the system admin doesn't modify anything.
 
-  This command is overridden by the ``CORE_LOGGING_LEVEL`` environment variable if
-  it is set.
+  This command is overridden by the ``CORE_LOGGING_LEVEL`` environment variable
+  if it is set.
 
 * ``--version``
 
-  Use this flag to determine the build version for the peer.  This flag provides
+  Use this flag to determine the build version for the peer. This flag provides
   a set of detailed information on how the peer was built.
 
 Usage
@@ -162,7 +162,7 @@ peer. For example, use the ``peer channel join`` command to join a peer to a
 channel, or the ``peer channel list`` command to show the channels to which a peer
 is joined.
 
-`peer channel` flags
+``peer channel`` flags
 ^^^^^^^^^^^^^^^^^^^^
 
 Each ``peer channel`` command has different flags available to it, and because of
@@ -347,7 +347,7 @@ Here's some examples using the different available flags on the ``peer channel f
 
 You can see that the retrieved block is number 32.
 
-* Using the `(block number)` option to retrieve a specific block -- in this
+* Using the ``(block number)``` option to retrieve a specific block -- in this
   case, block number 16.
 
 .. code:: bash
@@ -377,7 +377,7 @@ You can see that the retrieved block is number 32.
 You can see that the retrieved block is number 16.
 
 For configuration blocks, the file can be formatted using the ``configtxlator``
-command. 
+command.
 
 .. Licensed under Creative Commons Attribution 4.0 International License
    https://creativecommons.org/licenses/by/4.0/
