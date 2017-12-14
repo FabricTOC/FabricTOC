@@ -233,10 +233,10 @@ command.
 
 You can see that the peer joined to a channel called ``drivenet.channel.001``.
 
-The `peer channel fetch` command
+The ``peer channel fetch`` command
 --------------------------------
 
-The `peer channel fetch` command allows administrators to fetch channel
+The ``peer channel fetch`` command allows administrators to fetch channel
 transaction blocks from the network orderer. The retrieved blocks will typically
 contain user transactions but they can also contain configuration transactions
 such as the initial genesis block for the channel or any subsequent channel
