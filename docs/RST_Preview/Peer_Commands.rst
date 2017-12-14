@@ -7,20 +7,21 @@ model as the Key Concepts section. For example, you'll find all the commands
 relating to Certificate Authorities under the same section, all the tasks
 relating to Peers under another section, and so on.
 
-For each command, we'll show the general form of the command, for example
+For each command, we'll show the general form of the command, for example:
 
-`fabric-ca-server start --ca.certfile <certfile> --ca.keyfile <keyfile> --b <adminUser>:<adminPassword> --d`
+.. code:: bash
 
-options:
+  fabric-ca-server start --ca.certfile <certfile> --ca.keyfile <keyfile> --b <adminUser>:<adminPassword> --d
 
---`ca.certfile` is the full path to public certificate of the CA
+Where::
 
---`ca.keyfile` is the full path to the private key file of the CA
+  ``--ca.certfile`` is the full path to public certificate of the CA
 
---`b` is the user name and password of the CA administrator, specified as <adminUser>:<adminPassword>
+  ``--ca.keyfile`` is the full path to the private key file of the CA
 
---`d`
+  `b` is the user name and password of the CA administrator, specified as <adminUser>:<adminPassword>
 
+  `d`
 
 The `peer` command
 ------------------
@@ -55,11 +56,10 @@ contract chaincode operations on the peer, or the `peer channel` command to
 perform channel related operations.
 
 Within each subcommand there are many different options available and because of
-this, each is described in its own topic. Follow the [links below](#reference)
-to understand these individual commands in more detail.
+this, each is described in its own section in this topic.
 
 If a command option is not specified then `peer` will return some high level
-help text as described in in the `--help` flag [below](#flags).
+help text as described in in the `--help` flag below.
 
 `peer` flags
 ^^^^^^^^^^^^
@@ -86,26 +86,25 @@ respective options.
 Flag details
 ^^^^^^^^^^^^
 
-* `--help`
+* ``--help``
 
   Use `help` to get brief help text for the `peer` command. The `help` flag can
   often be used at different levels to get individual command help, or even a
   help on a command option. See individual commands for more detail.
 
-* `--logging-level <string>`
+* ``--logging-level <string>``
 
   This flag sets the log level for the single peer command it is supplied with.
   Once the command has been executed, the log level will not persist. There are
   six possible log levels: `debug`, `info`, `notice`, `warning`, `error`, and
   `critical`. Note that there is no single logging level for the peer. You can
   find the current logging level for a specific component on the peer by running
-  `peer logging getlevel <component-name`. The defaults are defined in
-  sampleconfig/core.yaml if you'd like to take a look at what logging levels are
+  ``peer logging getlevel <component-name``. The defaults are defined in
+  ``sampleconfig/core.yaml`` if you'd like to take a look at what logging levels are
   set if the system admin doesn't modify anything.
 
-  This command is overridden by the `CORE_LOGGING_LEVEL` environment variable if
-  it is set.  A full list of peer environment variables is described in the
-  [peer environment variables reference topic](../Advanced/Peer/PeerEnvironmentVariables.md).
+  This command is overridden by the ``CORE_LOGGING_LEVEL`` environment variable if
+  it is set.
 
 * `--version`
 
