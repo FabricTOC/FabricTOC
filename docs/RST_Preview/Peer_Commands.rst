@@ -13,13 +13,13 @@ For each command, we'll show the general form of the command, for example
 
 options:
 
-`--ca.certfile` is the full path to public certificate of the CA
+--`ca.certfile` is the full path to public certificate of the CA
 
-`--ca.keyfile` is the full path to the private key file of the CA
+--`ca.keyfile` is the full path to the private key file of the CA
 
-`--b` is the user name and password of the CA administrator, specified as <adminUser>:<adminPassword>
+--`b` is the user name and password of the CA administrator, specified as <adminUser>:<adminPassword>
 
-`--d`
+--`d`
 
 
 The `peer` command
@@ -29,22 +29,25 @@ The `peer` command allows administrators to interact with a peer. Use this
 command when you want to perform peer operations such as deploying a smart
 contract chaincode or joining a channel.
 
-## Syntax
+Syntax
+^^^^^^
 
 The `peer` command has different subcommands within it:
 
-```
-peer [subcommand]
-```
+.. code:: bash
+
+  peer [subcommand]
+
 as follows
-```
-peer chaincode
-peer channel
-peer logging
-peer node
-peer version
-peer
-```
+
+.. code:: bash
+
+  peer chaincode
+  peer channel
+  peer logging
+  peer node
+  peer version
+  peer
 
 These subcommands separate the different functions provided by a peer into their
 own category. For example, use the `peer chaincode` command to perform smart
@@ -59,19 +62,21 @@ If a command option is not specified then `peer` will return some high level
 help text as described in in the `--help` flag [below](#flags).
 
 `peer` flags
-------------
+^^^^^^^^^^^^
 
 The `peer` command also has a set of associated flags:
 
-```
-peer [flags]
-```
+.. code:: bash
+
+  peer [flags]
+
 as follows
-```
-peer --help
-peer channel --help
-peer channel list --help
-```
+
+.. code:: bash
+
+  peer --help
+  peer channel --help
+  peer channel list --help
 
 These flags provide more information about a peer, and are designated *global*
 because they can be used at any command level. For example the `--help` flag can
@@ -79,7 +84,7 @@ provide help on the `peer` command, the `peer channel` command, as well as their
 respective options.
 
 Flag details
-------------
+^^^^^^^^^^^^
 
 * `--help`
 
@@ -108,7 +113,7 @@ Flag details
   a set of detailed information on how the peer was built.
 
 Usage
------
+^^^^^
 
 Here's some examples using the different available flags on the `peer` command.
 
@@ -152,8 +157,6 @@ Here's some examples using the different available flags on the `peer` command.
     Base Docker Label: org.hyperledger.fabric
     Docker Namespace: hyperledger
 
-
-
 The Peer Channel Command
 ------------------------
 
@@ -162,21 +165,23 @@ operations on a peer, such as joining a channel or instantiating smart contract
 chaincode.
 
 Syntax
-------
+^^^^^^
 
 The `peer channel` command has the following syntax:
 
-```
-peer channel [command]
-```
+.. code:: bash
+
+  peer channel [command]
+
 as follows
-```
-peer channel create
-peer channel fetch
-peer channel join
-peer channel list
-peer channel update
-```
+
+.. code:: bash
+
+  peer channel create
+  peer channel fetch
+  peer channel join
+  peer channel list
+  peer channel update
 
 These commands relate to the different channel operations that are relevant to a
 peer. For example, use the `peer channel join` command to join a peer to a
@@ -184,7 +189,7 @@ channel, or the `peer channel list` command to show the channels to which a peer
 is joined.
 
 `peer channel` flags
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Each `peer channel` command has different flags available to it, and because of
 this, each flag is described in the relevant command topic. Follow the
@@ -193,25 +198,27 @@ this, each flag is described in the relevant command topic. Follow the
 The `peer channel` command also has a set of flags that relate to every
 `peer channel` command.
 
-```
-peer channel [flags]
-```
-as follows
-```
-peer channel --cafile <string>
-peer channel --orderer <string>
-peer channel --tls
-```
+.. code:: bash
 
-The global `peer` command flags also apply as described in the
-[`peer command`](./PeerCommand.md#flags).
+  peer channel [flags]
+
+as follows
+
+.. code:: bash
+
+  peer channel --cafile <string>
+  peer channel --orderer <string>
+  peer channel --tls
+
+The global `peer` command flags also apply as described in the `peer command`
+flags:
 
 * `--help`
 * `--logging-level <string>`
 * `--version`
 
 Flag details
-------------
+^^^^^^^^^^^^
 
 + `--cafile <string>`
 
@@ -233,14 +240,15 @@ Flag details
   authenticate the orderer identified by `--orderer`.
 
 Usage
------
+^^^^^
 
 Here's some examples using the different available flags on the `peer channel`
 command.
 
 * Using the `--orderer` flag to list the channels to which a peer is joined.
 
-  ```
+.. code:: bash
+
   peer channel list --orderer orderer.example.com:7050
 
   2017-11-30 12:07:51.317 UTC [msp] GetLocalMSP -> DEBU 001 Returning existing local MSP
@@ -251,11 +259,8 @@ command.
   2017-11-30 12:07:51.335 UTC [channelCmd] list -> INFO 006 Channels peers has joined to:
   2017-11-30 12:07:51.335 UTC [channelCmd] list -> INFO 007 drivenet.channel.001
   2017-11-30 12:07:51.335 UTC [main] main -> INFO 008 Exiting.....
-  ```
 
-  You can see that the peer joined to a channel called `drivenet.channel.001`.
-
-
+You can see that the peer joined to a channel called `drivenet.channel.001`.
 
 The `peer channel fetch` command
 --------------------------------
@@ -270,15 +275,15 @@ The peer must have joined the channel, and have read access to it, in order for
 the command to complete successfully.
 
 Syntax
-------
+^^^^^^
 
 The `peer channel fetch` command has the following syntax:
 
-  ```
-  peer channel fetch <newest|oldest|config|(block number)> [flags]
-  ```
+.. code:: bash
 
-  where
+  peer channel fetch <newest|oldest|config|(block number)> [flags]
+
+where
 
   * `newest`
 
@@ -311,15 +316,13 @@ The `peer channel fetch` command has the following syntax:
     Specifying 0 will result in the genesis block for this channel being
     returned (if it is still available to the network orderer).
 
-    TBC: THE COMMAND DOES NOT COMPLETE IF THE (block number) IS TOO HIGH.
-
 `peer channel fetch` flags
 --------------------------
 
 The `peer channel fetch` command has the following command specific flags:
 
 Flag details
-------------
+^^^^^^^^^^^^
 
   * `--channelID <string>`
 
@@ -334,7 +337,7 @@ Flag details
   * `--tls`
 
 Usage
------
+^^^^^
 
 Output from the `peer channel fetch` command is written to a file named
 according to the fetch options. It will be one of the following:
@@ -348,8 +351,9 @@ Here's some examples using the different available flags on the `peer channel fe
 
   * Using the `newest` option to retrieve the most recent channel block.
 
-    ```
-    peer channel fetch newest  -c drivenet.channel.001 --orderer orderer.example.com:7050
+.. code:: bash
+
+  peer channel fetch newest  -c drivenet.channel.001 --orderer orderer.example.com:7050
 
     2017-11-30 17:02:56.234 UTC [msp] GetLocalMSP -> DEBU 001 Returning existing local MSP
     2017-11-30 17:02:56.234 UTC [msp] GetDefaultSigningIdentity -> DEBU 002 Obtaining default signing identity
@@ -363,21 +367,20 @@ Here's some examples using the different available flags on the `peer channel fe
     2017-11-30 17:02:56.245 UTC [channelCmd] readBlock -> DEBU 00a Received block: 32
     2017-11-30 17:02:56.246 UTC [main] main -> INFO 00b Exiting.....
 
-    ls -alt
+  ls -alt
 
     total 276
     drwxr-xr-x 2 root root   4096 Nov 30 16:17 .
     -rw-r--r-- 1 root root  13307 Nov 30 17:02 drivenet.channel.001_newest.block
     drwxr-xr-x 3 root root   4096 Nov 21 13:38 ..
 
-    ```
-
-    You can see that the retrieved block is number 32.
+You can see that the retrieved block is number 32.
 
   * Using the `(block number)` option to retrieve a specific block -- in this
   case, block number 16.
 
-    ```
+.. code:: bash
+
     peer channel fetch 16  -c drivenet.channel.001 --orderer orderer.example.com:7050
 
     2017-11-30 17:08:12.039 UTC [msp] GetLocalMSP -> DEBU 001 Returning existing local MSP
@@ -400,13 +403,14 @@ Here's some examples using the different available flags on the `peer channel fe
     -rw-r--r-- 1 root root  13307 Nov 30 17:02 drivenet.channel.001_newest.block
     drwxr-xr-x 3 root root   4096 Nov 21 13:38 ..
 
-    ```
+You can see that the retrieved block is number 16.
 
-    You can see that the retrieved block is number 16.
+For configuration blocks, the file can be formatted using the
+[`configtxlator` command](../Config/ConfigtxlatorCommand.md). If you'd like to
+see an example of a formatted block, then refer to the
+[Formated configuration block](../Config/FormattedConfigBlock.md) or
+[Formatted user transaction block ](../Config/FormattedUserTransactionBlock.md)
+reference topics, respectively.
 
-  For configuration blocks, the file can be formatted using the
-  [`configtxlator` command](../Config/ConfigtxlatorCommand.md). If you'd like to
-  see an example of a formatted block, then refer to the [
-  Formated configuration block](../Config/FormattedConfigBlock.md) or
-  [Formatted user transaction block ](../Config/FormattedUserTransactionBlock.md)
-  reference topics, respectively.
+.. Licensed under Creative Commons Attribution 4.0 International License
+   https://creativecommons.org/licenses/by/4.0/
