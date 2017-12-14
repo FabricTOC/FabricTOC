@@ -193,22 +193,22 @@ flags:
 Flag details
 ^^^^^^^^^^^^
 
-+ ``--cafile <string>``
+* ``--cafile <string>``
 
-  a fully qualified path to a file containing PEM-encoded certificates for the
-  orderer being communicated with.
+a fully qualified path to a file containing PEM-encoded certificates for the
+orderer being communicated with.
 
 * ``--orderer <string>``
 
-  the fully qualified IP address and port of the orderer being communicated with
-  for this channel operation.  If the port is not specified, it will default to
-  port 7050. An IP address must be specified if the ``--orderer`` flag is used.
+the fully qualified IP address and port of the orderer being communicated with
+for this channel operation.  If the port is not specified, it will default to
+port 7050. An IP address must be specified if the ``--orderer`` flag is used.
 
 * ``--tls``
 
-  Use this flag to enable TLS communications for the `peer channel` command. The
-  certificates specified with ``--cafile`` will be used for TLS communications to
-  authenticate the orderer identified by ``--orderer``.
+Use this flag to enable TLS communications for the `peer channel` command. The
+certificates specified with ``--cafile`` will be used for TLS communications to
+authenticate the orderer identified by ``--orderer``.
 
 Usage
 ^^^^^
@@ -258,34 +258,34 @@ where:
 
 * ``newest``
 
-    returns the most recent channel block available to the network orderer. This
-    may be a user transaction block or a configuration transaction.
+returns the most recent channel block available to the network orderer. This
+may be a user transaction block or a configuration transaction.
 
-    This option will also return the block number of the most recent transaction.
+This option will also return the block number of the most recent transaction.
 
 * ``oldest``
 
-    returns the oldest channel block available to the network orderer. This may
-    be a user transaction block or a configuration transaction.
+returns the oldest channel block available to the network orderer. This may be
+a user transaction block or a configuration transaction.
 
-    This option will also return the block number of the oldest available
-    transaction.
+This option will also return the block number of the oldest available
+transaction.
 
 * ``config``
 
-    returns the most recent channel configuration block available to the network
-    orderer. This can only be a configuration transaction.
+returns the most recent channel configuration block available to the network
+orderer. This can only be a configuration transaction.
 
-    This option will also return the block number of the most recent
-    configuration transaction.
+This option will also return the block number of the most recent configuration
+transaction.
 
 * ``(block number)``
 
-    returns the specified channel block. This may be a user transaction block or
-    a configuration transaction.
+returns the specified channel block. This may be a user transaction block or a
+configuration transaction.
 
-    Specifying 0 will result in the genesis block for this channel being
-    returned (if it is still available to the network orderer).
+Specifying 0 will result in the genesis block for this channel being returned
+(if it is still available to the network orderer).
 
 ``peer channel fetch`` flags
 --------------------------
