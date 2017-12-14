@@ -195,20 +195,20 @@ Flag details
 
 * ``--cafile <string>``
 
-a fully qualified path to a file containing PEM-encoded certificates for the
-orderer being communicated with.
+  a fully qualified path to a file containing PEM-encoded certificates for the
+  orderer being communicated with.
 
 * ``--orderer <string>``
 
-the fully qualified IP address and port of the orderer being communicated with
-for this channel operation.  If the port is not specified, it will default to
-port 7050. An IP address must be specified if the ``--orderer`` flag is used.
+  the fully qualified IP address and port of the orderer being communicated with
+  for this channel operation.  If the port is not specified, it will default to
+  port 7050. An IP address must be specified if the ``--orderer`` flag is used.
 
 * ``--tls``
 
-Use this flag to enable TLS communications for the `peer channel` command. The
-certificates specified with ``--cafile`` will be used for TLS communications to
-authenticate the orderer identified by ``--orderer``.
+  Use this flag to enable TLS communications for the `peer channel` command. The
+  certificates specified with ``--cafile`` will be used for TLS communications to
+  authenticate the orderer identified by ``--orderer``.
 
 Usage
 ^^^^^
@@ -295,17 +295,17 @@ The ``peer channel fetch`` command has the following command specific flags:
 Flag details
 ^^^^^^^^^^^^
 
-  * ``--channelID <string>``
+* ``--channelID <string>``
 
-    the name of the channel for which the blocks are to be fetched from the
-    network orderer.
+  the name of the channel for which the blocks are to be fetched from the
+  network orderer.
 
   The global ``peer`` command flags also apply as described in the
   ``peer command`` section.
 
-  *  ``--cafile``
-  * ``--orderer``
-  * ``--tls``
+*  ``--cafile``
+* ``--orderer``
+* ``--tls``
 
 Usage
 ^^^^^
@@ -313,10 +313,10 @@ Usage
 Output from the ``peer channel fetch`` command is written to a file named
 according to the fetch options. It will be one of the following:
 
-  * ``<channelID>_newest.block``
-  * ``<channelID>_oldest.block``
-  * ``<channelID>_config.block``
-  * ``<channelID>_(block number).block``
+* ``<channelID>_newest.block``
+* ``<channelID>_oldest.block``
+* ``<channelID>_config.block``
+* ``<channelID>_(block number).block``
 
 Here's some examples using the different available flags on the ``peer channel fetch`` command.
 
@@ -347,7 +347,7 @@ Here's some examples using the different available flags on the ``peer channel f
 
 You can see that the retrieved block is number 32.
 
-  * Using the `(block number)` option to retrieve a specific block -- in this
+* Using the `(block number)` option to retrieve a specific block -- in this
   case, block number 16.
 
 .. code:: bash
