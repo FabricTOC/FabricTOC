@@ -26,8 +26,6 @@ your account. It will be not be accepted.
 
 .. image:: images/IdentityandMembershipdiagram6.png
 
-::
-
   Having a valid credit card is not enough -- it must also be accepted by the
   store! PKIs and MSPs work together in the  same way -- PKI provides a list of
   valid identities, and an MSP says which of these are members of a given
@@ -51,8 +49,6 @@ that provides secure communications in a network.** It's PKI that puts the
 you're probably using a PKI to make sure it comes from a verified source.
 
 .. image:: images/IdentityandMembershipdiagram7.png
-
-::
 
   The elements of Public Key Infrastructure (PKI). A PKI is comprised of
   Certificate Authorities who issue digital certificates to principals, who then
@@ -92,8 +88,6 @@ can use to prove key facts about her. There are many other attributes in an
 X.509 certificate, but forget about those for now.
 
 .. image:: images/IdentityandMembershipdiagram8.png
-
-::
 
   A digital certificate describing a principal called Mary Morris. Mary is the
   `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key
@@ -157,8 +151,6 @@ can be verified by other principals in the network using Mary's **public key**.
 
 .. image:: images/IdentityandMembershipdiagram9.png
 
-::
-
   Authenticating data using private keys and public keys. Mary's private key is
   used to sign an original document with the unique signature (`X13vRZQql41`).
 
@@ -175,8 +167,6 @@ data that can only be transformed back to its original form by Mary's private
 key.
 
 .. image:: images/IdentityandMembershipdiagram10.png
-
-::
 
   Encrypting data using private keys and public keys. Any principal in the
   network who wishes to securely communicate with Mary can use Mary's public key
@@ -208,8 +198,6 @@ protocols, and you've probably heard of some of the more popular ones: Symantec
 (originally Verisign), GeoTrust, DigiCert, GoDaddy, and Comodo, among others.
 
 .. image:: images/IdentityandMembershipdiagram11.png
-
-::
 
   A Certificate Authority dispenses certificates to different principals, which
   they use to authenticate and encrypt information. These certificates are
@@ -247,8 +235,6 @@ exposure.
 
 .. image:: images/IdentityandMembershipdiagram1.png
 
-::
-
   A chain of trust is established between a Root CA and a set of Intermediate
   CAs using a simple chain. Many other configurations are possible to meet the
   needs of collaborating organizations.
@@ -284,8 +270,6 @@ invalid. A verifier doesn't have to check the CRL, but if they don't they run
 the risk of accepting a compromised identity.
 
 .. image:: images/IdentityandMembershipdiagram12.png
-
-::
 
   Using a CRL to check that a certificate is still valid. If an impersonator
   tries to pass a compromised digital certificate to a validating principal, it
@@ -343,8 +327,6 @@ channel.
 
 .. image:: images/IdentityandMembershipdiagram3.png
 
-::
-
   Two different MSP configurations for an organization. The first configuration
   shows the typical MSP relationship -- a single MSP defines the list of
   verifiable members of an organization. In the second configuration, different
@@ -389,8 +371,6 @@ difference here between local and global MSPs is not how they function, but
 their **scope**.
 
 .. image:: images/IdentityandMembershipdiagram4.png
-
-::
 
   Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for
   the channel are global. Each peer is managed by its own organization, ORG1 or
@@ -446,8 +426,6 @@ every level of administration -- they must be defined for the network, channel,
 peer, orderer and users.
 
 .. image:: images/IdentityandMembershipdiagram2.png
-
-::
 
   MSP Levels. The MSPs for the peer and orderer are local, whereas the MSPs for
   the channel and network are global. Here, the network is administered by ORG1,
@@ -506,8 +484,6 @@ elements that are used in conjunction with these two to assist with membership
 functions.
 
 .. image:: images/IdentityandMembershipdiagram5.png
-
-::
 
   The figure above shows how a **local MSP** is stored on a local filesystem.
   Even though global MSPs are not physically structured in exactly the same way,
