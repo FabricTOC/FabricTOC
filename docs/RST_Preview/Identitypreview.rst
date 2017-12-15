@@ -26,10 +26,10 @@ your account. It will be not be accepted.
 
 .. image:: images/IdentityandMembershipdiagram6.png
 
-  Having a valid credit card is not enough -- it must also be accepted by the
-  store! PKIs and MSPs work together in the  same way -- PKI provides a list of
-  valid identities, and an MSP says which of these are members of a given
-  blockchain network.
+   Having a valid credit card is not enough -- it must also be accepted by the
+   store! PKIs and MSPs work together in the  same way -- PKI provides a list of
+   valid identities, and an MSP says which of these are members of a given
+   blockchain network.
 
 PKIs and MSPs provide this combination of verification and trust. A PKI is like
 a card provider -- it dispenses many different types of verifiable identities.
