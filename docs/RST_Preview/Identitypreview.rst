@@ -24,7 +24,7 @@ you try to pay with a different card -- let's call it an "ImagineCard" -- it
 doesn't matter whether the card is authentic and you have sufficient funds in
 your account. It will be not be accepted.
 
-.. image:: images/IdentityandMembershipdiagram6.png
+.. figure:: images/IdentityandMembershipdiagram6.png
 
    Having a valid credit card is not enough -- it must also be accepted by the
    store! PKIs and MSPs work together in the  same way -- PKI provides a list of
