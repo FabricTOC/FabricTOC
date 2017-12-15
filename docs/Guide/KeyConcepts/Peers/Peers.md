@@ -46,6 +46,22 @@ Typically, a peer will host many more smart contracts than ledgers.  Whereas the
 
 It's also usually the case that different smart contracts access different ledgers. That's because different ledgers usually have different data structures, although as you can see, if it's appropriate, one smart contract can access different ledgers. This is particularly useful if an organization in the network -- an insurance company, for example -- wants to be able to offer the same services to organizations on different channels.  
 
+## Applications and peers
+
+Applications connect to network peers when they need to access ledgers and smart contracts. The SDK makes this process easy for programs -- there are APIs to connect to ledgers, invoke smart contracts, and receive ledger notifications. Query responses are an immediate because they can be fulfilled from the local copy of the ledger. Updates take a little longer as they need to be agreed by other peers across the network.
+
+| ![Peer6](./Peers.diagram.6.png) |
+| :---: |
+| Applications connect to peers to execute smart transactions which access the ledger. Query transactions return immediately. For updates, the peer will notify the application after the update has been accepted by the wider network. |
+
+When applications want to access the ledger for query or update, they connect to a peer and invoke a smart contract.  It's the smart contract which encapsulates all access to the ledger. The two major access patterns are ledger query or ledger update.
+
+A query transaction can return its results immediately to the application because all the information required to satisfy the query is in the local copy of the ledger. Indeed, an application can connect to one or more peers in the network which hosts a copy of the ledger to issue a query, as each peer's copy of the ledger is kept up-to-date; though typically applications will connect to a single peer. It's interesting to note that for query transactions the peer does not need to consult with other peers in order to return the results to the application.
+
+An update transaction is quite different, because a single peer cannot, on its own, update the ledger -- it requires the consent of other peers in the network. A peer requires other peers in the network to approve a ledger update before it can be applied to a peer's local ledger. This process is called *consensus* -- it is asynchronous in nature and therefore takes longer to complete than a query. But when all the peers required to approve the transaction do so, and the transaction is committed to the ledger, peers will notify their connected applications that the ledger has been updated.
+
+Again, the SDK makes these two process easy for applications.  For query transactions, applications connect to peers, invoke a smart contract query transaction, and receive an immediate response.  For update transactions, it's only a little more complex; applications connect to peers, invoke a smart contract update transaction and receive an asynchronous notification when the ledger has been updated -- they do not need to worry about the mechanics of the consensus process.
+
 ## Peers and channels
 
 Although this topic is about peers rather than channels, it's worth spending a little time understanding how peers interact with each other, and applications, via channels.
