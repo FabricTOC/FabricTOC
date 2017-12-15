@@ -76,6 +76,17 @@ Within a blockchain network, it's helpful to think of different channels as bein
 
 A blockchain network is typically built from multiple channels, and these channels are formed by the peers than join them.  We see that channels don't exist in the same way that peers do -- it's more appropriate to think of a channel as a logical structure that is formed by a collection of physical peers. Because of this channels are actually accessed and managed via peers.  **It is vital to understand this point -- peers provide the control point for access to, and management of, channels**.    
 
+## Peers and organizations
+
+Now that you understand peers and their relationship to ledgers, smart contracts and channels, let see how multiple organizations come together to form a blockchain network.
+
+As you've probably heard, blockchain is a decentralized network -- it is not owned by one organization, but many.  Peers are central to how a this kind of distributed network is built -- because different peers are owned by different organizations, and by connecting the peers together via channels, the different organizations are connected. 
+
+| ![Peer8](./Peers.diagram.8.png) |
+| :---: |
+| Peers in a blockchain network with multiple organizations. The blockchain network is built up from the peers owned and contributed by the different organizations.  In this example, we see 4 organizations who contribute 8 peers to form a network. The channel C connects 5 of these peers in the network N -- P1, P3, P5, P7 and P8. The other peers have not joined this channel.  Applications from a particular organization usually connect to the peers owned by that application. Again, for simplicity, an orderer node is not shown in this diagram.|
+
+
 ### Review to this point
 
 ### Following material to be incorporated
@@ -104,10 +115,6 @@ That's not the whole story, however, because these different *physical* copies o
 
 **Peers are what makes a blockchain a distributed ledger**, because a network comprises many peers, and it's these peers which hold a copy of the ledger and the smart contracts which interact with it.
 
-
-## Organizations and peers
-
-## Channels and Peers
 
 ## The services provided by a peer
 
