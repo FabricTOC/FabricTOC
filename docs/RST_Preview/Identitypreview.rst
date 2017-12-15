@@ -254,8 +254,8 @@ It's because CAs are so important that Hyperledger Fabric provides a built-in
 CA component to allow you to create CAs in the blockchain networks you form.
 
 
-.. note: You don't have to use the Fabric CA, but you will find it very helpful
-         when you're starting to build a blockchain network for the first time.
+.. note:: You don't have to use the Fabric CA, but you will find it very helpful
+          when you're starting to build a blockchain network for the first time.
 
 A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's
 sufficient for many purposes.
