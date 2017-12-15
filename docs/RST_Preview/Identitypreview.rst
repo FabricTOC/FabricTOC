@@ -9,7 +9,7 @@ identity, in other words), and it must also come from a **trusted** source.
 
 These two identity concepts -- verification and trust -- are provided by a
 **Public Key Infrastructure** (PKI) and a **Membership Service Provider**
-MSP), respectively. A PKI is a set of existing internet standards which
+(MSP), respectively. A PKI is a set of existing internet standards which
 provide secure communications for many different types of networks, whereas an
 MSP is a Hyperledger Fabric concept for managing identities in a blockchain
 network. In combination, PKIs and MSPs form the definition of the **members**
@@ -24,14 +24,12 @@ you try to pay with a different card -- let's call it an "ImagineCard" -- it
 doesn't matter whether the card is authentic and you have sufficient funds in
 your account. It will be not be accepted.
 
-.. image:: images/IdentityandMembershipdiagram6.png
+.. figure:: images/IdentityandMembershipdiagram6.png
 
-::
-
-  Having a valid credit card is not enough -- it must also be accepted by the
-  store! PKIs and MSPs work together in the  same way -- PKI provides a list of
-  valid identities, and an MSP says which of these are members of a given
-  blockchain network.
+   Having a valid credit card is not enough -- it must also be accepted by the
+   store! PKIs and MSPs work together in the  same way -- PKI provides a list of
+   valid identities, and an MSP says which of these are members of a given
+   blockchain network.
 
 PKIs and MSPs provide this combination of verification and trust. A PKI is like
 a card provider -- it dispenses many different types of verifiable identities.
@@ -50,16 +48,15 @@ that provides secure communications in a network.** It's PKI that puts the
 **S** in **HTTPS** -- and if you're reading this documentation on a web browser,
 you're probably using a PKI to make sure it comes from a verified source.
 
-.. image:: images/IdentityandMembershipdiagram7.png
+.. figure:: images/IdentityandMembershipdiagram7.png
 
-::
-
-  The elements of Public Key Infrastructure (PKI). A PKI is comprised of
-  Certificate Authorities who issue digital certificates to principals, who then
-  use them in conjunction with public and private keys to authenticate and
-  encrypt information. A CA's Certificate Revocation List (CRL) identifies the
-  certificates that are no longer valid (this can happen for a number of reasons.
-  A certificate might have been compromised, for example).
+   The elements of Public Key Infrastructure (PKI). A PKI is comprised of
+   Certificate Authorities who issue digital certificates to principals (in this
+   example the principal is a user, but there can be other types of principals), who
+   then use them in conjunction with public and private keys to authenticate and
+   encrypt information. A CA's Certificate Revocation List (CRL) identifies the
+   certificates that are no longer valid (this can happen for a number of reasons.
+   A certificate might have been compromised, for example).
 
 Although a blockchain network is more than a simple communications network, it
 makes sense for it to use the PKI standard as much as possible. You'll see that
@@ -75,7 +72,8 @@ There are four key elements to PKI:
  * **Certificate Revocation Lists**
 
 Let's quickly describe these PKI basics, and if you want to know more details,
-then you can extend your knowledge here: https://en.wikipedia.org/wiki/Public_key_infrastructure.
+`Wikipedia` <https://en.wikipedia.org/wiki/Public_key_infrastructure/> is a good
+place to start.
 
 Digital Certificates
 --------------------
@@ -91,16 +89,14 @@ her government identity card -- it provides information about Mary which she
 can use to prove key facts about her. There are many other attributes in an
 X.509 certificate, but forget about those for now.
 
-.. image:: images/IdentityandMembershipdiagram8.png
+.. figure:: images/IdentityandMembershipdiagram8.png
 
-::
-
-  A digital certificate describing a principal called Mary Morris. Mary is the
-  `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key
-  facts about Mary. The certificate also holds many more pieces of information,
-  as you can see. Most importantly, Mary's public key is distributed within her
-  certificate, whereas her private key is not. This private key must be kept
-  private.
+   A digital certificate describing a principal called Mary Morris. Mary is the
+   `SUBJECT` of the certificate, and the highlighted `SUBJECT` text shows key
+   facts about Mary. The certificate also holds many more pieces of information,
+   as you can see. Most importantly, Mary's public key is distributed within her
+   certificate, whereas her private key is not. This private key must be kept
+   private.
 
 What is important is that all of Mary's attributes can be written using a
 mathematical technique called cryptography (literally, "*secret writing*") so
@@ -119,7 +115,7 @@ Public Keys and Private Keys
 There are two key elements to secure communication -- authentication and
 encryption, and these are made possible by the idea of public and private keys.
 **The unique relationship between a public-private key pair is the cryptographic
-magic that makes secure communications possible**.
+magic that makes secure communications possible.**
 
 Let's first recap the key ideas of authentication and encryption and then
 you'll see how they are made possible by public-private key pairs.
@@ -142,7 +138,7 @@ intended recipients and no one else.
 **To enable authentication and encrypted communications**, a principal can use
 a pair of mathematically related keys. **One of these keys is public and can be
 widely shared, while the other key is private and absolutely must not be
-shared**. The unique mathematical relationship between the keys is such that
+shared.** The unique mathematical relationship between the keys is such that
 the private key can be used to transform information that only the public key
 can interpret, and vice-versa.
 
@@ -155,16 +151,14 @@ which the content of the document being signed is mathematically combined with
 Mary's private key to generate a small signature of fixed size. This signature
 can be verified by other principals in the network using Mary's **public key**.
 
-.. image:: images/IdentityandMembershipdiagram9.png
+.. figure:: images/IdentityandMembershipdiagram9.png
 
-::
-
-  Authenticating data using private keys and public keys. Mary's private key is
-  used to sign an original document with the unique signature (`X13vRZQql41`).
+   Authenticating data using private keys and public keys. Mary's private key is
+   used to sign an original document with the unique signature (`X13vRZQql41`).
 
 Using the document as part of the signature in this way makes the document
-itself impossible to tamper with -- generating the same signature Mary would
-create is statistically impossible without Mary's private key.
+itself impossible to tamper with it being obvious -- generating the same
+signature Mary would create is statistically impossible without Mary's private key.
 
 Using Public Keys and Private Keys for Encryption
 -------------------------------------------------
@@ -174,20 +168,18 @@ Mary's public key can be used by anyone in a PKI to create a secret encoding of
 data that can only be transformed back to its original form by Mary's private
 key.
 
-.. image:: images/IdentityandMembershipdiagram10.png
+.. figure:: images/IdentityandMembershipdiagram10.png
 
-::
-
-  Encrypting data using private keys and public keys. Any principal in the
-  network who wishes to securely communicate with Mary can use Mary's public key
-  to encrypt a document -- a document that only Mary can decrypt with her private
-  key.
+   Encrypting data using private keys and public keys. Any principal in the
+   network who wishes to securely communicate with Mary can use Mary's public key
+   to encrypt a document -- a document that only Mary can decrypt with her private
+   key.
 
 Only Mary is able to decrypt the message as only she holds her private key --
-that's why it's so important that private keys are not shared and remains
-secure. To prevent the encrypted message being tampered with it is also signed
-by the originating principal with their private key and this signature is
-checked by Mary (using the principal's public key) before she decrypts it.
+that's why it's so important that private keys are not shared and remain
+secure. To prevent the encrypted message from being tampered with it is also
+signed by the originating principal with their private key. This signature is
+then checked by Mary (using the principal's public key) before she decrypts it.
 
 If Mary wants to communicate securely back to another party she uses exactly
 the same process as others use to communicate with her, only using their public
@@ -207,15 +199,13 @@ Certificate Authority (CA). CAs are a common part of internet security
 protocols, and you've probably heard of some of the more popular ones: Symantec
 (originally Verisign), GeoTrust, DigiCert, GoDaddy, and Comodo, among others.
 
-.. image:: images/IdentityandMembershipdiagram11.png
+.. figure:: images/IdentityandMembershipdiagram11.png
 
-::
-
-  A Certificate Authority dispenses certificates to different principals, which
-  they use to authenticate and encrypt information. These certificates are
-  signed by the CA using its private key. A principal's certificate includes
-  their public key, but not their private key, and this applies to the CA's
-  certificate too!
+   A Certificate Authority dispenses certificates to different principals, which
+   they use to authenticate and encrypt information. These certificates are
+   signed by the CA using its private key. A principal's certificate includes
+   their public key, but not their private key, and this applies to the CA's
+   certificate too!
 
 The digital certificate provided by a CA for a principal incorporates the
 principal's public key as well as a comprehensive set of their attributes.
@@ -245,13 +235,11 @@ which, if compromised, would destroy the entire chain of trust. If an
 Intermediate CA is compromised, on the other hand, there is a much smaller
 exposure.
 
-.. image:: images/IdentityandMembershipdiagram1.png
+.. figure:: images/IdentityandMembershipdiagram1.png
 
-::
-
-  A chain of trust is established between a Root CA and a set of Intermediate
-  CAs using a simple chain. Many other configurations are possible to meet the
-  needs of collaborating organizations.
+   A chain of trust is established between a Root CA and a set of Intermediate
+   CAs using a simple chain. Many other configurations are possible to meet the
+   needs of collaborating organizations.
 
 Intermediate CAs provide a huge amount of flexibility when it comes to the
 issuance of certificates across multiple organizations, and that's very helpful
@@ -264,8 +252,10 @@ Fabric CA
 
 It's because CAs are so important that Hyperledger Fabric provides a built-in
 CA component to allow you to create CAs in the blockchain networks you form.
-You don't have to use the Fabric CA, but you will find it very helpful when
-you're starting to build a blockchain network for the first time.
+
+
+.. note:: You don't have to use the Fabric CA, but you will find it very helpful
+          when you're starting to build a blockchain network for the first time.
 
 A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's
 sufficient for many purposes.
@@ -283,14 +273,12 @@ issuing CA's CRL to make sure that the certificate has not been declared
 invalid. A verifier doesn't have to check the CRL, but if they don't they run
 the risk of accepting a compromised identity.
 
-.. image:: images/IdentityandMembershipdiagram12.png
+.. figure:: images/IdentityandMembershipdiagram12.png
 
-::
-
-  Using a CRL to check that a certificate is still valid. If an impersonator
-  tries to pass a compromised digital certificate to a validating principal, it
-  can be first checked against the issuing CA's CRL to make sure it's not listed
-  as no longer valid.
+   Using a CRL to check that a certificate is still valid. If an impersonator
+   tries to pass a compromised digital certificate to a validating principal, it
+   can be first checked against the issuing CA's CRL to make sure it's not listed
+   as no longer valid.
 
 Note that a certificate being revoked is very different from a certificate
 expiring. Revoked certificates have not expired -- they are, by every other
@@ -324,11 +312,11 @@ distinction between them is important later.
 Mapping MSPs to Organizations
 -----------------------------
 
-An organizations is a managed group of members. This group of managed members
-can be something as big as a multinational corporation or as small as a flower
-shop. What's most important about organizations (or **orgs**) is that they will
-usually manage their members under a single MSP. Note that this is different
-from the concept of an X.509 organization, which we'll talk about later.
+An organization is a managed group of members and can be something as big as a
+multinational corporation or as small as a flower shop. What's most important
+about organizations (or **orgs**) is that they will usually manage their members
+under a single MSP. Note that this is different from the concept of an X.509
+organization, which we'll talk about later.
 
 The exclusive relationship between an organization and its MSP makes it sensible
 to name the MSP after the organization, a convention you'll find adopted in
@@ -341,15 +329,13 @@ multiple MSPs and name them accordingly, e.g., `ORG2.MSP.NATIONAL` and
 within `ORG2` in the NATIONAL sales channel compared to the GOVERNMENT regulatory
 channel.
 
-.. image:: images/IdentityandMembershipdiagram3.png
+.. figure:: images/IdentityandMembershipdiagram3.png
 
-::
-
-  Two different MSP configurations for an organization. The first configuration
-  shows the typical MSP relationship -- a single MSP defines the list of
-  verifiable members of an organization. In the second configuration, different
-  MSPs are used to support different identity providers for national,
-  international, and governmental memberships.
+   Two different MSP configurations for an organization. The first configuration
+   shows the typical MSP relationship -- a single MSP defines the list of
+   verifiable members of an organization. In the second configuration, different
+   MSPs are used to support different identity providers for national,
+   international, and governmental memberships.
 
 Organizational Units and MSPs
 -----------------------------
@@ -388,15 +374,13 @@ and peers and orderers on a channel will all share the same global MSP. The key
 difference here between local and global MSPs is not how they function, but
 their **scope**.
 
-.. image:: images/IdentityandMembershipdiagram4.png
+.. figure:: images/IdentityandMembershipdiagram4.png
 
-::
-
-  Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for
-  the channel are global. Each peer is managed by its own organization, ORG1 or
-  ORG2. This channel is managed by both ORG1 and ORG2. Similar principles apply
-  for the network, orderers and users, but these are not shown here for
-  simplicity.
+   Local and Global MSPs. The MSPs for the peers are local, whereas the MSPs for
+   the channel are global. Each peer is managed by its own organization, ORG1 or
+   ORG2. This channel is managed by both ORG1 and ORG2. Similar principles apply
+   for the network, orderers and users, but these are not shown here for
+   simplicity.
 
 You can see that **local MSPs are only defined on the file system of the node
 or user** to which they apply. Therefore, physically and logically there is only
@@ -445,56 +429,59 @@ depending on how the network needs to be constituted. MSPs are mandatory at
 every level of administration -- they must be defined for the network, channel,
 peer, orderer and users.
 
-.. image:: images/IdentityandMembershipdiagram2.png
+.. figure:: images/IdentityandMembershipdiagram2.png
 
-::
+   MSP Levels. The MSPs for the peer and orderer are local, whereas the MSPs for
+   the channel and network are global. Here, the network is administered by ORG1,
+   but the channel can be managed by ORG1 and ORG2. The peer is managed by ORG2,
+   whereas ORG1 manages the orderer. ORG1 trusts identities from RCA1, whereas
+   ORG2 trusts identities from RCA2. Note that these are administration
+   identities, reflecting who can administer these components. So while ORG1
+   administers the network, ORG2.MSP does exist in the network definition.
 
-  MSP Levels. The MSPs for the peer and orderer are local, whereas the MSPs for
-  the channel and network are global. Here, the network is administered by ORG1,
-  but the channel can be managed by ORG1 and ORG2. The peer is managed by ORG2,
-  whereas ORG1 manages the orderer. ORG1 trusts identities from RCA1, whereas
-  ORG2 trusts identities from RCA2. Note that these are **administration**
-  identities, reflecting who can administer these components. So while ORG1
-  administers the network, ORG2.MSP does exist in the network definition.
+* **Network MSP:**
 
-* **Network MSP:** These MSPs are defined in the configuration policy of the
-whole network, so by definition, **there is only one set of network MSPs**.
-Every principal who uses a network must be a member as defined by the MSPs in
-the network policy before they can perform an administrative task. This means
-that the MSPs that are defined for the network should define **the organizations
-who are trusted to have administrative control over the network**. An example of
-a network-wide administrative permission might be to define or change the
-organizations who can create channels.
+These MSPs are defined in the configuration policy of the whole network, so by
+definition, **there is only one set of network MSPs.** Every principal who uses a
+network must be a member -- as defined by the MSPs in the network policy -- before
+they can perform an administrative task. This means that the MSPs that are defined for
+the network should define **the organizations who are trusted to have administrative
+control over the network**. An example of a network-wide administrative permission
+might be to define or change the organizations who can create channels.
 
-* **Channel MSP:** These MSPs are defined inside the configuration policy of
-each channel, and therefore there is a set of MSPs for each channel that is
-defined. It is helpful for a channel to have its own set of MSPs because a
-channel provides private communications between a particular set of
-organizations which in turn have administrative control over it. You can see
-that the need for **a separate set of channel MSPs stems from the need for local
-autonomy** -- the organizations in a channel can, and will often need to be,
-largely independent from the rest of the network. It also means that
-administrative control over the network doesn't necessarily imply control over
-any particular channel; again reflecting the real administrative needs of
-collaborating organizations who may sometimes require separation of control. We
-see this kind of separation at the levels of control in the real world, too. The
-authority of the President of the United States, for example, exists at the
-federal level. He or she has no authority to veto state laws.
+* **Channel MSP:**
 
-* **Peer MSP:** This local MSP is defined on the file system of each peer.
-Conceptually, it performs exactly the same function as global MSPs with the
-restriction that it only applies to the peer where it is defined. As peers are
-owned by a particular organization and connect applications from that
-organization to the ledger, there is only a single MSP for a peer. It's possible
-to specify multiple different CAs in this MSP, but in practice a local MSP will
-usually refer to many fewer CAs than a set of global MSPs. An example of a peer
-permission might be the ability to install or upgrade smart contract chaincode
-on that peer.
+These MSPs are defined inside the configuration policy of each channel, and
+therefore there is a set of MSPs for each channel that is defined. It is helpful for
+a channel to have its own set of MSPs because a channel provides private
+communications between a particular set of organizations which in turn have
+administrative control over it. You can see that the need for **a separate set of
+channel MSPs stems from the need for local autonomy** -- the organizations in a
+channel can, and will often need to be, largely independent from the rest of the
+network. It also means that administrative control over the network doesn't necessarily
+imply control over any particular channel; again reflecting the real administrative
+needs of collaborating organizations who may sometimes require separation of control.
+We see this kind of separation at the levels of control in the real world, too. The
+authority of the President of the United States, for example, exists at the federal
+level. He or she has no authority to veto state laws.
 
-* **Orderer MSP:** Like a peer MSP, an orderer local MSP is also defined on the
-file system of the node and only applies to that node. Like peer nodes, orderers
-are also owned by a single organization and therefore have a single MSP to list
-its trusted principals, though again it's possible to specify multiple Root CAs.
+* **Peer MSP:**
+
+This local MSP is defined on the file system of each peer. Conceptually, it performs
+exactly the same function as global MSPs with the restriction that it only applies to
+the peer where it is defined. As peers are owned by a particular organization and
+connect  applications from that organization to the ledger, there is only a single MSP
+for a peer. It's possible to specify multiple different CAs in this MSP, but in
+practice a local MSP will usually refer to fewer CAs than a set of global MSPs. An
+example of a peer permission might be the ability to install or upgrade smart contract
+chaincode on that peer.
+
+* **Orderer MSP:**
+
+Like a peer MSP, an orderer local MSP is also defined on the file system of the node and
+only applies to that node. Like peer nodes, orderers are also owned by a single
+organization and therefore have a single MSP to list its trusted principals, though again
+it's possible to specify multiple Root CAs.
 
 MSP Structure
 -------------
@@ -505,13 +492,11 @@ establish a principal's membership of an organization. There are, however, more
 elements that are used in conjunction with these two to assist with membership
 functions.
 
-.. image:: images/IdentityandMembershipdiagram5.png
+.. figure:: images/IdentityandMembershipdiagram5.png
 
-::
-
-  The figure above shows how a **local MSP** is stored on a local filesystem.
-  Even though global MSPs are not physically structured in exactly the same way,
-  it's still helpful to think about global MSPs this way.
+   The figure above shows how a local MSP is stored on a local filesystem.
+   Even though global MSPs are not physically structured in exactly the same way,
+   it's still helpful to think about global MSPs this way.
 
 As you can see, there are nine elements to an MSP. It's easiest to think of
 these elements in a directory structure, where the MSP name is the root folder
@@ -545,11 +530,11 @@ membership.
 
 * **Organizational Units (OUs)**
 
-These are listed in the msp/config.yaml and contain a list of organizational
-units that are considered to be part of the MSP. This is particularly useful
-when you want to restrict membership to only those principals who are part of
-a particular organization, as will be the case when an organization has a rich
-structure.
+These are listed in the `$FABRIC_CFG_PATH/msp/config.yaml` file and contain a
+list of organizational units that are considered to be part of the MSP. This is
+particularly useful when you want to restrict membership to only those principals
+who are part of a particular organization, as will be the case when an organization
+has a rich structure.
 
 Specifying OUs is optional. If no OUs are listed all of the principals that
 are part of an MSP -- as identified by the Root CA and Intermediate CA folders
@@ -582,9 +567,11 @@ The `ROLE` attribute **can** be used to confer administrative rights at the
 channel level if the policy for that channel has been written to allow any
 administrator from an organization (or certain organizations) permission to
 perform certain channel functions (such as instantiating chaincode). In this
-way **an organizational role can confer a network role**. We'll learn more
-about how policies can be written that way and how this functionality imparts
-significant operational advantages later.
+way, an organization role can confer a network role. This is conceptually similar
+to how having a driver's license issued by the US state of  Florida entitles
+someone to drive in every state in the US. The `ROLE` of have a driver's license
+has been structured this way. Compare this with being a lawyer, where to practice
+law in a state you must pass the bar exam for that specific state.
 
 * **Revoked Certificates**
 
