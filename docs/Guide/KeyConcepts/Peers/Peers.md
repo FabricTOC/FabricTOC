@@ -78,18 +78,37 @@ A blockchain network is typically built from multiple channels, and these channe
 
 ## Peers and organizations
 
-Now that you understand peers and their relationship to ledgers, smart contracts and channels, let see how multiple organizations come together to form a blockchain network.
+Now that you understand peers and their relationship to ledgers, smart contracts and channels, you'll be able to see how multiple organizations come together to form a blockchain network.
 
-As you've probably heard, blockchain is a decentralized network -- it is not owned by one organization, but many.  Peers are central to how a this kind of distributed network is built -- because different peers are owned by different organizations, and by connecting the peers together via channels, the different organizations are connected. 
+As you may know, a blockchain is a *decentralized network*. This means that it is not owned by any one organization, but many -- and without these organizations, there cannot be a blockchain network.  Peers are central to how this kind of distributed network is built. It's because different peers are owned by different organizations, and then connect together using channels, that the network is formed and managed.
 
 | ![Peer8](./Peers.diagram.8.png) |
 | :---: |
 | Peers in a blockchain network with multiple organizations. The blockchain network is built up from the peers owned and contributed by the different organizations.  In this example, we see 4 organizations who contribute 8 peers to form a network. The channel C connects 5 of these peers in the network N -- P1, P3, P5, P7 and P8. The other peers have not joined this channel.  Applications from a particular organization usually connect to the peers owned by that application. Again, for simplicity, an orderer node is not shown in this diagram.|
 
+It's really important that you can see what's happening in the formation of a blockchain network. **The network is both formed and managed by the multiple organizations who contribute peers.**  Multiple organizations are coming together the grow the network by donating resources to it. Therefore, the network does not exist in any meaningful sense unless and until organizations contribute resources.  You can see that there are no centralized resources -- in the [example above](#Peer8), the network, N, would not exist if Org1-Org4 did not contribute their peers.  **Moreover, the network does not depend on any individual organization -- it will continue to exist as long as one organization remains**, no matter which other organizations may come and go.  This is at the heart of what it means to be a decentralized network.
+
+### An internet analogy
+
+If you know a little (or a lot!) about how the internet is structured from routers, then you can compare how a Hyperledger Fabric blockchain is formed from peer nodes.  In the internet, anyone can add a router, thereby making the network bigger. An organization who contributes a router to the network, forms the network, and retains management over it for the benefit of all. The same thing is happening in a blockchain network - organizations add their peers to the network, thus increasing its size, while at the same time retaining ownership of it.  
+
+Moreover, to extend the analogy, existing internet routers need to start routing IP packets to a newly added router. What's happening here is that the administrators of existing routers are acknowledging that the newly added router can handle internet traffic, and that they will likewise accept packets from it.  In the same way, a Hyperledger Fabric network has a network channel policy which defines which organizations can add peers which send and receive ledger updates - the traffic in a blockchain network. It's a little nicer in Hyperledger Fabric though -- as there is a policy which defines which organizations are allowed to contribute peers (and orderers) to a network -- it does not require administrator intervention on a peer by peer basis.
+
+Analogies are never perfect of course -- the key point is decentralization -- multiple organizations come together to contribute resources, and agree between themselves how the network in managed.  The is not one organization that owns or controls the network, and even though this makes it a little more difficult to understand and manage, there are significant benefits in terms of resilience from a technical and business perspective.
 
 ### Review to this point
 
 ### Following material to be incorporated
+
+## Peers and channel policy
+
+## Peers and orderers
+
+Short section discussing for peers.  Not main section.
+
+Role of orderer as it relates to peers - to capture proposed updates (from app, not peers), and to distribute to back to ALL peers. Emphasize how peers, orderers work together.  
+
+Difference between peers and orderers.  Do not hold ledger.  Purely technical role. Connected to all channels (don't major on this - that's for orderer topic). Brief mention of ordering org(s) - again, this is for orderer topic.
 
 ## Logical Network
 
