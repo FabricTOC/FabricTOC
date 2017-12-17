@@ -80,7 +80,7 @@ A blockchain network is typically built from multiple channels, and these channe
 
 Now that you understand peers and their relationship to ledgers, smart contracts and channels, you'll be able to see how multiple organizations come together to form a blockchain network.
 
-As you may know, a blockchain is a *decentralized network*. This means that it is not owned by any one organization, but many -- and without these organizations, there cannot be a blockchain network.  Peers are central to how this kind of distributed network is built. It's because different peers are owned by different organizations, and then connect together using channels, that the network is formed and managed.
+As you may know, a blockchain is a *decentralized network*. This means that it is not owned by any one organization, but many -- and without these organizations, there cannot be a blockchain network.  Peers are central to how this kind of distributed network is built. It's because different peers are owned by different organizations, and then connected together using channels, that the network is formed and managed.
 
 | ![Peer8](./Peers.diagram.8.png) |
 | :---: |
