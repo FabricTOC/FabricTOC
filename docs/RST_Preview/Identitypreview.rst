@@ -72,7 +72,7 @@ There are four key elements to PKI:
  * **Certificate Revocation Lists**
 
 Let's quickly describe these PKI basics, and if you want to know more details,
-`Wikipedia` <https://en.wikipedia.org/wiki/Public_key_infrastructure/> is a good
+`Wikipedia <https://en.wikipedia.org/wiki/Public_key_infrastructure>`_ is a good
 place to start.
 
 Digital Certificates
@@ -80,7 +80,7 @@ Digital Certificates
 
 A digital certificate is a document which holds a set of attributes relating to
 a principal's identity. The most common type of certificate is an `X.509 certificate
-<https://en.wikipedia.org/wiki/X.509/>`_, which allows the encoding of
+<https://en.wikipedia.org/wiki/X.509>`_, which allows the encoding of
 a principal's identifying details in its structure. For example, Mary Morris of
 Mitchell Cars in Detroit, Michigan might have a digital certificate with a
 `SUBJECT` attribute of `C=US, ST=Michigan, L=Detroit, O=Mitchell Cars,
@@ -578,7 +578,7 @@ law in a state you must pass the bar exam for that specific state.
 If the X.509 certificate of a principal has been revoked, identifying
 information about the cert -- not the cert itself -- is held in this folder.
 These identifiers -- known as a Subject Key Identifier (SKI) and Authority
-Access Identifier (AKI) -- are checked whenever a certificate is being used to
+Key Identifier (AKI) -- are checked whenever a certificate is being used to
 make sure the certificate is still valid.
 
 This list is conceptually the same as a CA's Certificate Revocation List (CRL),
