@@ -26,7 +26,7 @@ Let's look at a peer in a little more detail. We can see that it's the peer that
 
 Because a peer is a *host* for smart contracts and ledgers, if a network participant wants to provide or consume smart contracts and ledgers, they must interact with a peer. A network participant might be using an application, or might be an administrator -- but it's always the peer that provides the key services that allowing interactions with ledgers and smart contracts. That's why peers are often considered the most fundamental building blocks of a blockchain network.
 
-## Hosting multiple ledgers
+## Peers can host multiple ledgers
 
 A peer is able to host more than one ledger, which is helpful because it allows for a very flexible system design. The simplest peer configuration is to have a single ledger, but it's absolutely appropriate for a peer to host two, three, or even more ledgers when required by the design. We'll see later how peers interact with the ledger, but for now, it's easiest to think of the ledger has being hosted on the peer.
 
@@ -36,7 +36,7 @@ A peer is able to host more than one ledger, which is helpful because it allows 
 
 You can see that it's perfectly reasonable for a peer to host a ledger without hosting smart contracts which access it. This may be the case when an organization just requires a copy of the ledger without wanting to interact with it -- for back-up or disaster recovery purposes, for example. However, it's more typical that a peer has at least one smart contract installed on it so that it can query or update the ledger.
 
-## Hosting multiple smart contracts
+## Peers can host multiple smart contracts
 
 Typically, a peer will host many more smart contracts than ledgers.  Whereas there is a single ledger for each channel to which a peer is joined, there might be multiple smart contracts for every ledger hosted on a peer.  
 
@@ -46,7 +46,7 @@ Typically, a peer will host many more smart contracts than ledgers.  Whereas the
 
 It's also usually the case that different smart contracts access different ledgers. That's because different ledgers usually have different data structures, although as you can see, if it's appropriate, one smart contract can access different ledgers. This is particularly useful if an organization in the network -- an insurance company, for example -- wants to be able to offer the same services to organizations on different channels.  
 
-## Applications and peers
+## Applications use peers to consume smart contract and ledger services
 
 Applications connect to network peers when they need to access ledgers and smart contracts. The SDK makes this process easy for programs -- there are APIs to connect to ledgers, invoke smart contracts, and receive ledger notifications. Query responses are an immediate because they can be fulfilled from the local copy of the ledger. Updates take a little longer as they need to be agreed by other peers across the network.
 
@@ -62,7 +62,7 @@ An update transaction is quite different, because a single peer cannot, on its o
 
 Again, the SDK makes these two process easy for applications.  For query transactions, applications connect to peers, invoke a smart contract query transaction, and receive an immediate response.  For update transactions, it's only a little more complex; applications connect to peers, invoke a smart contract update transaction and receive an asynchronous notification when the ledger has been updated -- they do not need to worry about the mechanics of the consensus process.
 
-## Peers and channels
+## Peers connect to each other via channels
 
 Although this topic is about peers rather than channels, it's worth spending a little time understanding how peers interact with each other, and applications, via channels.
 
@@ -76,7 +76,7 @@ Within a blockchain network, it's helpful to think of different channels as bein
 
 A blockchain network is typically built from multiple channels, and these channels are formed by the peers than join them. We see that channels don't exist in the same way that peers do -- it's more appropriate to think of a channel as a logical structure that is formed by a collection of physical peers. Because of this channels are actually accessed and managed via peers. **It is vital to understand this point -- peers provide the control point for access to, and management of, channels**.    
 
-## Peers and organizations
+## Peers from multiple organizations form a blockchain network
 
 Now that you understand peers and their relationship to ledgers, smart contracts and channels, you'll be able to see how multiple organizations come together to form a blockchain network.
 
@@ -96,11 +96,27 @@ Moreover, to extend the analogy, existing internet routers need to start routing
 
 Analogies are never perfect of course -- the key point here is one of decentralization -- multiple organizations come together to contribute resources, and agree between themselves how the network in managed.  **There is no one organization that owns or controls the network**, and even though this makes it a little more difficult to understand and manage decentralized networks, there are significant benefits in terms of resilience from a technical and business perspective.
 
+## A peer's identity determines its organizational membership
+
+Now that you've seen how peers from different organzations come together to form a blockchain network, it's worth spending a few moments understanding how peers get assigned to organizations by their administrators.
+
+Peers have an identity assigned to them via a digital certificate.  You can read lots more about how [X.509 digital certificates](../KeyConcepts/Identity.md) work elsewhere in this guide, but for now think of a digital certificate as being like a digital ID card -- it provides lots of verifiable information about a peer. The important thing to understand is that **each and every peer in the network is assigned a digital certificate by an administrator from its owning organization**.
+
+Whenever a peer connects to a channel in a blockchain network, **it's this identity that is used to determine the peer's organization**. The mapping of identity to organization is provided by a component called a [Membership Service Provider](../KeyConcepts/Membership.md) (MSP) -- it determine how a peers get assigned to a particular role in a particular organizations and accordingly gain particular access to blockchain resources.  We'll learn more about peers and access control later in this topic, and there's a entire topic on MSPs and access control policies in this guide. But for now, think of an MSP as providing linkage between an individual identity and a particular organizational role in a blockchain network.
+
+And to digress for a moment, peers as well as **everything that interacts with a blockchain network acquires their organizational membership from their digital certificate in combination with an MSP**. Beyond peers, this includes applications, end users, administrators, orderers -- in fact, anyone or anything that wants to interact with the network must be associated with an organization, and must have a identity and an associated MSP.  **We give a name to every entity that interacts with a blockchian network using an identity -- a principal.**  You can learn lots more about [principals](../KeyConcepts/Principals.md) and [organizations](../KeyConcepts/Organizations.md) elsewhere in this guide, but for now you know more than enough to continue your understanding of peers!
+
 ### Review to this point
 
 ### Following material to be incorporated
 
 ## Peers and channel policy
+
+In fact there are 2 MSPs at play when a peer joins a channel.  The first MSP is local to the peer, and it's where the peer's digital certificate is stored. This MSP actually has very little information held within it, just the individual peer's digital identity including, most importantly, it's digital certificate which can be shared, and it's private key, which absolutely must not be shared.
+
+The second MSP is global to the channel, and it has lots of information in it. Each organization in a network has an MSP definition in the channel, which is used to associate peers to organizations.  Moreover, whenever a peer
+
+
 
 ## Peers and orderers
 
