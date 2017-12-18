@@ -106,13 +106,16 @@ Whenever a peer connects to a channel in a blockchain network, **it's this ident
 
 And to digress for a moment, peers as well as **everything that interacts with a blockchain network acquires their organizational identity from their digital certificate and an MSP**. It's more than just peers though -- applications, end users, administrators, orderers must have a identity and an associated MSP if they want to interact with a blockchain network.  **We give a name to every entity that interacts with a blockchian network using an identity -- a principal.**  You can learn lots more about [principals](../KeyConcepts/Principals.md) and [organizations](../KeyConcepts/Organizations.md) elsewhere in this guide, but for now you know more than enough to continue your understanding of peers!
 
+### Review to this point
+
+### Following material to be incorporated
+
+## Peers and Identity to include still
+
 NOT about where located physical - contrast this per MGK.
 
 One or more MSP -- clarify
 
-### Review to this point
-
-### Following material to be incorporated
 
 ## Peers and channel policy
 
