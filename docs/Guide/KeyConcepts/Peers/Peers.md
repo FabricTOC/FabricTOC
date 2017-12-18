@@ -34,7 +34,7 @@ A peer is able to host more than one ledger, which is helpful because it allows 
 | :---: |
 | A peer hosting multiple ledgers. Peers host one or more ledgers, and each ledger has zero or more smart contracts that apply to them. In this example, we can see that the peer P hosts ledgers L1 and L2. L1 doesn't have any smart contracts which access it. L2 on the other hand has smart contracts S1 and S2 which access it. |
 
-You can see that it's perfectly reasonable for a peer to host a ledger without hosting smart contracts which access it. This may be the case when an organization just requires a copy of the ledger without wanting to interact with it -- for back-up or disaster recovery purposes, for example. However, it's more typical that a peer has at least one smart contract installed on it so that it can query or update the ledger.
+You can see that it's perfectly reasonable for a peer to host a ledger without hosting smart contracts which access it. This may be the case when an organization requires a copy of the ledger but doesn't need to interact with it -- for back-up or disaster recovery purposes, for example. However, it's more typical that a peer has at least one smart contract installed on it so that it can query or update the ledger.
 
 ## Peers can host multiple smart contracts
 
@@ -48,13 +48,13 @@ It's also usually the case that different smart contracts access different ledge
 
 ## Applications use peers to consume smart contract and ledger services
 
-Applications connect to network peers when they need to access ledgers and smart contracts. The SDK makes this process easy for programs -- there are APIs to connect to ledgers, invoke smart contracts, and receive ledger notifications. Query responses are an immediate because they can be fulfilled from the local copy of the ledger. Updates take a little longer as they need to be agreed by other peers across the network.
+Applications connect to network peers when they need to access ledgers and smart contracts. A Software Development Kit (SDK) makes this process easy for programs -- it's APIs (application program interfaces) make it possible to connect with ledgers, invoke smart contracts, and receive ledger notifications.
+
+Conceptually **you can think of a peer as being similar to an operating system on the device you're using right now.** Blockchain applications use tools to interact with this operating system and can, using established rules, procedures, and connections, cause it to interact with other operating systems (i.e., other peers), similar to how the browser application on your device has interacted with the internet to bring up this Web page.
 
 | ![Peer6](./Peers.diagram.6.png) |
 | :---: |
-| Applications connect to peers to execute smart transactions which access the ledger. Query transactions return immediately. For updates, the peer will notify the application after the update has been accepted by the wider network. |
-
-When applications want to access the ledger for query or update, they connect to a peer and invoke a smart contract.  It's the smart contract which encapsulates all access to the ledger. The two major access patterns are ledger query or ledger update.
+| The peer is the access point to the network for an application. Through a peer connection, applications can execute smart contracts to query the ledger -- which exists on a peer's local file system or in attached storage (more on this later) -- or by initiating a ledger update, which goes through the endorsement process (defined by a smart contract) before being written to the ledger. |
 
 A query transaction can return its results immediately to the application because all the information required to satisfy the query is in the local copy of the ledger. Indeed, an application can connect to one or more peers in the network which hosts a copy of the ledger to issue a query, as each peer's copy of the ledger is kept up-to-date; though typically applications will connect to a single peer. It's interesting to note that for query transactions the peer does not need to consult with other peers in order to return the results to the application.
 
@@ -80,7 +80,11 @@ A blockchain network is typically built from multiple channels, and these channe
 
 Now that you understand peers and their relationship to ledgers, smart contracts and channels, you'll be able to see how multiple organizations come together to form a blockchain network.
 
+<<<<<<< HEAD
+As you've probably heard, blockchain is a decentralized network -- it is not owned by one organization, but many.  Peers are central to how a this kind of distributed network is built -- because different peers are owned by different organizations, and by connecting the peers together via channels, the different organizations are connected.
+=======
 As you may know, a blockchain is a *decentralized network*. This means that it is not owned by any one organization, but many -- and without these organizations, there cannot be a blockchain network.  Peers are central to how this kind of distributed network is built. It's because different peers are owned by different organizations, and then connected together using channels, that the network is formed and managed.
+>>>>>>> upstream/master
 
 | ![Peer8](./Peers.diagram.8.png) |
 | :---: |
