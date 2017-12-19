@@ -106,20 +106,15 @@ Peers have an identity assigned to them via a digital certificate from a particu
 | :---: |
 | Using a peer's digital certificate the determine its organization. When a peer connects to a channel, its digital certificate identifies its owning organization a channel MSP. In this example, P1 and P2 have identities issued by CA1.  Channel C determines from its policy that identities from CA1 should be associated with Org1 using ORG1.MSP. Similarly, P3 and P4 are identified by ORG2.MSP as being part of ORG2.|
 
-Whenever a peer connects to a channel in a blockchain network, **its identity is used by the channel policy to determine its organization**. The mapping of identity to organization is provided by a component called a [Membership Service Provider](../KeyConcepts/Membership.md) (MSP) -- it determines how a peer gets assigned to a specific role in a particular organization and accordingly gains appropriate access to blockchain resources.  We'll learn more about peer access control later in this topic, and there's a entire topic on MSPs and access control policies elsewhere in this guide. But for now, think of an MSP as providing linkage between an individual identity and a particular organizational role in a blockchain network.
+Whenever a peer connects to a channel in a blockchain network, **its identity is used by the channel policy to determine its organization**. The mapping of identity to organization is provided by a component called a [Membership Service Provider](../KeyConcepts/Membership.md) (MSP) -- it determines how a peer gets assigned to a specific role in a particular organization and accordingly gains appropriate access to blockchain resources. Moreover, a peer can only be owned by a single organization, and is therefore associated with a single MSP. We'll learn more about peer access control later in this topic, and there's a entire topic on MSPs and access control policies elsewhere in this guide. But for now, think of an MSP as providing linkage between an individual identity and a particular organizational role in a blockchain network.
 
 And to digress for a moment, peers as well as **everything that interacts with a blockchain network acquires their organizational identity from their digital certificate and an MSP**. It's more than just peers though -- applications, end users, administrators, orderers must have a identity and an associated MSP if they want to interact with a blockchain network.  **We give a name to every entity that interacts with a blockchian network using an identity -- a principal.**  You can learn lots more about [principals](../KeyConcepts/Principals.md) and [organizations](../KeyConcepts/Organizations.md) elsewhere in this guide, but for now you know more than enough to continue your understanding of peers!
+
+Finally, note that it's not really important where the peer is physically located -- it could be resident in the cloud, or in a data centre owned by one of the organizations, or on a local machine -- it's the identity associated with it that identifies it as owned by a particular organization. In our example above, P3 could be hosted in Org1's data centre, but as long as the digital certificate associated with it is issued by CA2, then it's owned by Org2.
 
 ### Review to this point
 
 ### Following material to be incorporated
-
-## Peers and Identity to include still
-
-NOT about where located physical - contrast this per MGK.
-
-One or more MSP -- clarify
-
 
 ## Peers and channel policy
 
