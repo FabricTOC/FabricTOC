@@ -64,17 +64,17 @@ Again, the SDK makes these two process easy for applications. For query transact
 
 ## Peers connect to each other via channels
 
-Although this topic is about peers rather than channels, it's worth spending a little time understanding how peers interact with each other, and applications, via channels.
+Although this topic is about peers rather than channels, it's worth spending a little time understanding how peers interact with each other, and applications, via channels. By analogy, think of a group of people holding hands together to form a circle. The circle is formed by the people -- it's not separate to them -- and it's like this for peers and channels.
 
-A channel is a system by which a set of components within a blockchain network can communicate and transact privately. These components are typically peer nodes, orderer nodes, and applications, and by joining a channel they agree to collectively share and manage identical copies of the ledger for that channel.
-
-Within a blockchain network, it's helpful to think of different channels as being completely separated from each other. Although this isn't precisely true, it makes it easier to understand -- and we'll cover the exceptions later.
+A channel is a mechanism by which a set of components within a blockchain network can communicate and transact privately. These components are typically peer nodes, orderer nodes, and applications, and by joining a channel they agree to come together to collectively share and manage identical copies of the ledger for that channel.
 
 | ![Peer5](./Peers.diagram.5.png) |
 | :---: |
 | Peers connecting in a blockchain network via channels. Channels allow a specific set of peers and applications to communicate with each other within a blockchain network. In this example, we can see a channel which has two peers and an application joined to it within a blockchain network. Each peer hosts a copy of the ledger and a smart contract. For simplicity, an orderer node is not shown in this diagram, but one must be present in a functioning network. |
 
-A blockchain network is typically built from multiple channels, and these channels are formed by the peers that join them. We see that channels don't exist in the same way that peers do -- it's more appropriate to think of a channel as a logical structure that is formed by a collection of physical peers. Because of this channels are actually accessed and managed via peers. **It is vital to understand this point -- peers provide the control point for access to, and management of, channels**.    
+We see that channels don't exist in the same way that peers do -- it's more appropriate to think of a channel as a logical structure that is formed by a collection of physical peers. Because of this channels are actually accessed and managed via peers. **It is vital to understand this point -- peers provide the control point for access to, and management of, channels**.    
+
+A blockchain network is typically built from multiple channels, and these channels are formed by the peers that join them. Within a blockchain network, it's helpful to think of different channels as being completely separated from each other. Although this isn't precisely true, it makes it easier to understand -- and we'll cover the exceptions later.
 
 ## Peers from multiple organizations form a blockchain network
 
@@ -118,9 +118,29 @@ And to digress for a moment, peers as well as **everything that interacts with a
 
 Finally, note that it's not really important where the peer is physically located -- it could be resident in the cloud, or in a data centre owned by one of the organizations, or on a local machine -- it's the identity associated with it that identifies it as owned by a particular organization. In our example above, P3 could be hosted in Org1's data centre, but as long as the digital certificate associated with it is issued by CA2, then it's owned by Org2.
 
+## Peers use orderers to collect, package and distribute ledger updates
+
+We've seen that peers form a blockchain network, hosting ledgers and smart contracts which can be queried and updated by peer-connected applications.
+
+Moreover, applications which generate ledger updates have to wait for these changes to be validated by the other peers in a channel before the application can be notified that the ledger update is complete.  Orderers are central to this process -- they receive the proposed ledger updates, package them into ordered blocks, and redistribute these blocks to all peers in a channel for validation and inclusion on the ledger.
+
+| ![Peer10](./Peers.diagram.10.png) |
+| :---: |
+| The role of orderer nodes in a blockchain network is to distribute ledger updates between the peers. In this example, S1 on P1 can generate ledger updates for L1, which are subsequently sent to O, which packages and redistributes updates to P1 and P2 where they can be validated and finally applied to L1. For L2, P2 and P3 both host S2, so that each can generate, and each can validate and apply, ledger updates for L2. For simplicity, we do not show applications or blocks in the ordering process.|
+
+The relationship between peers and orderers is important to understand.  The process of updating the ledger is actually split into two phases. In the first phase, a peer is used by an application to generate a proposed ledger update which is signed by the peer with its private key -- in a process called *endorsement*. The second phase is called *validation*, and involves every peer in a channel (including the originating peer) checking these proposed updates to make they conform to the *endorsement policy*. Specifically each ledger update generated by a smart contract must be validated according to its endorsement policy before it is applied to each peers' local ledger.
+
+It's the orderer than connects these two phases together. An orderer continuously  receives multiple proposed ledger updates originating from many different points in the network. It's the orderer's job to arrange these proposed updates into a well-defined sequence, and package them into *blocks* for distribution.  Once a block is full of updates, it is sent to all peers in the channel -- where it is then unpacked, validated according to the endorsement policy, and finally applied individually to each peer's local copy of the ledger. This entire process is called *consensus* because every peer is checking that it is happy that ledger updates are well-formed before they are applied to their local copy of the ledger. It's also a multi-step process, which is why applications are notified asynchronously when ledger updates are complete, rather than when proposals are generated from smart contracts.
+
+We can see that whereas peers host the ledger and optionally smart contracts, orderers most definitely do not -- they only hold a set of the most recently collected blocks, to enable temporarily off-line peers to receive updates they might have missed after a short communications outage. Orderers are responsible for the simple but vital processes of collecting, ordering, packaging and distributing proposed ledger updates to and from peers and applications so that peers' local ledgers can be kept consistently up-to-date.
+
+We discuss [orderers](../KeyConcepts/Orderers.md) in a lot more details elsewhere in the guide, but for now, think of orderers as nodes which collect and distribute proposed ledger updates for peers to inclusion on the ledger.
+
 ### Review to this point
 
 ### Following material to be incorporated
+
+
 
 ## Peers and channel policy
 
@@ -128,44 +148,22 @@ In fact there are 2 MSPs at play when a peer joins a channel.  The first MSP is 
 
 The second MSP is global to the channel, and it has lots of information in it. Each organization in a network has an MSP definition in the channel, which is used to associate peers to organizations.  Moreover, whenever a peer
 
-
-
-## Peers and orderers
-
-Short section discussing for peers.  Not main section.
-
-Role of orderer as it relates to peers - to capture proposed updates (from app, not peers), and to distribute to back to ALL peers. Emphasize how peers, orderers work together.  
-
-Difference between peers and orderers.  Do not hold ledger.  Purely technical role. Connected to all channels (don't major on this - that's for orderer topic). Brief mention of ordering org(s) - again, this is for orderer topic.
-
-## Logical Network
-
 You might have noticed that the example above does not show an orderer, but as you've seen, orderers -- like peers -- are not necessary to form a blockchain network on a logical level (just as the rules of the road can be written before there are highway interchanges).
 
+are connected to all channels, and
+
+Orderers can distribute updates as well as queries - any result set can be logged; but this detail for later.
+
+
 The physical structure of the peers and orderers separates them from the logical framework of the policies that govern how peers and the orderer nodes interact. This is similar to how a *set of laws* -- the rules of driving, for example -- are different from the people, cars, and physical structures that actually make up the *highway system*.  
+
+
 
 ## Peer Container  
 
 When a peer does host smart contracts.
 
-
-
-Moreover a peer can host multiple smart contracts for the same ledger, because different smart contracts can encapsulate different
-
-
-
-
-
 That's not the whole story, however, because these different *physical* copies of the ledger need to be kept synchronized with each other, so that they can be considered to be the same *logical* ledger. This is achieved by a process called consensus -- which keeps the individual physical ledgers in step with each other. We'll discuss the logical/physical nature of the ledger and smart contracts later, as well as how peers take part in the consensus mechanism. First let's understand a little more about individual peers.
-
-## Peers and decentralization
-
-**Peers are what makes a blockchain a distributed ledger**, because a network comprises many peers, and it's these peers which hold a copy of the ledger and the smart contracts which interact with it.
-
-
-## The services provided by a peer
-
-### Material to be incorporated
 
 ## Applications and peers
 
