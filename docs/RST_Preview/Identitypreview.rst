@@ -2,10 +2,12 @@ Identity and Membership
 =======================
 
 Identities really matter in a Hyperledger Fabric blockchain network! That's
-because a principal's **identity determines the exact permissions over resources
-that they have in a blockchain network**. Most importantly, **a principal's
-identity must have two qualities** -- it must be **verifiable** (a real
-identity, in other words), and it must also come from a **trusted** source.
+because the identity of a **principal** -- the users, organizations, or
+organizational units that use or provide network services -- **determines the
+exact permissions over resources that they have in a blockchain network**.
+Most importantly, **a principal's identity must have two qualities** -- it must
+be **verifiable** (a real identity, in other words), and it must also come from
+a **trusted** source.
 
 These two identity concepts -- verification and trust -- are provided by a
 **Public Key Infrastructure** (PKI) and a **Membership Service Provider**
@@ -56,7 +58,8 @@ you're probably using a PKI to make sure it comes from a verified source.
    then use them in conjunction with public and private keys to authenticate and
    encrypt information. A CA's Certificate Revocation List (CRL) identifies the
    certificates that are no longer valid (this can happen for a number of reasons.
-   A certificate might have been compromised, for example).
+   Private material associated with a certificate might have been exposed, for
+   example).
 
 Although a blockchain network is more than a simple communications network, it
 makes sense for it to use the PKI standard as much as possible. You'll see that
@@ -156,9 +159,9 @@ can be verified by other principals in the network using Mary's **public key**.
    Authenticating data using private keys and public keys. Mary's private key is
    used to sign an original document with the unique signature (`X13vRZQql41`).
 
-Using the document as part of the signature in this way makes the document
-itself impossible to tamper with it being obvious -- generating the same
-signature Mary would create is statistically impossible without Mary's private key.
+The hashing process doesn't prevent tampering itself, but it does make
+tampering **obvious** -- without the original document and the private key, it
+is statistically impossible to generate the same signature.
 
 Using Public Keys and Private Keys for Encryption
 -------------------------------------------------
@@ -253,12 +256,8 @@ Fabric CA
 It's because CAs are so important that Hyperledger Fabric provides a built-in
 CA component to allow you to create CAs in the blockchain networks you form.
 
-
 .. note:: You don't have to use the Fabric CA, but you will find it very helpful
           when you're starting to build a blockchain network for the first time.
-
-A Fabric CA is not as sophisticated as a full CA, but that's OK -- it's
-sufficient for many purposes.
 
 Certificate Revocation Lists
 ----------------------------
@@ -441,29 +440,27 @@ peer, orderer and users.
 
 * **Network MSP:**
 
-These MSPs are defined in the configuration policy of the whole network, so by
-definition, **there is only one set of network MSPs.** Every principal who uses a
-network must be a member -- as defined by the MSPs in the network policy -- before
-they can perform an administrative task. This means that the MSPs that are defined for
-the network should define **the organizations who are trusted to have administrative
-control over the network**. An example of a network-wide administrative permission
-might be to define or change the organizations who can create channels.
+These MSPs are defined in the configuration policy of the network, so by
+definition, **there is only one set of network MSPs.** This set of network-level
+MSPs will specify the organizations who are trusted to have administrative control
+over the network. This is important because network-level policies can be written
+to allow any admin from those organizations the right to perform certain network
+tasks (creating channels, for example).
 
 * **Channel MSP:**
 
 These MSPs are defined inside the configuration policy of each channel, and
-therefore there is a set of MSPs for each channel that is defined. It is helpful for
-a channel to have its own set of MSPs because a channel provides private
-communications between a particular set of organizations which in turn have
-administrative control over it. You can see that the need for **a separate set of
-channel MSPs stems from the need for local autonomy** -- the organizations in a
-channel can, and will often need to be, largely independent from the rest of the
-network. It also means that administrative control over the network doesn't necessarily
-imply control over any particular channel; again reflecting the real administrative
-needs of collaborating organizations who may sometimes require separation of control.
-We see this kind of separation at the levels of control in the real world, too. The
-authority of the President of the United States, for example, exists at the federal
-level. He or she has no authority to veto state laws.
+therefore there is a set of MSPs for each channel. It is helpful for a channel to have
+its own set of MSPs because a channel provides private communications between a
+particular set of organizations which in turn have administrative control over it. You
+can see that the need for **a separate set of channel MSPs stems from the need for
+local autonomy** -- the organizations in a channel can, and will often need to be,
+largely independent from the rest of the network. It also means that administrative
+control over the network doesn't necessarily imply control over any particular channel;
+again reflecting the real administrative needs of collaborating organizations who may
+sometimes require separation of control. We see this kind of separation at the levels
+of control in the real world, too. The authority of the President of the United States,
+for example, exists at the federal level. He or she has no authority to veto state laws.
 
 * **Peer MSP:**
 
@@ -471,10 +468,10 @@ This local MSP is defined on the file system of each peer. Conceptually, it perf
 exactly the same function as global MSPs with the restriction that it only applies to
 the peer where it is defined. As peers are owned by a particular organization and
 connect  applications from that organization to the ledger, there is only a single MSP
-for a peer. It's possible to specify multiple different CAs in this MSP, but in
-practice a local MSP will usually refer to fewer CAs than a set of global MSPs. An
-example of a peer permission might be the ability to install or upgrade smart contract
-chaincode on that peer.
+for a peer. It's possible to specify multiple CAs in this MSP, but in practice a local
+MSP will usually refer to fewer CAs than a set of global MSPs. An example of a peer
+permission might be the ability to install or upgrade smart contract chaincode on that
+peer.
 
 * **Orderer MSP:**
 
