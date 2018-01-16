@@ -1,6 +1,6 @@
 # Peers
 
-As you've seen, **two of the most important concepts in a blockchain network are ledgers and smart contracts**. That's because smart contracts and ledgers are used to encapsulate the shared **information** and shared **processes** in the business network, respectively. When a developer writes a blockchain application, the ledgers and smart contracts allow a network participant to provide or consume services in the network.
+As you've seen in the topic [Developing Applications](../DevelopingApplications/DevelopingApplications.md), **two of the most important concepts in a blockchain network are ledgers and smart contracts**. Recall that a ledger is like a file or database store, and a smart contract is like a program to access that store. Smart contracts and ledgers are used to encapsulate the shared **processes** and shared **information** in the business network, respectively. When a developer writes a blockchain application, the ledgers and smart contracts are used by peers to allow a network participant to provide or consume services in the network.
 
 What makes peers important is that **they are the place where ledgers and smart contracts physically reside**. Because of this, peers -- and their connections to other nodes (to peers and to orderer nodes) -- **are what actually form the physical structure of blockchain network**.
 
@@ -10,7 +10,7 @@ A blockchain network is formed by a set of peer nodes. Peers are the most import
 
 | ![Peer1](./Peers.diagram.1.png) |
 | :---: |
-| An example blockchain network formed by three peers. A blockchain is primarily formed from peer nodes, each of which can hold copies of a ledger and smart contracts. In this example, each peer holds a copy of the same ledger and smart contracts. |
+| A blockchain network is formed from peer nodes, each of which can hold copies of a ledger and smart contracts. In this example, the network N is formed by peers P1, P2 and P3. P1, P2 and P3 each maintain their own copy of the ledger L. Peer P1 uses smart contract S1 to access their copy of L, whereas P2 and P3 each use smart contract S2 to access their copy of L.|
 
 It's helpful to remember that the blockchain network only comes into existence when peers and certain other objects -- such as policies, orderers, and MSPs -- are defined. In other words, **blockchain networks are not actually objects in themselves**. The administration of a blockchain network, then, really amounts to the management of these objects, rather than any separate object called a "network".
 
@@ -18,7 +18,7 @@ It's helpful to remember that the blockchain network only comes into existence w
 
 ## Peers host smart contracts and ledgers
 
-Let's look at a peer in a little more detail. We can see that it's the peer that hosts both the ledger and smart contracts. More accurately, the peer actually hosts *instances* of the ledger, and *instances* of smart contract chaincode.
+Let's look at a peer in a little more detail. We can see that it's the peer that hosts both the ledger and smart contracts. More accurately, the peer actually hosts *instances* of the ledger, and *instances* of smart contract chaincode. Note that there us a deliberate redundancy in a Hyperledger Fabric network to avaoid single points of failures.  We'll learn more about the distributed and decentralized nature of a blockchain network later in this topi.c  
 
 | ![Peer2](./Peers.diagram.2.png) |
 | :---: |
