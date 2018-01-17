@@ -42,7 +42,7 @@ Typically, a peer will host many more smart contracts than ledgers.  Whereas the
 
 ![Peer4](./Peers.diagram.4.png)
 
-*A peer hosting multiple smart contracts. Each ledger can have many smart contracts which access it. In this example, we can see that the peer P hosts ledgers L1 and L2. L1 is accessed by S1 and S2, whereas L2 is accessed by S3 and S1. We can see that S1 can access both L1 and L2.*
+*A peer hosting multiple smart contracts. Each ledger can have many smart contracts which access it. In this example, we can see that peer P1 hosts ledgers L1 and L2. L1 is accessed by S1 and S2, whereas L2 is accessed by S3 and S1. We can see that S1 can access both L1 and L2.*
 
 It's also usually the case that different smart contracts access different ledgers. That's because different ledgers usually have different data structures, although as you can see, if it's appropriate, one smart contract can access different ledgers. This is particularly useful if an organization in the network -- an insurance company, for example -- wants to be able to offer the same services to organizations on different channels.  
 
