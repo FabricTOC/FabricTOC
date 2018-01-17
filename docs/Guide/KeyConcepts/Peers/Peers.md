@@ -18,21 +18,21 @@ It's helpful to remember that the blockchain network only comes into existence w
 
 ## Peers host smart contracts and ledgers
 
-Let's look at a peer in a little more detail. We can see that it's the peer that hosts both the ledger and smart contracts. More accurately, the peer actually hosts *instances* of the ledger, and *instances* of smart contract chaincode. Note that there us a deliberate redundancy in a Hyperledger Fabric network to avaoid single points of failures.  We'll learn more about the distributed and decentralized nature of a blockchain network later in this topi.c  
+Let's look at a peer in a little more detail. We can see that it's the peer that hosts both the ledger and smart contracts. More accurately, the peer actually hosts *instances* of the ledger, and *instances* of smart contract chaincode. Note that there is a deliberate redundancy in a Hyperledger Fabric network to avoid single points of failure.  We'll learn more about the distributed and decentralized nature of a blockchain network later in this topic.   
 
 ![Peer2](./Peers.diagram.2.png)
 
-*A Peer hosts ledgers and smart contracts. There can be many smart contracts hosted on a peer for a ledger.*
+*A peer hosts instances of ledgers and instances of smart contracts. In this example, P1 hosts an instance of L1 and an instance of S1. There can be many ledgers and smart contracts hosted on an individual peer.*
 
 Because a peer is a *host* for smart contracts and ledgers, if a network participant (e.g. an application outside the network) wants to provide or consume smart contracts and ledgers, they must interact with a peer. A network participant might be using an application, or might be an administrator -- but it's always the peer that provides the key services that allow interactions with ledgers and smart contracts. That's why peers are often considered the most fundamental building blocks of a Hyperledger Fabric blockchain network.
 
 ## Peers can host multiple ledgers
 
-A peer is able to host more than one ledger, which is helpful because it allows for a very flexible system design. The simplest peer configuration is to have a single ledger, but it's absolutely appropriate for a peer to host two, three, or even more ledgers when required by the design using channels. We'll see later how peers interact with the ledger, but for now, it's easiest to think of the ledger has being hosted on the peer.
+A peer is able to host more than one ledger, which is helpful because it allows for a very flexible system design. The simplest peer configuration is to have a single ledger, but it's absolutely appropriate for a peer to host two or more ledgers when required. We'll see later how peers interact with the ledger, but for now, it's easiest to think of the ledger has being hosted on the peer.
 
 ![Peer3](./Peers.diagram.3.png)
 
-*A peer hosting multiple ledgers. Peers host one or more ledgers, and each ledger has zero or more smart contracts that apply to them. In this example, we can see that the peer P hosts ledgers L1 and L2. L1 doesn't have any smart contracts which access it. L2 on the other hand has smart contracts S1 and S2 which access it.*
+*A peer hosting multiple ledgers. Peers host one or more ledgers, and each ledger has zero or more smart contracts that apply to them. In this example, we can see that the peer P1 hosts ledgers L1 and L2. L1 is accessed using smart contract S1. L2 on the other hand can be accessed using smart contracts S1 and S2.*
 
 You can see that it's perfectly reasonable for a peer to host a ledger without hosting smart contracts which access it. This may be the case when an organization requires a copy of the ledger but doesn't need to interact with it -- for back-up or disaster recovery purposes, for example. However, it's more typical that a peer has at least one smart contract installed on it so that it can query or update the ledger.
 
