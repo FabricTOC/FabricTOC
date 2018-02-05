@@ -4,6 +4,7 @@
 
 Mitchell, a car manufacturer in Detroit, and Regal, a manufacturer in Kentucky, come together to form a network to streamline information and processes related to their businesses. They decide that they will have equal and shared administrative rights over the network and will design it, in part, to interact with applications that will track car production and distribution.
 
+![DRIVENET1](./DRIVENET.diagram.1.png)
 
     + Defining the initial network configuration
         + Organizations and Certificate Authorities
